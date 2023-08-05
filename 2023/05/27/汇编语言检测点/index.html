@@ -16,21 +16,27 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="第一章 基础知识检测点 1.1 （1）13  寻址能力：一个CPU有N根地址线，则这个CPU的地址总线的宽度为N，最多可以寻找2的N次方个内存单元。 地址总线的宽度决定了CPU 的寻址能力。 \( 2^{N} &#x3D; 8KB &#x3D; 8*1024B &#x3D; 2^{13}B \)，N为地址总线宽度，N&#x3D;13  （2）1024，0，1023  一个存储单元占一个字节（即1B">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2023/08/03/hello-world/index.html">
+<meta property="og:title" content="汇编语言检测点">
+<meta property="og:url" content="http://example.com/2023/05/27/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E6%A3%80%E6%B5%8B%E7%82%B9/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="第一章 基础知识检测点 1.1 （1）13  寻址能力：一个CPU有N根地址线，则这个CPU的地址总线的宽度为N，最多可以寻找2的N次方个内存单元。 地址总线的宽度决定了CPU 的寻址能力。 \( 2^{N} &#x3D; 8KB &#x3D; 8*1024B &#x3D; 2^{13}B \)，N为地址总线宽度，N&#x3D;13  （2）1024，0，1023  一个存储单元占一个字节（即1B">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-03T07:56:51.508Z">
-<meta property="article:modified_time" content="2023-08-03T07:55:15.248Z">
+<meta property="og:image" content="https://iili.io/HrT21vs.md.png">
+<meta property="og:image" content="https://iili.io/H4naDZb.md.png">
+<meta property="og:image" content="https://iili.io/H4pjm0v.md.png">
+<meta property="og:image" content="https://iili.io/H4pvW0u.md.png">
+<meta property="article:published_time" content="2023-05-27T14:20:49.000Z">
+<meta property="article:modified_time" content="2023-08-05T03:05:33.201Z">
 <meta property="article:author" content="wuuuu">
+<meta property="article:tag" content="汇编">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://iili.io/HrT21vs.md.png">
   
   
   
-  <title>Hello World - Hexo</title>
+  <title>汇编语言检测点 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="汇编语言检测点"></span>
           
         </div>
 
@@ -219,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-03 15:56" pubdate>
-          2023年8月3日 下午
+        <time datetime="2023-05-27 22:20" pubdate>
+          2023年5月27日 晚上
         </time>
       </span>
     
@@ -231,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          1.2k 字
         
       </span>
     
@@ -242,7 +248,7 @@
         
         
         
-          4 分钟
+          10 分钟
         
       </span>
     
@@ -279,24 +285,74 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">汇编语言检测点</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="第一章-基础知识"><a href="#第一章-基础知识" class="headerlink" title="第一章 基础知识"></a>第一章 基础知识</h2><h3 id="检测点-1-1"><a href="#检测点-1-1" class="headerlink" title="检测点 1.1"></a>检测点 1.1</h3><p><a target="_blank" rel="noopener" href="https://freeimage.host/i/HrT21vs"><img src="https://iili.io/HrT21vs.md.png" srcset="/img/loading.gif" lazyload alt="HrT21vs.md.png"></a></p>
+<p>（1）<strong>13</strong></p>
+<ul>
+<li>寻址能力：一个CPU有N根地址线，则这个CPU的地址总线的宽度为N，最多可以寻找2的N次方个内存单元。</li>
+<li>地址总线的宽度决定了CPU 的寻址能力。</li>
+<li>\( 2^{N} &#x3D; 8KB &#x3D; 8*1024B &#x3D; 2^{13}B \)，N为地址总线宽度，N&#x3D;13</li>
+</ul>
+<p>（2）<strong>1024，0，1023</strong></p>
+<ul>
+<li>一个存储单元占一个字节（即1B），故1KB的存储器有1024个存储单元，存储单元编号从0~1023。</li>
+</ul>
+<p>（3）<strong>8192，1024</strong></p>
+<ul>
+<li>1千字节（KB）&#x3D; 1024字节（B）</li>
+<li>1字节（Byte）&#x3D; 8比特（bit）</li>
+</ul>
+<p> （4）<strong>\( 2^{30}， 2^{20}， 2^{10}\)</strong></p>
+<p> （5）<strong>64KB，1MB，16MB，4GB</strong></p>
+<ul>
+<li>8080CPU地址总线宽度为16，寻址能力为\(2^{16} &#x3D; 2^6KB &#x3D; 64KB\)</li>
+<li>其余同理</li>
+</ul>
+<p>（6）<strong>1，1，2，2，4</strong></p>
+<ul>
+<li>8根数据总线一次可传送一个8位二进制数据（即一个字节）</li>
+</ul>
+<p>（7）<strong>512，256</strong></p>
+<ul>
+<li>8086CPU数据总线16根，一次可读2个字节 ,1024&#x2F;2&#x3D;512</li>
+</ul>
+<p>（8）<strong>二进制</strong></p>
+<h2 id="第二章-寄存器"><a href="#第二章-寄存器" class="headerlink" title="第二章 寄存器"></a>第二章 寄存器</h2><h3 id="检测点-2-1"><a href="#检测点-2-1" class="headerlink" title="检测点 2.1"></a>检测点 2.1</h3><p><a target="_blank" rel="noopener" href="https://freeimage.host/i/H4naDZb"><img src="https://iili.io/H4naDZb.md.png" srcset="/img/loading.gif" lazyload alt="H4naDZb.md.png"></a></p>
+<p>  (1)  有点简单，注意溢出即可，如：C5H+93H&#x3D;158H，而al只有8位，所以al&#x3D;58H，从而AX&#x3D;0058H</p>
+<p>  (2)</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache">	<span class="hljs-attribute">mov</span> ax,<span class="hljs-number">2</span>     ;<span class="hljs-number">2</span>的<span class="hljs-number">1</span>次方 = <span class="hljs-number">2</span><br><span class="hljs-attribute">add</span> ax,ax    ;<span class="hljs-number">2</span>的<span class="hljs-number">2</span>次方 = <span class="hljs-number">2</span> + <span class="hljs-number">2</span> = <span class="hljs-number">4</span><br><span class="hljs-attribute">add</span> ax,ax    ;<span class="hljs-number">2</span>的<span class="hljs-number">3</span>次方 = <span class="hljs-number">4</span> + <span class="hljs-number">4</span> = <span class="hljs-number">8</span><br><span class="hljs-attribute">add</span> ax,ax    ;<span class="hljs-number">2</span>的<span class="hljs-number">4</span>次方 = <span class="hljs-number">8</span> + <span class="hljs-number">8</span> = <span class="hljs-number">16</span><br></code></pre></td></tr></table></figure>
+<h3 id="检测点-2-2"><a href="#检测点-2-2" class="headerlink" title="检测点 2.2"></a>检测点 2.2</h3><p><a target="_blank" rel="noopener" href="https://freeimage.host/i/H4pjm0v"><img src="https://iili.io/H4pjm0v.md.png" srcset="/img/loading.gif" lazyload alt="H4pjm0v.md.png"></a></p>
+<p>（1）<strong>00010H到1000FH</strong></p>
+<ul>
+<li>基础地址（段地址*16）+ 偏移地址 &#x3D; 物理地址</li>
+<li>偏移地址16位，变化范围为0~FFFFH，仅用偏移地址最多可寻址64KB</li>
+<li>给定段地址为0001H，寻址范围为（0001H×16）+ 0到（0001H×16）+FFFFH，即寻址范围为0010H到1000FH</li>
+</ul>
+<p>（2）<strong>最小为 1001H ，最大为 2000H</strong></p>
+<ul>
+<li>段地址<em>16+偏移地址&#x3D;物理地址，即SA</em>16+EA&#x3D;20000H；偏移地址16位，变化范围为0~FFFFH； </li>
+<li>当偏移地址取最大值FFFFH时，段地址最小，SA&#x3D;(20000H-FFFFH)&#x2F;16&#x3D;1001H（<strong>取上界</strong>）</li>
+<li>当偏移地址取最小值0H时，段地址最大，SA&#x3D;(20000H-0H)&#x2F;16&#x3D;2000H。</li>
+</ul>
+<p> 思考：当段地址给定为小于1001H或大于2000H时，CPU无论怎么变化偏移地址都无法寻到20000H单元。</p>
+<h3 id="检测点-2-3"><a href="#检测点-2-3" class="headerlink" title="检测点 2.3"></a>检测点 2.3</h3><p> <a target="_blank" rel="noopener" href="https://freeimage.host/i/H4pvW0u"><img src="https://iili.io/H4pvW0u.md.png" srcset="/img/loading.gif" lazyload alt="H4pvW0u.md.png"></a></p>
+<ul>
+<li><p>一共修改了4次。</p>
+</li>
+<li><p>读取 mov ax,bx 指令后，第一次修改IP</p>
+</li>
+<li><p>读取 sub ax,ax 指令后，第二次修改IP</p>
+</li>
+<li><p>读取 jmp ax 指令后，第三次修改IP</p>
+</li>
+<li><p>执行 jmp ax 指令时，第四次修改IP，最后IP&#x3D;ax&#x3D;0</p>
+<p><strong>略了，有时间再补，最近期末复习时间太紧了</strong></p>
+</li>
+</ul>
 
                 
               </div>
@@ -305,6 +361,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B1%87%E7%BC%96/" class="category-chain-item">汇编</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%B1%87%E7%BC%96/" class="print-no-link">#汇编</a>
+      
+    </div>
   
 </div>
 
@@ -314,8 +398,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2023/08/03/hello-world/</div>
+      <div>汇编语言检测点</div>
+      <div>http://example.com/2023/05/27/汇编语言检测点/</div>
     </div>
     <div class="license-meta">
       
@@ -327,7 +411,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月3日</div>
+          <div>2023年5月27日</div>
         </div>
       
       
@@ -359,9 +443,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/03/My-New-Post/" title="My New Post">
+                      <a href="/2023/05/27/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/" title="汇编语言实验">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">My New Post</span>
+                        <span class="hidden-mobile">汇编语言实验</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -369,8 +453,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/27/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E5%AE%9E%E9%AA%8C/" title="汇编语言实验">
-                        <span class="hidden-mobile">汇编语言实验</span>
+                      <a href="/2023/05/27/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0/" title="汇编语言知识点复习">
+                        <span class="hidden-mobile">汇编语言知识点复习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
