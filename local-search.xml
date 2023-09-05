@@ -4,11 +4,24 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2023/09/05/%E6%B1%82%E8%A7%A31%C2%B2+2%C2%B2+3%C2%B2+%E2%80%A6%E2%80%A6+n%C2%B2/"/>
+    <url>/2023/09/05/%E6%B1%82%E8%A7%A31%C2%B2+2%C2%B2+3%C2%B2+%E2%80%A6%E2%80%A6+n%C2%B2/</url>
+    
+    <content type="html"><![CDATA[<p>title: 求解1²+2²+3²+……+n²<br>date: 2023-09-05 21:29:49<br>tags: [数学]<br>categories: 数学</p><h4 id="一种简单的方法"><a href="#一种简单的方法" class="headerlink" title="一种简单的方法"></a>一种简单的方法</h4><p>在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来</p><p>这种方法把1²+2²+3²+……+n²写成三个式子，相加除以3得到结果，如下：</p><p>1</p><p>2 2</p><p>3 3 3</p><p>………………………</p><p>n n ……………..n n ①</p><p>&#x3D; n</p><p>…………..n</p><p>3 ……………….n</p><p>2 3 …… ………..n</p><p>1 2 3………………..n ②</p><p>&#x3D; n</p><p>n ………</p><p>n ……………… 3</p><p>n ……………………..3 2</p><p>n …………………………….3 2 1 ③</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>各种软件安装，环境配置</title>
     <link href="/2023/09/03/%E5%90%84%E7%A7%8D%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <url>/2023/09/03/%E5%90%84%E7%A7%8D%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%EF%BC%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
     
-    <content type="html"><![CDATA[<h3 id="在VScode中配置Python开发环境"><a href="#在VScode中配置Python开发环境" class="headerlink" title="在VScode中配置Python开发环境"></a>在VScode中配置Python开发环境</h3><p><a href="https://blog.csdn.net/weixin_43737995/article/details/125690015?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169362300616800182129289%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169362300616800182129289&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-125690015-null-null.142%5Ev93%5EchatgptT3_1&utm_term=vscode%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">在VScode中配置Python开发环境</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="在VScode中配置Python开发环境"><a href="#在VScode中配置Python开发环境" class="headerlink" title="在VScode中配置Python开发环境"></a>在VScode中配置Python开发环境</h3><p><a href="https://blog.csdn.net/weixin_43737995/article/details/125690015?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169362300616800182129289%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169362300616800182129289&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-125690015-null-null.142%5Ev93%5EchatgptT3_1&utm_term=vscode%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">在VScode中配置Python开发环境</a></p><h3 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h3><p><a href="https://blog.csdn.net/mukes/article/details/115693833?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169205886716800188579548%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169205886716800188579548&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-115693833-null-null.142%5Ev92%5EchatgptT0_1&utm_term=git%E5%AE%89%E8%A3%85&spm=1018.2226.3001.4187">Git 详细安装教程</a></p>]]></content>
     
     
     
