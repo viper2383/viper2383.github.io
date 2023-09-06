@@ -8,7 +8,7 @@
     <link href="/2023/09/06/NSSCTF-Crypto%EF%BC%881~10%EF%BC%89/"/>
     <url>/2023/09/06/NSSCTF-Crypto%EF%BC%881~10%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[<p>《从0开始的密码学世界》😋慢慢学密码方向</p><h2 id="鹤城杯-2021-easy-crypto"><a href="#鹤城杯-2021-easy-crypto" class="headerlink" title="[鹤城杯 2021]easy_crypto"></a>[鹤城杯 2021]easy_crypto</h2><p>解压后文件内容是社会主义核心价值观，查了一下竟然有<strong>核心价值观编码</strong>，有点逆天，那就直接用工具解码即可。</p><p>下面贴上两个网站</p><p><a href="http://www.hiencode.com/cvencode.html">核心价值观编码1</a></p><p><a href="https://ctf.bugku.com/tool/cvecode">核心价值观编码2</a></p>]]></content>
+    <content type="html"><![CDATA[<p>《从0开始的密码学世界生活》😋慢慢学密码方向</p><h2 id="鹤城杯-2021-easy-crypto"><a href="#鹤城杯-2021-easy-crypto" class="headerlink" title="[鹤城杯 2021]easy_crypto"></a>[鹤城杯 2021]easy_crypto</h2><p>解压后文件内容是社会主义核心价值观，查了一下竟然有<strong>核心价值观编码</strong>，有点逆天，那就直接用工具解码即可。</p><p>下面贴上两个网站</p><p><a href="http://www.hiencode.com/cvencode.html">核心价值观编码-加解密1</a></p><p><a href="https://ctf.bugku.com/tool/cvecode">核心价值观编码-加解密2</a></p><h2 id="强网拟态-2021-拟态签到题"><a href="#强网拟态-2021-拟态签到题" class="headerlink" title="[强网拟态 2021]拟态签到题"></a>[强网拟态 2021]拟态签到题</h2><p>打开txt文件，发现看不懂，这什么东西，GPT一下</p><p><a href="https://freeimage.host/i/J95ihaR"><img src="https://iili.io/J95ihaR.md.png" alt="2309061"></a></p>]]></content>
     
     
     <categories>
@@ -25,6 +25,31 @@
       <tag>Crypto</tag>
       
       <tag>NSSCTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>算法设计与分析-排序</title>
+    <link href="/2023/09/06/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E6%8E%92%E5%BA%8F/"/>
+    <url>/2023/09/06/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E6%8E%92%E5%BA%8F/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
       
     </tags>
     
