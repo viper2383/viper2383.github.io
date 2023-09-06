@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>NSSCTF-Crypto（1~10）</title>
+    <link href="/2023/09/06/NSSCTF-Crypto%EF%BC%881~10%EF%BC%89/"/>
+    <url>/2023/09/06/NSSCTF-Crypto%EF%BC%881~10%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p>《从0开始的密码学世界》😋慢慢学密码方向</p><h2 id="鹤城杯-2021-easy-crypto"><a href="#鹤城杯-2021-easy-crypto" class="headerlink" title="[鹤城杯 2021]easy_crypto"></a>[鹤城杯 2021]easy_crypto</h2><p>解压后文件内容是社会主义核心价值观，查了一下竟然有<strong>核心价值观编码</strong>，有点逆天，那就直接用工具解码即可。</p><p>下面贴上两个网站</p><p><a href="http://www.hiencode.com/cvencode.html">核心价值观编码1</a></p><p><a href="https://ctf.bugku.com/tool/cvecode">核心价值观编码2</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF-Crypto</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>Crypto</tag>
+      
+      <tag>NSSCTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>求解1²+2²+3²+……+n²</title>
     <link href="/2023/09/05/%E6%B1%82%E8%A7%A31%C2%B2+2%C2%B2+3%C2%B2+%E2%80%A6%E2%80%A6+n%C2%B2/"/>
     <url>/2023/09/05/%E6%B1%82%E8%A7%A31%C2%B2+2%C2%B2+3%C2%B2+%E2%80%A6%E2%80%A6+n%C2%B2/</url>
