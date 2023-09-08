@@ -58,7 +58,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"If8BFKTGJew9QlhBKT22enqz-MdYXbMMI","app_key":"dQmrYia8IBEW0tV2D1JQ1YCL","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -68,6 +68,35 @@
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
   
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
 
 
   
@@ -230,7 +259,7 @@
                 
 
 <div class="text-center tagcloud">
-  <a href="/tags/C/" style="font-size: 15px; color: #bbe">C</a> <a href="/tags/CTF/" style="font-size: 15px; color: #bbe">CTF</a> <a href="/tags/Crypto/" style="font-size: 15px; color: #bbe">Crypto</a> <a href="/tags/NSSCTF/" style="font-size: 15px; color: #bbe">NSSCTF</a> <a href="/tags/hexo/" style="font-size: 22.5px; color: #779bd3">hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 15px; color: #bbe">博客</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px; color: #bbe">数学</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 30px; color: #337ab7">汇编</a> <a href="/tags/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/" style="font-size: 15px; color: #bbe">测试博客</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px; color: #bbe">算法</a>
+  <a href="/tags/C/" style="font-size: 15px; color: #bbe">C</a> <a href="/tags/CTF/" style="font-size: 15px; color: #bbe">CTF</a> <a href="/tags/Crypto/" style="font-size: 15px; color: #bbe">Crypto</a> <a href="/tags/NSSCTF/" style="font-size: 15px; color: #bbe">NSSCTF</a> <a href="/tags/hexo/" style="font-size: 22.5px; color: #779bd3">hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 22.5px; color: #779bd3">博客</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px; color: #bbe">数学</a> <a href="/tags/%E6%B1%87%E7%BC%96/" style="font-size: 30px; color: #337ab7">汇编</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 15px; color: #bbe">算法</a>
 </div>
 
               </div>
@@ -331,6 +360,8 @@
 
 
 
+
+  <script defer src="/js/leancloud.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
