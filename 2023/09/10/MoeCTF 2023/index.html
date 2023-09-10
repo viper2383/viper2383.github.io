@@ -16,21 +16,19 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Crypto 入门指北">
+    <meta name="description" content="Crypto 入门指北例题如下： 123456789101112131415from secret import flag # 这个secret不是一个库，flag是你要自己求出来的，所以不要问为什么找不到这个库了（p,q &#x3D; getPrime(512), getPrime(512) # 随机生成了两个质数e &#x3D; 65537 # 这是什么？n &#x3D; p*qm &#x3D; int.from_bytes(fla">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MoeCTF 2023">
-<meta property="og:url" content="http://example.com/2023/09/09/MoeCTF%202023/index.html">
+<meta property="og:url" content="http://example.com/2023/09/10/MoeCTF%202023/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="Crypto 入门指北">
+<meta property="og:description" content="Crypto 入门指北例题如下： 123456789101112131415from secret import flag # 这个secret不是一个库，flag是你要自己求出来的，所以不要问为什么找不到这个库了（p,q &#x3D; getPrime(512), getPrime(512) # 随机生成了两个质数e &#x3D; 65537 # 这是什么？n &#x3D; p*qm &#x3D; int.from_bytes(fla">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230909112335392.png">
-<meta property="article:published_time" content="2023-09-09T05:20:49.000Z">
-<meta property="article:modified_time" content="2023-09-09T12:40:12.411Z">
+<meta property="article:published_time" content="2023-09-10T05:20:49.000Z">
+<meta property="article:modified_time" content="2023-09-10T10:14:12.249Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230909112335392.png">
   
   
   
@@ -252,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-09 13:20" pubdate>
-          2023年9月9日 下午
+        <time datetime="2023-09-10 13:20" pubdate>
+          2023年9月10日 下午
         </time>
       </span>
     
@@ -264,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10 字
+          2.7k 字
         
       </span>
     
@@ -275,7 +273,7 @@
         
         
         
-          1 分钟
+          18 分钟
         
       </span>
     
@@ -325,7 +323,44 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Crypto-入门指北"><a href="#Crypto-入门指北" class="headerlink" title="Crypto 入门指北"></a>Crypto 入门指北</h2><p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230909112335392.png" srcset="/img/loading.gif" lazyload alt="image-20230909112335392"></p>
+                <h2 id="Crypto-入门指北"><a href="#Crypto-入门指北" class="headerlink" title="Crypto 入门指北"></a>Crypto 入门指北</h2><p>例题如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag <span class="hljs-comment"># 这个secret不是一个库，flag是你要自己求出来的，所以不要问为什么找不到这个库了（</span><br><br>p,q = getPrime(<span class="hljs-number">512</span>), getPrime(<span class="hljs-number">512</span>) <span class="hljs-comment"># 随机生成了两个质数</span><br>e = <span class="hljs-number">65537</span> <span class="hljs-comment"># 这是什么？</span><br>n = p*q<br>m = <span class="hljs-built_in">int</span>.from_bytes(flag.encode(),<span class="hljs-string">&quot;big&quot;</span>) <span class="hljs-comment"># 把flag编码成bytes，再转换成一个长整数</span><br>c = <span class="hljs-built_in">pow</span>(m,e,n) <span class="hljs-comment"># RSA加密！</span><br><br><span class="hljs-built_in">print</span>(p)<br><span class="hljs-built_in">print</span>(q)<br><span class="hljs-built_in">print</span>(c)<br><br><span class="hljs-comment"># p = 0xe82a76eeb5ac63e054128e040171630b993feb33e0d3d38fbb7c0b54df3a2fb9b5589d1205e0e4240b8fcb4363acaa4c3c44dd6e186225ebf3ce881c7070afa7</span><br><span class="hljs-comment"># q = 0xae5c2e450dbce36c8d6d1a5c989598fc01438f009f9b4c29352d43fd998d10984d402637d7657d772fb9f5e4f4feee63b267b401b67704979d519ad7f0a044eb</span><br><span class="hljs-comment"># c = 0x4016bf1fe655c863dd6c08cbe70e3bb4e6d4feefacaaebf1cfa2a8d94051d21e51919ea754c1aa7bd1674c5330020a99e2401cb1f232331a2da61cb4329446a17e3b9d6b59e831211b231454e81cc8352986e05d44ae9fcd30d68d0ce288c65e0d22ce0e6e83122621d2b96543cec4828f590af9486aa57727c5fcd8e74bd296</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>m = int.from_bytes(flag.encode(),&quot;big&quot;)</code> </p>
+<p>这行代码的作用是将字符串 <code>flag</code> 转换成一个大整数 <code>m</code>。具体解释如下：</p>
+<ul>
+<li><code>flag</code>: 这是一个字符串，通常包含需要进行加密或其他操作的敏感信息，例如密码或标志。</li>
+<li><code>flag.encode()</code>: 这是将字符串 <code>flag</code> 转换为字节序列的操作。在计算机中，所有的数据最终都会以字节的形式表示。<code>encode()</code> 方法将字符串编码为字节，使用默认的编码方式（通常是UTF-8）。</li>
+<li><code>&quot;big&quot;</code>: 这是一个参数，它告诉Python将字节序列视为一个大端（big-endian）的整数。在大端表示法中，高位字节在前，低位字节在后。这是一种常见的表示整数的方式。</li>
+<li><code>int.from_bytes(...)</code>: 这是一个方法，用于将字节序列转换为整数。它接受两个参数，第一个参数是要转换的字节序列，第二个参数是表示字节序列顺序的字符串，这里是 <code>&quot;big&quot;</code>。它会将字节序列按照指定的顺序解释为一个整数。</li>
+</ul>
+<p>因此，<code>m</code> 将包含了从字符串 <code>flag</code> 转换而来的整数表示。在加密算法中，通常会将明文消息转换成整数形式，以便进行数学运算，例如RSA加密中的指数运算。</p>
+</blockquote>
+<blockquote>
+<p><code>c = pow(m,e,n) </code></p>
+<p>这行代码实现了RSA（Rivest–Shamir–Adleman）加密的核心操作。具体解释如下：</p>
+<ul>
+<li><code>m</code>: 这是明文消息的整数表示。在RSA加密中，明文消息通常首先被编码成一个整数，这个整数在加密过程中被处理。</li>
+<li><code>e</code>: 这是RSA加密算法中的公钥指数。它是一个正整数，通常是65537。公钥指数是用于加密消息的指数。</li>
+<li><code>n</code>: 这是RSA加密算法中的模数（或称为模ulus）。它是两个大素数 p 和 q 的乘积。模数在RSA加密和解密过程中都会用到。</li>
+<li><strong><code>pow(m, e, n)</code>: 这是Python中的一个函数，用于计算 m 的 e 次方除以 n 的余数</strong>。也就是说，它执行的是模指数运算。在RSA加密中，这等效于对明文消息 m 进行加密操作。</li>
+</ul>
+<p>最终，<code>c</code> 将包含加密后的密文，它是整数形式的，可以通过RSA私钥进行解密，从而还原为原始的明文消息 <code>m</code>。RSA是一种非对称加密算法，公钥用于加密，私钥用于解密，这使得只有拥有私钥的人才能够解密密文。</p>
+</blockquote>
+<p><em><strong>哦~~，这里就是说flag是不知道的，就是让我们求一下flag</strong></em></p>
+<p>标准答案如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> * <span class="hljs-comment"># 一个非常好用的crypto库</span><br><br>p = <span class="hljs-number">0xe82a76eeb5ac63e054128e040171630b993feb33e0d3d38fbb7c0b54df3a2fb9b5589d1205e0e4240b8fcb4363acaa4c3c44dd6e186225ebf3ce881c7070afa7</span><br>q = <span class="hljs-number">0xae5c2e450dbce36c8d6d1a5c989598fc01438f009f9b4c29352d43fd998d10984d402637d7657d772fb9f5e4f4feee63b267b401b67704979d519ad7f0a044eb</span><br>c = <span class="hljs-number">0x4016bf1fe655c863dd6c08cbe70e3bb4e6d4feefacaaebf1cfa2a8d94051d21e51919ea754c1aa7bd1674c5330020a99e2401cb1f232331a2da61cb4329446a17e3b9d6b59e831211b231454e81cc8352986e05d44ae9fcd30d68d0ce288c65e0d22ce0e6e83122621d2b96543cec4828f590af9486aa57727c5fcd8e74bd296</span><br>e = <span class="hljs-number">65537</span><br>n = p*q<br>phi = (p-<span class="hljs-number">1</span>) * (q-<span class="hljs-number">1</span>) <span class="hljs-comment"># 你知道什么是 欧拉函数吗 [1]</span><br>d = <span class="hljs-built_in">pow</span>(e, -<span class="hljs-number">1</span>, phi) <span class="hljs-comment"># 什么是乘法逆元？ [2]</span><br>m = <span class="hljs-built_in">pow</span>(c,d,n)<br><span class="hljs-built_in">print</span>(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
+
+<p>相当于我们知道了p，q，c，e，然后求m，那就求出 n 和 d 即可</p>
+<p>所以关键的就是求d</p>
+<blockquote>
+<p><code>d = pow(e, -1, phi)</code></p>
+<p>这行代码计算了私钥 <code>d</code>，它是公钥指数 <code>e</code> 在模 <code>phi</code> 下的乘法逆元。</p>
+<p>因为 e 和 d 之间一定满足：<code>(e * d) % phi(n) = 1</code>，即<code>e*d ≡ 1(mod φ(N))</code></p>
+<p>这行代码其实跟之前 <em>[SWPUCTF 2021 新生赛]ez_rsa</em> 解密代码中<code>d = gmpy2.invert(e, phi)</code>是一个意思</p>
+</blockquote>
+<p>由$e*d ≡ 1(mod φ(N))$可以得出 $ e^{-1} ≡ d(mod φ(N)) $ 吗？</p>
 
                 
               </div>
@@ -374,7 +409,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>MoeCTF 2023</div>
-      <div>http://example.com/2023/09/09/MoeCTF 2023/</div>
+      <div>http://example.com/2023/09/10/MoeCTF 2023/</div>
     </div>
     <div class="license-meta">
       
@@ -386,7 +421,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月9日</div>
+          <div>2023年9月10日</div>
         </div>
       
       
@@ -513,6 +548,12 @@
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -560,6 +601,31 @@
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
   
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
   
   
   
@@ -704,6 +770,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
