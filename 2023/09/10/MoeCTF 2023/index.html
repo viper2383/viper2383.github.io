@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="Wiper3">
 <meta property="og:description" content="Crypto 入门指北例题如下： 123456789101112131415from secret import flag # 这个secret不是一个库，flag是你要自己求出来的，所以不要问为什么找不到这个库了（p,q &#x3D; getPrime(512), getPrime(512) # 随机生成了两个质数e &#x3D; 65537 # 这是什么？n &#x3D; p*qm &#x3D; int.from_bytes(fla">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-10T05:20:49.000Z">
-<meta property="article:modified_time" content="2023-09-10T10:14:12.249Z">
+<meta property="article:published_time" content="2023-09-10T15:20:49.000Z">
+<meta property="article:modified_time" content="2023-09-10T13:52:54.790Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -250,8 +250,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-10 13:20" pubdate>
-          2023年9月10日 下午
+        <time datetime="2023-09-10 23:20" pubdate>
+          2023年9月10日 晚上
         </time>
       </span>
     
@@ -360,7 +360,9 @@
 <p>因为 e 和 d 之间一定满足：<code>(e * d) % phi(n) = 1</code>，即<code>e*d ≡ 1(mod φ(N))</code></p>
 <p>这行代码其实跟之前 <em>[SWPUCTF 2021 新生赛]ez_rsa</em> 解密代码中<code>d = gmpy2.invert(e, phi)</code>是一个意思</p>
 </blockquote>
-<p>由$e*d ≡ 1(mod φ(N))$可以得出 $ e^{-1} ≡ d(mod φ(N)) $ 吗？</p>
+<ul>
+<li><input disabled="" type="checkbox"> 由$ e*d ≡ 1(mod φ(N)) $可以得出 $ e^{-1} ≡ d(mod φ(N)) $ 吗？</li>
+</ul>
 
                 
               </div>
