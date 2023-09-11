@@ -19,12 +19,12 @@
     <meta name="description" content="《从0开始的密码学世界生活》😋慢慢学密码方向 在探姬的建议下，还是买了这套课程，开干！ [RSA1]P1main_py： 12345678910111213141516171819202122232425from Crypto.Util.number import *flag &#x3D; b&amp;#x27;NSSCTF&amp;#123;******&amp;#125;&amp;#x27;p &#x3D; getPrime(512)q &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Crypto系列——RSA（一）">
-<meta property="og:url" content="http://example.com/2023/09/11/Untitled/index.html">
+<meta property="og:url" content="http://example.com/2023/09/11/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Wiper3">
 <meta property="og:description" content="《从0开始的密码学世界生活》😋慢慢学密码方向 在探姬的建议下，还是买了这套课程，开干！ [RSA1]P1main_py： 12345678910111213141516171819202122232425from Crypto.Util.number import *flag &#x3D; b&amp;#x27;NSSCTF&amp;#123;******&amp;#125;&amp;#x27;p &#x3D; getPrime(512)q &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-10T16:57:30.000Z">
-<meta property="article:modified_time" content="2023-09-10T16:44:39.336Z">
+<meta property="article:modified_time" content="2023-09-11T03:24:48.220Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.6k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
         
-          17 分钟
+          25 分钟
         
       </span>
     
@@ -329,12 +329,35 @@
 <h2 id="RSA1-P1"><a href="#RSA1-P1" class="headerlink" title="[RSA1]P1"></a>[RSA1]P1</h2><p>main_py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">b&#x27;NSSCTF&#123;******&#125;&#x27;</span><br><br>p = getPrime(<span class="hljs-number">512</span>)<br>q = getPrime(<span class="hljs-number">512</span>)<br>n = p*q<br>e = <span class="hljs-number">65537</span><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br><br>m = bytes_to_long(flag)<br><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;p = <span class="hljs-subst">&#123;p&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;q = <span class="hljs-subst">&#123;q&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">p = 10554915510546378513140074459658086644656654144905337809416976066414771647836950941616441505897207397834928781511863699153349798682451297889979721668885951</span><br><span class="hljs-string">q = 8246403321715011123191410826902524505032643184038566851264109473851746507405534573077909160292816825514872584170252311902322051822644609979417178306809223</span><br><span class="hljs-string">e = 65537</span><br><span class="hljs-string">c = 40005881669517895877352756665523238535105922590962714344556374248977905431683140065629966778249773228248201807844489945346731806741025157651474530811920115794270396320935022110691338083709019538562205165553541077855422953438117902279834449006455379382431883650004540282758907332683496655914597029545677184720</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
 
+
+
 <p>decrypt.py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>p = <span class="hljs-number">10554915510546378513140074459658086644656654144905337809416976066414771647836950941616441505897207397834928781511863699153349798682451297889979721668885951</span><br>q = <span class="hljs-number">8246403321715011123191410826902524505032643184038566851264109473851746507405534573077909160292816825514872584170252311902322051822644609979417178306809223</span><br>e = <span class="hljs-number">65537</span><br>c = <span class="hljs-number">40005881669517895877352756665523238535105922590962714344556374248977905431683140065629966778249773228248201807844489945346731806741025157651474530811920115794270396320935022110691338083709019538562205165553541077855422953438117902279834449006455379382431883650004540282758907332683496655914597029545677184720</span><br><br>n = p * q<br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br><br>d = <span class="hljs-built_in">pow</span>(e,-<span class="hljs-number">1</span>,phi)<br>m = <span class="hljs-built_in">pow</span>(c,d,n)<br><br><span class="hljs-built_in">print</span>(long_to_bytes(m))   <span class="hljs-comment"># b&#x27;NSSCTF&#123;now!you_know_rsa&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>关于类型的转换，pepper师傅这里说的很好，我就直接copy了</p>
+<p>本题需要理解明文和密文的类型及其类型转换函数。long类型为一串数字，bytes是字符。</p>
+<p>在下列示例中，message表示bytes类型明文，m表示long类型明文，c表示long类型密文。</p>
+<p>在rsa.py函数中：</p>
+<ol>
+<li><p>输入 message 明文为 bytes 类型,加密 c&#x3D;pow(m,e,n) 中明文 m 为 long 类型，输出密文 c 是 long 类型。</p>
+<p>message 到 m 需要通过 bytes_to_long(message) 方法进行转换</p>
+</li>
+<li><p>解密 m&#x3D; pow(c, d, n) 中 m 为 long 类型，c 为 long 类型。</p>
+<p>打印输出的明文 message 需要 bytes 类型，通过 long_to_bytes(m) 方法进行转换</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">m = bytes_to_long(message) <span class="hljs-built_in">bytes</span>转long<br>message = long_to_bytes(m) long转<span class="hljs-built_in">bytes</span><br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="RSA1-P2"><a href="#RSA1-P2" class="headerlink" title="[RSA1]P2"></a>[RSA1]P2</h2><p>main_py：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">b&#x27;NSSCTF&#123;******&#125;&#x27;</span><br><br>p = getPrime(<span class="hljs-number">256</span>)<br>q = getPrime(<span class="hljs-number">256</span>)<br>n = p*q<br>e = <span class="hljs-number">65537</span><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br><br>m = bytes_to_long(flag)<br><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;n = <span class="hljs-subst">&#123;n&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 7382582015733895208810490097582153009797420348201515356767397357174775587237553842395468027650317457503579404097373070312978350435795210286224491315941881</span><br><span class="hljs-string">e = 65537</span><br><span class="hljs-string">c = 6511001389892474870028836129813814173158254564777610289284056550272120510686249909340499673868720839756059423749304765055919251717618117507007046973023557</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>decrypt.py：</p>
+<p>本题意思是只知道了n，而p和q都不知道，那么我们就要把n这个大整数分解，用到网站<a target="_blank" rel="noopener" href="http://factordb.com/">factordb.com</a></p>
+<p>得到分解的两个数p和q，即可写出decrypt.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>n = <span class="hljs-number">7382582015733895208810490097582153009797420348201515356767397357174775587237553842395468027650317457503579404097373070312978350435795210286224491315941881</span><br>e = <span class="hljs-number">65537</span><br>c = <span class="hljs-number">6511001389892474870028836129813814173158254564777610289284056550272120510686249909340499673868720839756059423749304765055919251717618117507007046973023557</span><br><br>p = <span class="hljs-number">70538125404512947763739093348083497980212021962975762144416432920656660487657</span><br>q = <span class="hljs-number">104660876276442216612517835199819767034152013287345576481899196023866133215633</span><br><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br><br>d = <span class="hljs-built_in">pow</span>(e,-<span class="hljs-number">1</span>,phi)<br>m = <span class="hljs-built_in">pow</span>(c,d,n)<br><br><span class="hljs-built_in">print</span>(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -386,7 +409,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Crypto系列——RSA（一）</div>
-      <div>http://example.com/2023/09/11/Untitled/</div>
+      <div>http://example.com/2023/09/11/Crypto系列——RSA（一）/</div>
     </div>
     <div class="license-meta">
       
