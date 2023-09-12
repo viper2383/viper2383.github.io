@@ -24,7 +24,7 @@
 <meta property="og:description" content="《从0开始的密码学世界生活》😋慢慢学密码方向 在探姬的建议下，还是买了这套课程，开干！ [RSA1]P1main_py：12345678910111213141516171819202122232425from Crypto.Util.number import *flag &#x3D; b&amp;#x27;NSSCTF&amp;#123;******&amp;#125;&amp;#x27;p &#x3D; getPrime(512)q &#x3D; g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-10T16:57:30.000Z">
-<meta property="article:modified_time" content="2023-09-11T15:54:50.349Z">
+<meta property="article:modified_time" content="2023-09-12T09:25:07.744Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.3k 字
+          7.4k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
         
-          36 分钟
+          50 分钟
         
       </span>
     
@@ -369,7 +369,21 @@
 <hr>
 <h2 id="RSA1-P4"><a href="#RSA1-P4" class="headerlink" title="[RSA1]P4"></a>[RSA1]P4</h2><h3 id="main-py：-2"><a href="#main-py：-2" class="headerlink" title="main_py："></a>main_py：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> gmpy2<br>flag = <span class="hljs-string">b&#x27;NSSCTF&#123;******&#125;&#x27;</span><br><br>p = getPrime(<span class="hljs-number">512</span>)<br>q = gmpy2.next_prime(p)<br>n = p*q<br>e = <span class="hljs-number">65537</span><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br><br>m = bytes_to_long(flag)<br><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;n = <span class="hljs-subst">&#123;n&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 115637000420176820831322601039129424406844427046456738651883381559357542765613732363445112111006849040385859313572091386802534464534403117787314180179562651607533039692795522388596550968316951090748054495960090527479954143448774136390568881020918710834542819900918984139672802889774720153267841255456602500057</span><br><span class="hljs-string">e = 65537</span><br><span class="hljs-string">c = 98161406745910866780822530171878255235776133393411573803496865047700715941955255328757920065032397556905095591171977170479344602512244671081108703687450560269408412671849929423399172588599903975793985819498354819305128607934552101433664794909855378636055525016664559476808490723554481335856183927702549281730</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="decrypt-py：-3"><a href="#decrypt-py：-3" class="headerlink" title="decrypt.py："></a>decrypt.py：</h3>
+<h3 id="decrypt-py：-3"><a href="#decrypt-py：-3" class="headerlink" title="decrypt.py："></a>decrypt.py：</h3><p>直接copy了xenny师傅的wp，😰😢</p>
+<ul>
+<li>本题的关键是<code>q = gmpy2.next_prime(p)</code>，相当于q是p的下一个素数</li>
+<li>然后这里采用了一个$ \sqrt{n} $，因为$n &#x3D; p*q$，考虑n的算术平方根为$sn &#x3D; \sqrt{n} $，同时 sn 也是p和q的几何平均值。所以有$p&lt;sn&lt;q$</li>
+<li>又有p，q是相邻的素数，p的下一个素数为q，同理也有sn的下一个素数也应该是q，</li>
+<li>然后由q求出p即可</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> gmpy2 <span class="hljs-keyword">import</span> *<br>p = getPrime(<span class="hljs-number">512</span>)<br>q = gmpy2.next_prime(p)<br><br>n = <span class="hljs-number">115637000420176820831322601039129424406844427046456738651883381559357542765613732363445112111006849040385859313572091386802534464534403117787314180179562651607533039692795522388596550968316951090748054495960090527479954143448774136390568881020918710834542819900918984139672802889774720153267841255456602500057</span><br>e = <span class="hljs-number">65537</span><br>c = <span class="hljs-number">98161406745910866780822530171878255235776133393411573803496865047700715941955255328757920065032397556905095591171977170479344602512244671081108703687450560269408412671849929423399172588599903975793985819498354819305128607934552101433664794909855378636055525016664559476808490723554481335856183927702549281730</span><br><br>sn = isqrt(n)<br>q = next_prime(sn)<br>p = n // q<br><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>d = invert(e, phi)<br><br>m = <span class="hljs-built_in">pow</span>(c, d, n)<br><span class="hljs-built_in">print</span>(long_to_bytes(m))<br></code></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="RSA1-P5"><a href="#RSA1-P5" class="headerlink" title="[RSA1]P5"></a>[RSA1]P5</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> gmpy2<br>flag = <span class="hljs-string">b&#x27;NSSCTF&#123;******&#125;&#x27;</span><br><br>p = getPrime(<span class="hljs-number">512</span>)<br>q = gmpy2.next_prime(p - getPrime(<span class="hljs-number">256</span>))<br>n = p*q<br>e = <span class="hljs-number">65537</span><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br>m = bytes_to_long(flag)<br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;n = <span class="hljs-subst">&#123;n&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">n = 148841588941490812589697505975986386226158446072049530534135525236572105309550985274214825612079495930267744452266230141871521931612761645600600201983605957650711248808703757693378777706453580124982526368706977258199152469200838211055230241296139605912607613807871432800586045262879581100319519318390454452117</span><br><span class="hljs-string">e = 65537</span><br><span class="hljs-string">c = 69038543593219231496623016705860610154255535760819426453485115089535439537440188692852514795648297200067103841434646958466720891016026061658602312900242658759575613625726750416539176437174502082858413122020981274672260498423684555063381678387696096811975800995242962853092582362805345713900308205654744774932</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
                 
               </div>
             
