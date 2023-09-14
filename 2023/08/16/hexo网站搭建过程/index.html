@@ -24,7 +24,7 @@
 <meta property="og:description" content="b站yyds！！！ hexo加GitHub搭建网站教程 评论区的搭建感谢大佬的博客周三不Coding 图床的搭建暂时感谢[搭建免费图床——github+picGo+jsdelivr_github图床token获取_chunis的博客-CSDN博客](https:&#x2F;&#x2F;blog.csdn.net&#x2F;Godlichangwu&#x2F;article&#x2F;details&#x2F;127331738?ops_request_mi">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-16T04:40:49.000Z">
-<meta property="article:modified_time" content="2023-09-10T09:59:50.825Z">
+<meta property="article:modified_time" content="2023-09-14T03:40:01.206Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="博客">
@@ -535,6 +535,12 @@
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -751,6 +757,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

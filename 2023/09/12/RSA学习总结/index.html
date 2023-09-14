@@ -24,7 +24,7 @@
 <meta property="og:description" content="from Crypto.Util.number import *from gmpy2 import *  导入两个经典的模块  d &#x3D; inverse(e, phi) d &#x3D; invert(e, phi)  inverse函数，invert函数，函数有两个参数(a,p)，作用便是求解a在模p意义下的乘法逆元， 这里我们便是求解e在模phi下面的乘法逆元，结果为d 即满足$ e* d ≡ 1(mod">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-12T04:57:30.000Z">
-<meta property="article:modified_time" content="2023-09-14T02:53:42.031Z">
+<meta property="article:modified_time" content="2023-09-14T03:39:51.181Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -565,6 +565,12 @@
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -781,6 +787,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
