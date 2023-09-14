@@ -16,15 +16,15 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="d &#x3D; inverse(e, phi) d &#x3D; invert(e, phi)  inverse函数，invert函数，函数有两个参数(a,p)，作用便是求解a在模p意义下的乘法逆元， 这里我们便是求解e在模phi下面的乘法逆元，结果为d 即满足$ e* d ≡ 1(mod φ(n)) $ 即满足$ (d * e) % phi &#x3D; 1 $，%的意思是取余 这个语句使用的是 Crypto.U">
+    <meta name="description" content="from Crypto.Util.number import *from gmpy2 import *  导入两个经典的模块  d &#x3D; inverse(e, phi) d &#x3D; invert(e, phi)  inverse函数，invert函数，函数有两个参数(a,p)，作用便是求解a在模p意义下的乘法逆元， 这里我们便是求解e在模phi下面的乘法逆元，结果为d 即满足$ e* d ≡ 1(mod">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RSA学习总结">
 <meta property="og:url" content="http://example.com/2023/09/12/RSA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="d &#x3D; inverse(e, phi) d &#x3D; invert(e, phi)  inverse函数，invert函数，函数有两个参数(a,p)，作用便是求解a在模p意义下的乘法逆元， 这里我们便是求解e在模phi下面的乘法逆元，结果为d 即满足$ e* d ≡ 1(mod φ(n)) $ 即满足$ (d * e) % phi &#x3D; 1 $，%的意思是取余 这个语句使用的是 Crypto.U">
+<meta property="og:description" content="from Crypto.Util.number import *from gmpy2 import *  导入两个经典的模块  d &#x3D; inverse(e, phi) d &#x3D; invert(e, phi)  inverse函数，invert函数，函数有两个参数(a,p)，作用便是求解a在模p意义下的乘法逆元， 这里我们便是求解e在模phi下面的乘法逆元，结果为d 即满足$ e* d ≡ 1(mod">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-12T04:57:30.000Z">
-<meta property="article:modified_time" content="2023-09-12T12:50:21.884Z">
+<meta property="article:modified_time" content="2023-09-14T02:53:42.031Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -263,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          470 字
+          1k 字
         
       </span>
     
@@ -274,7 +274,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -324,7 +324,11 @@
             
               <div class="markdown-body">
                 
-                <p><code>d = inverse(e, phi)</code></p>
+                <p><code>from Crypto.Util.number import *</code><br><code>from gmpy2 import *</code></p>
+<ul>
+<li>导入两个经典的模块</li>
+</ul>
+<p><code>d = inverse(e, phi)</code></p>
 <p><code>d = invert(e, phi)</code></p>
 <ul>
 <li><code>inverse</code>函数，<code>invert</code>函数，函数有两个参数<code>(a,p)</code>，作用便是求解<code>a</code>在模<code>p</code>意义下的乘法逆元，</li>
@@ -343,6 +347,29 @@
 <li>当传递三个参数时，<code>pow(x, y, z)</code> 用于计算 <code>x</code> 的 <code>y</code> 次幂模 <code>z</code> 的结果。在这里，<code>e</code> 是底数，<code>-1</code> 是指数，<code>phi</code> 是模数。通过将指数设置为 <code>-1</code>，<code>pow(e, -1, phi)</code> 计算了 <code>e</code> 的模 <code>phi</code> 的乘法逆元。</li>
 <li>这个语句使用的是内置函数 <code>pow()</code> 来执行指数运算和模计算。</li>
 </ul>
+<p><code>gmpy2.iroot(x, n)</code></p>
+<ul>
+<li>其中，<code>x</code> 是待计算根号的整数，<code>n</code> 是根号类型的整数值。<code>irrot（c,e）</code>表示 对c开e次根号，</li>
+<li>如果 <code>x</code> 的根号为整数，函数将返回一个<strong>元组（tuple）</strong>，返回值为<code>(mpz(2), False)</code>，第一个参数表示返回的结果，<code>mpz</code>为<code>gmpy2</code>包中对整数的封装类，看作一个整数即可；第二个参数代表这个数是否能被完全开e次方，true表示能。</li>
+<li>例如10开3次方并不是一个整数，但<code>gmpy2</code>只会返回取整后的整数值，故通过第二项我们能够知道是否为完全k次方数。</li>
+<li>例如<code>iroot(9, 2)</code>返回<code>(mpz(3), True)</code>代表9是一个完全平方数。</li>
+<li>如果想获得根号的整数值，可以通过访问元组的第一个元素来实现，例如：<ul>
+<li><code>m1 = gmpy2.iroot(m, 2)[0]</code></li>
+<li><code>print(long_to_bytes(m[0]))</code></li>
+</ul>
+</li>
+<li>也能直接赋值的时候就赋给两个变量，这里a就是取平方根后的整数值<ul>
+<li><code>a, b = gmpy2.iroot(m,2)</code></li>
+</ul>
+</li>
+</ul>
+<p><code>.\yafu-x64.exe &quot;factor(@)&quot; -batchfile 1.txt</code></p>
+<ul>
+<li>分解1.txt中的整数</li>
+</ul>
+<blockquote>
+<p> \quad 数学公式里面的空格</p>
+</blockquote>
 
                 
               </div>
@@ -436,6 +463,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/09/14/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E4%B8%80%EF%BC%89/" title="Crypto系列——RSA（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Crypto系列——RSA（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
