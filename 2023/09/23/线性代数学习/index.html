@@ -16,26 +16,24 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="C语言的学习😭😭">
+    <meta name="description" content="线性代数学习记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言学习">
-<meta property="og:url" content="http://example.com/2023/09/17/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="线性代数学习">
+<meta property="og:url" content="http://example.com/2023/09/23/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="C语言的学习😭😭">
+<meta property="og:description" content="线性代数学习记录">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230917142303857.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230917142327597.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgc00e0930273a652d2e9d0d0b218eb41.png">
-<meta property="article:published_time" content="2023-09-17T13:29:49.000Z">
-<meta property="article:modified_time" content="2023-09-20T09:25:58.154Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png">
+<meta property="article:published_time" content="2023-09-23T13:29:49.000Z">
+<meta property="article:modified_time" content="2023-09-24T09:49:05.339Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="C">
+<meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230917142303857.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png">
   
   
   
-  <title>C语言学习 - Wiper3</title>
+  <title>线性代数学习 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -242,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C语言学习"></span>
+            <span id="subtitle" data-typed-text="线性代数学习"></span>
           
         </div>
 
@@ -253,8 +251,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-17 21:29" pubdate>
-          2023年9月17日 晚上
+        <time datetime="2023-09-23 21:29" pubdate>
+          2023年9月23日 晚上
         </time>
       </span>
     
@@ -265,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          295 字
+          757 字
         
       </span>
     
@@ -276,7 +274,7 @@
         
         
         
-          2 分钟
+          6 分钟
         
       </span>
     
@@ -321,37 +319,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C语言学习</h1>
+            <h1 id="seo-header">线性代数学习</h1>
             
             
               <div class="markdown-body">
                 
-                <p>如果在<code>int</code>型变量的声明中为变量赋应该实数值的初始值（如3.14或5.7等）会怎么样？</p>
-<ul>
-<li>会直接舍去小数部分，只保留整数部分</li>
-</ul>
-<p>单目运算符&amp;（取值运算符）</p>
-<ul>
-<li>&amp;a，取得a的地址（生产指向a的指针）</li>
-</ul>
-<p>单目运算符*（指针运算符）</p>
-<ul>
-<li>*a，a指向的对象</li>
-</ul>
-<p>赋值表达式的左操作数不可以是数组名。</p>
-<p><code>p</code>指向<code>x</code>时，<code>*p</code>是<code>x</code>的别名</p>
-<p>指针<code>p</code>指向数组中的元素<code>e</code>时</p>
-<ul>
-<li><code>p + i</code>为指向元素<code>e</code>后第<code>i</code>个元素的指针</li>
-<li><code>p - i</code>为指向元素<code>e</code>前第<code>i</code>个元素的指针</li>
-<li>指向元素<code>e</code>后第<code>i</code>个元素的<code>*(p + i)</code>，可以写为<code>p[i]</code></li>
-<li>指向元素<code>e</code>前第<code>i</code>个元素的<code>*(p - i)</code>，可以写为<code>p[-i]</code></li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230917142303857.png" srcset="/img/loading.gif" lazyload alt="image-20230917142303857"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230917142327597.png" srcset="/img/loading.gif" lazyload alt="image-20230917142327597"></p>
-<p><code>c</code>语言编译阶段出现如下的问题：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgc00e0930273a652d2e9d0d0b218eb41.png" srcset="/img/loading.gif" lazyload alt="c00e0930273a652d2e9d0d0b218eb41"></p>
-<p>可以检查一下是不是有正在运行的端口没关闭！！！</p>
+                <blockquote>
+<p>byd这个用markdown写着太麻烦了😡</p>
+</blockquote>
+<h2 id="Lec01-方程组的几何解释"><a href="#Lec01-方程组的几何解释" class="headerlink" title="Lec01_方程组的几何解释"></a>Lec01_方程组的几何解释</h2><p>线性代数的基本问题就是解n元一次方程组。</p>
+<p>例如：二元一次方程组<br>$$<br>\left{\begin{matrix}<br> 2x+y&#x3D;0   \<br> -x+2y&#x3D;3<br>\end{matrix}\right.<br>$$<br>写成矩阵形式就是：<br>$$<br>\begin{bmatrix}<br> 2&amp;-1  \<br> -1&amp;2  \<br>\end{bmatrix}<br>\begin{bmatrix}<br>x \<br>y\end{bmatrix}</p>
+<p>&#x3D;<br>\begin{bmatrix}<br>0 \ 3<br>\end{bmatrix}<br>$$<br>其中$A &#x3D; \begin{bmatrix}<br> 2&amp;-1  \<br> -1&amp;2  \<br>\end{bmatrix}$被称为系数矩阵</p>
+<p>未知数向量通常记为 $ X &#x3D; \begin{bmatrix}<br> x \<br> y<br>\end{bmatrix}$</p>
+<p>而等号右侧的向量记为<strong>b</strong>。线性方程组简记为 <strong>Ax&#x3D;b</strong>。</p>
+<h3 id="行图像"><a href="#行图像" class="headerlink" title="行图像"></a>行图像</h3><p>就是按行来画，跟我们之前的思维很像</p>
+<p>行图像遵从解析几何的描述，每个方程在平面上的图像为一条直线。找到符合方程的两个数组，就可以确定出x-y平面上的两个点，</p>
+<p>连接两点可以画出该方程所代表的直线。两直线交点即为方程组的解x&#x3D;1,y&#x3D;2。</p>
+<h3 id="列图像"><a href="#列图像" class="headerlink" title="列图像"></a>列图像</h3><p>在列图像中，我们将系数矩阵写成列向量的形式，则求解原方程变为寻找列向量的线性组合来构成向量<strong>b</strong>。</p>
+<p>$x\begin{bmatrix}<br> 2 \<br> -1 \<br>\end{bmatrix}+y\begin{bmatrix}<br> -1  \<br> -2  \<br>\end{bmatrix}&#x3D;\begin{bmatrix}<br> 0 \<br> 3 \<br>\end{bmatrix}$</p>
+<p>向量线性组合是贯穿本课程的重要概念。对于给定的向量<strong>c</strong>和<strong>d</strong>以及标量<em>x</em>和<em>y</em>，我们将x<strong>c</strong>+y<strong>d</strong>称之为<strong>c</strong>和<strong>d</strong>的一个线性组合。</p>
+<p>几何上讲，如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png" srcset="/img/loading.gif" lazyload alt="image-20230923165849317"></p>
 
                 
               </div>
@@ -360,32 +348,11 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/code/" class="category-chain-item">code</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/C/" class="print-no-link">#C</a>
+        <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="print-no-link">#线性代数</a>
       
     </div>
   
@@ -397,8 +364,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C语言学习</div>
-      <div>http://example.com/2023/09/17/C语言学习/</div>
+      <div>线性代数学习</div>
+      <div>http://example.com/2023/09/23/线性代数学习/</div>
     </div>
     <div class="license-meta">
       
@@ -410,7 +377,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月17日</div>
+          <div>2023年9月23日</div>
         </div>
       
       
@@ -442,9 +409,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/18/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E6%8E%92%E5%BA%8F/" title="算法设计与分析-排序">
+                      <a href="/2023/09/24/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E4%BA%8C%EF%BC%89/" title="Crypto系列——RSA（二）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法设计与分析-排序</span>
+                        <span class="hidden-mobile">Crypto系列——RSA（二）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -452,8 +419,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/14/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E4%B8%80%EF%BC%89/" title="Crypto系列——RSA（一）">
-                        <span class="hidden-mobile">Crypto系列——RSA（一）</span>
+                      <a href="/2023/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/" title="数据结构学习">
+                        <span class="hidden-mobile">数据结构学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -541,6 +508,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -759,6 +732,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

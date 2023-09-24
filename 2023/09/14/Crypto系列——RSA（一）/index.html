@@ -24,7 +24,7 @@
 <meta property="og:description" content="《从0开始的密码学世界生活1》😋">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-14T02:57:30.000Z">
-<meta property="article:modified_time" content="2023-09-20T09:27:31.286Z">
+<meta property="article:modified_time" content="2023-09-24T09:47:55.967Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -324,7 +324,7 @@
             
               <div class="markdown-body">
                 
-                <p>不知道为啥就对密码学感兴趣了，上学期学了半天pwn没搞懂，或许就不适合打CTF吧😭</p>
+                <p>不知道为啥就对密码学感兴趣了，上学期学了半天pwn没搞懂，或许就不适合打学ppwn吧😭</p>
 <p>《从0开始的密码学世界生活》😋慢慢学密码方向</p>
 <p>在探姬的建议下，还是买了这套课程，开干！</p>
 <h2 id="RSA1-P1"><a href="#RSA1-P1" class="headerlink" title="[RSA1]P1"></a>[RSA1]P1</h2><h3 id="main-py"><a href="#main-py" class="headerlink" title="main_py"></a>main_py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">b&#x27;NSSCTF&#123;******&#125;&#x27;</span><br><br>p = getPrime(<span class="hljs-number">512</span>)<br>q = getPrime(<span class="hljs-number">512</span>)<br>n = p*q<br>e = <span class="hljs-number">65537</span><br>phi = (p-<span class="hljs-number">1</span>)*(q-<span class="hljs-number">1</span>)<br><br>m = bytes_to_long(flag)<br><br>c = <span class="hljs-built_in">pow</span>(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;p = <span class="hljs-subst">&#123;p&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;q = <span class="hljs-subst">&#123;q&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">p = 10554915510546378513140074459658086644656654144905337809416976066414771647836950941616441505897207397834928781511863699153349798682451297889979721668885951</span><br><span class="hljs-string">q = 8246403321715011123191410826902524505032643184038566851264109473851746507405534573077909160292816825514872584170252311902322051822644609979417178306809223</span><br><span class="hljs-string">e = 65537</span><br><span class="hljs-string">c = 40005881669517895877352756665523238535105922590962714344556374248977905431683140065629966778249773228248201807844489945346731806741025157651474530811920115794270396320935022110691338083709019538562205165553541077855422953438117902279834449006455379382431883650004540282758907332683496655914597029545677184720</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
@@ -565,9 +565,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/14/MoeCTF%202023/" title="MoeCTF 2023">
+                      <a href="/2023/09/17/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="C语言学习">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MoeCTF 2023</span>
+                        <span class="hidden-mobile">C语言学习</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
