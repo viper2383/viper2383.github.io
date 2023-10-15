@@ -16,18 +16,18 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="NewStarCTF 2023第一周密码学的题目">
+    <meta name="description" content="NewStarCTF 2023第一周密码学的一些题目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NewStarCTF 2023 week1">
-<meta property="og:url" content="http://example.com/2023/09/26/NewStarCTF%202023%20week1/index.html">
+<meta property="og:url" content="http://example.com/2023/10/02/NewStarCTF%202023%20week1/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="NewStarCTF 2023第一周密码学的题目">
+<meta property="og:description" content="NewStarCTF 2023第一周密码学的一些题目">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1695730908860.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1695729736638.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1695732585874.png">
-<meta property="article:published_time" content="2023-09-26T03:57:30.000Z">
-<meta property="article:modified_time" content="2023-10-04T08:48:45.727Z">
+<meta property="article:published_time" content="2023-10-02T03:57:30.000Z">
+<meta property="article:modified_time" content="2023-10-08T12:47:36.901Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -254,8 +254,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-26 11:57" pubdate>
-          2023年9月26日 中午
+        <time datetime="2023-10-02 11:57" pubdate>
+          2023年10月2日 中午
         </time>
       </span>
     
@@ -266,7 +266,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k 字
+          4.1k 字
         
       </span>
     
@@ -277,7 +277,7 @@
         
         
         
-          23 分钟
+          28 分钟
         
       </span>
     
@@ -327,7 +327,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年10月4日 下午
+                    本文最后更新于：2023年10月8日 晚上
                   
                 
               </p>
@@ -382,7 +382,11 @@
 
 
 
-<h3 id="exp-2"><a href="#exp-2" class="headerlink" title="exp"></a>exp</h3>
+<h3 id="exp-2"><a href="#exp-2" class="headerlink" title="exp"></a>exp</h3><p>这个题没做出来，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 这是我的exp，没成功</span><br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES<br><span class="hljs-keyword">import</span> os<br> <br><br>out = <span class="hljs-number">3657491768215750635844958060963805125333761387746954618540958489914964573229</span><br><span class="hljs-comment"># 转换成为字节类型</span><br>out =long_to_bytes(out)<br><br>flag_encrypted = <span class="hljs-string">b&#x27;&gt;]\xc1\xe5\x82/\x02\x7ft\xf1B\x8d\n\xc1\x95i&#x27;</span><br> <br><span class="hljs-comment">#高十六位是key的高十六位 并且key是按照16位进行重复 所以得到高16位就能得到整个key</span><br>key = out[:<span class="hljs-number">16</span>]*<span class="hljs-number">2</span><br><br><br><span class="hljs-comment"># 把key的低十六位与out的低十六位做异或就能得到向量iv</span><br>iv = bytes_to_long(key[<span class="hljs-number">16</span>:]) ^ bytes_to_long(out[<span class="hljs-number">16</span>:])<br><br><span class="hljs-comment">#重新转换成为字节</span><br>iv = long_to_bytes(iv)<br><span class="hljs-comment">#创建aes解密器 需要秘钥key 解密模式 还有解密向量iv</span><br>aes = AES.new(key,AES.MODE_CBC,iv)<br><span class="hljs-comment">#使用解密器解密</span><br>flag = aes.decrypt(flag_encrypted)<br><br><span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+
+<p>参考一下官方的wp：</p>
+
                 
               </div>
             
@@ -430,7 +434,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>NewStarCTF 2023 week1</div>
-      <div>http://example.com/2023/09/26/NewStarCTF 2023 week1/</div>
+      <div>http://example.com/2023/10/02/NewStarCTF 2023 week1/</div>
     </div>
     <div class="license-meta">
       
@@ -442,7 +446,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月26日</div>
+          <div>2023年10月2日</div>
         </div>
       
       
