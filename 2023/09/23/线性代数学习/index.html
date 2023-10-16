@@ -23,13 +23,11 @@
 <meta property="og:site_name" content="Wiper3">
 <meta property="og:description" content="线性代数学习记录">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png">
 <meta property="article:published_time" content="2023-09-23T13:29:49.000Z">
-<meta property="article:modified_time" content="2023-09-24T09:49:05.339Z">
+<meta property="article:modified_time" content="2023-10-16T11:29:09.690Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="线性代数">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png">
   
   
   
@@ -263,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          757 字
+          766 字
         
       </span>
     
@@ -324,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年9月24日 下午
+                    本文最后更新于：2023年10月16日 晚上
                   
                 
               </p>
@@ -335,19 +333,54 @@
                 <blockquote>
 <p>byd这个用markdown写着太麻烦了😡</p>
 </blockquote>
-<h2 id="Lec01-方程组的几何解释"><a href="#Lec01-方程组的几何解释" class="headerlink" title="Lec01_方程组的几何解释"></a>Lec01_方程组的几何解释</h2><p>线性代数的基本问题就是解n元一次方程组。</p>
-<p>例如：二元一次方程组<br>$$<br>\left{\begin{matrix}<br> 2x+y&#x3D;0   \<br> -x+2y&#x3D;3<br>\end{matrix}\right.<br>$$<br>写成矩阵形式就是：<br>$$<br>\begin{bmatrix}<br> 2&amp;-1  \<br> -1&amp;2  \<br>\end{bmatrix}<br>\begin{bmatrix}<br>x \<br>y\end{bmatrix}</p>
-<p>&#x3D;<br>\begin{bmatrix}<br>0 \ 3<br>\end{bmatrix}<br>$$<br>其中$A &#x3D; \begin{bmatrix}<br> 2&amp;-1  \<br> -1&amp;2  \<br>\end{bmatrix}$被称为系数矩阵</p>
-<p>未知数向量通常记为 $ X &#x3D; \begin{bmatrix}<br> x \<br> y<br>\end{bmatrix}$</p>
-<p>而等号右侧的向量记为<strong>b</strong>。线性方程组简记为 <strong>Ax&#x3D;b</strong>。</p>
-<h3 id="行图像"><a href="#行图像" class="headerlink" title="行图像"></a>行图像</h3><p>就是按行来画，跟我们之前的思维很像</p>
+<h2 id="lec01_方程组的几何解释">Lec01_方程组的几何解释</h2>
+<p>线性代数的基本问题就是解n元一次方程组。</p>
+<p>例如：二元一次方程组</p>
+<p><span class="math display">\[
+\left\{ \begin{matrix}
+2x+y=0   \\
+-x+2y=3
+\end{matrix}\right.
+\]</span></p>
+写成矩阵形式就是： $$
+<span class="math display">\[\begin{bmatrix}
+2&amp;-1  \\
+-1&amp;2  \\
+\end{bmatrix}
+\begin{bmatrix}
+x \\
+y\end{bmatrix}\]</span>
+=
+<span class="math display">\[\begin{bmatrix}
+0 \\ 3
+\end{bmatrix}\]</span>
+<p>$$ 其中<span class="math inline">\(A = \begin{bmatrix}  2&amp;-1
+\\  -1&amp;2 \\ \end{bmatrix}\)</span>被称为系数矩阵</p>
+未知数向量通常记为 $ X =
+<span class="math display">\[\begin{bmatrix}
+x \\
+y
+\end{bmatrix}\]</span>
+<p>$</p>
+<p>而等号右侧的向量记为<strong>b</strong>。线性方程组简记为
+<strong>Ax=b</strong>。</p>
+<h3 id="行图像">行图像</h3>
+<p>就是按行来画，跟我们之前的思维很像</p>
 <p>行图像遵从解析几何的描述，每个方程在平面上的图像为一条直线。找到符合方程的两个数组，就可以确定出x-y平面上的两个点，</p>
-<p>连接两点可以画出该方程所代表的直线。两直线交点即为方程组的解x&#x3D;1,y&#x3D;2。</p>
-<h3 id="列图像"><a href="#列图像" class="headerlink" title="列图像"></a>列图像</h3><p>在列图像中，我们将系数矩阵写成列向量的形式，则求解原方程变为寻找列向量的线性组合来构成向量<strong>b</strong>。</p>
-<p>$x\begin{bmatrix}<br> 2 \<br> -1 \<br>\end{bmatrix}+y\begin{bmatrix}<br> -1  \<br> -2  \<br>\end{bmatrix}&#x3D;\begin{bmatrix}<br> 0 \<br> 3 \<br>\end{bmatrix}$</p>
+<p>连接两点可以画出该方程所代表的直线。两直线交点即为方程组的解x=1,y=2。</p>
+<h3 id="列图像">列图像</h3>
+<p>在列图像中，我们将系数矩阵写成列向量的形式，则求解原方程变为寻找列向量的线性组合来构成向量<strong>b</strong>。</p>
+<p><span class="math inline">\(x\begin{bmatrix}  2 \\  -1 \\
+\end{bmatrix}+y\begin{bmatrix}  -1 \\  -2 \\
+\end{bmatrix}=\begin{bmatrix}  0 \\  3 \\ \end{bmatrix}\)</span></p>
 <p>向量线性组合是贯穿本课程的重要概念。对于给定的向量<strong>c</strong>和<strong>d</strong>以及标量<em>x</em>和<em>y</em>，我们将x<strong>c</strong>+y<strong>d</strong>称之为<strong>c</strong>和<strong>d</strong>的一个线性组合。</p>
 <p>几何上讲，如下图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png" srcset="/img/loading.gif" lazyload alt="image-20230923165849317"></p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230923165849317.png" srcset="/img/loading.gif" lazyload
+alt="image-20230923165849317" />
+<figcaption aria-hidden="true">image-20230923165849317</figcaption>
+</figure>
 
                 
               </div>
