@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>数据结构实验</title>
+    <link href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/"/>
+    <url>/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="哈夫曼编码">哈夫曼编码</h2><p><ahref="https://blog.csdn.net/qq_35852228/article/details/111192722?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=哈夫曼编码c&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-111192722.142%5Ev96%5Epc_search_result_base1&amp;spm=1018.2226.3001.4187">数据结构：霍夫曼（哈夫曼）编码（C语言）_数据结构求huffman编码-CSDN博客</a></p><p>今天刚学到（10.17）：</p><p>D.对给定的输入数值集合所生成的哈夫曼树深度是确定的 （×）</p><p>解释：当两个结点的和与另外两结点的值相同时，组合顺序不同生产的哈夫曼树深度不同，比如权分别为：1，1，2，2，</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>大三上</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NewStarCTF 2023 week1</title>
     <link href="/2023/10/02/NewStarCTF%202023%20week1/"/>
     <url>/2023/10/02/NewStarCTF%202023%20week1/</url>
@@ -362,7 +387,32 @@
     <link href="/2023/08/03/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/"/>
     <url>/2023/08/03/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/</url>
     
-    <content type="html"><![CDATA[<h3 id="pwn1"><a href="#pwn1" class="headerlink" title="pwn1"></a>pwn1</h3><h3 id="pwn2"><a href="#pwn2" class="headerlink" title="pwn2"></a>pwn2</h3><p><a href="https://freeimage.host/i/J9YVHSj"><img src="https://iili.io/J9YVHSj.md.png" alt="2309062"></a></p><p><img src="https://freeimage.host/i/J9YVHSj" alt="2309062"></p><p><img src="https://iili.io/J9YVHSj.md.png" alt="2309062"></p><p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p><p><del>撒旦哈市风口浪尖</del></p><p>测试一下，看能不能直接传图片</p><p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230908210230931.png" alt="image-20230908210230931"></p><p>看来 jsDelivr CDN确实被墙了，那只能试一下阿里云了，测</p><p>哦？？这过了几分钟（2023.09.08 21:07），怎么又行了：</p><p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230908210813336.png" alt="image-20230908210813336"></p><p>行吧，那先用着</p>]]></content>
+    <content type="html"><![CDATA[<p>title: Crypto系列——RSA（二） date: 2023-09-14 21:57:30 tags:[CTF,Crypto,RSA] categories: CTF-Crypto math: true excerpt:《从0开始的密码学世界生活2》😋 updated: 2023-10-03 22:20:49</p><h3 id="pwn1">pwn1</h3><h3 id="pwn2">pwn2</h3><p><a href="https://freeimage.host/i/J9YVHSj"><imgsrc="https://iili.io/J9YVHSj.md.png" alt="2309062" /></a></p><figure><img src="https://freeimage.host/i/J9YVHSj" alt="2309062" /><figcaption aria-hidden="true">2309062</figcaption></figure><figure><img src="https://iili.io/J9YVHSj.md.png" alt="2309062" /><figcaption aria-hidden="true">2309062</figcaption></figure><figure><img src="http://static.runoob.com/images/runoob-logo.png"title="RUNOOB" alt="RUNOOB 图标" /><figcaption aria-hidden="true">RUNOOB 图标</figcaption></figure><p><sub>撒旦哈市风口浪尖</sub></p><p>测试一下，看能不能直接传图片</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230908210230931.png"alt="image-20230908210230931" /><figcaption aria-hidden="true">image-20230908210230931</figcaption></figure><p>看来 jsDelivr CDN确实被墙了，那只能试一下阿里云了，测</p><p>哦？？这过了几分钟（2023.09.08 21:07），怎么又行了：</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230908210813336.png"alt="image-20230908210813336" /><figcaption aria-hidden="true">image-20230908210813336</figcaption></figure><p>行吧，那先用着</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>博客</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java学习</title>
+    <link href="/2023/08/03/Java%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2023/08/03/Java%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<p>记事本乱码解决方案：</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1697599757237.png"alt="1697599757237" /><figcaption aria-hidden="true">1697599757237</figcaption></figure>]]></content>
     
     
     <categories>
