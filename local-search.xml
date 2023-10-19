@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>Java学习</title>
+    <link href="/2023/10/18/Java%E5%AD%A6%E4%B9%A0/"/>
+    <url>/2023/10/18/Java%E5%AD%A6%E4%B9%A0/</url>
+    
+    <content type="html"><![CDATA[<p>记事本乱码解决方案：</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1697599757237.png"alt="1697599757237" /><figcaption aria-hidden="true">1697599757237</figcaption></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>&lt;Java&gt; 1_概述</title>
+    <link href="/2023/10/18/Java%201_%E6%A6%82%E8%BF%B0/"/>
+    <url>/2023/10/18/Java%201_%E6%A6%82%E8%BF%B0/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//java第一个程序</span><br><br><span class="hljs-comment">//1. public class Hello 表示Hello是一个类，是一个public公有的类</span><br><span class="hljs-comment">//2. Hello&#123;&#125;表示一个类的开始和结束</span><br><span class="hljs-comment">//3. public static void main(String[] args)表示一个主方法</span><br><span class="hljs-comment">//4. main()&#123;&#125;表示方法的开始和结束</span><br><span class="hljs-comment">//5. System.out.println(&quot;hello,world~&quot;)表示输出hello,world~</span><br><span class="hljs-comment">//6. ;表示语句结束</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span>&#123;<br><br><span class="hljs-comment">//main方法</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>System.out.println(<span class="hljs-string">&quot;我的 hello,world~&quot;</span>);<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数据结构实验</title>
     <link href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/"/>
     <url>/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/</url>
@@ -388,31 +426,6 @@
     <url>/2023/08/03/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/</url>
     
     <content type="html"><![CDATA[<p>title: Crypto系列——RSA（二） date: 2023-09-14 21:57:30 tags:[CTF,Crypto,RSA] categories: CTF-Crypto math: true excerpt:《从0开始的密码学世界生活2》😋 updated: 2023-10-03 22:20:49</p><h3 id="pwn1">pwn1</h3><h3 id="pwn2">pwn2</h3><p><a href="https://freeimage.host/i/J9YVHSj"><imgsrc="https://iili.io/J9YVHSj.md.png" alt="2309062" /></a></p><figure><img src="https://freeimage.host/i/J9YVHSj" alt="2309062" /><figcaption aria-hidden="true">2309062</figcaption></figure><figure><img src="https://iili.io/J9YVHSj.md.png" alt="2309062" /><figcaption aria-hidden="true">2309062</figcaption></figure><figure><img src="http://static.runoob.com/images/runoob-logo.png"title="RUNOOB" alt="RUNOOB 图标" /><figcaption aria-hidden="true">RUNOOB 图标</figcaption></figure><p><sub>撒旦哈市风口浪尖</sub></p><p>测试一下，看能不能直接传图片</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230908210230931.png"alt="image-20230908210230931" /><figcaption aria-hidden="true">image-20230908210230931</figcaption></figure><p>看来 jsDelivr CDN确实被墙了，那只能试一下阿里云了，测</p><p>哦？？这过了几分钟（2023.09.08 21:07），怎么又行了：</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230908210813336.png"alt="image-20230908210813336" /><figcaption aria-hidden="true">image-20230908210813336</figcaption></figure><p>行吧，那先用着</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>博客</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>博客</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Java学习</title>
-    <link href="/2023/08/03/Java%E5%AD%A6%E4%B9%A0/"/>
-    <url>/2023/08/03/Java%E5%AD%A6%E4%B9%A0/</url>
-    
-    <content type="html"><![CDATA[<p>记事本乱码解决方案：</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1697599757237.png"alt="1697599757237" /><figcaption aria-hidden="true">1697599757237</figcaption></figure>]]></content>
     
     
     <categories>
