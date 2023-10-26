@@ -23,13 +23,11 @@
 <meta property="og:site_name" content="Wiper3">
 <meta property="og:description" content="数据结构的学习记录，由于本人C语言基础都没学好，导致一些简单的语句都看不懂，这里记录一下学习过程，希望之后都能掌握">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230919200445761.png">
 <meta property="article:published_time" content="2023-09-19T14:20:49.000Z">
-<meta property="article:modified_time" content="2023-09-28T12:07:18.929Z">
+<meta property="article:modified_time" content="2023-10-24T14:20:49.000Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230919200445761.png">
   
   
   
@@ -263,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.5k 字
+          7.1k 字
         
       </span>
     
@@ -274,7 +272,7 @@
         
         
         
-          44 分钟
+          48 分钟
         
       </span>
     
@@ -324,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年9月28日 晚上
+                    本文最后更新于：2023年10月24日 晚上
                   
                 
               </p>
@@ -332,142 +330,289 @@
             
               <div class="markdown-body">
                 
-                <h2 id="第二章-线性表"><a href="#第二章-线性表" class="headerlink" title="第二章 线性表"></a>第二章 线性表</h2><h3 id="2-5"><a href="#2-5" class="headerlink" title="2.5"></a>2.5</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">L</span><span class="hljs-operator">=</span>(LinkList)malloc(sizeof(LNode))<span class="hljs-comment">; P=L;</span><br>for(i<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-comment">;i&lt;=4;i++)&#123;</span><br>    P-&gt;next<span class="hljs-operator">=</span>(LinkList)malloc(sizeof(LNode))<span class="hljs-comment">;</span><br>	P<span class="hljs-operator">=</span>P-&gt;next<span class="hljs-comment">; </span><br>	P-&gt;data<span class="hljs-operator">=</span>i*<span class="hljs-number">2</span>-<span class="hljs-number">1</span><span class="hljs-comment">;</span><br>&#125;<br>P-&gt;next<span class="hljs-operator">=</span>NULL<span class="hljs-comment">;</span><br>for(i<span class="hljs-operator">=</span><span class="hljs-number">4</span><span class="hljs-comment">;i&gt;=1;i--) Ins_LinkList(L,i+1,i*2);</span><br>for(i<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-comment">;i&lt;=3;i++) Del_LinkList(L,i);</span><br></code></pre></td></tr></table></figure>
-
+                <h2 id="第二章-线性表">第二章 线性表</h2>
+<h3 id="section">2.5</h3>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">L</span><span class="hljs-operator">=</span>(LinkList)malloc(sizeof(LNode))<span class="hljs-comment">; P=L;</span><br>for(i<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-comment">;i&lt;=4;i++)&#123;</span><br>    P-&gt;next<span class="hljs-operator">=</span>(LinkList)malloc(sizeof(LNode))<span class="hljs-comment">;</span><br>	P<span class="hljs-operator">=</span>P-&gt;next<span class="hljs-comment">; </span><br>	P-&gt;data<span class="hljs-operator">=</span>i*<span class="hljs-number">2</span>-<span class="hljs-number">1</span><span class="hljs-comment">;</span><br>&#125;<br>P-&gt;next<span class="hljs-operator">=</span>NULL<span class="hljs-comment">;</span><br>for(i<span class="hljs-operator">=</span><span class="hljs-number">4</span><span class="hljs-comment">;i&gt;=1;i--) Ins_LinkList(L,i+1,i*2);</span><br>for(i<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-comment">;i&lt;=3;i++) Del_LinkList(L,i);</span><br></code></pre></td></tr></table></figure>
 <p><code>L=(LinkList)malloc(sizeof(LNode));</code></p>
 <p>这行代码是C或C++中用于动态分配内存并创建一个链表（或链表的头节点）的代码。</p>
 <p>这行代码作用的详细解释：</p>
-<ol>
-<li><code>malloc</code> 函数：<code>malloc</code> 是C和C++中用于动态分配内存的函数。它的作用是在堆（heap）中分配一块指定大小的内存，并返回一个指向该内存块的指针。在这里，<code>malloc(sizeof(LNode))</code> 分配了一块大小为 <code>sizeof(LNode)</code> 字节的内存。</li>
-<li><code>sizeof(LNode)</code>：<code>sizeof</code> 是一个运算符，用于获取数据类型或结构体的大小（以字节为单位）。<code>LNode</code> 是链表节点的数据结构（或类型），因此 <code>sizeof(LNode)</code> 返回 <code>LNode</code> 结构体的大小。</li>
-<li><code>(LinkList)</code> 强制类型转换：在C和C++中，<code>malloc</code> 返回一个 <code>void</code> 指针，需要将其转换为所需的数据类型，这里是 <code>LinkList</code> 类型。这样做是为了让指针指向正确的数据类型，以便后续操作。</li>
+<ol type="1">
+<li><code>malloc</code> 函数：<code>malloc</code>
+是C和C++中用于动态分配内存的函数。它的作用是在堆（heap）中分配一块指定大小的内存，并返回一个指向该内存块的指针。在这里，<code>malloc(sizeof(LNode))</code>
+分配了一块大小为 <code>sizeof(LNode)</code> 字节的内存。</li>
+<li><code>sizeof(LNode)</code>：<code>sizeof</code>
+是一个运算符，用于获取数据类型或结构体的大小（以字节为单位）。<code>LNode</code>
+是链表节点的数据结构（或类型），因此 <code>sizeof(LNode)</code> 返回
+<code>LNode</code> 结构体的大小。</li>
+<li><code>(LinkList)</code>
+强制类型转换：在C和C++中，<code>malloc</code> 返回一个 <code>void</code>
+指针，需要将其转换为所需的数据类型，这里是 <code>LinkList</code>
+类型。这样做是为了让指针指向正确的数据类型，以便后续操作。</li>
 <li><code>L</code>：这是链表的头指针，它被分配了一块内存，并指向了链表的头节点。</li>
 </ol>
-<p>总结起来，这行代码的作用是创建一个链表，并将链表的头指针 <code>L</code> 指向一个新分配的内存块，该内存块大小为 <code>sizeof(LNode)</code> 字节，用来存储链表的头节点。</p>
-<p>这是创建链表的起始步骤，通常会跟随其他操作来构建链表的节点和连接。在使用完链表后，需要记得使用 <code>free</code> 函数来释放分配的内存，以避免内存泄漏。例如：<code>free(L)</code>。</p>
+<p>总结起来，这行代码的作用是创建一个链表，并将链表的头指针
+<code>L</code> 指向一个新分配的内存块，该内存块大小为
+<code>sizeof(LNode)</code> 字节，用来存储链表的头节点。</p>
+<p>这是创建链表的起始步骤，通常会跟随其他操作来构建链表的节点和连接。在使用完链表后，需要记得使用
+<code>free</code>
+函数来释放分配的内存，以避免内存泄漏。例如：<code>free(L)</code>。</p>
 <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">for(i<span class="hljs-operator">=</span><span class="hljs-number">1</span><span class="hljs-comment">;i&lt;=4;i++)&#123;</span><br>    P-&gt;next<span class="hljs-operator">=</span>(LinkList)malloc(sizeof(LNode))<span class="hljs-comment">;</span><br>	P<span class="hljs-operator">=</span>P-&gt;next<span class="hljs-comment">; </span><br>	P-&gt;data<span class="hljs-operator">=</span>i*<span class="hljs-number">2</span>-<span class="hljs-number">1</span><span class="hljs-comment">;</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>这段代码是一个循环，它用于在链表中创建四个节点，并为每个节点赋值。解释如下：</p>
-<ol>
-<li><code>for(i=1;i&lt;=4;i++)</code>：这是一个循环，它会执行四次，<code>i</code> 从1开始，每次递增1，直到 <code>i</code> 的值为4。</li>
-<li><code>P-&gt;next=(LinkList)malloc(sizeof(LNode));</code>：这行代码分配了一个新的内存块，用于存储下一个节点，并将当前节点的 <code>next</code> 指针指向这个新节点。这意味着创建了一个新节点，并将其链接到链表中。</li>
-<li><code>P=P-&gt;next;</code>：将指针 <code>P</code> 移动到下一个节点。现在 <code>P</code> 指向了新创建的节点，以便为它赋值。</li>
-<li><code>P-&gt;data=i*2-1;</code>：为当前节点的 <code>data</code> 成员赋值。这里应该是 <code>P-&gt;data = i*2 - 1;</code>，将当前节点的数据设为 <code>i</code> 乘以 2 减去 1 的结果。</li>
+<ol type="1">
+<li><code>for(i=1;i&lt;=4;i++)</code>：这是一个循环，它会执行四次，<code>i</code>
+从1开始，每次递增1，直到 <code>i</code> 的值为4。</li>
+<li><code>P-&gt;next=(LinkList)malloc(sizeof(LNode));</code>：这行代码分配了一个新的内存块，用于存储下一个节点，并将当前节点的
+<code>next</code>
+指针指向这个新节点。这意味着创建了一个新节点，并将其链接到链表中。</li>
+<li><code>P=P-&gt;next;</code>：将指针 <code>P</code>
+移动到下一个节点。现在 <code>P</code>
+指向了新创建的节点，以便为它赋值。</li>
+<li><code>P-&gt;data=i*2-1;</code>：为当前节点的 <code>data</code>
+成员赋值。这里应该是
+<code>P-&gt;data = i*2 - 1;</code>，将当前节点的数据设为 <code>i</code>
+乘以 2 减去 1 的结果。</li>
 </ol>
-<p>所以，这个循环会创建四个新的节点，并在每个节点的 <code>data</code> 成员中存储一个奇数值（1、3、5、7）。</p>
-<p>然后最后两行语句—–</p>
+<p>所以，这个循环会创建四个新的节点，并在每个节点的 <code>data</code>
+成员中存储一个奇数值（1、3、5、7）。</p>
+<p>然后最后两行语句-----</p>
 <ul>
-<li><code>Ins_LinkList(L,i+1,i*2);</code>：调用了一个名为 <code>Ins_LinkList</code> 的函数，将元素 <code>i*2</code> 插入到链表的第 <code>i+1</code> 个位置。</li>
-<li><code>Del_LinkList(L,i);</code>：调用了一个名为 <code>Del_LinkList</code> 的函数，删除链表中的第 <code>i</code> 个元素(<strong>这里是不算头节点的,因为头节点没有被赋予元素?????</strong>)。</li>
+<li><code>Ins_LinkList(L,i+1,i*2);</code>：调用了一个名为
+<code>Ins_LinkList</code> 的函数，将元素 <code>i*2</code> 插入到链表的第
+<code>i+1</code> 个位置。</li>
+<li><code>Del_LinkList(L,i);</code>：调用了一个名为
+<code>Del_LinkList</code> 的函数，删除链表中的第 <code>i</code>
+个元素(<strong>这里是不算头节点的,因为头节点没有被赋予元素?????</strong>)。</li>
 </ul>
-<h3 id="2-6"><a href="#2-6" class="headerlink" title="2.6"></a>2.6</h3><ul>
-<li><input checked="" disabled="" type="checkbox"> <code>while(P-&gt;next!=NULL) P=P-&gt;next;</code></li>
+<h3 id="section-1">2.6</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"
+checked="" /><code>while(P-&gt;next!=NULL) P=P-&gt;next;</code></label></li>
 </ul>
-<p>这行代码是一个 <code>while</code> 循环，其目的是在链表中移动指针 <code>P</code> 直到 <code>P</code> 的下一个节点为 <code>NULL</code>，也就是链表的末尾节点。</p>
+<p>这行代码是一个 <code>while</code> 循环，其目的是在链表中移动指针
+<code>P</code> 直到 <code>P</code> 的下一个节点为
+<code>NULL</code>，也就是链表的末尾节点。</p>
 <p>解释如下：</p>
-<ol>
-<li><code>P-&gt;next != NULL</code>：这是一个条件表达式，它检查当前节点 <code>P</code> 的下一个节点是否不等于 <code>NULL</code>。条件表达式的结果是一个布尔值，如果当前节点的下一个节点不是 <code>NULL</code>，则条件为真，继续执行循环体。</li>
-<li><strong><code>P = P-&gt;next;</code>：如果条件为真，就执行这行代码。这行代码将指针 <code>P</code> 移动到下一个节点，即将 <code>P</code> 更新为当前节点的下一个节点，以便继续检查下一个节点是否为链表的末尾。(终于理解😭)</strong></li>
+<ol type="1">
+<li><code>P-&gt;next != NULL</code>：这是一个条件表达式，它检查当前节点
+<code>P</code> 的下一个节点是否不等于
+<code>NULL</code>。条件表达式的结果是一个布尔值，如果当前节点的下一个节点不是
+<code>NULL</code>，则条件为真，继续执行循环体。</li>
+<li><strong><code>P = P-&gt;next;</code>：如果条件为真，就执行这行代码。这行代码将指针
+<code>P</code> 移动到下一个节点，即将 <code>P</code>
+更新为当前节点的下一个节点，以便继续检查下一个节点是否为链表的末尾。(终于理解😭)</strong></li>
 </ol>
-<p>循环将一直执行，直到 <code>P</code> 的下一个节点为 <code>NULL</code>，也就是链表的末尾节点。一旦链表末尾被找到，条件表达式为假，循环终止。这段代码通常用于遍历整个链表，直到到达链表的末尾节点。</p>
-<p>总之，这段代码的目的是在链表中移动指针 <code>P</code> 直到达到链表的末尾节点。</p>
-<p>已知 L 是带表头结点的非空单链表，和已知 L 是无表头结点的单链表，有什么区别</p>
-<h3 id="2-7"><a href="#2-7" class="headerlink" title="2.7"></a>2.7</h3><p><strong>带表头结点</strong>和<strong>无表头结点</strong>的单链表在数据结构中有一些重要区别：</p>
-<ol>
-<li><strong>存在与否：</strong><ul>
-<li><strong>带表头结点的单链表：</strong> 这种链表在头部有一个额外的结点，通常称为表头结点或者哨兵结点。这个结点不存储实际的数据，它的主要目的是使链表操作更容易实现，因为它可以避免对空链表的特殊处理。带表头结点的链表通常在操作上更加统一，因为头结点始终存在，即使链表为空。</li>
-<li><strong>无表头结点的单链表：</strong> 这种链表不包含表头结点，直接从第一个存储数据的结点开始。这意味着如果链表为空，那么链表头部就是一个空指针，需要特殊处理。</li>
-</ul>
-</li>
-<li><strong>索引&#x2F;遍历起始点：</strong><ul>
-<li><strong>带表头结点的单链表：</strong> 由于头结点的存在，链表的第一个数据结点从头结点的下一个结点开始，索引为1。</li>
-<li><strong>无表头结点的单链表：</strong> 在没有头结点的情况下，链表的第一个数据结点通常是链表的头部，索引为0。</li>
-</ul>
-</li>
-<li><strong>空链表处理：</strong><ul>
-<li><strong>带表头结点的单链表：</strong> 即使链表为空，头结点始终存在，因此对于空链表的处理与非空链表一样，不需要额外的特殊情况处理。</li>
-<li><strong>无表头结点的单链表：</strong> 如果链表为空，头部就是一个空指针，需要特殊处理，否则在访问链表时可能会引发错误。</li>
-</ul>
-</li>
-<li><strong>操作实现的复杂性：</strong><ul>
-<li><strong>带表头结点的单链表：</strong> 由于头结点的存在，通常可以更容易地实现插入和删除操作，因为不需要特殊情况处理头部节点。</li>
-<li><strong>无表头结点的单链表：</strong> 操作实现可能稍微复杂一些，因为需要处理头部节点的特殊情况。</li>
-</ul>
-</li>
+<p>循环将一直执行，直到 <code>P</code> 的下一个节点为
+<code>NULL</code>，也就是链表的末尾节点。一旦链表末尾被找到，条件表达式为假，循环终止。这段代码通常用于遍历整个链表，直到到达链表的末尾节点。</p>
+<p>总之，这段代码的目的是在链表中移动指针 <code>P</code>
+直到达到链表的末尾节点。</p>
+<p>已知 L 是带表头结点的非空单链表，和已知 L
+是无表头结点的单链表，有什么区别</p>
+<h3 id="section-2">2.7</h3>
+<p><strong>带表头结点</strong>和<strong>无表头结点</strong>的单链表在数据结构中有一些重要区别：</p>
+<ol type="1">
+<li><strong>存在与否：</strong>
+<ul>
+<li><strong>带表头结点的单链表：</strong>
+这种链表在头部有一个额外的结点，通常称为表头结点或者哨兵结点。这个结点不存储实际的数据，它的主要目的是使链表操作更容易实现，因为它可以避免对空链表的特殊处理。带表头结点的链表通常在操作上更加统一，因为头结点始终存在，即使链表为空。</li>
+<li><strong>无表头结点的单链表：</strong>
+这种链表不包含表头结点，直接从第一个存储数据的结点开始。这意味着如果链表为空，那么链表头部就是一个空指针，需要特殊处理。</li>
+</ul></li>
+<li><strong>索引/遍历起始点：</strong>
+<ul>
+<li><strong>带表头结点的单链表：</strong>
+由于头结点的存在，链表的第一个数据结点从头结点的下一个结点开始，索引为1。</li>
+<li><strong>无表头结点的单链表：</strong>
+在没有头结点的情况下，链表的第一个数据结点通常是链表的头部，索引为0。</li>
+</ul></li>
+<li><strong>空链表处理：</strong>
+<ul>
+<li><strong>带表头结点的单链表：</strong>
+即使链表为空，头结点始终存在，因此对于空链表的处理与非空链表一样，不需要额外的特殊情况处理。</li>
+<li><strong>无表头结点的单链表：</strong>
+如果链表为空，头部就是一个空指针，需要特殊处理，否则在访问链表时可能会引发错误。</li>
+</ul></li>
+<li><strong>操作实现的复杂性：</strong>
+<ul>
+<li><strong>带表头结点的单链表：</strong>
+由于头结点的存在，通常可以更容易地实现插入和删除操作，因为不需要特殊情况处理头部节点。</li>
+<li><strong>无表头结点的单链表：</strong>
+操作实现可能稍微复杂一些，因为需要处理头部节点的特殊情况。</li>
+</ul></li>
 </ol>
 <p>在实际应用中，选择使用带表头结点还是无表头结点的单链表取决于具体的需求和设计。带表头结点的链表通常在实现上更加统一和方便，而无表头结点的链表可能更节省一些内存空间。</p>
 <p><strong>首元结点&amp;尾元结点</strong></p>
-<p>判断: 在带头结点的循环单链表中，尾元结点的next指针指向链表的首元结点。</p>
+<p>判断:
+在带头结点的循环单链表中，尾元结点的next指针指向链表的首元结点。</p>
 <blockquote>
-<p>false </p>
+<p>false</p>
 <p>尾元结点的next值指向链表的头节点，而不是首元结点。</p>
 <p>首元结点指的是链表中存储第一个数据元素的结点。头节点是在首元结点之前设置的一个结点。</p>
 </blockquote>
-<p><img src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230919200445761.png" srcset="/img/loading.gif" lazyload alt="image-20230919200445761"></p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-imgimage-20230919200445761.png" srcset="/img/loading.gif" lazyload
+alt="image-20230919200445761" />
+<figcaption aria-hidden="true">image-20230919200445761</figcaption>
+</figure>
 <p>这里的D是尾元结点</p>
 <p><strong>【头结点】【头指针】【首元结点】</strong></p>
 <p>头结点（不一定有），存在为了方便操作，头结点是为了操作的统一和方便而设立的，放在第一个元素的结点之前，其数据域一般无意义（但也可以用来存放链表的长度），对在第一元素结点前插入结点和删除第一结点起操作与其它结点的操作就统一了。</p>
 <p>首元结点：实际记录数据的第一个节点；</p>
 <p>头指针：指向第一个物理节点地址的指针，就是定义的链表名，这个头指针的意义在于，在访问链表时，总要知道链表存储在什么位置（从何处开始访问），由于链表的特性（next指针），知道了头指针，那么整个链表的元素都能够被访问，也就是说头指针是必须存在的。</p>
-<h3 id="2-9"><a href="#2-9" class="headerlink" title="2.9"></a>2.9</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 分析一下下面这段代码<br>Status A(LinkedList L) &#123; <span class="hljs-regexp">//</span>L 是无表头结点的单链表<br><span class="hljs-keyword">if</span>(L &amp;&amp; L-&gt;<span class="hljs-keyword">next</span>) &#123;<br>    Q=L; L=L-&gt;<span class="hljs-keyword">next</span>; P=L;<br>    <span class="hljs-keyword">while</span>(P-&gt;<span class="hljs-keyword">next</span>) P=P-&gt;<span class="hljs-keyword">next</span>;<br>    P-&gt;<span class="hljs-keyword">next</span>=Q; Q-&gt;<span class="hljs-keyword">next</span>=NULL;<br>&#125;<br>return OK;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这段代码是一个函数 <code>Status A(LinkedList L)</code>，其目的是将无表头结点的单链表 <code>L</code> 中的首元素移到链表的末尾。以下是代码的逐行解释：</p>
-<ol>
-<li><code>if (L &amp;&amp; L-&gt;next)</code>：这是一个条件语句，确保链表 <code>L</code> 不为空且至少包含两个元素。如果链表为空或只包含一个元素，那么没有必要执行首元素移到末尾的操作。</li>
-<li><code>Q = L;</code>：创建一个指向链表头结点的指针 <code>Q</code>，用于暂时保存链表的首元素。</li>
-<li><code>L = L-&gt;next;</code>：将链表头指针 <code>L</code> 移动到链表的下一个元素，即跳过了原始的首元素。</li>
-<li><code>P = L;</code>：创建一个指向链表头结点的新指针 <code>P</code>，用于遍历链表并找到末尾元素。</li>
-<li><code>while (P-&gt;next) P=P-&gt;next</code>：进入一个循环，该循环将 <code>P</code> 移动到链表的最后一个元素，即当 <code>P</code> 的下一个元素不为空时继续执行。</li>
-<li><code>P-&gt;next = Q;</code>：将末尾元素的 <code>next</code> 指针指向原始首元素 <code>Q</code>，这样就将首元素移到了链表的末尾。</li>
-<li><code>Q-&gt;next = NULL;</code>：将原始首元素 <code>Q</code> 的 <code>next</code> 指针设置为 <code>NULL</code>，以确保它成为新链表的末尾元素。</li>
+<h3 id="section-3">2.9</h3>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 分析一下下面这段代码<br>Status A(LinkedList L) &#123; <span class="hljs-regexp">//</span>L 是无表头结点的单链表<br><span class="hljs-keyword">if</span>(L &amp;&amp; L-&gt;<span class="hljs-keyword">next</span>) &#123;<br>    Q=L; L=L-&gt;<span class="hljs-keyword">next</span>; P=L;<br>    <span class="hljs-keyword">while</span>(P-&gt;<span class="hljs-keyword">next</span>) P=P-&gt;<span class="hljs-keyword">next</span>;<br>    P-&gt;<span class="hljs-keyword">next</span>=Q; Q-&gt;<span class="hljs-keyword">next</span>=NULL;<br>&#125;<br>return OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这段代码是一个函数
+<code>Status A(LinkedList L)</code>，其目的是将无表头结点的单链表
+<code>L</code> 中的首元素移到链表的末尾。以下是代码的逐行解释：</p>
+<ol type="1">
+<li><code>if (L &amp;&amp; L-&gt;next)</code>：这是一个条件语句，确保链表
+<code>L</code>
+不为空且至少包含两个元素。如果链表为空或只包含一个元素，那么没有必要执行首元素移到末尾的操作。</li>
+<li><code>Q = L;</code>：创建一个指向链表头结点的指针
+<code>Q</code>，用于暂时保存链表的首元素。</li>
+<li><code>L = L-&gt;next;</code>：将链表头指针 <code>L</code>
+移动到链表的下一个元素，即跳过了原始的首元素。</li>
+<li><code>P = L;</code>：创建一个指向链表头结点的新指针
+<code>P</code>，用于遍历链表并找到末尾元素。</li>
+<li><code>while (P-&gt;next) P=P-&gt;next</code>：进入一个循环，该循环将
+<code>P</code> 移动到链表的最后一个元素，即当 <code>P</code>
+的下一个元素不为空时继续执行。</li>
+<li><code>P-&gt;next = Q;</code>：将末尾元素的 <code>next</code>
+指针指向原始首元素 <code>Q</code>，这样就将首元素移到了链表的末尾。</li>
+<li><code>Q-&gt;next = NULL;</code>：将原始首元素 <code>Q</code> 的
+<code>next</code> 指针设置为
+<code>NULL</code>，以确保它成为新链表的末尾元素。</li>
 <li><code>return OK;</code>：函数返回 OK，表示操作成功完成。</li>
 </ol>
-<p>总之，这段代码的作用是将无表头结点的单链表 <code>L</code> 中的首元素移到链表的末尾。如果链表为空或只包含一个元素，则不执行任何操作。否则，它将通过重新连接指针来实现首元素的移动。</p>
+<p>总之，这段代码的作用是将无表头结点的单链表 <code>L</code>
+中的首元素移到链表的末尾。如果链表为空或只包含一个元素，则不执行任何操作。否则，它将通过重新连接指针来实现首元素的移动。</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//分析一下下面这段代码</span><br>void <span class="hljs-constructor">BB(LNode <span class="hljs-operator">*</span><span class="hljs-params">s</span>, LNode <span class="hljs-operator">*</span><span class="hljs-params">q</span>)</span> &#123;<br>    <span class="hljs-comment">// 声明指针 p，并将其初始化为 s</span><br>    p = s;<br>    <span class="hljs-comment">// 当 p 指向的结点的下一个结点不等于 q 时，执行循环</span><br>    <span class="hljs-keyword">while</span> (p-&gt;next != q) &#123;<br>        <span class="hljs-comment">// 将 p 移动到下一个结点</span><br>        p = p-&gt;next;<br>    &#125;<br>    <span class="hljs-comment">// 将 q 结点的 next 指针指向 s，形成闭环</span><br>    p-&gt;next = s;<br>&#125;<br>void <span class="hljs-constructor">AA(LNode <span class="hljs-operator">*</span><span class="hljs-params">pa</span>, LNode <span class="hljs-operator">*</span><span class="hljs-params">pb</span>)</span> &#123;<br>    <span class="hljs-comment">// 调用 BB 函数，将结点 pa 到 pb 之间的结点闭环</span><br>    <span class="hljs-constructor">BB(<span class="hljs-params">pa</span>, <span class="hljs-params">pb</span>)</span>;<br>    <span class="hljs-comment">// 再次调用 BB 函数，将结点 pb 到 pa 之间的结点闭环</span><br>    <span class="hljs-constructor">BB(<span class="hljs-params">pb</span>, <span class="hljs-params">pa</span>)</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-11"><a href="#2-11" class="headerlink" title="2.11"></a>2.11</h3><ul>
-<li><input disabled="" type="checkbox"> 2.11 设顺序表 va 中的数据元素递增有序。试写一算法，将 x 插入到顺序表的适当位置上，以保持该表的有序性。</li>
+<h3 id="section-4">2.11</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />2.11 设顺序表 va
+中的数据元素递增有序。试写一算法，将 x
+插入到顺序表的适当位置上，以保持该表的有序性。</label></li>
 </ul>
 <figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs maxima">Status InsertOrderList(SqList &amp;va,ElemType x)<br>&#123;<br>//在非递减的顺序表 va 中插入元素 x 并使其仍成为顺序表的算法<br>int i;<br><span class="hljs-keyword">if</span>(va.<span class="hljs-built_in">length</span>==va.listsize)<span class="hljs-built_in">return</span>(OVERFLOW);<br><br><span class="hljs-keyword">for</span>(i=va.<span class="hljs-built_in">length</span>;i&gt;<span class="hljs-number">0</span>,x&lt;va.<span class="hljs-built_in">elem</span>[i-<span class="hljs-number">1</span>];i--)<br>va.<span class="hljs-built_in">elem</span>[i]=va.<span class="hljs-built_in">elem</span>[i-<span class="hljs-number">1</span>];<br><br>va.<span class="hljs-built_in">elem</span>[i]=x;<br>va.<span class="hljs-built_in">length</span>++;<br><span class="hljs-built_in">return</span> OK;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p><code>Status InsertOrderList(SqList &amp;va,ElemType x)</code></p>
 <p>这行代码是一个函数的声明，具体解释如下：</p>
 <ul>
-<li><code>Status</code>：这是函数的返回类型。在C&#x2F;C++中，函数通常会返回一个值，表示函数的执行结果或状态。在这里，函数返回类型是 <code>Status</code>，这意味着该函数会返回一个表示操作状态的值。</li>
-<li><code>InsertOrderList</code>：这是函数的名称。函数名用于标识和调用函数。在这个情境下，函数名是 <code>InsertOrderList</code>，它表示这个函数的目的是将一个元素插入到一个顺序表中。</li>
-<li><code>(SqList &amp;va, ElemType x)</code>：这是函数的参数列表。它指定了函数接受的输入参数。具体解释如下：<ul>
-<li><code>SqList &amp;va</code>：这是第一个参数，它是一个引用（<code>&amp;</code> 符号表示引用）。这意味着函数将接受一个名为 <code>va</code> 的参数，这个参数是一个 <code>SqList</code> 类型的顺序表。通过引用传递，函数可以直接修改传递给它的顺序表，而不需要复制整个数据结构，这可以提高性能并节省内存。</li>
-<li><code>ElemType x</code>：这是第二个参数，它是一个名为 <code>x</code> 的参数，表示要插入到顺序表中的元素。<code>ElemType</code> 可能是一个在代码的其他地方定义的数据类型，用于表示元素的类型。</li>
+<li><code>Status</code>：这是函数的返回类型。在C/C++中，函数通常会返回一个值，表示函数的执行结果或状态。在这里，函数返回类型是
+<code>Status</code>，这意味着该函数会返回一个表示操作状态的值。</li>
+<li><code>InsertOrderList</code>：这是函数的名称。函数名用于标识和调用函数。在这个情境下，函数名是
+<code>InsertOrderList</code>，它表示这个函数的目的是将一个元素插入到一个顺序表中。</li>
+<li><code>(SqList &amp;va, ElemType x)</code>：这是函数的参数列表。它指定了函数接受的输入参数。具体解释如下：
+<ul>
+<li><code>SqList &amp;va</code>：这是第一个参数，它是一个引用（<code>&amp;</code>
+符号表示引用）。这意味着函数将接受一个名为 <code>va</code>
+的参数，这个参数是一个 <code>SqList</code>
+类型的顺序表。通过引用传递，函数可以直接修改传递给它的顺序表，而不需要复制整个数据结构，这可以提高性能并节省内存。</li>
+<li><code>ElemType x</code>：这是第二个参数，它是一个名为 <code>x</code>
+的参数，表示要插入到顺序表中的元素。<code>ElemType</code>
+可能是一个在代码的其他地方定义的数据类型，用于表示元素的类型。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>综上，这行代码的含义是声明一个名为 <code>InsertOrderList</code> 的函数，该函数接受一个顺序表 <code>va</code> 和一个元素 <code>x</code> 作为参数，并且会返回一个 <code>Status</code> 类型的值，用于表示函数执行的状态或结果。</p>
+<p>综上，这行代码的含义是声明一个名为 <code>InsertOrderList</code>
+的函数，该函数接受一个顺序表 <code>va</code> 和一个元素 <code>x</code>
+作为参数，并且会返回一个 <code>Status</code>
+类型的值，用于表示函数执行的状态或结果。</p>
 <p><code>for (i = va.length; i &gt; 0 &amp;&amp; x &lt; va.elem[i - 1]; i--)    va.elem[i] = va.elem[i - 1];</code></p>
 <ul>
-<li><p>这是一个 <code>for</code> 循环，从顺序表的最后一个元素开始向前遍历，同时检查元素 <code>x</code> 是否小于当前位置的元素。循环条件包括两部分：<code>i &gt; 0</code> 表示循环要继续直到遍历到顺序表的第一个元素；<code>x &lt; va.elem[i - 1]</code> 表示只要元素 <code>x</code> 小于当前位置的元素，就继续循环。这个循环的目的是找到插入位置。</p>
-</li>
-<li><p>在循环中，将当前位置的元素向后移动，以为新元素 <code>x</code> 腾出位置。这是为了为新元素 <code>x</code> 让路，为其找到适当的插入位置。</p>
-</li>
+<li><p>这是一个 <code>for</code>
+循环，从顺序表的最后一个元素开始向前遍历，同时检查元素 <code>x</code>
+是否小于当前位置的元素。循环条件包括两部分：<code>i &gt; 0</code>
+表示循环要继续直到遍历到顺序表的第一个元素；<code>x &lt; va.elem[i - 1]</code>
+表示只要元素 <code>x</code>
+小于当前位置的元素，就继续循环。这个循环的目的是找到插入位置。</p></li>
+<li><p>在循环中，将当前位置的元素向后移动，以为新元素 <code>x</code>
+腾出位置。这是为了为新元素 <code>x</code>
+让路，为其找到适当的插入位置。</p></li>
 </ul>
-<h3 id="2-15"><a href="#2-15" class="headerlink" title="2.15"></a>2.15</h3><ul>
-<li><input disabled="" type="checkbox"> 2.15 已知指针 ha 和 hb 分别指向两个单链表的头结点，并且已知两个链表的长度分别为 m 和 n。试写一算法将这两个链表连接在一起，假设指针 hc 指向连接后的链表的头结点，并要求算法以尽可能短的时间完成连接运算。</li>
+<h3 id="section-5">2.15</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" />2.15 已知指针 ha 和 hb
+分别指向两个单链表的头结点，并且已知两个链表的长度分别为 m 和
+n。试写一算法将这两个链表连接在一起，假设指针 hc
+指向连接后的链表的头结点，并要求算法以尽可能短的时间完成连接运算。</label></li>
 </ul>
 <figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xl">void MergeList_L(LinkList &amp;ha,LinkList &amp;hb,LinkList &amp;hc) <br>&#123; <br>    LinkList pa,pb; <br>    pa=ha; <br>    pb=hb; <br>    <span class="hljs-function"><span class="hljs-title">while</span>(pa-&gt;</span><span class="hljs-function"><span class="hljs-title">next</span>&amp;&amp;pb-&gt;</span>next)&#123; <br>        <span class="hljs-function"><span class="hljs-title">pa</span>=pa-&gt;</span>next; <br>        <span class="hljs-function"><span class="hljs-title">pb</span>=pb-&gt;</span>next; <br>    &#125; <br>    <span class="hljs-function"><span class="hljs-title">if</span>(!pa-&gt;</span>next)&#123;          <span class="hljs-comment">//pa到头了</span><br>        hc=hb; <br>        <span class="hljs-function"><span class="hljs-title">while</span>(pb-&gt;</span><span class="hljs-function"><span class="hljs-title">next</span>) pb=pb-&gt;</span>next; <br>        <span class="hljs-function"><span class="hljs-title">pb</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">next</span>=ha-&gt;</span>next; <br>    &#125; <br>    <span class="hljs-keyword">else</span>&#123; <br>        hc=ha; <br>        <span class="hljs-function"><span class="hljs-title">while</span>(pa-&gt;</span><span class="hljs-function"><span class="hljs-title">next</span>) pa=pa-&gt;</span>next; <br>        <span class="hljs-function"><span class="hljs-title">pa</span>-&gt;</span><span class="hljs-function"><span class="hljs-title">next</span>=hb-&gt;</span>next; <br>    &#125; <br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-16"><a href="#2-16" class="headerlink" title="2.16"></a>2.16</h3><p>已知指针 la 和 lb 分别指向两个无头结点单链表中的首元结点。写一个算法实现:</p>
-<ul>
-<li><input disabled="" type="checkbox"> 从表 la 中删除自第 i 个元素起共 len 个元素后，将它们插入到表 lb 中第 i 个元素之前。</li>
+<h3 id="section-6">2.16</h3>
+<p>已知指针 la 和 lb
+分别指向两个无头结点单链表中的首元结点。写一个算法实现:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />从表 la 中删除自第 i 个元素起共 len
+个元素后，将它们插入到表 lb 中第 i 个元素之前。</label></li>
 </ul>
-<h3 id="2-22"><a href="#2-22" class="headerlink" title="2.22"></a>2.22</h3><ul>
-<li><input checked="" disabled="" type="checkbox"> 试写一算法，对单链表实现就地逆置。</li>
+<h3 id="section-7">2.22</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"
+checked="" />试写一算法，对单链表实现就地逆置。</label></li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Lnode</span> &#123;</span><br>    ElemType data; <br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Lnode</span> *<span class="hljs-title">next</span>;</span> <br>&#125; Lnode, *LinkList;<br><br><span class="hljs-comment">//Lnode，将 struct Lnode 重命名为 Lnode，这允许我们在代码中使用 Lnode 来声明结构体类型的变量。？？</span><br><span class="hljs-comment">//LinkList，将 struct Lnode* 重命名为 LinkList，这样我们可以使用 LinkList 来声明指向链表节点的指针变量。</span><br><br>Status <span class="hljs-title function_">ListOppose_L</span><span class="hljs-params">(LinkList &amp;L)</span> <br>&#123; <br>    LinkList p,q;   <span class="hljs-comment">//两个辅助指针</span><br>    p=L;       <span class="hljs-comment">//将 p 指针指向链表头节点。</span><br>    p=p-&gt;next;  <span class="hljs-comment">// 将 p 移动到链表的第一个真实节点，即跳过头节点。</span><br>    L-&gt;next=<span class="hljs-literal">NULL</span>; <span class="hljs-comment">// 将头节点的 next 指针置空，即将逆置后的链表末尾节点的 next 指针指向空。</span><br>    <span class="hljs-keyword">while</span>(p)&#123; <br>        q=p;         <br>        p=p-&gt;next;   <span class="hljs-comment">//这两行就是把 q 指向 p，然后将 p 向后移动到下一个节点：</span><br>        q-&gt;next=L-&gt;next;  <br>        L-&gt;next=q;   <span class="hljs-comment">//这两行就是进行插入，即：将 q 所指的节点插入到现在的表 L 的头结点和首元结点中间：</span><br>    &#125; <br>    <span class="hljs-keyword">return</span> OK; <br>&#125;<br><br><br><br></code></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41109668/article/details/104636252?ops_request_misc=%7B%22request_id%22:%22169519655816800227422429%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=169519655816800227422429&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-104636252-null-null.142%5Ev94%5EchatsearchT3_1&utm_term=%E8%AF%95%E5%86%99%E4%B8%80%E7%AE%97%E6%B3%95%EF%BC%8C%E5%AF%B9%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%B0%B1%E5%9C%B0%E9%80%86%E7%BD%AE%E3%80%82&spm=1018.2226.3001.4187">试写一算法，对单链表进行逆置试写一算法,实现单链表的就地逆置(要求在原链表上进行)_白薇.的博客-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41109668/article/details/104636252?ops_request_misc=%7B%22request%5Fid%22%3A%22169519655816800227422429%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=169519655816800227422429&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-104636252-null-null.142%5Ev94%5EchatsearchT3_1&amp;utm_term=试写一算法，对单链表实现就地逆置。&amp;spm=1018.2226.3001.4187">试写一算法，对单链表进行逆置试写一算法,实现单链表的就地逆置(要求在原链表上进行)_白薇.的博客-CSDN博客</a></p>
 <p>大佬！！！这篇博客解释的非常清楚</p>
-<h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="3-19"><a href="#3-19" class="headerlink" title="3.19"></a>3.19</h3><p>括号匹配</p>
+<h2 id="第三章">第三章</h2>
+<h3 id="section-8">3.19</h3>
+<p>括号匹配</p>
+<h2 id="第六章-树">第六章 树</h2>
+<h3 id="section-9">6.24</h3>
+<p>树转换成二叉树：</p>
+<ol type="1">
+<li>加线，所有兄弟结点之间连接一条线；</li>
+<li>去线，对树中的每个结点，只保留它与第一个孩子结点的连线，删除与其他孩子结点之间的连线；</li>
+<li>层次调整，以树的根结点为轴心，将整个树调节一下（第一个孩子是结点的左孩子，兄弟转过来的孩子是结点的右孩子）；</li>
+</ol>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1698111444872.png" srcset="/img/loading.gif" lazyload
+alt="1698111444872" />
+<figcaption aria-hidden="true">1698111444872</figcaption>
+</figure>
+<p>二叉树转换成树：</p>
+<ol type="1">
+<li>加线。若某结点X的左孩子结点存在，则将这个左孩子的右孩子结点、右孩子的右孩子结点、右孩子的右孩子的右孩子结点…，都作为结点X的孩子。将结点X与这些右孩子结点用线连接起来。（即先将父节点与其所有非第一个孩子结点的结点相连）</li>
+<li>去线。删除原二叉树中所有结点与其右孩子结点的连线。</li>
+<li>层次调整。例子如下：</li>
+</ol>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1698079388509.png" srcset="/img/loading.gif" lazyload
+alt="1698079388509" />
+<figcaption aria-hidden="true">1698079388509</figcaption>
+</figure>
+<p>森林转换成二叉树：</p>
+<p>森林是由若干棵树组成，可以将森林中的每棵树的根结点看作是兄弟，由于每棵树都可以转换为二叉树，所以森林也可以转换为二叉树。</p>
+<ol type="1">
+<li>把每一棵树转换为二叉树</li>
+<li>第一棵二叉树不动，第二棵树开始，以此把后一棵二叉树的根结点作为前一棵树的根结点的右子树连接起来</li>
+</ol>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1698112427431.png" srcset="/img/loading.gif" lazyload
+alt="1698112427431" />
+<figcaption aria-hidden="true">1698112427431</figcaption>
+</figure>
+<p>二叉树转换成森林：</p>
+<ul>
+<li>看二叉树的根结点是否有右孩子，有右结点是森林，无右结点是树。（根据孩子兄弟表示法，一棵树的根结点转换为二叉树，其二叉树的根结点无右孩子）</li>
+<li>若是森林：
+<ul>
+<li>依次把与右孩子结点的连线删除，得到分离的二叉树</li>
+<li>把分离后的每棵二叉树转换为树；</li>
+<li>整理第（2）步得到的树，使之规范，这样得到森林。例子如下：</li>
+<li><figure>
+<img
+src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1698079139900.png" srcset="/img/loading.gif" lazyload
+alt="1698079139900" />
+<figcaption aria-hidden="true">1698079139900</figcaption>
+</figure></li>
+</ul></li>
+<li>若是树：
+<ul>
+<li>参照二叉树转换成树</li>
+</ul></li>
+</ul>
 
                 
               </div>
