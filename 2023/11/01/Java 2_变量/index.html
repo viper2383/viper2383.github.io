@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          561 字
+          989 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -388,6 +388,36 @@
 <li><p><strong>数组</strong>：<code>[]</code></p></li>
 </ul>
 <p>字符串类型String实际上是一个”类“</p>
+<h2 id="整数类型">2.4 整数类型</h2>
+<blockquote>
+<p>用于存放整数值</p>
+</blockquote>
+<ul>
+<li><code>byte</code> 占用 1 字节，范围 -128 ~ 127</li>
+<li><code>short</code> 占用 2 字节，范围 <span
+class="math inline">\(-2^{15} ～ 2^{15} - 1\)</span></li>
+<li><code>int</code> 占用 4 字节，范围 <span
+class="math inline">\(-2^{31} ～ 2^{31} - 1\)</span></li>
+<li><code>long</code> 占用 8 字节，范围 <span
+class="math inline">\(-2^{63} ～ 2^{63} - 1\)</span></li>
+</ul>
+<p><strong>使用细节：</strong></p>
+<ol type="1">
+<li>Java 各整数类型有固定的范围和字符长度，不受具体
+OS（操作系统）影响，以保证 Java 程序的可移植性。</li>
+<li>Java 默认整型常量为 <code>int</code> ，要声明 <code>long</code>
+型63</li>
+<li>从 Java 7 开始，加上前缀 <code>0b</code> 或 <code>0B</code>
+就可以写二进制数。</li>
+<li>从 Java 7
+开始，可以为数字字面添加下划线。这不会影响数字的值，只是为了方便阅读。</li>
+</ol>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs maxima">int n = <span class="hljs-number">0b0010</span>;<br>n = <span class="hljs-number">0b001</span>;<br>n = 100_0_000000;<br>n = 0B0000_0010_1100;<br><span class="hljs-built_in">float</span> f = <span class="hljs-number">1.</span><span class="hljs-number">0F</span>;JAVA<br></code></pre></td></tr></table></figure>
+<p>如果基本的整数、浮点类型不能满足范围、精度的需求，可以使用 “大数”</p>
+<p><strong><em>—— 大数，见 [<a
+target="_blank" rel="noopener" href="https://i-melody.github.io/2021/12/19/Java/入门阶段/12%20常用类/#12-8-BigInteger-和-BigDecimal-类">12.8
+BigInteger 和 BigDecimal 类]</a></em></strong></p>
+<h2 id="浮点类型">2.5 浮点类型</h2>
 
                 
               </div>
