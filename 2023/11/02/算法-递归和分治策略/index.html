@@ -16,22 +16,22 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Java基础知识概述">
+    <meta name="description" content="算法分析与设计中递归和分治策略部分，包括对递归和分治的介绍，以及几个具体的例子来理解递归和分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&lt;Java&gt; 1_概述">
-<meta property="og:url" content="http://example.com/2023/10/18/Java%201_%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:title" content="算法-递归和分治策略">
+<meta property="og:url" content="http://example.com/2023/11/02/%E7%AE%97%E6%B3%95-%E9%80%92%E5%BD%92%E5%92%8C%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="Java基础知识概述">
+<meta property="og:description" content="算法分析与设计中递归和分治策略部分，包括对递归和分治的介绍，以及几个具体的例子来理解递归和分治">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-18T14:20:49.000Z">
-<meta property="article:modified_time" content="2023-11-01T04:20:49.000Z">
+<meta property="article:published_time" content="2023-11-02T03:20:49.000Z">
+<meta property="article:modified_time" content="2023-11-02T03:24:49.000Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="算法分析与设计">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>&lt;Java&gt; 1_概述 - Wiper3</title>
+  <title>算法-递归和分治策略 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="&lt;Java&gt; 1_概述"></span>
+            <span id="subtitle" data-typed-text="算法-递归和分治策略"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-18 22:20" pubdate>
-          2023年10月18日 晚上
+        <time datetime="2023-11-02 11:20" pubdate>
+          2023年11月2日 上午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          1.2k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          25 分钟
+          9 分钟
         
       </span>
     
@@ -317,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">&lt;Java&gt; 1_概述</h1>
+            <h1 id="seo-header">算法-递归和分治策略</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月1日 中午
+                    本文最后更新于：2023年11月2日 上午
                   
                 
               </p>
@@ -330,181 +330,46 @@
             
               <div class="markdown-body">
                 
-                <h2 id="java-历史">1.1 Java 历史</h2>
-<ul>
-<li><p>目前 Java 版权属于甲骨文公司。</p></li>
-<li><p>长期支持的版本只有 Java8 与
-Java11。这两个版本也是最多使用的版本。</p></li>
-<li><p>Java SE：标准版</p>
-<p>Java EE：企业版（重要）</p>
-<p>Java ME：小型版（少）</p></li>
-</ul>
-<h2 id="java-重要特点">1.2 Java 重要特点</h2>
-<ol type="1">
-<li><p>Java 语言是<strong>面向对象的（oop）</strong></p>
-<p>简单来说，面向对象是一种程序设计技术。其重点放在数据（对象）和对象的接口上。</p></li>
-<li><p>Java
-语言是<strong>健壮的</strong>。其强类型机制、异常处理、垃圾自动收集是健壮性的保证。</p>
-<p>Java
-强调早期问题检测、后期动态检测，及消除易出错的情况。其编译器能检测很多其他语言仅在运行时才会发现的问题。</p></li>
-<li><p>Java 语言是<strong>跨平台性</strong>的：一个编译好的
-<code>.class</code>
-文件可以在多个不同系统（windows、Linux等）下直接运行。</p></li>
-<li><p>Java 语言是<strong>解释型</strong>的：Java
-解释器能在任何移植了解释器的机器上直接执行 Java 字节码。</p>
-<p>解释性语言：javascript，PHP，java等</p>
-<p>编译性语言：c， c++等</p>
-<p>区别是：</p>
-<ul>
-<li>解释性语言，编译后的代码，不能直接被机器执行，需要解释器来执行</li>
-<li>编译性语言，编译后的代码，可以直接被机器执行</li>
-</ul></li>
-</ol>
-<h2 id="java的开发工具">1.3 Java的开发工具</h2>
-<ul>
-<li>javac：Java 编译器。将 Java 程序编译成字节码</li>
-<li>java：Java 解释器。执行已经转换为字节码的文件</li>
-<li>jdb：Java 调试器。调试 Java 程序</li>
-<li>javap：反编译。将类文件还原回方法和变量</li>
-<li>javadoc：文档生成器。创建 HTML 文件</li>
-</ul>
-<h2 id="java-运行基础">1.4 Java 运行基础</h2>
-<p>JVM：Java Virtual Machine（Java虚拟机）</p>
-<ul>
-<li>JVM 是–跨平台性的基础。被包含在 JDK 中。</li>
-<li>不同平台有各自对应的不同 JVM</li>
-<li>JVM 屏蔽了底层平台的区别。能做到 ”一次编译，到处运行”</li>
-</ul>
-<p>JDK ：全称：Java Development Kit（Java 开发工具包）</p>
-<ul>
-<li>JDK = JRE + Java 的开发工具（Java，Javac，Javadoc 等等）</li>
-<li>给开发人员使用的，包括了 JRE</li>
-</ul>
-<p>JRE：Java Runtime Enviroment（Java 运行环境）</p>
-<ul>
-<li>JRE = JVM + Java SE 标准类库（Java 的核心类库）</li>
-<li>如果想要运行一个开发好的 Java 程序，计算机中只需要安装JRE即可</li>
-</ul>
-<h2 id="java快速入门">1.5 Java快速入门</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//java第一个程序</span><br><br><span class="hljs-comment">//1. public class Hello 表示Hello是一个类，是一个public公有的类</span><br><span class="hljs-comment">//2. Hello&#123;&#125;表示一个类的开始和结束</span><br><span class="hljs-comment">//3. public static void main(String[] args)表示一个主方法</span><br><span class="hljs-comment">//4. main()&#123;&#125;表示方法的开始和结束</span><br><span class="hljs-comment">//5. System.out.println(&quot;hello,world~&quot;)表示输出hello,world~</span><br><span class="hljs-comment">//6. ;表示语句结束</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello</span>&#123;<br><br>	<span class="hljs-comment">//main方法</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;我的 hello,world~&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="java-执行流程分析">1.6 Java 执行流程分析</h2>
-<blockquote>
-<p><code>.Java</code> 文件（源文件） — javac（编译）—
-<code>.class</code> 文件（字节码文件） — java（运行）— 结果</p>
-</blockquote>
-<h3 id="编译">1.5.1 编译</h3>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">javac </span>源文件名.<span class="hljs-keyword">java	</span>	<br></code></pre></td></tr></table></figure>
-<ul>
-<li>通过编译器将 Java 源文件编译成 JVM
-可识别的字节码文件。字节码文件是二进制格式的，其格式是统一的。</li>
-<li>在源文件目录下使用 Javac 编译工具对 Java 文件进行编译。</li>
-<li>如果没有错误将没有提示，当前目录会对应其中每一个类生成对应名称的
-<code>.class</code> 文件，该文件称为字节码文件，也是可执行的 Java
-程序。</li>
-</ul>
-<h3 id="运行">1.5.2 运行</h3>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">java 程序名 <span class="hljs-selector-attr">[参数列表]</span>	<br></code></pre></td></tr></table></figure>
-<ul>
-<li>有了可执行的 Java 程序（例如Hello.class字节码文件）</li>
-<li>通过运行工具<code>Java.exe</code> 对字节码文件进行执行，本质是将
-<code>.class</code> 文件装载到 JVM 机执行</li>
-</ul>
-<p><strong>注意，修改后的 .Java 源文件需要重新编译</strong></p>
-<h2 id="java-开发细节">1.7 Java 开发细节</h2>
-<p><strong>在控制台按 Tab 可以实现代码补齐。</strong></p>
-<ol type="1">
-<li><p>源文件以 <code>.java</code>
-为扩展名，源文件的基本组成部分是类（class）</p></li>
-<li><p>Java 应用程序的执行入口是 <code>main()</code>
-方法。其有固定的<strong>书写格式：</strong></p>
-<p><code>public static void main(string[]args)&#123;…&#125;</code></p></li>
-<li><p>Java 语言<strong>严格区分大小写</strong>。</p></li>
-<li><p>Java 方法由一条条语句构成，<strong>每个语句都以 <code>;</code>
-结束</strong>。</p></li>
-<li><p><strong>大括号 <code>&#123;</code> <code>&#125;</code>
-是成对出现的</strong>，缺一不可。习惯先写 <code>&#123;&#125;</code>
-再写代码</p></li>
-<li><p>一个源文件中<strong>最多只有一个 public
-类</strong>，其余类不限。</p></li>
-<li><p><strong>如果文件中包含 public
-类，则文件名必须按该类命名。</strong></p></li>
-<li><p>也可以把 main 方法写在非 public 类中，然后运行指定非 public
-类，这样入口方法是非 public 类的主方法。</p></li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Hello2</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;Hello,world~&quot;</span>);<br>	&#125;<br>&#125;<br><br><span class="hljs-comment">//一个源文件中最多只有一个 public 类，其余类不限。</span><br><span class="hljs-comment">//Dog 是一个类</span><br><span class="hljs-comment">// 编译后，每一个类，都会生成一个.class</span><br><span class="hljs-comment">//这里就会生成三个.class文件</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Dog</span>&#123;<br>    <span class="hljs-comment">//也可以把 main 方法写在非 public 类中，然后运行指定非 public 类，这样入口方法是非 public 类的主方法。</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;Hello,小狗&quot;</span>);<br>	&#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Tiger</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;Hello,小老虎&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>运行结果：</p>
+                <h2 id="分治法的常用例子">分治法的常用例子</h2>
+<h3 id="二分查找">二分查找</h3>
+<h4 id="概述">1. 概述</h4>
+<p>二分查找（Binary Search）算法，也叫折半查找算法</p>
+<p>算法前件：待查找序列有序</p>
+<p>基本思想：先将待查元素与中间元素比，若比中间元素大，则在序列的后一半继续查找；若比中间元素小，则在序列的前一半继续查找。</p>
+<p>二分查找与顺序查找对比图：</p>
 <figure>
 <img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311011227499.png" srcset="/img/loading.gif" lazyload
-alt="image-20231101122753469" />
-<figcaption aria-hidden="true">image-20231101122753469</figcaption>
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311021339520.gif" srcset="/img/loading.gif" lazyload
+alt="1" />
+<figcaption aria-hidden="true">1</figcaption>
 </figure>
-<h2 id="java-转义字符">1.8 Java 转义字符</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//演示转义字符的使用</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ChangeChar2</span>&#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>		<span class="hljs-comment">//     \t：一个制表位，实现对齐的功能</span><br>		System.out.println(<span class="hljs-string">&quot;北京\t上海\t广州&quot;</span>);<br><br>		<span class="hljs-comment">//     \n：换行符</span><br>		System.out.println(<span class="hljs-string">&quot;北京\n上海\n广州&quot;</span>);<br><br>		<span class="hljs-comment">//     \\：一个\</span><br>		System.out.println(<span class="hljs-string">&quot;C:\\Windows\\System32\\cmd.exe&quot;</span>);<br><br>		<span class="hljs-comment">//       \&#x27;：  一个&#x27;</span><br>		<span class="hljs-comment">//       \&quot;：  一个&quot;</span><br>		<span class="hljs-comment">//       \r：  一个回车</span><br>		System.out.println(<span class="hljs-string">&quot;一起学习java\r我们&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311011508043.png" srcset="/img/loading.gif" lazyload
-alt="image-20231101150805984" />
-<figcaption aria-hidden="true">image-20231101150805984</figcaption>
-</figure>
-<h2 id="代码规范">1.9 代码规范</h2>
-<ol type="1">
-<li><p>类、方法的注释要以 Javadoc 的方式来写</p></li>
-<li><p>非 Javadoc
-的注释，往往是给维护者看的，着重告诉读者为什么这样写，如何修改，注意什么问题等。</p></li>
-<li><p>不要用 <code>a</code>
-<code>b</code>，这种名称命名变量，尽量写得清楚
-<code>int age = 10;</code></p>
-<p>另外，<strong>Java 源代码使用的是 Unicode
-码，因此汉语也能作为标识符</strong>。但不推荐使用汉语做标识符。</p></li>
-<li><p>使用 tab 键操作，使代码右移。使用 shift+tab
-键，使代码左移。</p></li>
-<li><p>运算符两边各加入空格。注意排版规范。</p></li>
-<li><p>源文件使用 UTF-8 编码。</p></li>
-<li><p>代码行宽度不要超过 80 个字符。超过时通过换行保持简洁。</p></li>
-<li><p>代码编写<strong>次行风格</strong>及<strong>行尾风格</strong></p>
+<h4 id="复杂度分析">2.复杂度分析</h4>
+<p><strong>时间复杂度</strong></p>
+<p>我们假设数据大小是
+n，每次查找后数据都会缩小为原来的一半，也就是会除以
+2。最坏情况下，直到查找区间被缩小为空，才停止。</p>
 <blockquote>
-<p>次行风格：换行输入<code>&#123;</code> <code>&#125;</code>，使其总在行头，√</p>
-<p>行尾风格：在一行的末尾输入 <code>&#123;</code>，换行输入
-<code>&#125;</code></p>
-</blockquote></li>
-<li><p>一段代码完成一个小功能，尽量不要混合。这样更加灵活。</p></li>
-</ol>
-<h2 id="dos了解">1.10 DOS（了解）</h2>
-<blockquote>
-<p>DOS：Disk Operating System（磁盘操作系统）</p>
+<p>被查找区间的大小变化：n、n/2、n/4、n/8 ... n/2^k</p>
 </blockquote>
-<h3 id="dos-的基本原理">DOS 的基本原理</h3>
-<blockquote>
-<p>在 cmd（控制台）输入指令 — DOS系统 接受指令 — 解析指令 — 执行指令</p>
-</blockquote>
+<p>假设总共查找了 k 次，则剩余 <span
+class="math inline">\(n/2^k\)</span>
+个元素。最坏的情况是查找到最后一个元素，则有等式：<span
+class="math inline">\(n/2^k = 1\)</span>，即 <span
+class="math inline">\(2^k=n\)</span>，得：<span class="math inline">\(k
+= log_2n\)</span></p>
+<p>忽略常数，则二分查找的时间复杂度为<code>O(log n)</code></p>
+<p><strong>空间复杂度</strong></p>
+<p>空间复杂度是很简单的，根据上面的流程可以得知，在整个二分搜索的过程中，只需要额外存储三个变量：最大值
+，最小值 和 中点，因此，空间复杂度是常量 <code>O(1)</code></p>
+<h4 id="python实现">3. Python实现：</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 二分查找的递归与分治策略实现（python）</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">binary_search</span>(<span class="hljs-params">arr, target, left, right</span>):<br>    <span class="hljs-keyword">if</span> left &lt;= right:<br>        mid = left + (right - left) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 计算中间位置</span><br><br>        <span class="hljs-keyword">if</span> arr[mid] == target:<br>            <span class="hljs-keyword">return</span> mid  <span class="hljs-comment"># 找到目标元素，返回索引</span><br>        <span class="hljs-keyword">elif</span> arr[mid] &lt; target:<br>            <span class="hljs-keyword">return</span> binary_search(arr, target, mid + <span class="hljs-number">1</span>, right)  <span class="hljs-comment"># 在右半部分递归查找</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> binary_search(arr, target, left, mid - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 在左半部分递归查找</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>  <span class="hljs-comment"># 目标元素不在数组中，返回-1</span><br><br><span class="hljs-comment"># 输入数组</span><br>input_string = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入一个升序数组（以逗号分隔）: &quot;</span>)<br>arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, input_string.split(<span class="hljs-string">&#x27;,&#x27;</span>)))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;已创建好一个升序数组：&quot;</span>,arr)<br><br><span class="hljs-comment"># 输入要查找的数字</span><br>target = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入要查找的数字: &quot;</span>))<br><br>result = binary_search(arr, target, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr) - <span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">if</span> result != -<span class="hljs-number">1</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;目标 <span class="hljs-subst">&#123;target&#125;</span> 在索引 <span class="hljs-subst">&#123;result&#125;</span>&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;目标 <span class="hljs-subst">&#123;target&#125;</span> 不在数组中&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<h4 id="应用场景及局限性">4. 应用场景及局限性</h4>
 <ul>
-<li><p>相对路径和绝对路径（举例从 JDK8访问到 JDK8）</p>
-<blockquote>
-<p>相对路径：从当前目录开始定位，形成的路径 <code>..\jre\bin</code></p>
-<p>返回上一级：<code>..\</code></p>
-<p>绝对路径：从顶级目录开始定位，形成的路径
-<code>d:\Program\JDK8\jre\bin</code></p>
-</blockquote></li>
+<li>二分查找依赖顺序表结构，如数组；</li>
+<li>二分查找针对的是有序数据，如果无序，则要先排序；</li>
+<li>数据量太小不适合二分查找；</li>
+<li>数据量太大也不适合二分查找。</li>
 </ul>
-<h3 id="常用的-dos-命令">常用的 DOS 命令</h3>
-<blockquote>
-<p>查看帮助：<code>help</code> 或 <code>help cd</code> 等</p>
-<p>查看目录内容：<code>dir</code> 查看当前目录 或
-<code>dir d:\Program\JDK8\bin</code> 查看指定目录</p>
-<p>切换到其他盘：<code>cd /D d:</code> 从 C盘 切换至 D盘 （change
-directory）</p>
-<p>切换到当前盘的其他目录：<code>cd d:\Program\JDK8\jre\bin</code></p>
-<p>返回上级目录：<code>cd ..</code></p>
-<p>切换至根目录：<code>cd \</code></p>
-<p>查看子集目录：<code>tree</code> 当前目录 或
-<code>tree d:/Program</code> 指定目录</p>
-<p>清屏：<code>cls</code></p>
-<p>退出：<code>exit</code></p>
-<p>创建目录：<code>md 目录名</code> 如：<code>md tom100</code></p>
-<p>删除目录：<code>rd 目录名</code></p>
-<p>:traffic_light:</p>
-</blockquote>
 
                 
               </div>
@@ -523,7 +388,7 @@ directory）</p>
     
       <span class="category-chain">
         
-  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="category-chain-item">算法分析与设计</a>
   
   
 
@@ -538,7 +403,7 @@ directory）</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Java/" class="print-no-link">#Java</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="print-no-link">#算法分析与设计</a>
       
     </div>
   
@@ -550,8 +415,8 @@ directory）</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>&lt;Java&gt; 1_概述</div>
-      <div>http://example.com/2023/10/18/Java 1_概述/</div>
+      <div>算法-递归和分治策略</div>
+      <div>http://example.com/2023/11/02/算法-递归和分治策略/</div>
     </div>
     <div class="license-meta">
       
@@ -563,7 +428,7 @@ directory）</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月18日</div>
+          <div>2023年11月2日</div>
         </div>
       
       
@@ -595,18 +460,12 @@ directory）</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/18/Java%E5%AD%A6%E4%B9%A0/" title="Java学习">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java学习</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9E%E9%AA%8C/" title="数据结构实验">
-                        <span class="hidden-mobile">数据结构实验</span>
+                      <a href="/2023/11/01/Java%202_%E5%8F%98%E9%87%8F/" title="&lt;Java&gt; 2_变量">
+                        <span class="hidden-mobile">&lt;Java&gt; 2_变量</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -694,6 +553,12 @@ directory）</p>
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -945,6 +810,49 @@ directory）</p>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 
