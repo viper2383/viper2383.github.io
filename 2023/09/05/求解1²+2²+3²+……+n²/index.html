@@ -16,15 +16,15 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一种简单的方法在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来 这种方法把1²+2²+3²+……+n²写成三个式子，相加除以3得到结果，如下： 1 2 2 3 3 3 ……………………… n n ……………..n n  ①  n …………..n 3 ……………….n 2 3 …… ………..n 1 2 3………………..n   ②  n n ……… n ……………… 3 n ………">
+    <meta name="description" content="一种简单的方法 在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来 这种方法把1²+2²+3²+……+n²写成三个式子，相加除以3得到结果，如下： 1 2 2 3 3 3 ........................... n n .................n n ①  n ..............n 3 ...................n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="求解1²+2²+3²+……+n²">
 <meta property="og:url" content="http://example.com/2023/09/05/%E6%B1%82%E8%A7%A31%C2%B2+2%C2%B2+3%C2%B2+%E2%80%A6%E2%80%A6+n%C2%B2/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="一种简单的方法在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来 这种方法把1²+2²+3²+……+n²写成三个式子，相加除以3得到结果，如下： 1 2 2 3 3 3 ……………………… n n ……………..n n  ①  n …………..n 3 ……………….n 2 3 …… ………..n 1 2 3………………..n   ②  n n ……… n ……………… 3 n ………">
+<meta property="og:description" content="一种简单的方法 在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来 这种方法把1²+2²+3²+……+n²写成三个式子，相加除以3得到结果，如下： 1 2 2 3 3 3 ........................... n n .................n n ①  n ..............n 3 ...................n">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-05T13:29:49.000Z">
-<meta property="article:modified_time" content="2023-09-05T13:45:56.027Z">
+<meta property="article:modified_time" content="2023-11-03T00:46:01.503Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          354 字
+          502 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年9月5日 晚上
+                    本文最后更新于：2023年11月3日 早上
                   
                 
               </p>
@@ -330,33 +330,34 @@
             
               <div class="markdown-body">
                 
-                <h2 id="一种简单的方法"><a href="#一种简单的方法" class="headerlink" title="一种简单的方法"></a>一种简单的方法</h2><p>在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来</p>
+                <h2 id="一种简单的方法">一种简单的方法</h2>
+<p>在做数据结构第一章的习题时遇见这个问题，感觉很有意思，就写了下来</p>
 <p>这种方法把1²+2²+3²+……+n²写成三个式子，相加除以3得到结果，如下：</p>
 <p>1</p>
 <p>2 2</p>
 <p>3 3 3</p>
-<p>………………………</p>
-<p>n n ……………..n n  ①</p>
-<hr>
+<p>...........................</p>
+<p>n n .................n n ①</p>
+<hr />
 <p>n</p>
-<p>…………..n</p>
-<p>3 ……………….n</p>
-<p>2 3 …… ………..n</p>
-<p>1 2 3………………..n   ②</p>
-<hr>
+<p>..............n</p>
+<p>3 ...................n</p>
+<p>2 3 ...... ...........n</p>
+<p>1 2 3....................n ②</p>
+<hr />
 <p>n</p>
-<p>n ………</p>
-<p>n ……………… 3</p>
-<p>n ……………………..3 2</p>
-<p>n …………………………….3 2 1  ③</p>
+<p>n .........</p>
+<p>n .................. 3</p>
+<p>n ..........................3 2</p>
+<p>n ..................................3 2 1 ③</p>
 <p>这三个式子都表示1²+2²+3²+……+n²，把他们相加</p>
 <p>①+②+③得</p>
 <p>2n+1</p>
 <p>2n+1 2n+1</p>
-<p>………………………………</p>
-<p>2n+1 2n+1 2n+1………………………2n+1 2n+1 2n+1   ①+②+③</p>
-<p>3 ∑n² &#x3D; n(n+1)(2n+1)&#x2F;2</p>
-<p>故 1²+2²+······+n² &#x3D; n（n+1）（2n+1）&#x2F;6</p>
+<p>....................................</p>
+<p>2n+1 2n+1 2n+1...........................2n+1 2n+1 2n+1 ①+②+③</p>
+<p>3 ∑n² = n(n+1)(2n+1)/2</p>
+<p>故 1²+2²+······+n² = n（n+1）（2n+1）/6</p>
 
                 
               </div>
@@ -364,27 +365,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%95%B0%E5%AD%A6/" class="category-chain-item">数学</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
     <div class="post-meta">
