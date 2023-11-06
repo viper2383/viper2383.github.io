@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.5k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          8 分钟
+          11 分钟
         
       </span>
     
@@ -340,17 +340,15 @@ class="math inline">\(g^i=1\)</span>（单位元）</li>
 </ul>
 <p><span class="math inline">\(g^{ord(G)} =
 1(单位元)\)</span>，证明如下：</p>
-$$
-<span class="math display">\[\begin{aligned}
-
-∵ord(g) | ord(G)\\
-g^{ord(g)} = 1\\
-∴ord(G) = k*ord(g)\\
-∴g^{ord(G)} = 1
-
-\end{aligned}\]</span>
-<p>$$</p>
-<p>对Zn* ，</p>
+<p><span class="math display">\[
+\begin{align}
+∵ord(g) \ &amp;|\ ord(G)\\
+g^{ord(g)} &amp;= 1\\
+∴ord(G) &amp;= k*ord(g)\\
+∴g^{ord(G)} &amp;= 1
+\end{align}
+\]</span></p>
+<p>对Zn* ，12</p>
 <p>{a|gcd(a,N)=1} *mod N，元素的个数为φ(N)</p>
 <p>当N为素数，{0,1,2,,,,,p-1} *mod p</p>
 <p>例如p等于7，单位元：1</p>
@@ -358,8 +356,8 @@ g^{ord(g)} = 1\\
 <h2 id="rsa">RSA</h2>
 <p>加密过程：</p>
 <ul>
-<li>选两个大质数p和q，且 $ p!=q <span
-class="math inline">\(，计算\)</span>N=p*q$，N就算出来了</li>
+<li>选两个大质数p和q，且 <span class="math inline">\(p!=q\)</span>，计算
+<span class="math inline">\(N=p*q\)</span>，N就算出来了</li>
 <li>然后计算N的欧拉函数 <span
 class="math inline">\(φ(N)=(p-1)(q-1)\)</span></li>
 <li>然后你自己选个e， <span
@@ -376,22 +374,53 @@ mod(φ(N))\)</span>
 </ul>
 <p>加解密：</p>
 <p><span class="math display">\[
-Enc（pk，m∈Z_N^*）:c = m^emod N\\
-Dec（sk，c）： m = c^d modN
+\begin{align}
+Enc（pk，m∈Z_N^*）:c = m^e\ mod \ N\\
+Dec（sk，c）： m = c^d\ mod\ N
+\end{align}
 \]</span></p>
-<p>正确性证明： $$ 即验证 c^d modN 是否等于 m\ ∵ed ≡ 1mod(φ(N))\ ∴ed =
-kφ(N) + 1\ 即验证m^{ed} mod N最后是等于m的\ m^{kφ(N) + 1} mod N \
-m^{kφ(N)}*m mod N\ 即求:m^{φ(N)}≡1modN\</p>
-<p>∵m∈Z_N^*\ g^{ord(G)} = 1(单位元)\ ∴m^{φ(N)}≡1modN $$</p>
-<p>对于 $$ m∈Z_N\ m Z_N^<em>\ ∵ N =p</em>q\ ∴gcd(m,N)=p或q\
-这里的情况N直接分解出来了\</p>
-<p>若gcd(m,N)=p,m&lt;N,N=p<em>q\ 得m=kp,1≤k&lt;q\ gcd(m,q)= 1\
-相当于m∈Z_q^</em>，则m^{φ(q)}=1modq\ m^{q-1}=1modq\ ed =
-k<sup>{'}φ(N)+1=k</sup>{'}(p-1)(q-1)+1\ m<sup>{k</sup>{'}(p-1)(q-1)}
-=1modq\ m<sup>{k</sup>{'}φ(N)} =1modq\ 即m<sup>{k</sup>{'}φ(N)} =rq+1\
-我们这里还是要求m^{ed}modN最后等于m\</p>
-<p>m<sup>{k</sup>{'}φ(N)}<em>m mod N\ =(rq+1)m modN\ =(rqm+m)mod N\
-=(rq</em>kp+m)mod N\ =(rkN+m)mod N\ =m $$ RSA问题，给定N，e，<span
+<p>正确性证明：</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;即验证 c^d modN 是否等于 m\\
+&amp;∵ed ≡ 1\quad mod(φ(N))\\
+&amp;∴ed = kφ(N) + 1\\
+&amp;即验证m^{ed} mod N最后是等于m的\\
+&amp;m^{kφ(N) + 1} \quad mod \quad N \\
+&amp;m^{kφ(N)}*m \quad mod \quad N\\
+&amp;即求:m^{φ(N)}≡1modN\\
+&amp;∵m∈Z_N^*\\
+&amp;g^{ord(G)} = 1(单位元)\\
+&amp;∴m^{φ(N)}≡1modN
+&amp;\end{align}
+\]</span></p>
+<p>对于</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;m∈Z_N\\
+&amp;m \notin Z_N^*\\
+&amp;∵ N =p*q\\
+&amp;∴gcd(m,N)=p或q\\
+&amp;这里的情况N直接分解出来了\\
+&amp;若gcd(m,N)=p,m&lt;N,N=p*q\\
+&amp;得m=kp,1≤k&lt;q\\
+&amp;gcd(m,q)= 1\\
+&amp;相当于m∈Z_q^*，则m^{φ(q)}=1modq\\
+&amp;m^{q-1}=1modq\\
+&amp;ed = k^{&#39;}φ(N)+1=k^{&#39;}(p-1)(q-1)+1\\
+&amp;m^{k^{&#39;}(p-1)(q-1)} =1modq\\
+&amp;m^{k^{&#39;}φ(N)} =1modq\\
+&amp;即m^{k^{&#39;}φ(N)} =rq+1\\
+&amp;我们这里还是要求m^{ed}modN最后等于m\\
+&amp;m^{k^{&#39;}φ(N)}*m \quad mod N\\
+&amp;=(rq+1)m \quad modN\\
+&amp;=(rqm+m)\quad mod N\\
+&amp;=(rq*kp+m)\quad mod N\\
+&amp;=(rkN+m)\quad mod N\\
+&amp;=m
+\end{align}
+\]</span></p>
+<p>RSA问题，给定N，e，<span
 class="math inline">\(y∈Z_N^*\)</span>，求x，满足<span
 class="math inline">\(x^e=ymodN\)</span></p>
 <p>一个密文对应一个明文，所以jz不把RSA叫做一个加密方案，而是一个单向陷门置换</p>
