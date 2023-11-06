@@ -340,12 +340,16 @@ class="math inline">\(g^i=1\)</span>（单位元）</li>
 </ul>
 <p><span class="math inline">\(g^{ord(G)} =
 1(单位元)\)</span>，证明如下：</p>
-<p><span class="math display">\[
+$$
+<span class="math display">\[\begin{aligned}
+
 ∵ord(g) | ord(G)\\
 g^{ord(g)} = 1\\
 ∴ord(G) = k*ord(g)\\
 ∴g^{ord(G)} = 1
-\]</span></p>
+
+\end{aligned}\]</span>
+<p>$$</p>
 <p>对Zn* ，</p>
 <p>{a|gcd(a,N)=1} *mod N，元素的个数为φ(N)</p>
 <p>当N为素数，{0,1,2,,,,,p-1} *mod p</p>
@@ -387,8 +391,7 @@ k<sup>{'}φ(N)+1=k</sup>{'}(p-1)(q-1)+1\ m<sup>{k</sup>{'}(p-1)(q-1)}
 =1modq\ m<sup>{k</sup>{'}φ(N)} =1modq\ 即m<sup>{k</sup>{'}φ(N)} =rq+1\
 我们这里还是要求m^{ed}modN最后等于m\</p>
 <p>m<sup>{k</sup>{'}φ(N)}<em>m mod N\ =(rq+1)m modN\ =(rqm+m)mod N\
-=(rq</em>kp+m)mod N\ =(rkN+m)mod N\ =m</p>
-<p>$$ RSA问题，给定N，e，<span
+=(rq</em>kp+m)mod N\ =(rkN+m)mod N\ =m $$ RSA问题，给定N，e，<span
 class="math inline">\(y∈Z_N^*\)</span>，求x，满足<span
 class="math inline">\(x^e=ymodN\)</span></p>
 <p>一个密文对应一个明文，所以jz不把RSA叫做一个加密方案，而是一个单向陷门置换</p>
