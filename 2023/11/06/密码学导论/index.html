@@ -16,15 +16,15 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="密码学导论的一些内容记录">
+    <meta name="description" content="密码学导论的一些学习内容记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学导论">
 <meta property="og:url" content="http://example.com/2023/11/06/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="密码学导论的一些内容记录">
+<meta property="og:description" content="密码学导论的一些学习内容记录">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-06T04:40:49.000Z">
-<meta property="article:modified_time" content="2023-11-06T12:20:49.000Z">
+<meta property="article:modified_time" content="2023-11-13T12:20:49.000Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          2.6k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          11 分钟
+          18 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月6日 晚上
+                    本文最后更新于：2023年11月13日 晚上
                   
                 
               </p>
@@ -330,7 +330,28 @@
             
               <div class="markdown-body">
                 
-                <h2 id="群的相关概念">群的相关概念</h2>
+                <h1 id="公钥密码学">公钥密码学</h1>
+<h2 id="公钥密码体制的基本原理">公钥密码体制的基本原理</h2>
+<p>用抽象的观点来看，公钥密码体制就是一种陷门单向函数</p>
+<ul>
+<li><p><strong>单向函数</strong>是满足下列条件的函数：</p>
+<p>它是定义域到值域的一个映射，同时还要满足下列条件：
+计算函数值是容易的，而从函数值计算原像是不可行的.</p></li>
+<li><p><strong>陷门单向函数</strong>是这样的单向函数，存在一个附加信息，当不知道该附加信息时，从函数值求原像是困难的，但当知道该附加信息时，从函数值求原像就变得容易了。即陷门单向函数在附加信息未知时是单向函数，而当附加信息已知时，就不再是单向函数了。通常把附加信息称为陷门信息。</p></li>
+</ul>
+<p>公钥密码体制就是基于这一原理而设计的，利用一个陷门单向函数，将它作为公开密钥，而将陷门信息作为秘密密钥.。其安全强度取决于它所依据的问题的计算复杂度</p>
+<h2 id="公钥密码体制的要求">公钥密码体制的要求</h2>
+<ul>
+<li>产生一对密钥在计算上是可行的</li>
+<li>已知公钥和明文，产生密文是容易的</li>
+<li>接收方利用私钥来解密密文在计算上是可行的</li>
+<li>对于攻击者，利用公钥来推断私钥在计算上是不可行的</li>
+<li>已知公钥和密文，在不知道私钥的情况下，恢复明文在计算上是不可行的</li>
+</ul>
+<h2 id="数论基础知识">数论基础知识</h2>
+<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/basic/">数论基础 - OI
+Wiki (oi-wiki.org)</a></p>
+<h3 id="群的相关概念">群的相关概念</h3>
 <p>群的阶：<code>ord(G)</code>=群中元素的个数</p>
 <p>群元素的阶：ord（g）</p>
 <ul>
@@ -361,7 +382,10 @@ g^{ord(g)} &amp;= 1\\
 <li>然后计算N的欧拉函数 <span
 class="math inline">\(φ(N)=(p-1)(q-1)\)</span></li>
 <li>然后你自己选个e， <span
-class="math inline">\(1&lt;e&lt;φ(N)\)</span>，且与φ(N)互质，</li>
+class="math inline">\(1&lt;e&lt;φ(N)\)</span>，且与φ(N)互质，
+<ul>
+<li>为什么e与φ(N)互素：要存在d，互素才存在这样一个d</li>
+</ul></li>
 <li>由e和φ(N)互质，<span
 class="math inline">\((e,φ(N))=1\)</span>，再由辗转相除法，则一定有<span
 class="math inline">\(ed - φ(N)k = 1\)</span></li>
@@ -397,7 +421,7 @@ Dec（sk，c）： m = c^d\ mod\ N
 <p>对于</p>
 <p><span class="math display">\[
 \begin{align}
-&amp;m∈Z_N\\
+&amp;m∈Z_N（放大m的范围了）\\
 &amp;m \notin Z_N^*\\
 &amp;∵ N =p*q\\
 &amp;∴gcd(m,N)=p或q\\
@@ -422,8 +446,65 @@ Dec（sk，c）： m = c^d\ mod\ N
 \]</span></p>
 <p>RSA问题，给定N，e，<span
 class="math inline">\(y∈Z_N^*\)</span>，求x，满足<span
-class="math inline">\(x^e=ymodN\)</span></p>
-<p>一个密文对应一个明文，所以jz不把RSA叫做一个加密方案，而是一个单向陷门置换</p>
+class="math inline">\(x^e=y\ mod\ N\)</span></p>
+<blockquote>
+<p>一个密文对应一个明文，所以jzlaoshi不把RSA叫做一个加密方案，而是一个单向陷门置换</p>
+</blockquote>
+<h3 id="rsa公钥密码体制的安全性">RSA公钥密码体制的安全性</h3>
+<p>RSA是建立在大整数分解的困难性之上的</p>
+<p>大整数分解攻击：一旦分解出p和q，就可以得到n的欧拉数φ(N)，再利用欧几里德扩展算法求出RSA
+的私钥d.</p>
+<p>因此，应当采用足够大的大整数n(至少应取1024位，最好为2048位)。此外，对素数p和q的选取应满足以下要求：</p>
+<ul>
+<li>p和q的长度应该相差不大</li>
+<li>(p - 1)和(q - 1)都应该包含大的素因子</li>
+<li>gcd(p - 1,q -1)应该尽可能小</li>
+<li>d &lt; n，且<span
+class="math inline">\(d&lt;n^{0.294}\)</span>，特别是当<span
+class="math inline">\(d&lt;n^{1/4}\)</span>时，已经有办法攻破RSA</li>
+</ul>
+<h2 id="elgamal公钥密码体制">ElGamal公钥密码体制</h2>
+<p>离散对数问题： <span class="math display">\[
+G，p，g，，，h∈G，求x∈Z_p，使得h = g^x
+\]</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311131908490.png" srcset="/img/loading.gif" lazyload
+alt="image-20231113190856360" />
+<figcaption aria-hidden="true">image-20231113190856360</figcaption>
+</figure>
+<p><span class="math display">\[
+\begin{align}
+&amp;Z_p^*，群的阶为p-1，p-1=rq\\
+&amp;有一个q阶子群G_q\\
+&amp;在Z_p^*中取一个h，h^r∈G_q\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+\end{align}
+\]</span></p>
+<p>下面是一个隐藏的公式： <span class="math display">\[
+\begin{align}
+&amp;1\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+\end{align}
+\]</span></p>
+<blockquote>
+<p>参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599518034">一文搞懂Diffie-Hellman密钥交换协议
+- 知乎 (zhihu.com)</a></p>
+</blockquote>
 
                 
               </div>
@@ -492,6 +573,12 @@ class="math inline">\(x^e=ymodN\)</span></p>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E6%AD%BB%E9%94%81/" title="操作系统-死锁">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统-死锁</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

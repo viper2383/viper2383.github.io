@@ -18,20 +18,20 @@
   
     <meta name="description" content="C语言的学习😭😭">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言学习">
+<meta property="og:title" content="C语言学习记录">
 <meta property="og:url" content="http://example.com/2023/09/17/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Wiper3">
 <meta property="og:description" content="C语言的学习😭😭">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-17T13:29:49.000Z">
-<meta property="article:modified_time" content="2023-11-03T00:44:09.765Z">
+<meta property="article:modified_time" content="2023-11-10T03:24:49.000Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="C">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>C语言学习 - Wiper3</title>
+  <title>C语言学习记录 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="C语言学习"></span>
+            <span id="subtitle" data-typed-text="C语言学习记录"></span>
           
         </div>
 
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          372 字
+          6.1k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          3 分钟
+          41 分钟
         
       </span>
     
@@ -317,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">C语言学习</h1>
+            <h1 id="seo-header">C语言学习记录</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月3日 早上
+                    本文最后更新于：2023年11月10日 上午
                   
                 
               </p>
@@ -330,7 +330,199 @@
             
               <div class="markdown-body">
                 
-                <p>如果在<code>int</code>型变量的声明中为变量赋应该实数值的初始值（如3.14或5.7等）会怎么样？</p>
+                <h2 id="c-数据类型">C 数据类型</h2>
+<p><em>C 中的类型可分为以下几种：</em></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311100932882.png" srcset="/img/loading.gif" lazyload
+alt="image-20231110092838613" />
+<figcaption aria-hidden="true">image-20231110092838613</figcaption>
+</figure>
+<h3 id="整数类型">整数类型</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311100937438.png" srcset="/img/loading.gif" lazyload
+alt="image-20231110093736344" />
+<figcaption aria-hidden="true">image-20231110093736344</figcaption>
+</figure>
+<blockquote>
+<p><em>注意，各种类型的存储大小与系统位数有关，但目前通用的以64位系统为主。</em></p>
+</blockquote>
+<h3 id="浮点类型">浮点类型</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311100938962.png" srcset="/img/loading.gif" lazyload
+alt="image-20231110093854912" />
+<figcaption aria-hidden="true">image-20231110093854912</figcaption>
+</figure>
+<h3 id="void类型">void类型</h3>
+<p>void 类型指定没有可用的值。它通常用于以下三种情况下：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311100939141.png" srcset="/img/loading.gif" lazyload
+alt="image-20231110093933055" />
+<figcaption aria-hidden="true">image-20231110093933055</figcaption>
+</figure>
+<h2 id="c-变量">C 变量</h2>
+<p>基本类型：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311100940065.png" srcset="/img/loading.gif" lazyload
+alt="image-20231110094029970" />
+<figcaption aria-hidden="true">image-20231110094029970</figcaption>
+</figure>
+<p>1.注意，赋值表达式有返回值，等于等号右边的值</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs llvm">int <span class="hljs-keyword">x</span><span class="hljs-punctuation">,</span> y<span class="hljs-comment">;</span><br><span class="hljs-keyword">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">;</span><br>y <span class="hljs-operator">=</span> (<span class="hljs-keyword">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span> * <span class="hljs-keyword">x</span>)<span class="hljs-comment">;</span><br>//变量 y 的值就是赋值表达式（ <span class="hljs-keyword">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span> * <span class="hljs-keyword">x</span> ）的返回值 <span class="hljs-number">2</span> 。<br></code></pre></td></tr></table></figure>
+<p>2.头文件 stdbool.h 定义了另一个类型别名 bool ，并且定义了 true 代表 1
+、 false 代表 0 。只要加载 这个头文件，就可以使用这几个关键字。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdbool.h&gt;</span></span><br><br><span class="hljs-type">bool</span> flag = <span class="hljs-literal">false</span>;<br><br><span class="hljs-comment">//加载头文件 stdbool.h 以后，就可以使用 bool 定义布尔值类型，以及 false 和 true 表示真伪。</span><br></code></pre></td></tr></table></figure>
+<h2 id="c-数组">C 数组</h2>
+<h3 id="数组的地址">数组的地址</h3>
+<p>数组是一连串连续储存的同类型值，只要获得起始地址（首个成员的内存地址），就能推算出其他成员
+的地址。请看下面的例子。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>&#125;;<br><span class="hljs-type">int</span>* p;<br>p = &amp;a[<span class="hljs-number">0</span>];<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *p);   <span class="hljs-comment">//11</span><br><br><span class="hljs-comment">//&amp;a[0] 就是数组 a 的首个成员 11 的内存地址，也是整个数组的起始地址。反过来，从这个地址（ *p ），可以获得首个成员的值 11</span><br><br></code></pre></td></tr></table></figure>
+<p>由于数组的起始地址是常用操作， <code>&amp;array[0]</code>
+的写法有点麻烦，C 语言提供了便利写法，数组名等同于
+起始地址，也就是说，数组名就是指向第一个成员（ <code>array[0]</code>
+）的指针。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>&#125;;<br><span class="hljs-type">int</span>* p = &amp;a[<span class="hljs-number">0</span>];<br><span class="hljs-comment">// 等同于</span><br><span class="hljs-type">int</span>* p = a;<br></code></pre></td></tr></table></figure>
+<p>上面示例中， <code>&amp;a[0]</code> 和数组名 <code>a</code>
+是等价的。</p>
+<p>这样的话，如果把数组名传入一个函数，就等同于传入一个指针变量。在函数内部，就可以通过这个指
+针变量获得整个数组。</p>
+<p>函数接受数组作为参数，函数原型可以写成下面这样。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 写法一</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> len)</span>;<br><span class="hljs-comment">// 写法二</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span>* arr, <span class="hljs-type">int</span> len)</span>;<br><br></code></pre></td></tr></table></figure>
+<p>上面示例中，传入一个整数数组，与传入一个整数指针是同一回事，数组符号
+<code>[]</code> 与指针符号 <code>*</code> 是可以互
+换的。下一个例子是通过数组指针对成员求和</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span>* arr, <span class="hljs-type">int</span> len)</span> &#123;<br>  <span class="hljs-type">int</span> i;<br>  <span class="hljs-type">int</span> total = <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 假定数组有 10 个成员</span><br>  <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>    total += arr[i];<br> &#125;<br>  <span class="hljs-keyword">return</span> total;<br>&#125;<br><span class="hljs-comment">//示例中，传入函数的是一个指针 arr （也是数组名）和数组长度，通过指针获取数组的每个成员，从而求和。</span><br></code></pre></td></tr></table></figure>
+<p><code>*</code> 和 <code>&amp;</code> 运算符也可以用于多维数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[<span class="hljs-number">4</span>][<span class="hljs-number">2</span>];<br><span class="hljs-comment">// 取出 a[0][0] 的值</span><br>*(a[<span class="hljs-number">0</span>]);<br><span class="hljs-comment">// 等同于</span><br>**a<br></code></pre></td></tr></table></figure>
+<p>上面示例中，由于 <code>a[0]</code>
+本身是一个指针，指向第二维数组的第一个成员 <code>a[0][0]</code> 。所以，
+<code>*(a[0])</code> 取 出的是 <code>a[0][0]</code> 的值。至于
+<code>**a</code> ，就是对 <code>a</code> 进行两次 <code>*</code>
+运算，第一次取出的是 <code>a[0]</code> ，第二次取出的是
+<code>a[0][0]</code> 。同理，二维数组的 <code>&amp;a[0][0]</code> 等同于
+<code>*a</code> 。</p>
+<blockquote>
+<p>不能将一个数组名赋值给另外一个数组名。</p>
+</blockquote>
+<h3 id="数组指针的加减法">数组指针的加减法</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>&#125;;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++) &#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *(a + i));<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面示例中，通过指针的移动遍历数组， <code>a + i</code>
+的每轮循环每次都会指向下一个成员的地址， <code>*(a +  i)</code>
+取出该地址的值，等同于 <code>a[i]</code> 。对于数组的第一个成员，
+<code>*(a + 0)</code> （即 <code>*a</code> ）等同于 <code>a[0]</code>
+。</p>
+<p>由于数组名与指针是等价的，所以下面的等式总是成立。</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[b]</span> == *(<span class="hljs-selector-tag">a</span> + b)<br></code></pre></td></tr></table></figure>
+<p>上面代码给出了数组成员的两种访问方式，一种是使用方括号
+<code>a[b]</code> ，另一种是使用指针 <code>*(a + b)</code> 。</p>
+<p>如果指针变量 <code>p</code> 指向数组的一个成员，那么 <code>p++</code>
+就相当于指向下一个成员，这种方法常用来遍历数组。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[] = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>, <span class="hljs-number">999</span>&#125;;<br><span class="hljs-type">int</span>* p = a;<br><span class="hljs-keyword">while</span> (*p != <span class="hljs-number">999</span>) &#123;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *p);<br>  p++;<br>&#125;<br><span class="hljs-comment">//示例中，通过 p++ 让变量 p 指向下一个成员。</span><br><span class="hljs-comment">//注意，数组名指向的地址是不能变的，所以例中，不能直接对 a 进行自增，即 a++ 的写法是错的，必须将 a 的地址赋值给指针变量 p ，然后对 p 进行自增</span><br></code></pre></td></tr></table></figure>
+<p>同一个数组的两个成员的指针相减时，返回它们之间的距离</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>* p = &amp;a[<span class="hljs-number">5</span>];<br><span class="hljs-type">int</span>* q = &amp;a[<span class="hljs-number">1</span>];<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, p - q); <span class="hljs-comment">// 4</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, q - p); <span class="hljs-comment">// -4</span><br></code></pre></td></tr></table></figure>
+<h2 id="c-流程控制">C 流程控制</h2>
+<p>break 命令只能跳出循环体和 switch 结构，不能跳出 if 结构。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">1</span>) &#123;<br>  <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">2</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 无效</span><br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello\n&quot;</span>);<br>&#125;<br><span class="hljs-comment">//示例中， break 语句是无效的，因为它不能跳出外层的 if 结构。</span><br></code></pre></td></tr></table></figure>
+<h2 id="函数">函数</h2>
+<h3 id="main">main()</h3>
+<p>C 语言规定， <code>main()</code>
+是程序的入口函数，即所有的程序一定要包含一个 <code>main()</code>
+函数。程序总是从这个
+函数开始执行，如果没有该函数，程序就无法启动。其他函数都是通过它引入程序的。</p>
+<h3 id="函数指针">函数指针</h3>
+<p>对于任意函数，都有五种调用函数的写法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 写法一</span><br>print(<span class="hljs-number">10</span>)<br><span class="hljs-comment">// 写法二</span><br>(*print)(<span class="hljs-number">10</span>)<br><span class="hljs-comment">// 写法三</span><br>(&amp;print)(<span class="hljs-number">10</span>)<br><span class="hljs-comment">// 写法四</span><br>(*print_ptr)(<span class="hljs-number">10</span>)<br><span class="hljs-comment">// 写法五</span><br>print_ptr(<span class="hljs-number">10</span>)<br><br><span class="hljs-comment">//为了简洁易读，一般情况下，函数名前面都不加 * 和 &amp; 。</span><br></code></pre></td></tr></table></figure>
+<h2 id="struct-结构">struct 结构</h2>
+<p>C
+语言内置的数据类型，除了最基本的几种原始类型，只有数组属于复合类型，可以同时包含多个值，
+但是只能包含相同类型的数据，实际使用中并不够用。</p>
+<p>实际使用中，主要有下面两种情况，需要更灵活强大的复合类型。</p>
+<ul>
+<li>复杂的物体需要使用多个变量描述，这些变量都是相关的，最好有某种机制将它们联系起来。</li>
+<li>某些函数需要传入多个参数，如果一个个按照顺序传入，非常麻烦，最好能组合成一个复合结构传
+入。</li>
+</ul>
+<p>为了解决这些问题，C 语言提供了 <code>struct</code>
+关键字，允许自定义复合数据类型，将不同类型的值组合在一
+起。这样不仅为编程提供方便，也有利于增强代码的可读性。C
+语言没有其他语言的对象（object）和
+类（class）的概念，<code>struct</code>
+结构很大程度上提供了对象和类的功能。</p>
+<p>下面是 struct 自定义数据类型的一个例子。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fraction</span> &#123;</span><br>  <span class="hljs-type">int</span> numerator;<br>  <span class="hljs-type">int</span> denominator;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>上面示例定义了一个分数的数据类型 struct fraction ，包含两个属性
+numerator 和 denominator 。</p>
+<p>注意，作为一个自定义的数据类型，它的类型名要包括 struct
+关键字，比如上例是 struct fraction ，单独的 fraction
+没有任何意义，另外， struct 语句结尾的分号不能省略</p>
+<p>定义了新的数据类型以后，就可以声明该类型的变量，这与声明其他类型变量的写法是一样的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">fraction</span> <span class="hljs-title">f1</span>;</span><br>f1.numerator = <span class="hljs-number">22</span>;<br>f1.denominator = <span class="hljs-number">7</span>;<br><br><span class="hljs-comment">//这里先声明了一个 struct fraction 类型的变量 f1 ，这时编译器就会为 f1 分配内存，接着就可以为 f1 的不同属性赋值。struct 结构的属性通过点（ . ）来表示，比如 numerator 属性要写成 f1.numerator 。</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//除了逐一对属性赋值，也可以使用大括号，一次性对 struct 结构的所有属性赋值</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">car</span> &#123;</span><br>  <span class="hljs-type">char</span>* name;<br>  <span class="hljs-type">float</span> price;<br>  <span class="hljs-type">int</span> speed;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">car</span> <span class="hljs-title">saturn</span> =</span> &#123;<span class="hljs-string">&quot;Saturn SL/2&quot;</span>, <span class="hljs-number">16000.99</span>, <span class="hljs-number">175</span>&#125;<br><span class="hljs-comment">//大括号里面的值的顺序，必须与 struct 类型声明时属性的顺序一致。否则，必须为每个值指定属性名。</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">car</span> <span class="hljs-title">saturn</span> =</span> &#123;.speed=<span class="hljs-number">172</span>, .name=<span class="hljs-string">&quot;Saturn SL/2&quot;</span>&#125;;<br>saturn.speed = <span class="hljs-number">168</span>;<br></code></pre></td></tr></table></figure>
+<p><code>struct</code>
+的数据类型声明语句与变量的声明语句，可以合并为一个语句。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cell_phone</span> &#123;</span><br>  <span class="hljs-type">int</span> cell_no;<br>  <span class="hljs-type">float</span> minutes_of_charge;<br>&#125; phone;<br>phone p = &#123;<span class="hljs-number">5551234</span>, <span class="hljs-number">5</span>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>指针变量也可以指向 struct 结构。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">book</span> &#123;</span><br>  <span class="hljs-type">char</span> title[<span class="hljs-number">500</span>];<br>  <span class="hljs-type">char</span> author[<span class="hljs-number">100</span>];<br>  <span class="hljs-type">float</span> value;<br>&#125;* b1;<br><span class="hljs-comment">// 或者写成两个语句</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">book</span> &#123;</span><br>  <span class="hljs-type">char</span> title[<span class="hljs-number">500</span>];<br>  <span class="hljs-type">char</span> author[<span class="hljs-number">100</span>];<br>  <span class="hljs-type">float</span> value;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">book</span>* <span class="hljs-title">b1</span>;</span><br><span class="hljs-comment">//变量 b1 是一个指针，指向的数据是 struct book 类型的实例。</span><br></code></pre></td></tr></table></figure>
+<h3 id="struct-指针">struct 指针</h3>
+<p>如果将 struct 变量传入函数，函数内部得到的是一个原始值的副本</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">turtle</span> &#123;</span><br>  <span class="hljs-type">char</span>* name;<br>  <span class="hljs-type">char</span>* species;<br>  <span class="hljs-type">int</span> age;<br>&#125;;<br><span class="hljs-type">void</span> <span class="hljs-title function_">happy</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> turtle t)</span> &#123;<br>  t.age = t.age + <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">turtle</span> <span class="hljs-title">myTurtle</span> =</span> &#123;<span class="hljs-string">&quot;MyTurtle&quot;</span>, <span class="hljs-string">&quot;sea turtle&quot;</span>, <span class="hljs-number">99</span>&#125;;<br>  happy(myTurtle);<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Age is %i\n&quot;</span>, myTurtle.age); <span class="hljs-comment">// 输出 99</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面示例中，函数 <code>happy()</code> 传入的是一个
+<code>struct</code> 变量 <code>myTurtle</code>
+，函数内部有一个自增操作。但是，执行完 <code>happy()</code>
+以后，函数外部的 <code>age</code>
+属性值根本没变。原因就是函数内部得到的是 <code>struct</code>
+变量的副本， 改变副本影响不到函数外部的原始数据</p>
+<p>通常，希望传入函数的是同一份数据，函数内部修改数据以后，会反映在函数外部。而且，传入的是同一份数据，也有利于提高程序性能。这时就需要将
+<code>struct</code> 变量的指针传入函数，通过指针来修改
+<code>struct</code> 属性，就可以影响到函数外部。</p>
+<p><code>struct</code> 指针传入函数的写法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">happy</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> turtle* t)</span> &#123;<br>&#125;<br>happy(&amp;myTurtle);<br><span class="hljs-comment">//这里 t 是 struct 结构的指针，调用函数时传入的是指针</span><br><span class="hljs-comment">//struct 类型跟数组不一样，类型标识符本身并不是指针，所以传入时，指针必须写成 &amp;myTurtle 。</span><br></code></pre></td></tr></table></figure>
+<p>函数内部也必须使用 <code>(*t).age</code> 的写法，从指针拿到
+<code>struct</code> 结构本身：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">happy</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> turtle* t)</span> &#123;<br> (*t).age = (*t).age + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面示例中， <code>(*t).age</code> 不能写成 <code>*t.age</code>
+，因为点运算符 <code>.</code> 的优先级高于 <code>*</code> 。
+<code>*t.age</code> 这种写法会将 <code>t.age</code>
+看成一个指针，然后取它对应的值，会出现无法预料的结果。</p>
+<p>现在，重新编译执行上面的整个示例， <code>happy()</code> 内部对
+<code>struct</code> 结构的操作，就会反映到函数外部。</p>
+<p><code>(*t).age</code> 这样的写法很麻烦。C
+语言就引入了一个<strong>新的箭头运算符</strong><code>-&gt;</code>，可以从
+<code>struct</code> 指针上直接 获取属性，大大增强了代码的可读性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">happy</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> turtle* t)</span> &#123;<br>  t-&gt;age = t-&gt;age + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>总结一下，对于 <code>struct</code> 变量名，使用点运算符<code>.</code>
+获取属性；对于 <code>struct</code> 变量指针，使用箭头运算符
+<code>-&gt;</code> 获取属性。</p>
+<p>以变量 <code>myStruct</code> 为例，假设 <code>ptr</code>
+是它的指针，那么下面三种写法是同一回事。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// ptr == &amp;myStruct</span><br>myStruct.prop == (*ptr).prop == ptr-&gt;prop<br></code></pre></td></tr></table></figure>
+<h2 id="typedef-和-define-的区别">typedef 和 #define 的区别</h2>
+<p>typedef 在表现上有时候类似于
+#define，但它和宏替换之间存在一个关键性的区别。正确思考这个问题的方法就是把
+typedef 看成一种彻底的“封装”类型，声明之后不能再往里面增加别的东西。</p>
+<ol type="1">
+<li>可以使用其他类型说明符对宏类型名进行扩展，但对 typedef
+所定义的类型名却不能这样做。如下所示：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> INTERGE int</span><br><span class="hljs-type">unsigned</span> INTERGE n;  <span class="hljs-comment">//没问题</span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> INTERGE;<br><span class="hljs-type">unsigned</span> INTERGE n;  <span class="hljs-comment">//错误，不能在 INTERGE 前面添加 unsigned</span><br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>在连续定义几个变量的时候，typedef
+能够保证定义的所有变量均为同一类型，而 #define 则无法保证。例如：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> PTR_INT int *</span><br>PTR_INT p1, p2;<br></code></pre></td></tr></table></figure>
+<p>经过宏替换以后，第二行变为：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">int</span> *<span class="hljs-built_in">p1</span>, <span class="hljs-built_in">p2</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<p>这使得 p1、p2 成为不同的类型：p1 是指向 int 类型的指针，p2 是 int
+类型。</p>
+<p>相反，在下面的代码中：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs smali">typedef<span class="hljs-built_in"> int </span>* PTR_INT<br>PTR_INT p1, p2;<br></code></pre></td></tr></table></figure>
+<p>p1、p2 类型相同，它们都是指向 int 类型的指针。</p>
+<h2 id="其他">其他</h2>
+<p>如果在<code>int</code>型变量的声明中为变量赋应该实数值的初始值（如3.14或5.7等）会怎么样？</p>
 <ul>
 <li>会直接舍去小数部分，只保留整数部分</li>
 </ul>
@@ -380,27 +572,6 @@ aria-hidden="true">c00e0930273a652d2e9d0d0b218eb41</figcaption>
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
@@ -417,7 +588,7 @@ aria-hidden="true">c00e0930273a652d2e9d0d0b218eb41</figcaption>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>C语言学习</div>
+      <div>C语言学习记录</div>
       <div>http://example.com/2023/09/17/C语言学习/</div>
     </div>
     <div class="license-meta">
@@ -462,7 +633,7 @@ aria-hidden="true">c00e0930273a652d2e9d0d0b218eb41</figcaption>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/18/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E6%8E%92%E5%BA%8F/" title="算法设计与分析-排序">
+                      <a href="/2023/09/18/%E7%AE%97%E6%B3%95-%E6%8E%92%E5%BA%8F/" title="算法设计与分析-排序">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">算法设计与分析-排序</span>
                         <span class="visible-mobile">上一篇</span>

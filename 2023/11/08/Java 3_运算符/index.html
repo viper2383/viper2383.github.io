@@ -16,22 +16,22 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法课中的一些排序（待更新">
+    <meta name="description" content="Java运算符相关知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法设计与分析-排序">
-<meta property="og:url" content="http://example.com/2023/09/18/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1-%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="&lt;Java&gt; 3_运算符">
+<meta property="og:url" content="http://example.com/2023/11/08/Java%203_%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="算法课中的一些排序（待更新">
+<meta property="og:description" content="Java运算符相关知识">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-18T03:57:30.000Z">
-<meta property="article:modified_time" content="2023-11-03T00:45:42.559Z">
+<meta property="article:published_time" content="2023-11-08T00:20:49.000Z">
+<meta property="article:modified_time" content="2023-11-08T03:20:49.000Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>算法设计与分析-排序 - Wiper3</title>
+  <title>&lt;Java&gt; 3_运算符 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法设计与分析-排序"></span>
+            <span id="subtitle" data-typed-text="&lt;Java&gt; 3_运算符"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-18 11:57" pubdate>
-          2023年9月18日 中午
+        <time datetime="2023-11-08 08:20" pubdate>
+          2023年11月8日 早上
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          43 字
+          2.7k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          1 分钟
+          19 分钟
         
       </span>
     
@@ -317,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">算法设计与分析-排序</h1>
+            <h1 id="seo-header">&lt;Java&gt; 3_运算符</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月3日 早上
+                    本文最后更新于：2023年11月8日 上午
                   
                 
               </p>
@@ -330,11 +330,131 @@
             
               <div class="markdown-body">
                 
-                <p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43586713/article/details/119820797?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=快速排序&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-9-119820797.142%5Ev94%5EchatsearchT3_1&amp;spm=1018.2226.3001.4187">快速排序(详细讲解)-CSDN博客</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://blog.csdn.net/justidle/article/details/104203958?ops_request_misc=%7B%22request%5Fid%22%3A%22169518266216800185894255%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=169518266216800185894255&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-104203958-null-null.142%5Ev94%5EchatsearchT3_1&amp;utm_term=归并排序&amp;spm=1018.2226.3001.4187">排序——归并排序（Merge
-sort)-CSDN博客</a></p>
+                <blockquote>
+<p>运算符：一种特殊的符号，用于表示数据的运算、赋值和比较等。</p>
+</blockquote>
+<h2 id="算数运算符">3.1 算数运算符</h2>
+<blockquote>
+<p>算术运算符是对数值类型的变量进行运算的运算符，在 Java
+程序中使用得非常多。其运算结果是一个数值量。</p>
+</blockquote>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311081107099.png" srcset="/img/loading.gif" lazyload
+alt="image-20231108110732994" />
+<figcaption aria-hidden="true">image-20231108110732994</figcaption>
+</figure>
+<ul>
+<li><p><code>+</code> ; <code>-</code> ; <code>*</code> ; <code>/</code>
+：加（正）、减（负）、乘、除</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArithmeticOperator</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		System.out.println(<span class="hljs-number">10</span> / <span class="hljs-number">4</span>); <span class="hljs-comment">//从数学来看是 2.5, java 中 2</span><br>		System.out.println(<span class="hljs-number">10.0</span> / <span class="hljs-number">4</span>); <span class="hljs-comment">//java 是 2.5</span><br>		<span class="hljs-type">double</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span> / <span class="hljs-number">4</span>;    <span class="hljs-comment">//java 中 10 / 4 = 2, 2=&gt;2.0</span><br>		System.out.println(d);<span class="hljs-comment">// 是 2.0</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p><code>%</code>
+：取模（求余数），结果和被取模数同号。本质是一个公式:<code>a % b == a - a / b * b;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// -10 % 3 =&gt; -10 - (-10) / 3 * 3 = -10 + 9 = -1</span><br><span class="hljs-comment">// 10 % -3 = 10 - 10 / (-3) * (-3) = 10 - 9 = 1</span><br><br>System.out.println(<span class="hljs-number">10</span> % <span class="hljs-number">3</span>); <span class="hljs-comment">//1</span><br>System.out.println(-<span class="hljs-number">10</span> % <span class="hljs-number">3</span>); <span class="hljs-comment">// -1</span><br>System.out.println(<span class="hljs-number">10</span> % -<span class="hljs-number">3</span>); <span class="hljs-comment">//1</span><br>System.out.println(-<span class="hljs-number">10</span> % -<span class="hljs-number">3</span>);<span class="hljs-comment">//-1</span><br></code></pre></td></tr></table></figure></li>
+<li><p><code>++</code> ：自增。</p>
+<ul>
+<li>作为独立的语句使用,<code>++i</code>
+和<code>i++</code>都完全等价于<code>i = i + 1</code></li>
+<li>作为表达式使用:<code>++i</code> 先自增后赋值；<code>i++</code>
+先赋值后自增</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//++的使用</span><br><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>i++;<span class="hljs-comment">//自增 等价于 i = i + 1; =&gt; i = 11</span><br>++i;<span class="hljs-comment">//自增 等价于 i = i + 1; =&gt; i = 12</span><br>System.out.println(<span class="hljs-string">&quot;i=&quot;</span> + i);<span class="hljs-comment">//12</span><br><br><br><span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">8</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> ++j; <span class="hljs-comment">//等价 j=j+1;k=j;</span><br>System.out.println(<span class="hljs-string">&quot;k=&quot;</span> + k + <span class="hljs-string">&quot;j=&quot;</span> + j);<span class="hljs-comment">//9  9</span><br><br><span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">8</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> j++; <span class="hljs-comment">// 等价 k=j;j=j+1;</span><br>System.out.println(<span class="hljs-string">&quot;k=&quot;</span> + k + <span class="hljs-string">&quot;j=&quot;</span> + j);<span class="hljs-comment">//8 9</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>练习</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<span class="hljs-comment">//i-&gt;1</span><br>i = i++; <span class="hljs-comment">//规则使用临时变量: (1) temp=i;(2) i=i+1;(3)i=temp;</span><br>System.out.println(i); <span class="hljs-comment">// 1</span><br><br><span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;<br>i=++i; <span class="hljs-comment">//规则使用临时变量: (1) i=i+1;(2) temp=i;(3)i=temp;</span><br>System.out.println(i); <span class="hljs-comment">//2</span><br><br><span class="hljs-type">int</span> <span class="hljs-variable">i1</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">i2</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> i1++;<br>System.out.print(<span class="hljs-string">&quot;i=&quot;</span>+i); <span class="hljs-comment">//10</span><br>i = --i2;<br>System.out.print(<span class="hljs-string">&quot;i=&quot;</span>+i); <span class="hljs-comment">//19</span><br>System.out.println(<span class="hljs-string">&quot;i2=&quot;</span>+i2); <span class="hljs-comment">//19</span><br></code></pre></td></tr></table></figure>
+<h2 id="关系运算符比较运算符">3.2 关系运算符（比较运算符）</h2>
+<blockquote>
+<p>关系运算符结果都为 <code>boolean</code> 型，要么是 <code>ture</code>
+要么是 <code>false</code>。其关系表达式经常用在 <code>if</code>
+结构的条件中或循环结构的条件中。</p>
+</blockquote>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311081136572.png" srcset="/img/loading.gif" lazyload
+alt="image-20231108113644487" />
+<figcaption aria-hidden="true">image-20231108113644487</figcaption>
+</figure>
+<h3 id="使用细节">3.2.1 使用细节</h3>
+<ol type="1">
+<li>关系运算符结果都是 <code>boolean</code> 型，要么是 <code>ture</code>
+，要么是 <code>false</code></li>
+<li>关系运算符的表达式，称为<em>关系表达式</em></li>
+<li>比较运算符 <code>==</code> 不要误写为 <code>=</code></li>
+</ol>
+<h2 id="逻辑运算符">3.3 逻辑运算符</h2>
+<blockquote>
+<p>用于连接多个条件（多个关系表达式），最终的结果也是一个
+<code>boolean</code> 值。</p>
+</blockquote>
+<ul>
+<li><p><code>&amp;&amp;</code> ：短路与。<code>a</code> <code>b</code>
+同时为 <code>ture</code>，则结果为 <code>ture</code>，否则为
+<code>false</code>。</p></li>
+<li><p><code>&amp;</code> ：逻辑与。<code>a</code> <code>b</code> 同时为
+<code>ture</code>，则结果为 <code>ture</code>，否则为
+<code>false</code>。</p>
+<p><code>&amp;&amp;</code> 与 <code>&amp;</code> 的区别，在于
+<code>a &amp;&amp; b</code> 的场合，<code>a = false</code> 时，则
+<code>b</code> 不判断。而 <code>&amp;</code> 会完成判断。开发中多用
+<code>&amp;&amp;</code> ，因为其效率更高。</p></li>
+<li><p><code>||</code> ：短路或。<code>a</code> <code>b</code> 任一为
+<code>ture</code>，则结果为 <code>ture</code>，否则为
+<code>false</code>。</p></li>
+<li><p><code>|</code> ：逻辑或。<code>a</code> <code>b</code> 任一为
+<code>ture</code>，则结果为 <code>ture</code>，否则为
+<code>false</code>。</p>
+<blockquote>
+<p>两者的区别和<code>&amp;&amp;</code> 与 <code>&amp;</code>
+相似，若第一个为 <code>ture</code> ，则 <code>||</code>
+不会判断第二个。</p>
+</blockquote></li>
+<li><p><code>!</code> ：取反。<code>a</code> 为
+<code>ture</code>，则结果为 <code>false</code>。反之为
+<code>ture</code>。</p></li>
+<li><p><code>^</code>：逻辑异或。<code>a</code> <code>b</code>
+不同，结果为 <code>ture</code>，否则为 <code>false</code>。</p></li>
+</ul>
+<h2 id="赋值运算符">3.4 赋值运算符</h2>
+<blockquote>
+<p>将某个运算后的值，赋给指定变量</p>
+</blockquote>
+<ul>
+<li><p>基本赋值运算符：<code>=</code></p></li>
+<li><p>复合赋值运算符：<code>+=</code> ; <code>-=</code> ;
+<code>*=</code> ; <code>/=</code> ; <code>%=</code> 等</p>
+<blockquote>
+<p><code>a += b</code> 等价于 <code>a = a + b</code>。其余同理。</p>
+</blockquote></li>
+</ul>
+<h3 id="使用细节-1">3.4.1 使用细节</h3>
+<ol type="1">
+<li><p>运算顺序从右往左。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> a + b + c;	<span class="hljs-comment">// 先运行(a + b + c)，再结算int num =</span><br></code></pre></td></tr></table></figure></li>
+<li><p>运算符左边只能是变量，右边可以是变量、表达式、常量值。</p></li>
+<li><p>复合赋值运算符会进行类型转换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">byte</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; b += <span class="hljs-number">3</span>;		<span class="hljs-comment">// 此时 b += 3 等价于 b = (byte)(b + 3)</span><br>b++;					<span class="hljs-comment">// 同理</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三元运算符">3.5 三元运算符</h2>
+<blockquote>
+<p>基本语法：<code>条件表达式 ? 表达式1 : 表达式2;</code></p>
+<p>运算规则：如果条件表达式为 <code>ture</code>
+，运算的结果是表达式1；反之为表达式2。</p>
+<p>口诀------一眼顶真</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">99</span>;<br><span class="hljs-comment">// 解读</span><br><span class="hljs-comment">// 1. a &gt; b 为 false</span><br><span class="hljs-comment">// 2. 返回 b--, 先返回 b 的值,然后再 b-1</span><br><span class="hljs-comment">// 3. 返回的结果是 99</span><br><span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> a &gt; b ? a++ : b--;<br>System.out.println(<span class="hljs-string">&quot;result=&quot;</span> + result); <span class="hljs-comment">//99</span><br>System.out.println(<span class="hljs-string">&quot;a=&quot;</span> + a); <span class="hljs-comment">//10</span><br>System.out.println(<span class="hljs-string">&quot;b=&quot;</span> + b); <span class="hljs-comment">//98</span><br></code></pre></td></tr></table></figure>
+<h3 id="使用细节-2">3.5.1 使用细节</h3>
+<ol type="1">
+<li><p>表达式1 和 表达式2
+要为可以赋给接受变量的类型（或可以自动转换，或进行强制转换）</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> a = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">int</span> b = <span class="hljs-number">8</span>;<br><span class="hljs-built_in">int</span> c = a &gt; b ? (<span class="hljs-built_in">int</span>)<span class="hljs-number">1.1</span> : (<span class="hljs-built_in">int</span>)<span class="hljs-number">3.4</span>;<span class="hljs-comment">//可以的</span><br><span class="hljs-built_in">double</span> d = a &gt; b ? a : b + <span class="hljs-number">3</span>;<span class="hljs-comment">//可以的，满足 int -&gt; double</span><br></code></pre></td></tr></table></figure></li>
+<li><p>三元运算符可以转成 <code>if--else</code></p></li>
+<li><p>三元运算符是一个整体。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span> ? <span class="hljs-keyword">new</span> <span class="hljs-title class_">Integer</span>(<span class="hljs-number">1</span>) : <span class="hljs-keyword">new</span> <span class="hljs-title class_">Double</span>(<span class="hljs-number">2.2</span>);<br>System.out.print(obj)<br></code></pre></td></tr></table></figure>
+<p>上例中，系统将会输出 <code>1.0</code></p>
+<p>因为 三元运算符 是一个整体，所以根据 [2.8.1.1.1]
+发生了类型转换。</p></li>
+</ol>
+<h2 id="运算符优先级">3.6 运算符优先级</h2>
 
                 
               </div>
@@ -353,7 +473,7 @@ sort)-CSDN博客</a></p>
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="category-chain-item">算法分析与设计</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
   
 
@@ -368,7 +488,7 @@ sort)-CSDN博客</a></p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
       
     </div>
   
@@ -380,8 +500,8 @@ sort)-CSDN博客</a></p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法设计与分析-排序</div>
-      <div>http://example.com/2023/09/18/算法分析与设计-排序/</div>
+      <div>&lt;Java&gt; 3_运算符</div>
+      <div>http://example.com/2023/11/08/Java 3_运算符/</div>
     </div>
     <div class="license-meta">
       
@@ -393,7 +513,7 @@ sort)-CSDN博客</a></p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月18日</div>
+          <div>2023年11月8日</div>
         </div>
       
       
@@ -425,9 +545,9 @@ sort)-CSDN博客</a></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0/" title="数据结构学习">
+                      <a href="/2023/11/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E5%9B%BE/" title="数据结构 图">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据结构学习</span>
+                        <span class="hidden-mobile">数据结构 图</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -435,8 +555,8 @@ sort)-CSDN博客</a></p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/17/C%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/" title="C语言学习">
-                        <span class="hidden-mobile">C语言学习</span>
+                      <a href="/2023/11/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E6%AD%BB%E9%94%81/" title="操作系统-死锁">
+                        <span class="hidden-mobile">操作系统-死锁</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -524,6 +644,12 @@ sort)-CSDN博客</a></p>
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -775,6 +901,49 @@ sort)-CSDN博客</a></p>
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script defer src="/js/leancloud.js" ></script>
 

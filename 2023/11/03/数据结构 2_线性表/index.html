@@ -24,7 +24,7 @@
 <meta property="og:description" content="数据结构-线性表部分">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-03T00:20:49.000Z">
-<meta property="article:modified_time" content="2023-11-06T01:24:49.000Z">
+<meta property="article:modified_time" content="2023-11-14T01:24:49.000Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.5k 字
+          5.5k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          10 分钟
+          37 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月6日 上午
+                    本文最后更新于：2023年11月14日 上午
                   
                 
               </p>
@@ -344,11 +344,101 @@ n)只是个抽象的符号，其具体含义在不同情况下可以不同。</l
 </ol>
 <h2 id="线性表的类型定义">2.2 线性表的类型定义</h2>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c">ADT List &#123;<br>	数据对象：D=&#123;ai| ai ∈ElemSet, i=<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,…,n, n≥<span class="hljs-number">0</span>&#125;<br>	数据关系：R=&#123; &lt; ai<span class="hljs-number">-1</span> , ai&gt; | ai<span class="hljs-number">-1</span>, ai∈D, i=<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,…,n&#125; <br>	基本操作： <br>	InitList (&amp; L )      <br>    <span class="hljs-comment">//(Initialization) 形参或者定义时&amp;是引用，实参或者使用时&amp;是取地址！跟C语言还是C++没有关系！但是引用这个概念只存在于C++</span><br>	操作结果：构造一个空的线性表L。 <br>	DestroyList ( &amp;L )    <br>	初始条件：线性表L已存在。     <br>	操作结果：销毁线性表L。<br>	ClearList ( &amp;L )   <br>	初始条件：线性表L已存在。    <br>	操作结果：将L重置为空表。<br>	ListEmpty ( L )     <br>	初始条件：线性表L已存在。     <br>	操作结果：若L为空表，则返回TRUE, 否则返回FALSE。  <br>	Listlenght ( L )     <br>	初始条件：线性表L已存在。     <br>	操作结果：返回L中数据元素个数。  <br>	GetElem (L, i, &amp;e )     <br>	初始条件：线性表L已存在,<span class="hljs-number">1</span> ≤i≤ListLength(L)。     <br>	操作结果：用e返回L中第 i 个数据元素的值。<br>	LocateElem (L, e, compare() )   <br>	初始条件：线性表L已存在,compare()是数据元素判定函数。    <br>	操作结果：返回L中第<span class="hljs-number">1</span>个与e满足关系compare()的数据元素的位序，  若这样的数据元素不存在，则返回值为<span class="hljs-number">0</span>。 <br>	PriorElem (L, cur_e, &amp;pre_e )     <br>	初始条件：线性表L已存在。     <br>	操作结果：若cur_e 是L中的数据元素，且不是第一，则用pre_e返回它的前驱,否则操作失败,pre_e无定义。<br>	NextElem (L, cur_e, &amp;next_e )     <br>	初始条件：线性表L已存在。     <br>	操作结果：若cur_e 是L中的数据元素，且不是最后一个，则用next_e返回它的后继，否则操作失败，next_e无定义。<br>	ListInsert (&amp;L, i, e )     <br>	初始条件：线性表L已存在,<span class="hljs-number">1</span> ≤i≤ListLength(L)+<span class="hljs-number">1</span>。     <br>	操作结果：在L中第i个位置之前插入新的数据元素e，L的长度加<span class="hljs-number">1</span>。 <br>	ListDelete (&amp;L, i, &amp;e )     <br>	初始条件：线性表L已存在且非空,<span class="hljs-number">1</span> ≤i≤ListLength(L)。     <br>	操作结果：删除L的第i个数据元素，并用e返回其值，L的长度减<span class="hljs-number">1</span>。  <br>	ListTraverse (L, visit () )     <br>	初始条件：线性表L已存在。     <br>	操作结果：依次对L的每个数据元素调用函数visit( )。一旦visit( )失败，则操作失败。   <br>&#125;ADT List<br></code></pre></td></tr></table></figure>
+<h2 id="线性表的顺序表示和实现">2.3 线性表的顺序表示和实现</h2>
+<p>把线性表中的所有元素，按照其逻辑顺序依次存储到计算机中的从指定存储位置开始的一块连续的存储空间中</p>
+<ul>
+<li><p>是一种紧凑结构</p></li>
+<li><p><span
+class="math inline">\(Loc(a_{i+1})=loc(a_i)+sizeof(ElemType)\)</span></p></li>
+<li><p>是一种<strong>随机存储</strong>的结构</p></li>
+<li><p>通常用数组来描述顺序存储结构</p></li>
+<li><figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311070000696.png" srcset="/img/loading.gif" lazyload
+alt="image-20231107000041653" />
+<figcaption aria-hidden="true">image-20231107000041653</figcaption>
+</figure></li>
+<li><p>```c #define MAXSIZE 20 //储空间初始分配量 typedef int ElemType;
+//ElemType类型根据实际情况而定，这里假设为int typedef struct{ ElemType
+data[MAXSIZE]; //数组存储数据元素，最大值为MAXSIZE int length
+//线性表当前长度 }SqList;</p>
+<p>/<em> 这里，我们就发现描述顺序存储结构需要三个属性:
+存储空间的起始位置：数组data，它的存储位置就是存储空间的存储位置
+线性表的最大存储容量：数组长度MaxSize。 线性表的当前长度：length。
+</em>/ <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>  <br><br>- 计算地址只算一次与处理数据的规模无关数量级是O(<span class="hljs-number">1</span>)这种运算叫**随机存取**。<br><br><br><br>## <span class="hljs-number">2.4</span> 类c语言有关操作<br><br><br><br>### <span class="hljs-number">2.4</span><span class="hljs-number">.1</span> 元素类型说明<br><br>顺序表类型定义<br><br>```c<br>typedef struct&#123;<br>    ElemType data[];<br>    int length<br>&#125;SqList;<span class="hljs-comment">//顺序表类型</span><br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<p><code>ElemType</code>是根据实际问题，你需要什么类型的数组就定义成什么，一般是根据问题定义一个结构体或者是
+<code>typedef char ElemType</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//比如，data[]中是abcde，那就能这样</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span><br>    <span class="hljs-type">char</span> data[];<br>    <span class="hljs-type">int</span> length<br>&#125;SqList;<span class="hljs-comment">//顺序表类型</span><br><br><span class="hljs-comment">//或者：</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span> ElemType<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span><br>    ElemType data[];<br>    <span class="hljs-type">int</span> length<br>&#125;SqList;<span class="hljs-comment">//顺序表类型</span><br></code></pre></td></tr></table></figure>
+<p>如果表中元素类型不单一，可以定义一个复杂的结构类型（结构体的嵌套使用）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span><br>    <span class="hljs-type">float</span> p;<br>    <span class="hljs-type">int</span> e;<br>&#125;Polynomial;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span><br>	Polynomial *elem; <span class="hljs-comment">//首地址，elem保存地址，这行代码意思是定义了一个Polynomial型的指针变量</span><br>	<span class="hljs-type">int</span> length;<br>&#125;SqList;<br><br><br></code></pre></td></tr></table></figure>
+<h3 id="数组定义">2.4.2 数组定义</h3>
+<p>数组静态分配：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span> <br>    ElemType data[MaxSize]; <br>    <span class="hljs-type">int</span> length;<br>&#125;SqList;<span class="hljs-comment">//顺序表类型</span><br></code></pre></td></tr></table></figure>
+<p>数组动态分配：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//数组名其实就是首元素的地址，所以也可以直接定义一个指针，也可以表示一个数组，用来存放数组首地址。数组的大小用相应的函数来动态分配内存</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span><br>    ElemType *data;<span class="hljs-comment">//数组首地址</span><br>    <span class="hljs-type">int</span> length;<br>&#125;SqList;<span class="hljs-comment">//顺序表类型</span><br></code></pre></td></tr></table></figure>
+<p>这种方式我们不知道内存到底有多大，接下来将用内存分配函数来分配空间：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">SqList L; <span class="hljs-comment">//L就是要操作的顺序表，即SqList</span><br><span class="hljs-comment">//L就有两个成员L.data，用来存放顺序表的元素，另一个是L.length</span><br>L.data = (ElemType*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(ElemType)*MaxSize);<br></code></pre></td></tr></table></figure>
+<h3 id="c语言的内存动态分配">2.4.3 C语言的内存动态分配</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">SqList L; <br>L.data = (ElemType*)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(ElemType)*MaxSize);<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>malloc(m)</code>函数，开辟m字节长度的地址空间，并返回这段空间的首地址，参数m要求是一个整数</li>
+<li><code>sizeof(x)</code>运算，计算变量x的长度，即变量需占的字节数×变量个数</li>
+<li><code>L.data</code>是数组的首地址（无空间），<code>ElemType*</code>使新分配的空间首地址的元素类型为数组的元素类型，一个“=”就能将放置数组元素类型的空间分配给L了</li>
+<li><code>free(p)</code>函数，释放指针p所指变量的存储空间，即彻底删除一个变量</li>
+<li><code>L.data = (ElemType*)malloc(sizeof(ElemType)*MaxSize);</code>
+<ul>
+<li>后面这个<code>*</code>意思是乘号</li>
+<li>前面的<code>()</code>的意思是强制类型转换，
+<ul>
+<li><code>(int)</code>强制转换为整数</li>
+<li><code>(int *)</code>强制转换为指向整型的一个指针</li>
+<li><code>(ElemType*)</code>意思是强制转换成指向数据元素类型<code>ElemType</code>的一个指针，</li>
+</ul></li>
+<li>后面的<code>ElemType</code>表示字节数，比如<code>char</code>需要1个字节，<code>int</code>需要8个字节，那如果<code>MaxSize</code>为100，为<code>char</code>时就需要开辟100字节长度的地址空间，<code>int</code>时就需要开辟800字节长度的地址空间</li>
+<li>前面的<code>ElemType</code>是告诉计算机存成什么类型的，比如后面的<code>ElemType</code>为<code>int</code>，<code>MaxSize</code>为100，那一共800个字节要怎么分配呢，如果为<code>char</code>，就被分为800块，如果是<code>int</code>，就被分为200块，划分成什么类型看我们线性表里面的元素是什么类型</li>
+</ul></li>
+<li>需要加载的头文件：<code>&lt;stdlib.h&gt;</code></li>
+</ul>
+<h3 id="c内容">2.4.4 C++内容</h3>
+<h4 id="c的动态存储分配">C++的动态存储分配</h4>
+<p><code>new 类型名T（初值列表)</code></p>
+<p>功能：申请用于存放T类型对象的内存空间，并依初值列表赋以初值</p>
+<p>结果值：</p>
+<ul>
+<li>成功：T类型的指针，指向新分配的内存</li>
+<li>失败：0（NULL)</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *p1 = new <span class="hljs-type">int</span>;  <span class="hljs-comment">//从内存当中动态的分配一块空间，放一个int型，赋给一个指针变量</span><br><span class="hljs-type">int</span> *p1 = new <span class="hljs-type">int</span>(<span class="hljs-number">10</span>);  <span class="hljs-comment">//给空间赋上初值</span><br></code></pre></td></tr></table></figure>
+<p><code>delete 指针P</code></p>
+<p>功能：释放指针P所指向的内存。P必须是new操作的返回值</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">delete p1<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<h4 id="c-的参数传递">C++ 的参数传递</h4>
+<p>传值方式（参数为整型、实型、字符型等）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-type">float</span> m,<span class="hljs-type">float</span> n)</span></span>&#123;<br>    <span class="hljs-type">float</span> temp;<br>    temp = m;<br>    m = n;<br>    n = temp;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">float</span> a, b;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Enter two numbers: &quot;</span>;<br>    cin &gt;&gt; a &gt;&gt; b;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Before swapping: a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<br><br>    <span class="hljs-built_in">swap</span>(a, b);<br><br>    cout &lt;&lt; <span class="hljs-string">&quot;After swapping: a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">//Enter two numbers: 5 9</span><br><span class="hljs-comment">//Before swapping: a = 5, b = 9</span><br><span class="hljs-comment">//After swapping: a = 5, b = 9</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>说明：函数修改的是形参的值，释放空间后，形参释放，实参的值不变</li>
+</ul>
+<p>传地址</p>
+<ul>
+<li><p>参数为指针变量</p>
+<ol type="1">
+<li>形参变化影响实参</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-type">float</span> *m,<span class="hljs-type">float</span> *n)</span></span>&#123;<br>    <span class="hljs-type">float</span> t;<br>    t = *m;<br>    *m = *n;<br>    *n = t;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">float</span> a,b,*p1,*p2;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Enter two numbers: &quot;</span>;<br>    cin&gt;&gt;a&gt;&gt;b;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Before swapping: a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<br><br>    p1 = &amp;a;p2 = &amp;b;  <span class="hljs-comment">//p1、p2分别指向变量a、b</span><br>    <span class="hljs-built_in">swap</span>(p1,p2);<br><br>    cout &lt;&lt; <span class="hljs-string">&quot;After swapping: a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<br>&#125;<br>  <br>  <span class="hljs-comment">//Enter two numbers: 5 9</span><br>  <span class="hljs-comment">//Before swapping: a = 5, b = 9</span><br>  <span class="hljs-comment">//After swapping: a = 9, b = 5</span><br></code></pre></td></tr></table></figure>
+<ol start="2" type="1">
+<li>形参变化不影响实参</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-type">float</span> *m,<span class="hljs-type">float</span> *n)</span></span>&#123;<br>    <span class="hljs-type">float</span> *t;<br>    t = m;<br>    m = n;<br>    n = t;<span class="hljs-comment">//交换的是m和n指向的地址不是地址中的内容</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-type">float</span> a,b,*p1,*p2;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Enter two numbers: &quot;</span>;<br>    cin&gt;&gt;a&gt;&gt;b;<br>    cout &lt;&lt; <span class="hljs-string">&quot;Before swapping: a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<br><br>    p1 = &amp;a;p2 = &amp;b;  <span class="hljs-comment">//p1、p2分别指向变量a、b</span><br>    <span class="hljs-built_in">swap</span>(p1,p2);<br><br>    cout &lt;&lt; <span class="hljs-string">&quot;After swapping: a = &quot;</span> &lt;&lt; a &lt;&lt; <span class="hljs-string">&quot;, b = &quot;</span> &lt;&lt; b &lt;&lt; endl;<br>&#125;<br><span class="hljs-comment">//swap(p1,p2)后没交换</span><br></code></pre></td></tr></table></figure></li>
+</ul>
 <blockquote>
 <p>参考资料：</p>
 <p><a
 target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/421431276?source_id=1005">LinkList
 L、LinkList&amp; L、和LinkList *L这三者的区别 (zhihu.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/read/readlist/rl241105?share_medium=android&amp;share_plat=android&amp;share_source=COPY&amp;share_tag=s_i&amp;timestamp=1615722826&amp;unique_k=376Uh5">数据结构-
+文集 哔哩哔哩专栏 (bilibili.com)</a></p>
 </blockquote>
 
                 

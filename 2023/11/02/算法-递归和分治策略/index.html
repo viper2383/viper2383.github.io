@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          1.9k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          20 分钟
+          13 分钟
         
       </span>
     
@@ -361,7 +361,7 @@ class="math inline">\(2^k=n\)</span>，得：<span class="math inline">\(k
 <p><strong>空间复杂度</strong></p>
 <p>空间复杂度是很简单的，根据上面的流程可以得知，在整个二分搜索的过程中，只需要额外存储三个变量：最大值
 ，最小值 和 中点，因此，空间复杂度是常量 <code>O(1)</code></p>
-<h4 id="python实现">3. Python实现：</h4>
+<h4 id="python实现">3. Python实现</h4>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 二分查找的递归与分治策略实现（python）</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">binary_search</span>(<span class="hljs-params">arr, target, left, right</span>):<br>    <span class="hljs-keyword">if</span> left &lt;= right:<br>        mid = left + (right - left) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 计算中间位置</span><br><br>        <span class="hljs-keyword">if</span> arr[mid] == target:<br>            <span class="hljs-keyword">return</span> mid  <span class="hljs-comment"># 找到目标元素，返回索引</span><br>        <span class="hljs-keyword">elif</span> arr[mid] &lt; target:<br>            <span class="hljs-keyword">return</span> binary_search(arr, target, mid + <span class="hljs-number">1</span>, right)  <span class="hljs-comment"># 在右半部分递归查找</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> binary_search(arr, target, left, mid - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 在左半部分递归查找</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>  <span class="hljs-comment"># 目标元素不在数组中，返回-1</span><br><br><span class="hljs-comment"># 输入数组</span><br>input_string = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入一个升序数组（以逗号分隔）: &quot;</span>)<br>arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, input_string.split(<span class="hljs-string">&#x27;,&#x27;</span>)))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;已创建好一个升序数组：&quot;</span>,arr)<br><br><span class="hljs-comment"># 输入要查找的数字</span><br>target = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入要查找的数字: &quot;</span>))<br><br>result = binary_search(arr, target, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr) - <span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">if</span> result != -<span class="hljs-number">1</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;目标 <span class="hljs-subst">&#123;target&#125;</span> 在索引 <span class="hljs-subst">&#123;result&#125;</span>&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;目标 <span class="hljs-subst">&#123;target&#125;</span> 不在数组中&quot;</span>)<br><br></code></pre></td></tr></table></figure>
 <h4 id="应用场景及局限性">4. 应用场景及局限性</h4>
 <ul>
@@ -392,43 +392,7 @@ O(n)。所以，如果数据使用链表存储，二分查找的时间复杂就�
 大小的数组。而我们的二分查找是作用在数组这种数据结构之上的，所以太大的数据用数组存储就比较吃力了，也就不能用二分查找了。</p>
 </blockquote></li>
 </ul>
-<h4 id="二分查找算法的改进">二分查找算法的改进</h4>
-<p>java 实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-type">int</span> target)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, j = a.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (i &lt;= j) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> (i + j) &gt;&gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (target &lt; a[m]) &#123;            <span class="hljs-comment">// 在左边</span><br>            j = m - <span class="hljs-number">1</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[m] &lt; target) &#123;     <span class="hljs-comment">// 在右边</span><br>            i = m + <span class="hljs-number">1</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> m;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ul>
-<li><span class="math inline">\(i,j\)</span> 对应着搜索区间 <span
-class="math inline">\([0,a.length-1]\)</span>（注意是闭合的区间），<span
-class="math inline">\(i&lt;=j\)</span>
-意味着搜索区间内还有未比较的元素，<span
-class="math inline">\(i,j\)</span> 指向的元素也可能是比较的目标</li>
-<li>思考：如果不加 <span class="math inline">\(i==j\)</span>
-行不行？</li>
-<li>回答：不行，因为这意味着 <span class="math inline">\(i,j\)</span>
-指向的元素会漏过比较</li>
-<li><span class="math inline">\(m\)</span>
-对应着中间位置，中间位置左边和右边的元素可能不相等（差一个），不会影响结果</li>
-<li>如果某次未找到，那么缩小后的区间内不包含 <span
-class="math inline">\(m\)</span></li>
-</ul>
-<p>改进写法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span>[] a, <span class="hljs-type">int</span> target)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, j = a.length;<br>    <span class="hljs-keyword">while</span> (i &lt; j) &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> (i + j) &gt;&gt;&gt; <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (target &lt; a[m]) &#123;            <span class="hljs-comment">// 在左边</span><br>            j = m;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (a[m] &lt; target) &#123;     <span class="hljs-comment">// 在右边</span><br>            i = m + <span class="hljs-number">1</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> m;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<ul>
-<li><span class="math inline">\(i,j\)</span> 对应着搜索区间 <span
-class="math inline">\([0,a.length)\)</span>（注意是左闭右开的区间），<span
-class="math inline">\(i&lt;j\)</span>
-意味着搜索区间内还有未比较的元素，<span class="math inline">\(j\)</span>
-指向的<strong>一定不是</strong>查找目标</li>
-<li>思考：为啥这次不加 <span class="math inline">\(i==j\)</span>
-的条件了？</li>
-<li>回答：这回 <span class="math inline">\(j\)</span>
-指向的不是查找目标，如果还加 <span class="math inline">\(i==j\)</span>
-条件，就意味着 <span class="math inline">\(j\)</span>
-指向的还会再次比较，找不到时，会死循环</li>
-<li>如果某次要缩小右边界，那么 <span
-class="math inline">\(j=m\)</span>，因为此时的 <span
-class="math inline">\(m\)</span>
-已经<strong>不是</strong>查找目标了</li>
-</ul>
+<h4 id="二分查找算法的改进">5. 二分查找算法的改进</h4>
 <blockquote>
 <p>参考：</p>
 <p><a
