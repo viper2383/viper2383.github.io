@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.3k 字
+          8.2k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          43 分钟
+          55 分钟
         
       </span>
     
@@ -508,6 +508,67 @@ numerator 和 denominator 。</p>
 <code>char*</code> 表示一 个指向字符的指针， <code>float*</code>
 表示一个指向 <code>float</code> 类型的值的指针。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>* intPtr;<br><span class="hljs-comment">//上面示例声明了一个变量 intPtr ，它是一个指针，指向的内存地址存放的是一个整数。</span><br></code></pre></td></tr></table></figure>
+<p>星号 *
+可以放在变量名与类型关键字之间的任何地方，下面的写法都是有效的</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span>   *intPtr;<br><span class="hljs-type">int</span> * intPtr;<br><span class="hljs-type">int</span>*  intPtr;<br></code></pre></td></tr></table></figure>
+<p>&amp; 运算符与 * 运算符互为逆运算，下面的表达式总是成立。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">if</span> (i == *(&amp;i)) <span class="hljs-comment">// 正确</span><br></code></pre></td></tr></table></figure>
+<h3 id="指针变量的初始化">指针变量的初始化</h3>
+<p>声明指针变量之后，编译器会为指针变量本身分配一个内存空间，但是这个内存空间里面的值是随机
+的，也就是说，指针变量指向的值是随机的。这时一定不能去读写指针变量指向的地址，因为那个地址
+是随机地址，很可能会导致严重后果。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">int* p<span class="hljs-comment">;</span><br>*p <span class="hljs-operator">=</span> <span class="hljs-number">1</span><span class="hljs-comment">; // 错误</span><br></code></pre></td></tr></table></figure>
+<p>上面的代码是错的，因为 p
+指向的那个地址是随机的，向这个随机地址里面写入 1 ，会导致意想不到的
+结果。
+正确做法是指针变量声明后，必须先让它指向一个分配好的地址，然后再进行读写，这叫做指针变量的
+初始化。</p>
+<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs hsp"><span class="hljs-keyword">int</span>* p<span class="hljs-comment">;</span><br><span class="hljs-keyword">int</span> i<span class="hljs-comment">;</span><br>p = &amp;i<span class="hljs-comment">;</span><br><span class="hljs-symbol">*p</span> = <span class="hljs-number">13</span><span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+<p>上面示例中， p 是指针变量，声明这个变量后， p
+会指向一个随机的内存地址。这时要将它指向一个已
+经分配好的内存地址，上例就是再声明一个整数变量 i ，编译器会为 i
+分配内存地址，然后让 p 指向 i 的内存地址（ <code>p = &amp;i;</code>
+）。完成初始化之后，就可以对 p 指向的内存地址进行赋值了（
+<code>*p = 13;</code> ）。</p>
+<h2 id="typedef-命令">typedef 命令</h2>
+<p><code>typedef</code> 命令用来为某个类型起别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> type name;<br><span class="hljs-comment">//上面代码中， type 代表类型名，name 代表别名。</span><br></code></pre></td></tr></table></figure>
+<p>比如下面的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> INTEGER;<br>INTEGER a, b;<br>a = <span class="hljs-number">1</span>;<br>b = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+<p><code>INTEGER a, b;</code>等效于<code>int a, b;</code>。</p>
+<p><code>typedef</code> 可以一次指定多个别名</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">int</span> antelope, bagel, mushroom;<br></code></pre></td></tr></table></figure>
+<p><code>typedef</code> 可以为指针起别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span>* intptr;<br><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br>intptr x = &amp;a;<br><span class="hljs-comment">//上面示例中， intptr 是 int* 的别名。不过，使用的时候要小心，这样不容易看出来，变量 x 是一个指针类型。</span><br></code></pre></td></tr></table></figure>
+<p><code>typedef</code> 为<strong>结构体</strong>类型定义别名：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">stu</span>&#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> sex;<br>&#125; STU;<br></code></pre></td></tr></table></figure>
+<p>STU 是 struct stu 的别名，可以用 STU 定义结构体变量：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">STU</span> body1,body2;<br></code></pre></td></tr></table></figure>
+<p>它等价于：</p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">struct</span> <span class="hljs-type">stu</span> body1, body2;<br></code></pre></td></tr></table></figure>
+<p><code>typedef</code> 也可以用来为数组类型起别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> five_ints[<span class="hljs-number">5</span>];<br>five_ints x = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>&#125;;<br></code></pre></td></tr></table></figure>
+<p><code>typedef</code> 为函数起别名的写法如下。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">signed</span> <span class="hljs-title function_">char</span> <span class="hljs-params">(*fp)</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>;<br><span class="hljs-comment">//上面示例中，类型别名 fp 是一个指针，代表函数 signed char (*)(void) 。</span><br></code></pre></td></tr></table></figure>
+<h3 id="主要好处">主要好处</h3>
+<p>（1）更好的代码可读性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span>* STRING;<br>STRING name;<br><span class="hljs-comment">//上面示例为字符指针起别名为 STRING ，以后使用 STRING 声明变量时，就可以轻易辨别该变量是字符串。</span><br></code></pre></td></tr></table></figure>
+<p>（2）为 struct、union、enum
+等命令定义的复杂数据结构创建别名，从而便于引用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">treenode</span> &#123;</span><br>  <span class="hljs-comment">// ...</span><br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">treenode</span>* <span class="hljs-title">Tree</span>;</span><br><span class="hljs-comment">//上面示例中， Tree 为 struct treenode* 的别名。</span><br></code></pre></td></tr></table></figure>
+<p><code>typedef</code> 也可以与 <code>struct</code>
+定义数据类型的命令写在一起</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">animal</span> &#123;</span><br>  <span class="hljs-type">char</span>* name;<br>  <span class="hljs-type">int</span> leg_count, speed;<br>&#125; animal;<br><span class="hljs-comment">//上面示例中，自定义数据类型时，同时使用 typedef 命令，为 struct animal 起了一个别名 animal 。</span><br></code></pre></td></tr></table></figure>
+<p>这种情况下，C 语言允许省略 struct 命令后面的类型名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>  <span class="hljs-type">char</span> *name;<br>  <span class="hljs-type">int</span> leg_count, speed;<br>&#125; animal;<br><span class="hljs-comment">//上面示例相当于为一个匿名的数据类型起了别名 animal 。</span><br></code></pre></td></tr></table></figure>
+<p>（3）typedef 方便以后为变量改类型。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">float</span> app_float;<br>app_float f1, f2, f3;<br></code></pre></td></tr></table></figure>
+<p>上面示例中，变量 f1 、 f2 、 f3 的类型都是 <code>float</code>
+。如果以后需要为它们改类型，只需要修改 <code>typedef</code>
+语句即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">double</span> app_float;<br></code></pre></td></tr></table></figure>
+<p>上面命令将变量 f1 、 f2 、 f3 的类型都改为 <code>long double</code>
+。</p>
 <h2 id="typedef-和-define-的区别">typedef 和 #define 的区别</h2>
 <p>typedef 在表现上有时候类似于
 #define，但它和宏替换之间存在一个关键性的区别。正确思考这个问题的方法就是把

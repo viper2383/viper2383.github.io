@@ -16,22 +16,19 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="操作系统——死锁的相关概念以及死锁处理策略">
-<meta property="og:type" content="article">
-<meta property="og:title" content="操作系统-死锁">
-<meta property="og:url" content="http://example.com/2023/11/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F_%E6%AD%BB%E9%94%81/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Wiper3">
+<meta property="og:url" content="http://example.com/2023/11/22/%E7%AE%97%E6%B3%95-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="操作系统——死锁的相关概念以及死锁处理策略">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-07T00:20:49.000Z">
-<meta property="article:modified_time" content="2023-11-07T07:24:49.000Z">
+<meta property="article:published_time" content="2023-11-22T06:26:00.178Z">
+<meta property="article:modified_time" content="2023-11-22T06:26:00.178Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>操作系统-死锁 - Wiper3</title>
+  <title>Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="操作系统-死锁"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -249,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-07 08:20" pubdate>
-          2023年11月7日 早上
+        <time datetime="2023-11-22 14:26" pubdate>
+          2023年11月22日 下午
         </time>
       </span>
     
@@ -261,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          861 字
+          0 字
         
       </span>
     
@@ -272,7 +269,7 @@
         
         
         
-          6 分钟
+          1 分钟
         
       </span>
     
@@ -317,81 +314,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">操作系统-死锁</h1>
-            
-              <p class="note note-info">
-                
-                  
-                    本文最后更新于：2023年11月7日 下午
-                  
-                
-              </p>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="死锁的避免">死锁的避免</h2>
-<h3 id="银行家算法">银行家算法</h3>
-<blockquote>
-<p>Dijkstra在1965年提出的银行家算法是著名的死锁避免算法，这个用于一个银行家给多个顾客贷款的算法可以直接用于操作系统给进程分配资源，这时只要把银行家换成操作系统，把顾客换成进程，把资金换成资源，把银行家决定是否放贷时所用的判断过程（即判断顾客是否有信誉和偿还能力）换成操作系统决定是否分配资源时所用的判断过程（即判断进程是否能及时归还资源）即可。</p>
-</blockquote>
-<p>银行家算法的实质就是<strong>要设法保证系统动态分配资源后不进入不安全状态，以避免可能产生的死锁。</strong></p>
-<h4 id="银行家算法中的数据结构">银行家算法中的数据结构</h4>
-<p>为了实现银行家算法，在系统中必须设置这样四个数据结构：</p>
-<p>1）<strong>Available向量</strong>：系统中可利用的资源数目</p>
-<p>2）<strong>Max矩阵</strong>：每个进程对每种资源的最大需求</p>
-<p>3）<strong>Allocation矩阵</strong>：每个进程已分配的各类资源的数目</p>
-<p>4）<strong>Need矩阵</strong>：每个进程还需要的各类资源数</p>
-<p>其中三个矩阵间存在下述关系：</p>
-<blockquote>
-<p><strong>Need[i,j] = Max[i,j] - allocation[i, j]</strong></p>
-</blockquote>
-<h4 id="银行家算法的描述">银行家算法的描述</h4>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311071623169.png" srcset="/img/loading.gif" lazyload
-alt="image-20231107162343038" />
-<figcaption aria-hidden="true">image-20231107162343038</figcaption>
-</figure>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311071623396.png" srcset="/img/loading.gif" lazyload
-alt="image-20231107162358296" />
-<figcaption aria-hidden="true">image-20231107162358296</figcaption>
-</figure>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311071628354.png" srcset="/img/loading.gif" lazyload
-alt="image-20231107162817252" />
-<figcaption aria-hidden="true">image-20231107162817252</figcaption>
-</figure>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311071628465.png" srcset="/img/loading.gif" lazyload
-alt="image-20231107162835370" />
-<figcaption aria-hidden="true">image-20231107162835370</figcaption>
-</figure>
-<h4 id="银行家算法流程图表示">银行家算法流程图表示</h4>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311071626146.png" srcset="/img/loading.gif" lazyload
-alt="image-20231107162637053" />
-<figcaption aria-hidden="true">image-20231107162637053</figcaption>
-</figure>
-<h4 id="银行家算法的程序实现">银行家算法的程序实现</h4>
-<p><strong>数据结构：</strong></p>
-<ol type="1">
-<li>可用资源向量<code>Available</code>,这是一个一维数组<code>Available[j],j=1,…m</code>，表示第<code>j</code>种资源的可用数量，其中<code>m</code>为资源的种类个数</li>
-<li>最大资源需求矩阵<code>Max</code>,这是一个<code>n*m</code>的二维数组，其中<code>n</code>为进程个数。单元<code>Max[i,j]</code>存储的数值表示第<code>i</code>个进程最多需要多少第<code>j</code>种资源</li>
-<li>分配矩阵<code>Allocation</code>，这是一个<code>n*m</code>的二维数组。单元<code>Allocation[i,j]</code>存储的是已经分配给第<code>i</code>个进程的第<code>j</code>种资源的数量</li>
-<li>需求矩阵<code>Need</code>，这也是一个<code>n*m</code>的矩阵，单元<code>Need[i,j]</code>存储的数值表示进程<code>i</code>还需要多少第<code>j</code>种资源的数量才能完成退出。</li>
-</ol>
-<blockquote>
-<p>参考：</p>
-<p><a
-target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/384678500?source_id=1005">详解操作系统之银行家算法（附流程图）
-(zhihu.com)</a></p>
-</blockquote>
+                
 
                 
               </div>
@@ -401,13 +329,6 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/3846785
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="print-no-link">#操作系统</a>
-      
-    </div>
-  
 </div>
 
 
@@ -416,8 +337,8 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/3846785
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统-死锁</div>
-      <div>http://example.com/2023/11/07/操作系统_死锁/</div>
+      <div></div>
+      <div>http://example.com/2023/11/22/算法-贪心算法/</div>
     </div>
     <div class="license-meta">
       
@@ -429,7 +350,7 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/3846785
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月7日</div>
+          <div>2023年11月22日</div>
         </div>
       
       
@@ -461,9 +382,9 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/3846785
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/08/Java%203%20%E8%BF%90%E7%AE%97%E7%AC%A6/" title="&lt;Java&gt; 3 运算符">
+                      <a href="/2023/11/24/Java%205%20%E6%95%B0%E7%BB%84%E3%80%81%E6%8E%92%E5%BA%8F%E5%92%8C%E6%9F%A5%E6%89%BE/" title="&lt;Java&gt; 5 数组、排序和查找">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">&lt;Java&gt; 3 运算符</span>
+                        <span class="hidden-mobile">&lt;Java&gt; 5 数组、排序和查找</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -471,8 +392,8 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/3846785
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/06/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA/" title="密码学导论">
-                        <span class="hidden-mobile">密码学导论</span>
+                      <a href="/2023/11/17/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%89%E5%85%A8%E6%8A%80%E6%9C%AF%E6%A6%82%E8%BF%B0/" title="通信原理与安全技术概述">
+                        <span class="hidden-mobile">通信原理与安全技术概述</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

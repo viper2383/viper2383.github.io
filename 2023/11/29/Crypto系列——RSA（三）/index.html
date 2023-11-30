@@ -16,22 +16,24 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="密码学导论的一些学习内容记录">
+    <meta name="description" content="《从0开始的密码学世界生活3》😋(学着怎么这么难感觉，而且没时间喵😭">
 <meta property="og:type" content="article">
-<meta property="og:title" content="密码学导论">
-<meta property="og:url" content="http://example.com/2023/11/06/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA/index.html">
+<meta property="og:title" content="Crypto系列——RSA（三）">
+<meta property="og:url" content="http://example.com/2023/11/29/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="密码学导论的一些学习内容记录">
+<meta property="og:description" content="《从0开始的密码学世界生活3》😋(学着怎么这么难感觉，而且没时间喵😭">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-06T04:40:49.000Z">
-<meta property="article:modified_time" content="2023-11-20T12:20:49.000Z">
+<meta property="article:published_time" content="2023-11-29T07:57:30.000Z">
+<meta property="article:modified_time" content="2023-11-29T08:20:49.000Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="密码学">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
+<meta property="article:tag" content="RSA">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>密码学导论 - Wiper3</title>
+  <title>Crypto系列——RSA（三） - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="密码学导论"></span>
+            <span id="subtitle" data-typed-text="Crypto系列——RSA（三）"></span>
           
         </div>
 
@@ -249,8 +251,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-06 12:40" pubdate>
-          2023年11月6日 下午
+        <time datetime="2023-11-29 15:57" pubdate>
+          2023年11月29日 下午
         </time>
       </span>
     
@@ -261,7 +263,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k 字
+          2.3k 字
         
       </span>
     
@@ -272,7 +274,7 @@
         
         
         
-          31 分钟
+          16 分钟
         
       </span>
     
@@ -317,12 +319,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">密码学导论</h1>
+            <h1 id="seo-header">Crypto系列——RSA（三）</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月20日 晚上
+                    本文最后更新于：2023年11月29日 下午
                   
                 
               </p>
@@ -330,318 +332,70 @@
             
               <div class="markdown-body">
                 
-                <h1 id="公钥密码学">公钥密码学</h1>
-<h2 id="公钥密码体制的模型">公钥密码体制的模型</h2>
-<ul>
-<li>公钥密码体制在加密和解密时使用不同的密钥，这样通信双方无须预先交换密钥就可以建立保密通信。克服了对称密码体制中通信双方必须使用一个安全信道预先约定密钥的缺点</li>
-<li>在公钥密码体制中，每个用户保存一对密钥，即公钥PK和私钥SK，PK是公开信息，不需要保密。虽然公钥密码体制的私钥SK和公钥PK是成对出现的，但给定公钥，要确定出私钥是计算上不可行的。持有公钥的任何人都可以加密明文产生密文，只有持有私钥的人才能够解密</li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311272226233.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127222619147" />
-<figcaption aria-hidden="true">image-20231127222619147</figcaption>
-</figure>
-<h2 id="公钥密码体制的基本原理">公钥密码体制的基本原理</h2>
-<p>用抽象的观点来看，公钥密码体制就是一种陷门单向函数</p>
-<ul>
-<li><p><strong>单向函数</strong>是满足下列条件的函数：</p>
-<p>它是定义域到值域的一个映射，同时还要满足下列条件：
-计算函数值是容易的，而从函数值计算原像是不可行的.</p></li>
-<li><p><strong>陷门单向函数</strong>是这样的单向函数，存在一个附加信息，当不知道该附加信息时，从函数值求原像是困难的，但当知道该附加信息时，从函数值求原像就变得容易了。即陷门单向函数在附加信息未知时是单向函数，而当附加信息已知时，就不再是单向函数了。通常把附加信息称为陷门信息。</p></li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311272227209.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127222741135" />
-<figcaption aria-hidden="true">image-20231127222741135</figcaption>
-</figure>
-<p>公钥密码体制就是基于这一原理而设计的，利用一个陷门单向函数，将它作为公开密钥，而将陷门信息作为秘密密钥.。其安全强度取决于它所依据的问题的计算复杂度</p>
-<h2 id="公钥密码体制的要求">公钥密码体制的要求</h2>
-<ul>
-<li>产生一对密钥在计算上是可行的</li>
-<li>已知公钥和明文，产生密文是容易的</li>
-<li>接收方利用私钥来解密密文在计算上是可行的</li>
-<li>对于攻击者，利用公钥来推断私钥在计算上是不可行的</li>
-<li>已知公钥和密文，在不知道私钥的情况下，恢复明文在计算上是不可行的</li>
-</ul>
-<h2 id="数论基础知识">数论基础知识</h2>
-<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/basic/">数论基础 - OI
-Wiki (oi-wiki.org)</a></p>
-<h3 id="群的相关概念">群的相关概念</h3>
-<p>群的阶：<code>ord(G)</code>=群中元素的个数</p>
-<p>群元素的阶：ord（g）</p>
-<ul>
-<li>群元素g做群的操作 i 次</li>
-<li>最小的正整数 i 满足，<span
-class="math inline">\(g^i=1\)</span>（单位元）</li>
-</ul>
-<p><span class="math inline">\(g^{ord(G)} =
-1(单位元)\)</span>，证明如下：</p>
-<p><span class="math display">\[
-\begin{align}
-∵ord(g) \ &amp;|\ ord(G)\\
-g^{ord(g)} &amp;= 1\\
-∴ord(G) &amp;= k*ord(g)\\
-∴g^{ord(G)} &amp;= 1
-\end{align}
-\]</span></p>
-<p>对Zn* ，12</p>
-<p>{a|gcd(a,N)=1} *mod N，元素的个数为φ(N)</p>
-<p>当N为素数，{0,1,2,,,,,p-1} *mod p</p>
-<p>例如p等于7，单位元：1</p>
-<p>逆元（1-6的）：1，4，5，2，3，6</p>
-<h2 id="rsa公钥密码体制">RSA公钥密码体制</h2>
-<p>加密过程：</p>
-<ul>
-<li>选两个大质数p和q，且 <span class="math inline">\(p!=q\)</span>，计算
-<span class="math inline">\(N=p*q\)</span>，N就算出来了</li>
-<li>然后计算N的欧拉函数 <span
-class="math inline">\(φ(N)=(p-1)(q-1)\)</span></li>
-<li>然后你自己选个e， <span
-class="math inline">\(1&lt;e&lt;φ(N)\)</span>，且与φ(N)互质，
-<ul>
-<li>为什么e与φ(N)互素：要存在d，互素才存在这样一个d</li>
-</ul></li>
-<li>由e和φ(N)互质，<span
-class="math inline">\((e,φ(N))=1\)</span>，再由辗转相除法，则一定有<span
-class="math inline">\(ed - φ(N)k = 1\)</span></li>
-<li>那么由e就可以算出d，<span class="math inline">\(ed ≡ 1\quad
-mod(φ(N))\)</span>
-<ul>
-<li>pk（公钥）：N，e</li>
-<li>sk（私钥）：d</li>
-</ul></li>
-</ul>
-<p>加解密：</p>
-<p><span class="math display">\[
-\begin{align}
-Enc（pk，m∈Z_N^*）:c = m^e\ mod \ N\\
-Dec（sk，c）： m = c^d\ mod\ N
-\end{align}
-\]</span></p>
-<h3 id="正确性证明">正确性证明</h3>
-<p><span class="math display">\[
-\begin{align}
-&amp;即验证 c^d modN 是否等于 m\\
-&amp;∵ed ≡ 1\quad mod(φ(N))\\
-&amp;∴ed = kφ(N) + 1\\
-&amp;即验证m^{ed} mod N最后是等于m的\\
-&amp;m^{kφ(N) + 1} \quad mod \quad N \\
-&amp;m^{kφ(N)}*m \quad mod \quad N\\
-&amp;即求:m^{φ(N)}≡1modN\\
-&amp;∵m∈Z_N^*\\
-&amp;g^{ord(G)} = 1(单位元)\\
-&amp;∴m^{φ(N)}≡1modN
-&amp;\end{align}
-\]</span></p>
-<p>对于</p>
-<p><span class="math display">\[
-\begin{align}
-&amp;m∈Z_N（放大m的范围了）\\
-&amp;m \notin Z_N^*\\
-&amp;∵ N =p*q\\
-&amp;∴gcd(m,N)=p或q\\
-&amp;这里的情况N直接分解出来了\\
-&amp;若gcd(m,N)=p,m&lt;N,N=p*q\\
-&amp;得m=kp,1≤k&lt;q\\
-&amp;gcd(m,q)= 1\\
-&amp;相当于m∈Z_q^*，则m^{φ(q)}=1modq\\
-&amp;m^{q-1}=1modq\\
-&amp;ed = k^{&#39;}φ(N)+1=k^{&#39;}(p-1)(q-1)+1\\
-&amp;m^{k^{&#39;}(p-1)(q-1)} =1modq\\
-&amp;m^{k^{&#39;}φ(N)} =1modq\\
-&amp;即m^{k^{&#39;}φ(N)} =rq+1\\
-&amp;我们这里还是要求m^{ed}modN最后等于m\\
-&amp;m^{k^{&#39;}φ(N)}*m \quad mod N\\
-&amp;=(rq+1)m \quad modN\\
-&amp;=(rqm+m)\quad mod N\\
-&amp;=(rq*kp+m)\quad mod N\\
-&amp;=(rkN+m)\quad mod N\\
-&amp;=m
-\end{align}
-\]</span></p>
-<p>RSA问题，给定N，e，<span
-class="math inline">\(y∈Z_N^*\)</span>，求x，满足<span
-class="math inline">\(x^e=y\ mod\ N\)</span></p>
+                <h2 id="rsa3p1">[RSA3]P1</h2>
+<h3 id="main">main</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br>flag = <span class="hljs-string">b&#x27;******&#x27;</span><br><br>m1 = bytes_to_long(flag[:<span class="hljs-built_in">len</span>(flag)//<span class="hljs-number">2</span>])<br>m2 = bytes_to_long(flag[<span class="hljs-built_in">len</span>(flag)//<span class="hljs-number">2</span>:])<br><br><span class="hljs-keyword">assert</span> <span class="hljs-number">18608629446895353521310408885845687520013234781800558</span>*m1-<span class="hljs-number">14258810472138345414555137649316815272478951117940067</span>*m2 == <span class="hljs-number">1</span><br><br></code></pre></td></tr></table></figure>
+<h3 id="exp">exp</h3>
+<p>本题非常直白，将flag分成两部分后给了一个约束式，让我们求解flag。</p>
+<p>约束是一个二元一次方程，显然我们知道二元一次方程在实数域上会有无数个解，但注意我们很少会在实数域上进行运算，我们所有的操作都是在一个整数域或者有限域（可以理解为取模的域）中进行运算。而这里我们便有一个非常常用的<strong>裴蜀定理</strong></p>
+<p><strong>裴蜀定理</strong>：对于整数域中的不定方程<span
+class="math inline">\(ax+by=m\)</span>，其有解的充要条件为<span
+class="math inline">\(gcd(a,b)\ | \ m\)</span></p>
 <blockquote>
-<p>一个密文对应一个明文，所以jzlaoshi不把RSA叫做一个加密方案，而是一个单向陷门置换</p>
+<p>裴蜀定理，又称贝祖定理。是一个关于最大公约数的定理。其内容定义为：对于不全为零的任意整数
+a 和 b，记二者的最大公约数为 g 即 gcd(a,b) = g，则对于任意整数 x 和 y
+都一定满足 ax+by 是 g 的倍数。</p>
+<p>特别地，一定存在整数 x 和 y 的解，使得 <span
+class="math inline">\(ax+by=gcd(a,b)\)</span> 成立。</p>
+<p>它的一个重要推论为：a,b互质的充分必要条件是存在整数x,y 使 ax+by=1;
+或者说对于方程 ax+by=1 只有整数a和b互质时，方程才有整数解x,y。</p>
 </blockquote>
-<h3 id="rsa公钥密码体制的安全性">RSA公钥密码体制的安全性</h3>
-<p>RSA是建立在大整数分解的困难性之上的</p>
-<p>大整数分解攻击：一旦分解出p和q，就可以得到n的欧拉数φ(N)，再利用欧几里德扩展算法求出RSA
-的私钥d.</p>
-<p>因此，应当采用足够大的大整数n(至少应取1024位，最好为2048位)。此外，对素数p和q的选取应满足以下要求：</p>
-<ul>
-<li>p和q的长度应该相差不大</li>
-<li>(p - 1)和(q - 1)都应该包含大的素因子</li>
-<li>gcd(p - 1,q -1)应该尽可能小</li>
-<li>d &lt; n，且<span
-class="math inline">\(d&lt;n^{0.294}\)</span>，特别是当<span
-class="math inline">\(d&lt;n^{1/4}\)</span>时，已经有办法攻破RSA</li>
-</ul>
-<h2 id="elgamal公钥密码体制">ElGamal公钥密码体制</h2>
-<blockquote>
-<p><strong>ElGamal</strong>加密算法是一个基于Diffie-Hellman密钥交换的非对称加密算法，</p>
-</blockquote>
-<p>离散对数问题： <span class="math display">\[
-G，p，g，，，h∈G，求x∈Z_p，使得h = g^x
-\]</span></p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311131908490.png" srcset="/img/loading.gif" lazyload
-alt="image-20231113190856360" />
-<figcaption aria-hidden="true">image-20231113190856360</figcaption>
-</figure>
-<blockquote>
-<p>加密算法的第一行写错了，m ∈ G</p>
-</blockquote>
-<h2 id="公钥密码体制的安全模型">公钥密码体制的安全模型</h2>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311202114001.png" srcset="/img/loading.gif" lazyload
-alt="image-20231120211350752" />
-<figcaption aria-hidden="true">image-20231120211350752</figcaption>
-</figure>
-<blockquote>
-<p>OW-CCA 比 OW-CPA安全性高</p>
-<p>IND-CCA 比 IND-CPA安全性高</p>
-<p>IND-CCA 比 OW-CCA高</p>
-<p>也就是说 CCA安全一定是CPA安全，但CPA安全不一定是CCA安全，</p>
-</blockquote>
-<h3 id="ind-cpa">IND-CPA</h3>
-<p>示意图：</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311202118705.png" srcset="/img/loading.gif" lazyload
-alt="img" />
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<p>IND-CPA所表示的含义为，在敌手能<strong>自行选择明文，并查询对应密文</strong>这一模型中，我们的加密算法是否还能实现密文不可区分。在这一Game中，敌手可以查询任意一条明文消息对应的密文，
-这需要我们开放自己算法的加密功能给敌手</p>
-<p>IND-CPA这一Game的步骤如下： <img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311211004293.png" srcset="/img/loading.gif" lazyload
-alt="image-20231121100449131" /></p>
-<p>这里的Pr是计算某一事件的概率</p>
-<p>可以看出，IND-CPA实际上是想表达“<strong>如果密文足够随机的话，密文是不会泄露任何关于明文信息</strong>”这一深层含义</p>
-<p>任意一个公钥加密方案，如果加密算法是一个确定的算法，它永远不可能达到IND-CPA安全。如：RSA就达不到，一个明文对应一个密文</p>
-<h3 id="ind-cca">IND-CCA</h3>
-<p>ElGamal不是IND-CCA安全</p>
-<h1 id="数字签名">数字签名</h1>
-<h2 id="概述">概述</h2>
-<ul>
-<li><p>在传统商务活动中，为了保证交易的安全与真实，一份书面合同或公文要由当事人或其负责人签字、盖章，以便让交易双方识别是谁签的合同，保证签字或盖章的人认可合同的内容，在法律上才能承认这份合同是有效的。</p></li>
-<li><p>而在电子商务的虚拟世界中，合同或文件是以电子文件的形式表现和传递的。在电子文件上，传统的手写签名和盖章是无法进行的，这就必须依靠技术手段来替代。</p></li>
-<li><p>数字签名就是能起到手写签名或者盖章同等作用的电子技术手段。</p></li>
-<li><p>数字签名已成为计算机网络不可缺少的一项安全技术措施是实现认证的重要工具。数字签名在商业、金融、军事等领域，特别是在电子贸易、电子支票、电子购物、电子政务及知识产权保护等方面的应用，有力地显示了数字签名的重要性。</p></li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311271854832.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127185410719" />
-<figcaption aria-hidden="true">image-20231127185410719</figcaption>
-</figure>
-<h3 id="数字签名的特征">数字签名的特征</h3>
-<ul>
-<li>收方能够确认或证实发方的签名，但不能伪造</li>
-<li>发方发出签名的消息给收方后，就不能再否认他所签发的消息。</li>
-<li>收方对已收到的签名消息不能否认。</li>
-<li>第三者可以确认收发双方之间的消息传送，但不能伪造这一过程。</li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311271842022.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127184246792" />
-<figcaption aria-hidden="true">image-20231127184246792</figcaption>
-</figure>
-<h2 id="rsa签名方案">RSA签名方案</h2>
-<p><span class="math display">\[
-\begin{align}
-&amp;m_1*σ_1 = m_1^d \mod N\\
-&amp;m_2*σ_2 = m_2^d \mod N\\
-&amp;m =m_1*m_2，σ =σ_1*σ_2\\
-&amp;两个相乘 m*σ = (m_1m_2)^d \mod N\\
-&amp;也就是说我知道两个就能构造第三个，（其实知道一个就可以了\\
-&amp;所以是不安全的\\
-&amp;可以利用一个安全的Hash函数 H 来产生消息摘要H(m);\\
-&amp;H(m_1,m_2)≠H(m_1)*H(m_2)\\
-\end{align}
-\]</span></p>
-<p>所以直接拿来做签名是不安全</p>
-<p>要改一改：利用一个安全的Hash函数 H
-来产生消息摘要H(m)，哈希函数是一个单向函数</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311271900288.png" srcset="/img/loading.gif" lazyload
-alt="RSA签名方案" />
-<figcaption aria-hidden="true">RSA签名方案</figcaption>
-</figure>
-<p>安全性：</p>
-<ol type="1">
-<li>签名时使用了Hash函数可以防止利用同态的伪造攻击，有很好的抗攻击性。</li>
-<li>RSA签名方案存在签名可重用的问题，同一消息在不同时刻签名不应是相同的。</li>
-</ol>
-<h2 id="elgamal签名方案">ElGamal签名方案</h2>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311271940031.png" srcset="/img/loading.gif" lazyload
-alt="ElGamal签名方案" />
-<figcaption aria-hidden="true">ElGamal签名方案</figcaption>
-</figure>
-<p><strong>签名算法中：</strong></p>
-<p><span class="math inline">\(gcd(k,p-1)\)</span>，才能保证<span
-class="math inline">\(k \mod p-1\)</span>有逆元</p>
-<p>定义：生成元的阶就是群的阶，这里就是<span
-class="math inline">\(p-1\)</span>，所以<span
-class="math inline">\(0&lt;k&lt;p-1\)</span>，k只能在这个范围，<span
-class="math inline">\(p-1\)</span>就是最大的了</p>
-<p>这里的群的阶最大就是<span class="math inline">\(p-1\)</span></p>
-<h2 id="schnorr签名方案">Schnorr签名方案</h2>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311271959541.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127195957438" />
-<figcaption aria-hidden="true">image-20231127195957438</figcaption>
-</figure>
-<p>签名验证算法中可以给<span
-class="math inline">\(σ=(e,s)\)</span>，也可以给<span
-class="math inline">\((R,s)\)</span></p>
-<p>公布<span class="math inline">\((R,s)\)</span>作为签名：</p>
-<p>计算<span class="math inline">\(e=H(m,R)\)</span></p>
-<p>验证 <span class="math inline">\(g^s =? R*y^{-e}\)</span></p>
-<p><span
-class="math inline">\(g^s=g^{r-ex}=g^r*(g^x)^{-e}=g^r*y^{-e}=R*y^{-e}\)</span></p>
-<blockquote>
-<p>参考：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> long_to_bytes<br> <br>a = <span class="hljs-number">18608629446895353521310408885845687520013234781800558</span><br>b = <span class="hljs-number">14258810472138345414555137649316815272478951117940067</span><br>g, m1, m2 = gmpy2.gcdext(a, b)<br><span class="hljs-comment"># gcdext 函数,该函数计算两个整数的最大公约数，并返回扩展欧几里得算法的解。</span><br><span class="hljs-comment">#g 是最大公约数。m1 和 m2 是扩展欧几里得算法的解，满足方程 a * m1 + b * m2 = g。</span><br><span class="hljs-comment"># print(m1,m2)</span><br> <br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    mh = long_to_bytes(m1 + i*b)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">b&#x27;NSSCTF&#x27;</span> <span class="hljs-keyword">in</span> mh:<br>        ml = long_to_bytes(-m2 + i*a)<br>        <span class="hljs-built_in">print</span>(mh + ml)<br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+<p>至于算完m1和m2为什么还有下面的部分：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    mh = long_to_bytes(m1 + i*b)<br>    <span class="hljs-keyword">if</span> <span class="hljs-string">b&#x27;NSSCTF&#x27;</span> <span class="hljs-keyword">in</span> mh:<br>        ml = long_to_bytes(-m2 + i*a)<br>        <span class="hljs-built_in">print</span>(mh + ml)<br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+<p>这简直是一头🐖都能想到问题了吖（说的是博主本人是🐖</p>
+<p>当然是因为<span class="math inline">\(a(m1 + i*b)+b(-m2 +
+i*a)=g\)</span>，</p>
+<p>那为什么是<span class="math inline">\(-m_2\)</span>呢</p>
+<p>因为<span class="math inline">\(m_2\)</span>是一个负数，你写<span
+class="math inline">\(m_2\)</span>会报错，写成<span
+class="math inline">\(-m_2\)</span>就好了</p>
 <p><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/max1z/p/16841472.html">现代密码学常用符号总结
-- Max1z - 博客园 (cnblogs.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/max1z/p/15992505.html#IND-CCA2">密码学之安全模型总结
-- Max1z - 博客园 (cnblogs.com)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.ruanx.net/diffie-hellman/">Diffie-Hellman
-密钥交换和 Elgamal 加密算法 (ruanx.net)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/599518034">一文搞懂Diffie-Hellman密钥交换协议
-- 知乎 (zhihu.com)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://gejiangxia.github.io/2020/04/30/ELGamal加密方案不是CCA安全/">(<em>´∇｀</em>)
-被你发现啦~ ELGamal加密方案不是CCA安全 | Hexo
-(gejiangxia.github.io)</a></p>
-<p><a
-target="_blank" rel="noopener" href="https://www.cnblogs.com/WittPeng/p/8978737.html">《现代密码学》 -
-WittPeng - 博客园 (cnblogs.com)</a></p>
-<p>下面是一个隐藏的公式： <span class="math display">\[
-\begin{align}
-&amp;1\\
-&amp;\\
-&amp;\\
-&amp;\\
-&amp;\\
-&amp;\\
-\end{align}
-\]</span></p>
-</blockquote>
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_51216553/article/details/117000599">浅谈扩展欧几里得算法-CSDN博客</a></p>
+<h2 id="rsa3p2高次rabin">[RSA3]P2(高次Rabin)</h2>
+<h3 id="main-1">main</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> gmpy2 <span class="hljs-keyword">import</span> *<br><br>flag = <span class="hljs-string">b&#x27;NSSCTF&#123;******&#125;&#x27;</span><br><br>p = getPrime(<span class="hljs-number">256</span>)<br>q = getPrime(<span class="hljs-number">256</span>)<br><br><span class="hljs-keyword">assert</span> p%<span class="hljs-number">4</span> == <span class="hljs-number">3</span> <span class="hljs-keyword">and</span> q%<span class="hljs-number">4</span> == <span class="hljs-number">3</span><br><br>n = p*q<br>e = <span class="hljs-number">4</span><br>m = bytes_to_long(flag)<br><br>c = powmod(m, e, n)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;p = <span class="hljs-subst">&#123;p&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;q = <span class="hljs-subst">&#123;q&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;e = <span class="hljs-subst">&#123;e&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;c = <span class="hljs-subst">&#123;c&#125;</span>&#x27;</span>)<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">p = 59146104467364373868799971411233588834178779836823785905639649355194168174467</span><br><span class="hljs-string">q = 78458230412463183024731868185916348923227701568297699614451375213784918571587</span><br><span class="hljs-string">e = 4</span><br><span class="hljs-string">c = 1203393285445255679455330581174083350744414151272999693874069337386260499408999133487149585390696161509841251500970131235102423165932460197848215104528310</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br></code></pre></td></tr></table></figure>
+<h3 id="exp-1">exp</h3>
+<h2 id="rsa3p3">[RSA3]P3</h2>
+<h3 id="main-2">main</h3>
+<h3 id="exp-2">exp</h3>
+<h2 id="rsa3p4">[RSA3]P4</h2>
+<h3 id="main-3">main</h3>
+<h3 id="exp-3">exp</h3>
+<h2 id="rsa3p5">[RSA3]P5</h2>
+<h3 id="main-4">main</h3>
+<h3 id="exp-4">exp</h3>
+<h2 id="rsa3p6">[RSA3]P6</h2>
+<h3 id="main-5">main</h3>
+<h3 id="exp-5">exp</h3>
+<h2 id="rsa3p7">[RSA3]P7</h2>
+<h3 id="main-6">main</h3>
+<h3 id="exp-6">exp</h3>
+<h2 id="rsa3p8">[RSA3]P8</h2>
+<h3 id="main-7">main</h3>
+<h3 id="exp-7">exp</h3>
+<h2 id="rsa3p9">[RSA3]P9</h2>
+<h3 id="main-8">main</h3>
+<h3 id="exp-8">exp</h3>
+<h2 id="rsa3p10">[RSA3]P10</h2>
+<h3 id="main-9">main</h3>
+<h3 id="exp-9">exp</h3>
+<h2 id="rsa3p11">[RSA3]P11</h2>
+<h3 id="main-10">main</h3>
+<h3 id="exp-10">exp</h3>
+<h2 id="rsa3p12">[RSA3]P12</h2>
+<h3 id="main-11">main</h3>
+<h3 id="exp-11">exp</h3>
 
                 
               </div>
@@ -650,11 +404,36 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/CTF-Crypto/" class="category-chain-item">CTF-Crypto</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
   
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="print-no-link">#密码学</a>
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/Crypto/" class="print-no-link">#Crypto</a>
+      
+        <a href="/tags/RSA/" class="print-no-link">#RSA</a>
       
     </div>
   
@@ -666,8 +445,8 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>密码学导论</div>
-      <div>http://example.com/2023/11/06/密码学导论/</div>
+      <div>Crypto系列——RSA（三）</div>
+      <div>http://example.com/2023/11/29/Crypto系列——RSA（三）/</div>
     </div>
     <div class="license-meta">
       
@@ -679,7 +458,7 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月6日</div>
+          <div>2023年11月29日</div>
         </div>
       
       
@@ -711,18 +490,12 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/07/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%202%20%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" title="操作系统-2-进程管理">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统-2-进程管理</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%201_%E7%BB%AA%E8%AE%BA/" title="数据结构 1_绪论">
-                        <span class="hidden-mobile">数据结构 1_绪论</span>
+                      <a href="/2023/11/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%20%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构 内部排序">
+                        <span class="hidden-mobile">数据结构 内部排序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

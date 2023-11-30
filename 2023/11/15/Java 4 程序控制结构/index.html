@@ -24,7 +24,7 @@
 <meta property="og:description" content="Java程序控制结构相关知识">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-15T00:20:49.000Z">
-<meta property="article:modified_time" content="2023-11-15T03:20:49.000Z">
+<meta property="article:modified_time" content="2023-11-24T03:20:49.000Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          299 字
+          6.6k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          2 分钟
+          44 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月15日 上午
+                    本文最后更新于：2023年11月24日 上午
                   
                 
               </p>
@@ -330,18 +330,20 @@
             
               <div class="markdown-body">
                 
-                <h2 id="顺序控制">4.1 顺序控制</h2>
+                <blockquote>
+<p>程序运行的流程控制决定程序是如何执行的，是我们必须掌握的。主要分为：顺序控制、分支控制、循环控制。</p>
+</blockquote>
+<h2 id="顺序控制">4.1 顺序控制</h2>
 <blockquote>
 <p>程序从上到下逐行执行，中间没有任何判断和跳转（默认的控制顺序）</p>
 <p>比如：Java 定义变量时采用合法的前向引用。</p>
 </blockquote>
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs livescript">graph LR<br>A<span class="hljs-function"><span class="hljs-params">(A语句)</span>--&gt;</span>B<span class="hljs-function"><span class="hljs-params">(B语句)</span>--&gt;</span>C<span class="hljs-function"><span class="hljs-params">(C语句)</span>--&gt;</span>D<span class="hljs-function"><span class="hljs-params">(D语句)</span>--&gt;</span>E(...)<br></code></pre></td></tr></table></figure>
 <p>语句：Java 中最小的执行单位。语句分为 单语句 和 复合语句。</p>
 <ul>
 <li><p>单语句：通常意义的一条语句。语句间以分号 <code>;</code>
 分隔。</p></li>
 <li><p>复合语句：一对大括号括起来的语句组。也称为 “块”</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&#123;<br>    语句<span class="hljs-number">1</span><span class="hljs-comment">; </span><br>    语句<span class="hljs-number">2</span><span class="hljs-comment">;</span><br>    ...<br>&#125;JAVA<br></code></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">&#123;<br>    语句<span class="hljs-number">1</span><span class="hljs-comment">; </span><br>    语句<span class="hljs-number">2</span><span class="hljs-comment">;</span><br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>块中可以有多条语句。块后没有分号 <code>;</code></p></li>
 </ul>
 <h2 id="分支控制-if-else">4.2 分支控制 <code>if-else</code></h2>
@@ -349,6 +351,186 @@
 <p>让程序有选择的执行。主要分为：单分支控制、双分支控制</p>
 </blockquote>
 <h3 id="单分支控制">4.2.1 单分支控制</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (条件表达式) 语句;<br></code></pre></td></tr></table></figure>
+<p>特别地，把代码块（复合语句）作为语句的场合也能这样写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (条件表达式) &#123;<br> 执行代码块;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当条件表达式为 <code>ture</code>，就会执行
+<code>&#123;执行代码块;&#125;</code>；如果为 <code>false</code>
+则不执行。特别地：如果 <code>&#123;执行代码块;&#125;</code>
+中只有一条代码，也可以不写 <code>&#123; &#125;</code>（但还是建议写上）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">If01</span> &#123;<br>    <span class="hljs-comment">//编写一个 main 方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//编写一个程序,可以输入人的年龄,如果该同志的年龄大于 18 岁, 则输出 &quot;你年龄大于 18,要对自己的行为负责,送入监狱&quot;</span><br>        <span class="hljs-comment">//思路分析</span><br>        <span class="hljs-comment">//1. 接收输入的年龄, 应该定义一个 Scanner 对象</span><br>        <span class="hljs-comment">//2. 把年龄保存到一个变量 int age</span><br>        <span class="hljs-comment">//3. 使用 if 判断，输出对应信息</span><br>        <span class="hljs-comment">//应该定义一个 Scanner 对象</span><br><br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">myScanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请输入年龄:&quot;</span>);<br>        <span class="hljs-comment">//把年龄保存到一个变量 int age</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">age</span> <span class="hljs-operator">=</span> myScanner.nextInt();<br>        <span class="hljs-comment">//使用 if 判断，输出对应信息</span><br>        <span class="hljs-keyword">if</span>(age &gt; <span class="hljs-number">18</span>) &#123;<br>            System.out.println(<span class="hljs-string">&quot;你年龄大于 18,要对自己的行为负责,送入监狱&quot;</span>);<br>        &#125;<br>        <br>        System.out.println(<span class="hljs-string">&quot;程序继续...&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="双分支控制">4.2.2 双分支控制</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (条件表达式) &#123;<br>	执行代码块;<br>&#125; <br><span class="hljs-keyword">else</span> &#123;<br>	执行代码块<span class="hljs-number">2</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当条件表达式为 <code>ture</code>，就会执行
+<code>&#123;执行代码块1;&#125;</code>；如果为 <code>false</code> 则执行
+<code>&#123;执行代码块2;&#125;</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-comment">//编写一个 main 方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//判断一个年份是否是闰年，闰年的条件是符合下面二者之一：</span><br>        <span class="hljs-comment">//(1)年份能被 4 整除，但不能被 100 整除；(2)能被 400 整除</span><br>        <span class="hljs-comment">//思路分析</span><br>        <span class="hljs-comment">//1. 定义 int year 保存年</span><br>        <span class="hljs-comment">//2. 年份能被 4 整除，但不能被 100 整除, // =&gt; year % 4 == 0 &amp;&amp; year % 100 != 0</span><br>        <span class="hljs-comment">//3. 能被 400 整除 =&gt; year % 400 == 0</span><br>        <span class="hljs-comment">//4. 上面的 2 和 3 是 或的关系</span><br>        <span class="hljs-comment">//代码实现</span><br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">myScanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请输入年份：&quot;</span>);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">year</span> <span class="hljs-operator">=</span> myScanner.nextInt();<br>        <span class="hljs-keyword">if</span>( (year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) || year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span> ) &#123;<br>            System.out.println(year + <span class="hljs-string">&quot; 是 闰年&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            System.out.println(year + <span class="hljs-string">&quot; 不是 闰年&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="多分支控制">4.2.3 多分支控制</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">if</span> (条件表达式) &#123;<br> 执行代码块;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (条件表达式<span class="hljs-number">2</span>) &#123;<br> 执行代码块<span class="hljs-number">2</span>;<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (条件表达式<span class="hljs-number">3</span>) &#123;<br> 执行代码块<span class="hljs-number">3</span>;<br>&#125;<br>...<br><span class="hljs-keyword">else</span> &#123;<br> 执行代码块n；<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>特别地：多分支可以没有
+<code>else</code>。此时如果条件都不成立，则无执行入口</p>
+<h3 id="嵌套分支">4.2.4 嵌套分支</h3>
+<blockquote>
+<p>在一个分支结构中又完整嵌套了另一个完整的分支结构。里面的分支称为内层分支，外面的分支称为外层分支。</p>
+</blockquote>
+<p>Java 规定，else 子句属于逻辑上距其最近，且没有匹配 else 的 if
+语句</p>
+<p><strong>规范：嵌套尽量不超过 3 层（可读性不好）</strong></p>
+<h2 id="switch-分支结构">4.3 <code>switch</code> 分支结构</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">switch</span>(表达式)&#123;<br>	<span class="hljs-keyword">case</span> 常量<span class="hljs-number">1</span>:<br>		语句块<span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">break</span>;			<span class="hljs-comment">//break 语句可选</span><br>	<span class="hljs-keyword">case</span> 常量<span class="hljs-number">2</span>:<br>		语句块<span class="hljs-number">2</span>;<br>		<span class="hljs-keyword">break</span>;			<span class="hljs-comment">//break 语句可选</span><br>	...<br>	<span class="hljs-keyword">default</span>:			<span class="hljs-comment">//default 语句可选</span><br>		<span class="hljs-keyword">default</span>语句块;<br>		<span class="hljs-keyword">break</span>;			<span class="hljs-comment">//break 语句可选</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li><code>switch</code> 关键字，表示 switch 分支。</li>
+<li><code>表达式</code> 对应一个值。<strong>该值必须是 int 或
+char</strong>（char 可以转化为 int）。是 byte 或 short 的场合，要提升为
+int。不允许 long、double 或 float</li>
+<li><code>case 常量1;</code> 表示：当 <code>表达式</code> 的值等于
+<code>常量1</code> ，则执行 <code>语句块1</code>。</li>
+<li><code>break;</code> 表示退出 switch 分支。</li>
+<li>当 <code>表达式</code> 的值匹配 <code>常量1</code> ，则执行
+<code>语句块1</code>，如果不匹配，则继续匹配 <code>常量2</code>
+，以此类推。</li>
+<li>如果全都不匹配，则执行 <code>default</code>。</li>
+<li>如果不写 <code>break;</code>
+，则会发生<strong>穿透</strong>，即不进行判断而继续执行下一语句块。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">        请编写一个程序，该程序可以接收一个字符，比如:a,b,c,d,e,f,g</span><br><span class="hljs-comment">        a 表示星期一，b 表示星期二 …</span><br><span class="hljs-comment">        根据用户的输入显示相应的信息.要求使用 switch 语句完成</span><br><span class="hljs-comment">        思路分析</span><br><span class="hljs-comment">        1. 接收一个字符 , 创建 Scanner 对象</span><br><span class="hljs-comment">        2. 使用 switch 来完成匹配,并输出对应信息</span><br><span class="hljs-comment">        代码</span><br><span class="hljs-comment">        */</span><br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">myScanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请输入一个字符(a-c)&quot;</span>);<br>        <span class="hljs-type">char</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> myScanner.next().charAt(<span class="hljs-number">0</span>);<span class="hljs-comment">//</span><br>        <span class="hljs-comment">//在 java 中，只要是有值返回，就是一个表达式</span><br>        <span class="hljs-keyword">switch</span>(c1) &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;a&#x27;</span> :<br>                System.out.println(<span class="hljs-string">&quot;今天星期一,猴子穿新衣&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;b&#x27;</span> :<br>                System.out.println(<span class="hljs-string">&quot;今天星期二,猴子当小二&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;c&#x27;</span> :<br>                System.out.println(<span class="hljs-string">&quot;今天星期三,猴子爬雪山..&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">default</span>:<br>                System.out.println(<span class="hljs-string">&quot;你输入的字符不正确，没有匹配的&quot;</span>);<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;退出了 switch ,继续执行程序&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="使用细节">4.3.1 使用细节</h3>
+<ol type="1">
+<li>表达式数据类型，应和 <code>case</code>
+后的常量类型一致，或者是可以自动转换成可以比较的类型。如：输入的是
+<code>char</code> 而 常量是 <code>int</code></li>
+<li>switch 中 <code>表达式</code>
+的返回值必须是：(<code>byte, short, int, char,enum[枚举] ,String</code>)</li>
+<li><code>case</code>
+语句中的值必须是常量或常量表达式，不能是变量。</li>
+<li><code>default</code> 是可选的。没有就不执行。</li>
+<li><code>break;</code> 用来跳出 switch
+分支。如果不写，会持续执行语句，直到分支结束或遇到下一个
+<code>break;</code></li>
+</ol>
+<h3 id="与-if-else-分支结构的取舍">4.3.2 与 <code>if-else</code>
+分支结构的取舍</h3>
+<ul>
+<li>如果<strong>判断的具体数值不多</strong>，而且符合 byte、 short
+、int、 char, enum[枚举], String 这 6
+种类型。虽然两个语句都可以使用，建议使用 swtich 语句。</li>
+<li>其他情况：对区间判断，对结果为 boolean 类型判断，使用 if，if
+的使用范围更广</li>
+</ul>
+<h2 id="for-循环控制">4.4 <code>for</code> 循环控制</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">for</span>(循环变量初始化;循环条件;循环变量迭代)&#123;<br>	循环操作（代码块）;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p><code>for</code> 关键字，表示循环控制</p></li>
+<li><p>四个要素：1. 循环变量初始化 2. 循环的条件 3. 循环的操作 4.
+循环变量迭代</p></li>
+<li><p>循环操作可以有多条语句</p></li>
+<li><p>如果循环操作只有一条语句，可以省略
+<code>&#123;&#125;</code>，但<strong>建议不省略</strong></p></li>
+</ul>
+<h3 id="使用细节-1">4.4.1 使用细节</h3>
+<ol type="1">
+<li>循环条件是返回一个 boolean 值（<code>ture</code> 或
+<code>false</code>）的公式。</li>
+<li><code>for(;循环条件;)&#123; &#125;</code>
+其中的初始化和变量迭代可以写在别处，但 <code>;</code>
+不能省略。如果不写在别处，那个循环变量初始化中声明的变量只能在该 for
+循环中使用。</li>
+<li>控制台用 ctrl + c 强制结束一个流程</li>
+<li>循环初始值可以有多条初始化语句，但要求类型一样，并用 <code>,</code>
+隔开。变量迭代也可以有多条代码，用 <code>,</code> 隔开。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>,j = <span class="hljs-number">0</span>; i &lt; count; i++, j+=<span class="hljs-number">2</span>)&#123;<br>	System.out.println(<span class="hljs-string">&quot;i = &quot;</span> + i + <span class="hljs-string">&quot; j = &quot;</span> + j);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="化繁为简-先死后活">4.4.2 化繁为简 先死后活</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//练习</span><br><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//打印 1~100 之间所有是 9 的倍数的整数，统计个数 及 总和.[化繁为简,先死后活]</span><br>        <span class="hljs-comment">//老韩的两个编程思想(技巧)</span><br>        <span class="hljs-comment">//1. 化繁为简 : 即将复杂的需求，拆解成简单的需求，逐步完成</span><br>        <span class="hljs-comment">//2. 先死后活 : 先考虑固定的值，然后转成可以灵活变化的值</span><br>        <span class="hljs-comment">//思路分析</span><br>        <span class="hljs-comment">//打印 1~100 之间所有是 9 的倍数的整数，统计个数 及 总和</span><br>        <span class="hljs-comment">//化繁为简</span><br>        <span class="hljs-comment">//(1) 完成 输出 1-100 的值</span><br>        <span class="hljs-comment">//(2) 在输出的过程中，进行过滤，只输出 9 的倍数 i % 9 ==0</span><br>        <span class="hljs-comment">//(3) 统计个数 定义一个变量 int count = 0; 当 条件满足时 count++;</span><br>        <span class="hljs-comment">//(4) 总和 , 定义一个变量 int sum = 0; 当条件满足时累积 sum += i;</span><br>        <span class="hljs-comment">//先死后活</span><br>        <span class="hljs-comment">//(1) 为了适应更好的需求，把范围的开始的值和结束的值，做出变量</span><br>        <span class="hljs-comment">//(2) 还可以更进一步 9 倍数也做成变量 int t = 9;</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//统计 9 的倍数个数 变量</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//总和</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">start</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">end</span> <span class="hljs-operator">=</span> <span class="hljs-number">200</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>; <span class="hljs-comment">// 倍数</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> start; i &lt;= end; i++) &#123;<br>            <span class="hljs-keyword">if</span>( i % t == <span class="hljs-number">0</span>) &#123;<br>                System.out.println(<span class="hljs-string">&quot;i=&quot;</span> + i);<br>                count++;<br>                sum += i;<span class="hljs-comment">//累积</span><br>            &#125;<br>        &#125;<br>        System.out.println(<span class="hljs-string">&quot;count=&quot;</span> + count);<br>        System.out.println(<span class="hljs-string">&quot;sum=&quot;</span> + sum);<br><br>    &#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<h2 id="while-循环控制">4.5 <code>while</code> 循环控制</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">while</span>(循环条件)&#123;<br>	循环体(代码块);<br>	循环变量迭代;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>while</code> 也有四要素，只是位置和 <code>for</code> 不同</p>
+<h3 id="使用细节-2">4.5.1 使用细节</h3>
+<ol type="1">
+<li>循环条件是返回一个 boolean 值（<code>ture</code> 或
+<code>false</code>）的公式。while 循环中，循环条件不能为空。</li>
+<li><code>while</code> 循环是先判断再执行语句。</li>
+</ol>
+<h2 id="do..while-循环控制">4.6 <code>do..while</code> 循环控制</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">do</span>&#123;<br>	循环体;<br>	循环变量迭代;<br>&#125;<span class="hljs-keyword">while</span>(循环条件);<br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li><code>do..while</code> 是关键字</li>
+<li>也有四要素，位置不同</li>
+<li>先执行，再判断。也就是说，一定会至少执行一次</li>
+<li><strong>最后有一个 <code>;</code></strong></li>
+<li><code>while</code> 与 <code>do..while</code>
+区别：“要账”<code>do..while</code>先打一顿</li>
+</ol>
+<h3 id="使用细节-3">4.6.1 使用细节</h3>
+<ol type="1">
+<li>循环条件是返回一个 boolean 值（<code>ture</code> 或
+<code>false</code>）的公式。</li>
+<li><code>do..while</code>
+循环是先执行再判断的语句。因此至少执行一次。</li>
+</ol>
+<h2 id="多重循环控制">4.7 多重循环控制</h2>
+<ol type="1">
+<li>将一个循环放在另一个循环体内，就形成了嵌套循环。建议一般使用两层，最多不超过三层。</li>
+<li>嵌套循环是把内层循环当成外层循环的循环体。只有内层
+<code>false</code> 时才结束当层循环。</li>
+<li>若内层执行 n 次，外层 m 次，则合计会循环 n*m 次</li>
+</ol>
+<h3 id="空心金字塔问题">4.7.1 空心金字塔问题</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <br>        <span class="hljs-type">int</span> <span class="hljs-variable">totalLevel</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= totalLevel; i++)&#123;<br><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> totalLevel; m &gt; i; m--)&#123;<br>                System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br><br>            <span class="hljs-keyword">for</span>( <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">2</span>*i-<span class="hljs-number">1</span>; j++)&#123;<br>                <span class="hljs-keyword">if</span> (j == <span class="hljs-number">1</span> || j == <span class="hljs-number">2</span>*i-<span class="hljs-number">1</span> || i == totalLevel) &#123;<br>                    System.out.print(<span class="hljs-string">&quot;*&quot;</span>);<br>                &#125; <span class="hljs-keyword">else</span><br>                    System.out.print(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>            System.out.println(<span class="hljs-string">&quot;&quot;</span>);<br><br>        &#125;<br><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311241736554.png" srcset="/img/loading.gif" lazyload
+alt="image-20231124173638347" />
+<figcaption aria-hidden="true">image-20231124173638347</figcaption>
+</figure>
+<h3 id="九九乘法表问题">4.7.2 九九乘法表问题</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j&lt;=i; j++)&#123;<br>                System.out.print(j + <span class="hljs-string">&quot;*&quot;</span> + i +  <span class="hljs-string">&quot;=&quot;</span> + i*j + <span class="hljs-string">&quot;\t&quot;</span>);<br>            &#125;<br>            System.out.println();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311241819925.png" srcset="/img/loading.gif" lazyload
+alt="image-20231124181958866" />
+<figcaption aria-hidden="true">image-20231124181958866</figcaption>
+</figure>
+<h2 id="跳转控制语句">4.8 跳转控制语句</h2>
+<blockquote>
+<p>跳转控制语句用于分支或循环中，以便程序员更好控制程序执行方向</p>
+</blockquote>
+<h3 id="break">4.8.1 break</h3>
+<blockquote>
+<p>用于中止一个语句块的执行</p>
+</blockquote>
+<p>语法：<code>break;</code></p>
+<p>break 可以被用在三种场合中</p>
+<ul>
+<li><p>switch 语句中，以跳出判断（结束穿透）</p></li>
+<li><p>for、while、do…while 循环语句中，以跳出循环</p></li>
+<li><p>语句块中，以跳过本块中所有剩余语句</p>
+<p><code>break</code> 语句出现在多层嵌套的语句块中时，可以通过
+<strong>标签</strong> 指明要终止的时哪一层语句块。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span>:&#123;<br><span class="hljs-selector-tag">b</span>:	&#123;<br>c:		&#123;<br>   ...<br>		 berak <span class="hljs-selector-tag">b</span>;<br>		&#125;<br>	&#125;<br>&#125;JAVA<br></code></pre></td></tr></table></figure>
+<ol type="1">
+<li><code>a:</code> <code>b:</code> <code>c:</code>
+是标签，名字由程序员指定</li>
+<li><code>break</code> 后指定哪个标签就退出到哪里</li>
+<li><strong>实际开发中，尽量不要使用标签</strong></li>
+</ol></li>
+</ul>
+<h3 id="continue">4.8.3 continue</h3>
+<blockquote>
+<p>在循环中出现。用于结束本次循环，继续下一次循环</p>
+</blockquote>
+<p>语法：<code>continue;</code></p>
+<p>进行下次循环前，仍会判断循环条件是否满足</p>
+<p>在多层嵌套循环中，可以通过标签指出跳出哪次循环（同
+<code>break</code>）</p>
+<h3 id="return">4.8.4 return</h3>
+<blockquote>
+<p>用于方法。表示跳出所在的方法</p>
+</blockquote>
+<p>语法：<code>return;</code></p>
+<p>方法有返回值的场合，将返回值写在 return
+后：<code>return 值;</code></p>
+<p>后面会再讲~</p>
 
                 
               </div>

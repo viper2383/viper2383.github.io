@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          437 字
+          1.4k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          3 分钟
+          10 分钟
         
       </span>
     
@@ -330,7 +330,12 @@
             
               <div class="markdown-body">
                 
-                <p>记事本乱码解决方案：</p>
+                <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">System.out.println(<span class="hljs-string">&quot;&quot;</span>);  <span class="hljs-comment">//换一行</span><br>System.out.println(<span class="hljs-string">&quot;\n&quot;</span>); <span class="hljs-comment">//换两行</span><br></code></pre></td></tr></table></figure>
+<p>因为<code>System.out.println()</code>中的<code>ln</code>就已经换行一次了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//从键盘输入字符的代码</span><br><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">myScanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请输入一个字符：&quot;</span>);<br>        <span class="hljs-type">char</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> myScanner.next().charAt(<span class="hljs-number">0</span>);<br>        System.out.println(<span class="hljs-string">&quot;字符为： &quot;</span> + c1);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//从键盘输入整数型数据</span><br><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">myScanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请输入年龄: &quot;</span>);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">age</span> <span class="hljs-operator">=</span> myScanner.nextInt();<br>        System.out.println(<span class="hljs-string">&quot;输入为：&quot;</span> + age);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//从键盘输入字符串</span><br><span class="hljs-keyword">import</span> java.util.Scanner;<span class="hljs-comment">//导入</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-type">Scanner</span> <span class="hljs-variable">myScanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>        System.out.println(<span class="hljs-string">&quot;请输入名字: &quot;</span>);<br>        name = myScanner.next();<br>        System.out.println(<span class="hljs-string">&quot;输入的名字为：&quot;</span> + name);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>记事本乱码解决方案：</p>
 <figure>
 <img
 src="https://cdn.jsdelivr.net/gh/viper2383/blogimages/blog-img1697599757237.png" srcset="/img/loading.gif" lazyload
