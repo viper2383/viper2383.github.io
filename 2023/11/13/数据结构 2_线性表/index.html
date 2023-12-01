@@ -18,7 +18,7 @@
   
     <meta name="description" content="数据结构-线性表部分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 2_线性表">
+<meta property="og:title" content="数据结构 2 线性表">
 <meta property="og:url" content="http://example.com/2023/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%202_%E7%BA%BF%E6%80%A7%E8%A1%A8/index.html">
 <meta property="og:site_name" content="Wiper3">
 <meta property="og:description" content="数据结构-线性表部分">
@@ -31,7 +31,7 @@
   
   
   
-  <title>数据结构 2_线性表 - Wiper3</title>
+  <title>数据结构 2 线性表 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据结构 2_线性表"></span>
+            <span id="subtitle" data-typed-text="数据结构 2 线性表"></span>
           
         </div>
 
@@ -272,7 +272,7 @@
         
         
         
-          178 分钟
+          180 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据结构 2_线性表</h1>
+            <h1 id="seo-header">数据结构 2 线性表</h1>
             
               <p class="note note-info">
                 
@@ -786,6 +786,37 @@ alt="双向链表的删除" />
 <figcaption aria-hidden="true">双向链表的删除</figcaption>
 </figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">ListDelete_DuL</span><span class="hljs-params">(DuLink &amp;L, <span class="hljs-type">int</span> i, ElemType &amp;e)</span> </span>&#123;<br>    <span class="hljs-comment">// 删除带头结点的双向循环链表 L 的第 i个元素，并用 e 返回</span><br>    <span class="hljs-keyword">if</span>(!(p=<span class="hljs-built_in">GetElem_DuL</span>(L,i))) <span class="hljs-keyword">return</span> ERROR;<br>    e = p -&gt; data;<br>	p -&gt; prior -&gt; next = p -&gt; next;<br>    p -&gt; next -&gt; prior = p -&gt; prior;<br>    <span class="hljs-built_in">free</span>(p);<br>    <span class="hljs-keyword">return</span> OK;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="顺序表和链表的比较">2.10 顺序表和链表的比较</h2>
+<p>链式存储结构的优点：</p>
+<ul>
+<li>结点空间可以动态申请和释放；</li>
+<li>数据元素的逻辑次序靠结点的指针来指示，插入和删除不需要移动元素。</li>
+</ul>
+<p>链式存储结构的缺点：</p>
+<ul>
+<li>存储密度小，每个结点的指针域需额外占用存储空间。当每个结点的数据域所占的字节数不多时，指针域所占的存储空间的比重显得很大。存储密度是指结点数据本身占用的空间/结点占用的空间总量</li>
+<li>链式存储结构是非随机存取结构。对任一结点的操作都要从头指针依指针链查找到该结点，这增加了算法的复杂度。(对某个结点操作一般要先找到该结点)</li>
+</ul>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311302125275.png" srcset="/img/loading.gif" lazyload
+alt="存储密度的概念" />
+<figcaption aria-hidden="true">存储密度的概念</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311302125600.png" srcset="/img/loading.gif" lazyload
+alt="存储密度的例子" />
+<figcaption aria-hidden="true">存储密度的例子</figcaption>
+</figure>
+<p>顺序表和链表的比较</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311302127947.png" srcset="/img/loading.gif" lazyload
+alt="顺序表和链表的比较" />
+<figcaption aria-hidden="true">顺序表和链表的比较</figcaption>
+</figure>
+<h2 id="应用">*2.11 应用</h2>
 <blockquote>
 <p>ptr -- pointer （即指针）的缩写。</p>
 <p>参考资料：</p>
@@ -851,7 +882,7 @@ target="_blank" rel="noopener" href="http://data.biancheng.net/view/161.html">�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据结构 2_线性表</div>
+      <div>数据结构 2 线性表</div>
       <div>http://example.com/2023/11/13/数据结构 2_线性表/</div>
     </div>
     <div class="license-meta">
