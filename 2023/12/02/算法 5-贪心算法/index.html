@@ -16,22 +16,22 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据结构第一节，一些概念和概述，以及算法的时间复杂度的分析">
+    <meta name="description" content="算法分析与设计中贪心算法部分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 1_绪论">
-<meta property="og:url" content="http://example.com/2023/11/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%201_%E7%BB%AA%E8%AE%BA/index.html">
+<meta property="og:title" content="算法-5-贪心算法">
+<meta property="og:url" content="http://example.com/2023/12/02/%E7%AE%97%E6%B3%95%205-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="数据结构第一节，一些概念和概述，以及算法的时间复杂度的分析">
+<meta property="og:description" content="算法分析与设计中贪心算法部分">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-03T00:20:49.000Z">
-<meta property="article:modified_time" content="2023-11-17T01:24:49.000Z">
+<meta property="article:published_time" content="2023-12-02T03:20:49.000Z">
+<meta property="article:modified_time" content="2023-12-03T03:24:49.000Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法分析与设计">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数据结构 1_绪论 - Wiper3</title>
+  <title>算法-5-贪心算法 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据结构 1_绪论"></span>
+            <span id="subtitle" data-typed-text="算法-5-贪心算法"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-03 08:20" pubdate>
-          2023年11月3日 早上
+        <time datetime="2023-12-02 11:20" pubdate>
+          2023年12月2日 上午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          2.6k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          28 分钟
+          18 分钟
         
       </span>
     
@@ -317,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据结构 1_绪论</h1>
+            <h1 id="seo-header">算法-5-贪心算法</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月17日 上午
+                    本文最后更新于：2023年12月3日 上午
                   
                 
               </p>
@@ -330,159 +330,112 @@
             
               <div class="markdown-body">
                 
-                <p>凭借一句话获得图灵奖的Pascal语言之父——Nicklaus
-Wirth，让他获得图灵奖的这句话就是他提出的著名公式： <span
-class="math display">\[
-程序 = 数据结构 + 算法
-\]</span></p>
-<h2 id="基本概念和术语">基本概念和术语</h2>
-<p>知识结构图： 数据 ——&gt; 数据元素 ——&gt; 数据项 ——&gt; 数据对象</p>
-<p>数据：是对客观事物的符号表示</p>
-<p>数据元素(data
-element)：是数据的基本单位，在计算机程序中通常作为一个整体进行考虑和处理。一个数据元素往往由若干数据项组成。</p>
-<p>数据项(Data
-Item)：是组成数据元素的、有独立含义的、不可分割的最小单位</p>
-<p>数据对象(data object)：是性质相同的数据元素的集合</p>
-<p>数据结构(Data
-Structure)：是相互之间存在一种或多种特定关系的数据元素的集合。换句话说，数据结构是带”结构＂的数据元素的集合，“结构”就是指数据元素之间存在的关系。</p>
-<p><strong>逻辑结构和物理结构</strong></p>
-<p>逻辑结构：数据的逻辑结构是从逻辑关系上描述数据，它与数据的存储无关，是独立于计算机的。因此，数据的逻辑结构可以看作是从具体问题抽象出来的数学模型。数据的逻辑结构有两个要素：一是数据元素；二是关系。</p>
-<p>四类基本逻辑结构</p>
+                <h2 id="最优化问题">最优化问题</h2>
+<p>一般特征：问题有n个输入，问题的解是由这n个输入的某个子集组成，这个子集必须满足某些事先给定的条件。</p>
 <ul>
-<li>集合</li>
-<li>松散结构线性结构：一对一的关系</li>
-<li>树形结构：一对多关系</li>
-<li>图状结构：多对多关系</li>
+<li><p>约束条件：子集必须满足的条件</p></li>
+<li><p>可行解：满足约束条件的子集；可行解可能不唯一</p></li>
+<li><p>目标函数：用来衡量可行解优劣的标准，一般以函数形式给出</p></li>
+<li><p>最优解：能够使目标函数取极值 (极大或极小)的可行解、</p></li>
 </ul>
-<p>物理结构/存储结构</p>
-<p>物理结构：数据的逻辑结构在计算机中(内存)的存储形式。</p>
-<p>分为顺序存储结构、链式存储结构、索引存储结构、散列存储结构。</p>
-<p><strong>数据类型</strong></p>
-<p>数据类型是一个值的集合和定义在值集上的一组操作的总称。</p>
-<p>在使用高级程序设计语言编写程序时，必须对程序中出现的每个变量、常量或表达式、C语言中函数的参数、返回值，明确说明它们所属的数据类型。</p>
-<p>C语言中：提供int,char,float,double等基本数据类型；数组、结构、共用体、枚举等构造数据类型；还有指针、空（void)类型，用户也可用typedef自己定义数据类型。而另一些常用的数据结构，如栈、队列、树、图等，不能直接用数据类型来表示。</p>
-<p>在C语言中，数据类型可以分为两类：</p>
+<p>最优化问题求解分类：根据描述问题约束条件和目标函数的数学模型的特性和问题的求解方法的不同，可分为：线性规划、整数规划、非线性规划、动态规划、分支限界法等<strong>精确算法</strong></p>
+<p>贪心方法：一种改进的分级的处理方法，可对满足上述特征的某些问题方便地求解，属于<strong>近似算法</strong>。即每次在做选择时，总是先选择具有相同特征的那个解，即“贪心解”</p>
+<h2 id="贪心算法">贪心算法</h2>
+<h3 id="概述">概述</h3>
+<p>当某问题具有最优子结构性质时，可用动态规划法求解(精解确、大规模等问题效率低)，但有时用贪心算法求解会更简单、更有效。</p>
+<p>顾名思义，<strong>贪心算法总是作出在当前看来最好的选择</strong>，并不从整体最优考虑，它所作出的选择只是在某种意义上的局部最优选择。当然，其希望得到的最终结果是整体最优的。</p>
+<p>虽然不能对所有问题都得到整体最优解，但对许多问题它能产生整体最优解。如单源最短路经问题，最小生成树问题等。在一些情况下，贪心算法不能得到整体最优解，但其最终结果是最优解的近似。</p>
+<h3 id="基本思想">基本思想</h3>
 <ul>
-<li>原子类型：是不可以再分解的基本类型，包括整型、实型、字符型等</li>
-<li>结构类型：由若干个类型组合而成，是可以再分解的。例如，整型姿型数据组成的数组。</li>
+<li>从问题的某一个初始解出发，通过一系列的贪心选择，即当前状态下的局部最优选择，逐步逼近给定的目标，尽可能快地求得更好的解。</li>
+<li>在贪心算法(Greedy
+Method)中采用逐步构造/分级最优解的方法。在每个阶段，都作出一个按某个评价函数最优的决策，该最优评价函数称为贪心准则(Greedy
+Criterion)</li>
+<li>贪心算法的正确性，要证明按贪心准则求得的解是全局最优解</li>
 </ul>
-<h2 id="抽象数据类型adt">抽象数据类型(ADT)</h2>
-<p>是指一个数据模型以及定义在该模型上的一组操作。和数据类型实质上是一个概念</p>
-<p>形式化定义: (D, S, P)</p>
-<ul>
-<li>D是数据对象</li>
-<li>S是D上的关系集</li>
-<li>P是对D的基本操作</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml">定义格式<br>      ADT 抽象数据类型名 &#123;<br>             数据对象: <span class="hljs-tag">&lt;<span class="hljs-name">数据对象的定义</span>&gt;</span><br>             数据关系: <span class="hljs-tag">&lt;<span class="hljs-name">数据关系的定义</span>&gt;</span><br>             基本操作: <span class="hljs-tag">&lt;<span class="hljs-name">基本操作的定义</span>&gt;</span><br>      &#125; ADT 抽象数据类型  <br><br></code></pre></td></tr></table></figure>
-<p>对图形进行一个缩放n倍<code>scale(G(被操作的图形),n)</code>对图形进行缩放，它当然也会返回一个图形
-<code>G'=scale(G,n)</code>返回值要赋值给G
-写成<code>scale（&amp;G,n）</code>引用参数以"&amp;"打头，除可提供输入值外，还将返回操作结果。</p>
-<h2 id="算法和算法分析">算法和算法分析</h2>
-<h3 id="算法">算法</h3>
-<p>算法定义：解决问题的方法和步骤。在计算机中表现为指令的有限序列。其中每条指令表示一个或多个操作。</p>
-<p>算法的描述</p>
-<p>自然语言；流程图【NS图、框图】；伪代码(<strong>类C语言</strong>)；程序设计(C、Java...)</p>
-<p><strong>程序与算法</strong></p>
-<ul>
-<li>程序=数据结构+算法</li>
-<li>数据结构通过算法来实现操作</li>
-<li>算法根据数据结构设计程序</li>
-</ul>
-<p><strong>算法的特性(确定、有穷、可行、输入、输出)</strong></p>
+<h3 id="基本步骤">基本步骤</h3>
 <ol type="1">
-<li>有穷性：算法在执行有限步骤之后，自动结束而不会出现无限循环，并且每一个步骤都在可接受的时间范围内完成。当然这里的有穷并不是纯数学意义的，而是在实际应用中合理的、可以接受的“边界”。</li>
-<li>确定性：算法的每一个步骤都有确定的含义，不会出现二义性(不会有歧义)。</li>
-<li>可行性：算法中的所有操作都可以通过已经实现的基本操作运算执行有限次来实现。</li>
-<li>输入：一个算法有零个或多个输入。当用函数描述算法时，输入往往是通过形参表示的，在它们被调用时，从主调函数获得输入值。</li>
-<li>输出：一个算法有一个或多个输出，它们是算法进行信息加工后得到的结果，无输出的算法没有任何意义。当用函数描述算法时，输出多用返回值或引用类型的形参表示。</li>
+<li>决定问题的最优子结构</li>
+<li>设计出一个递归解</li>
+<li>证明在递归的任一阶段，最优选择之一总是贪心选择，那么做贪心选择总是安全的。</li>
+<li>证明通过做贪心选择，所有子问题(除一个以外)都为空，即只产生一个子问题</li>
+<li>设计出一个实现贪心策略的递归算法。</li>
+<li>(性能角度) 将递归算法转换成迭代算法。</li>
 </ol>
-<p><strong>算法的设计要求</strong></p>
-<p>好的算法应该具有正确性、可读性、健壮性、时间效率高和存储量低的特征。</p>
-<ol type="1">
-<li><p>正确性(Correctness)：能正确的反映问题的需求，能得到正确的答案。</p>
-<p>分以下四个层次：</p>
+<h3 id="贪心算法的基本要素">贪心算法的基本要素</h3>
+<p>对于一个具体的问题，怎么知道是否可用贪心算法解此问题，以及能否得到问题的最优解呢？这个问题很难给予肯定的回答。但是，从许多可以用贪心算法求解的问题中看到这类问题一般具有2个重要的性质：贪心选择性质和最优子结构性质</p>
+<p><strong>贪心选择性质</strong></p>
+<p>所谓贪心选择性质是指所求问题的整体最优解可以通过一系列局部最优的选择，即贪心选择来达到。这是贪心算法可行的第一个基本要素，也是贪心算法与动态规划算法的主要区别。</p>
+<p>动态规划算法通常以自底向上的方式解各子问题，而贪心算法则通常以自顶向下的方式进行，以迭代的方式作出相继的贪心选择，每作一次贪心选择就将所求问题简化为规模更小的子问题。</p>
+<p>对于一个具体问题，要确定它是否具有贪心选择性质，必须证明每一步所作的贪心选择最终导致问题的整体最优解，否则得到的是近优解。</p>
+<p><strong>最优子结构性质</strong></p>
+<p>当一个问题的最优解包含其子问题的最优解时，称此问题具有最优子结构性质。</p>
+<p>问题的最优子结构性质是该问题可用动态规划算法或贪心算法求解的关键特征。但是，需要注意的是，并非所有具有最优子结构性质的问题都可以采用贪心策略来得到最优解</p>
+<p>贪心算法只需考虑一个选择(即贪心的选择)；在做贪心选择时，子问题之一必须是空的，因此只留下一个非空子问题。（是什么意思🙄</p>
+<h3 id="贪心算法-vs-动态规划">贪心算法 vs 动态规划</h3>
+<p>贪心算法和动态规划算法都要求问题具有最优子结构性质，但是两者存在着巨大的差别</p>
+<p>(1)动态规划是先分析子问题，再做选择。而贪心算法是先做贪心选择，做完选择后，生成子问题，然后再去求解子问题</p>
+<ol start="2" type="1">
+<li>动态规划每一步可能会产生多个子问题，而贪心算法每一步只会产生一个子问题(为非空)</li>
+</ol>
+<p>(3)从特点上看，动态规划是自底向上解决问题，而贪心算法是自顶向下解决问题</p>
+<h3 id="与递归分治的联系">与递归、分治的联系</h3>
+<p>分治策略用于解决原问题与子问题结构相似的问题，对于各子问题相互独立的情况，一般用递归实现</p>
+<p>动态规划用于解决子问题有重复求解的情况，既可以用递归实现，也可以用迭代实现</p>
+<p>贪心算法用于解决具有贪心选择性质的问题，既可以用递归实现，也可以用迭代实现，因为很多递归贪心算法都是尾递归，很容易改成迭代贪心算法</p>
+<p>递归是实现手段，分治策略是解决问题的思想，动态规划和贪心算法很多时候会使用记录子问题运算结果的递归实现</p>
+<h2 id="最小生成树prim算法">最小生成树—Prim算法</h2>
+<h3 id="最小生成树问题">最小生成树问题</h3>
+<h4 id="问题描述">问题描述</h4>
 <ul>
-<li><p>算法程序没有语法错误；</p></li>
-<li><p>算法程序对n组输入产生正确的结果；</p></li>
-<li><p>算法程序对典型、苛刻、有刁难性的几组输入可以产生正确的结果；</p></li>
-<li><p>算法程序对所有输入产生正确的结果；</p></li>
+<li>设<span
+class="math inline">\(G=(V,E)\)</span>是无向连通带权图，即一个网络。（V是顶点集合，E是边集合，E中每条边(v,w)的权为<span
+class="math inline">\(c[v][w]\)</span>）。</li>
+<li>如果G的子图G’是一棵包含G的所有顶点的树，则称G’为G的生成树。生成树上各边权的总和称为该生成树的耗费。</li>
+<li>在G的所有生成树中，耗费最小的生成树称为G的最小生成树(MST:
+minimumcost spanning tree)</li>
 </ul>
-<p>但我们不可能逐一的验证所有的输入，因此算法的正确性在大多数情况下都不可能用程序证明，而是用数学方法证明。所以一般情况下我们把层次3作为算法是否正确的标准。</p></li>
-<li><p>可读性(Readability)：算法，首先应便于人们理解和相互交流，其次才是机器可执行性。可读性强的算法有助于人们对算法的理解，而难懂的算法易于隐藏错误，且难于调试和修改。</p></li>
-<li><p>健壮性(Robustness)：当输入的数据非法时，好的算法能适当地做出正确反应或进行相应处理，而不会产生一些莫名其妙的输出结果。【健壮性又名鲁棒性即使用棒子粗鲁地对待他也能做出正确反应或进行相应处理】</p></li>
-<li><p>(高效性)时间效率高和存储量低</p></li>
+<p><strong>Prim算法</strong>和<strong>Kruskal算法</strong>：都是解最小生成树问题的贪心算法；它们做<strong>贪心选择的方式不同</strong>，但都利用了下面的最小生成树性质。</p>
+<h4 id="最小生成树性质">最小生成树性质</h4>
+<ul>
+<li>设<span
+class="math inline">\(G=(V,E)\)</span>是连通带权图，U是V的真子集。</li>
+<li>如果<span class="math inline">\((i,j)∈E\)</span>，且<span
+class="math inline">\(i∈U，j∈V-U\)</span>，且在所有这样的边中，<span
+class="math inline">\((i,j)\)</span>的权<span
+class="math inline">\(c[i][j]\)</span>最小，那么必存在一棵包含边<span
+class="math inline">\((i,j)\)</span>的最小生成树。</li>
+<li>这个性质也称为<strong>MST</strong>（Minimum Spanning
+Tree）<strong>性质</strong>。</li>
+</ul>
+<h3 id="prim算法">Prim算法</h3>
+<p>贪心选择策略： 每次都选择到下一顶点权最小的边。</p>
+<p>普里姆算法的实现思路是：</p>
+<ol type="1">
+<li>将连通网中的所有顶点分为两类（假设为 A 类和 B
+类）。初始状态下，所有顶点位于 B 类；</li>
+<li>选择任意一个顶点，将其从 B 类移动到 A 类；</li>
+<li>从 B 类的所有顶点出发，找出一条连接着 A
+类中的某个顶点且权值最小的边，将此边连接着的 A 类中的顶点移动到 B
+类；</li>
+<li>重复执行第 3 步，直至 B 类中的所有顶点全部移动到 A 类，恰好可以找到
+N-1 条边。</li>
 </ol>
-<h3 id="算法分析">算法分析</h3>
-<p>算法分析的目的是看算法实际是否可行，并在同一问题存在多个算法时可进行性能上的比较，以便从中挑选出比较优的算法。</p>
-<p>(时间效率)运行时间的长短、(空间效率)占用内存空间的大小是衡量算法好坏的重要因素。</p>
-<p>衡量算法时间效率的方法主要有两类：事后统计法和事前分析估算法。</p>
-<blockquote>
-<p>事后统计法需要先将算法实现，然后测算其时间和空间开销。这种方法的缺陷很显然，</p>
-<p>一是必须把算法转换成可执行的程序，</p>
-<p>二是时空开销的测算结果依赖于计算机的软硬件等环境因素，这容易掩盖算法本身的优劣。</p>
-<p>三是算法的测试数据设计困难，并且程序的运行时间往往还与测试数据的规模有很大关系，效率高的算法在小的测试数据面前往往得不到体现。比如10个数字的排序，不管用什么算法，差异几乎是零。而如果有一百万个随机数字排序，那不同算法的差异就非常大了。那么我们为了比较算法，到底用多少数据来测试，这是很难判断的问题。</p>
-<p>所以我们通常采用事前分析估算法。</p>
-</blockquote>
-<p>一个算法的执行时间大致上等于其所有语句执行时间的总和，而语句的执行时间则为该条语句的重复执行次数和执行一次所需时间的乘积。</p>
-<p>一条语句的重复执行次数称作语句频度(FrequencyCount)。</p>
-<p>语句的执行要由源程序经编译程序翻译成目标代码，目标代码经装配再执行，因此语句执行一次实际所需的具体时间是与机器的软、硬件环境（如机器速度、编译程序质量等）密切相关的。</p>
-<p>设每条语句执行一次所需的时间均是单位时间，则一个算法的执行时间可用该算法中所有语句频度之和来度量。所谓的算法分析并非精确统计算法实际执行所需时间，而是针对算法中<strong>语句的执行次数</strong>做出估计，从中得到算法执行时间的信息。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; n ; i++)     <span class="hljs-comment">//&lt;- 从 0 到 n，执行 n+1 次</span><br>&#123;<br>    a++;                         <span class="hljs-comment">//&lt;- 从 0 到 n-1，执行 n 次</span><br>&#125;<br><span class="hljs-comment">/*可以看到，这段程序中仅有 2 行代码，其中：</span><br><span class="hljs-comment">for 循环从 i 的值为 0 一直逐增至 n（注意，循环退出的时候 i 值为 n），因此 for 循环语句执行了 n+1 次；</span><br><span class="hljs-comment">而循环内部仅有一条语句，a++ 从 i 的值为 0 就开始执行，i 的值每增 1 该语句就执行一次，一直到 i 的值为 n-1，因此，a++ 语句一共执行了 n 次。</span><br><span class="hljs-comment">因此，整段代码中所有语句共执行了 (n+1)+n 次，即 2n+1 次。数据结构中，每条语句的执行次数，又被称为该语句的频度。整段代码的总执行次数，即整段代码的频度。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
-<h3 id="渐进时间复杂度">渐进时间复杂度</h3>
-<p>对于稍微复杂一些的算法，计算出算法中所有语句的频度通常是比较困难的。通常，算法的执行时间是随问题规模增长而增长的，因此对算法的评价通常只需考虑其随问题规模增长的趋势。</p>
-<p>这种情况下，我们只需要考虑当问题规模充分大时，算法中基本语句的执行次数在渐近意义下的阶。</p>
 <figure>
 <img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311171703344.png" srcset="/img/loading.gif" lazyload
-alt="image-20231117170354264" />
-<figcaption aria-hidden="true">image-20231117170354264</figcaption>
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312031052117.png" srcset="/img/loading.gif" lazyload
+alt="Prim算法例子" />
+<figcaption aria-hidden="true">Prim算法例子</figcaption>
 </figure>
-<p>分析算法时间复杂度的基本方法</p>
-<ol type="1">
-<li><p>找出语句频度最大的那条语句作为基本语句；</p></li>
-<li><p>计算基本语句的频度，得到问题规模n的某一个函数；</p></li>
-<li><p>取其数量级用O表示</p></li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//例子</span><br>i = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">while</span>(i&lt;=n)<br>    i = i*<span class="hljs-number">2</span>;<br><br></code></pre></td></tr></table></figure>
-<p>时间复杂度：<span class="math inline">\(O(log_2n)\)</span></p>
-<h3 id="最好最坏和平均时间复杂度">最好、最坏和平均时间复杂度</h3>
-<p>最坏时间复杂度是指在最坏情况下算法的的复杂度；</p>
-<p>最好时间复杂度是指在最好情况下算法的的复杂度；</p>
-<p>平均时间复杂度是指算法在所有可能情况下，按照输入实例以等概率出现时，算法计算量的加权平均值。</p>
-<p>通常考虑最坏和平均，但有时平均比较难计算，所以只考虑<strong>最坏时间复杂度</strong>，最坏情况运行时间是一种保证，那就是运行时间不会再坏了。</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311171718909.png" srcset="/img/loading.gif" lazyload
-alt="image-20231117171824861" />
-<figcaption aria-hidden="true">image-20231117171824861</figcaption>
-</figure>
-<h3 id="算法的空间复杂度">算法的空间复杂度</h3>
-<p>和时间复杂度类似，一个算法的空间复杂度，也常用大 O 记法表示。</p>
-<p>要知道每一个算法所编写的程序，运行过程中都需要占用大小不等的存储空间，例如：</p>
-<ul>
-<li>程序代码本身所占用的存储空间；</li>
-<li>程序中如果需要输入输出数据，也会占用一定的存储空间；</li>
-<li>程序在运行过程中，可能还需要临时申请更多的存储空间。</li>
-</ul>
-<p>首先，程序自身所占用的存储空间取决于其包含的代码量，如果要压缩这部分存储空间，就要求我们在实现功能的同时，尽可能编写足够短的代码。</p>
-<p>程序运行过程中输入输出的数据，往往由要解决的问题而定，即便所用算法不同，程序输入输出所占用的存储空间也是相近的。</p>
-<p>事实上，对算法的空间复杂度影响最大的，往往是程序运行过程中所申请的临时存储空间。不同的算法所编写出的程序，其运行时申请的临时存储空间通常会有较大不同。</p>
-<p>如果程序所占用的存储空间和输入值无关，则该程序的空间复杂度就为
-O(1)；反之，如果有关，则需要进一步判断它们之间的关系：</p>
-<ul>
-<li>如果随着输入值 n
-的增大，程序申请的临时空间成线性增长，则程序的空间复杂度用 O(n)
-表示;</li>
-<li>如果随着输入值 n 的增大，程序申请的临时空间成 n2
-关系增长，则程序的空间复杂度用 O(n2) 表示；</li>
-<li>如果随着输入值 n 的增大，程序申请的临时空间成 n3
-关系增长，则程序的空间复杂度用 O(n3) 表示；</li>
-<li>等等。</li>
-</ul>
-<blockquote>
-<p>在多数场景中，一个好的算法往往更注重的是时间复杂度的比较，而空间复杂度只要在一个合理的范围内就可以。</p>
-</blockquote>
+<h4 id="代码实现">代码实现</h4>
+<p>真的有点难度吧哥</p>
+<p><a
+target="_blank" rel="noopener" href="http://data.biancheng.net/view/40.html">普里姆算法(Prim算法)求最小生成树
+(biancheng.net)</a></p>
+<p><a
+target="_blank" rel="noopener" href="http://data.biancheng.net/view/41.html">克鲁斯卡尔算法(Kruskal算法)求最小生成树
+(biancheng.net)</a></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">flags</span>轲限梭畴坫他浛<br><span class="hljs-attribute">0264D9A0</span>                                                                                                   <span class="hljs-number">66</span>                                  f<br><span class="hljs-attribute">0264D9C0</span>   <span class="hljs-number">6</span>C <span class="hljs-number">61</span> <span class="hljs-number">67</span> <span class="hljs-number">73</span> E9 F0 CF DE  FE <span class="hljs-number">8</span>F FD F3 CB F3 AB FB  B3 EB DB E3 CB FB <span class="hljs-number">9</span>B BF                            lags轲限?梭畴坫他浛<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -501,7 +454,7 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="category-chain-item">算法分析与设计</a>
   
   
 
@@ -516,7 +469,7 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="print-no-link">#算法分析与设计</a>
       
     </div>
   
@@ -528,8 +481,8 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据结构 1_绪论</div>
-      <div>http://example.com/2023/11/03/数据结构 1_绪论/</div>
+      <div>算法-5-贪心算法</div>
+      <div>http://example.com/2023/12/02/算法 5-贪心算法/</div>
     </div>
     <div class="license-meta">
       
@@ -541,7 +494,7 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月3日</div>
+          <div>2023年12月2日</div>
         </div>
       
       
@@ -573,9 +526,9 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/06/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA/" title="密码学导论">
+                      <a href="/2023/12/02/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Crypto系列——RSA（四）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">密码学导论</span>
+                        <span class="hidden-mobile">Crypto系列——RSA（四）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -583,8 +536,8 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/02/%E7%AE%97%E6%B3%95%203-%E9%80%92%E5%BD%92%E5%92%8C%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/" title="算法-递归和分治策略">
-                        <span class="hidden-mobile">算法-递归和分治策略</span>
+                      <a href="/2023/11/30/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%203%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="数据结构 3 栈和队列">
+                        <span class="hidden-mobile">数据结构 3 栈和队列</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -24,7 +24,7 @@
 <meta property="og:description" content="入门的比赛，慢慢学习">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-24T15:20:49.000Z">
-<meta property="article:modified_time" content="2023-10-08T07:29:56.879Z">
+<meta property="article:modified_time" content="2023-12-02T13:30:13.053Z">
 <meta property="article:author" content="wuuuu">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
@@ -323,7 +323,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年10月8日 下午
+                    本文最后更新于：2023年12月2日 晚上
                   
                 
               </p>
@@ -331,7 +331,8 @@
             
               <div class="markdown-body">
                 
-                <h2 id="crypto-入门指北">Crypto 入门指北</h2>
+                <p>（仅有部分题目</p>
+<h2 id="crypto-入门指北">Crypto 入门指北</h2>
 <h3 id="main_py">main_py</h3>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag <span class="hljs-comment"># 这个secret不是一个库，flag是你要自己求出来的，所以不要问为什么找不到这个库了（</span><br><br>p,q = getPrime(<span class="hljs-number">512</span>), getPrime(<span class="hljs-number">512</span>) <span class="hljs-comment"># 随机生成了两个质数</span><br>e = <span class="hljs-number">65537</span> <span class="hljs-comment"># 这是什么？</span><br>n = p*q<br>m = <span class="hljs-built_in">int</span>.from_bytes(flag.encode(),<span class="hljs-string">&quot;big&quot;</span>) <span class="hljs-comment"># 把flag编码成bytes，再转换成一个长整数</span><br>c = <span class="hljs-built_in">pow</span>(m,e,n) <span class="hljs-comment"># RSA加密！</span><br><br><span class="hljs-built_in">print</span>(p)<br><span class="hljs-built_in">print</span>(q)<br><span class="hljs-built_in">print</span>(c)<br><br><span class="hljs-comment"># p = 0xe82a76eeb5ac63e054128e040171630b993feb33e0d3d38fbb7c0b54df3a2fb9b5589d1205e0e4240b8fcb4363acaa4c3c44dd6e186225ebf3ce881c7070afa7</span><br><span class="hljs-comment"># q = 0xae5c2e450dbce36c8d6d1a5c989598fc01438f009f9b4c29352d43fd998d10984d402637d7657d772fb9f5e4f4feee63b267b401b67704979d519ad7f0a044eb</span><br><span class="hljs-comment"># c = 0x4016bf1fe655c863dd6c08cbe70e3bb4e6d4feefacaaebf1cfa2a8d94051d21e51919ea754c1aa7bd1674c5330020a99e2401cb1f232331a2da61cb4329446a17e3b9d6b59e831211b231454e81cc8352986e05d44ae9fcd30d68d0ce288c65e0d22ce0e6e83122621d2b96543cec4828f590af9486aa57727c5fcd8e74bd296</span><br></code></pre></td></tr></table></figure>
 <blockquote>

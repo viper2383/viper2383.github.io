@@ -16,22 +16,22 @@
   <meta name="author" content="wuuuu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据结构第一节，一些概念和概述，以及算法的时间复杂度的分析">
+    <meta name="description" content="算法分析与设计中递归和分治策略部分，包括对递归和分治的介绍，以及几个具体的例子来理解递归和分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构 1_绪论">
-<meta property="og:url" content="http://example.com/2023/11/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%201_%E7%BB%AA%E8%AE%BA/index.html">
+<meta property="og:title" content="算法-递归和分治策略">
+<meta property="og:url" content="http://example.com/2023/11/02/%E7%AE%97%E6%B3%95%203-%E9%80%92%E5%BD%92%E5%92%8C%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="数据结构第一节，一些概念和概述，以及算法的时间复杂度的分析">
+<meta property="og:description" content="算法分析与设计中递归和分治策略部分，包括对递归和分治的介绍，以及几个具体的例子来理解递归和分治">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-03T00:20:49.000Z">
-<meta property="article:modified_time" content="2023-11-17T01:24:49.000Z">
+<meta property="article:published_time" content="2023-11-02T03:20:49.000Z">
+<meta property="article:modified_time" content="2023-11-02T03:24:49.000Z">
 <meta property="article:author" content="wuuuu">
-<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法分析与设计">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>数据结构 1_绪论 - Wiper3</title>
+  <title>算法-递归和分治策略 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="数据结构 1_绪论"></span>
+            <span id="subtitle" data-typed-text="算法-递归和分治策略"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-03 08:20" pubdate>
-          2023年11月3日 早上
+        <time datetime="2023-11-02 11:20" pubdate>
+          2023年11月2日 上午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          2k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          28 分钟
+          14 分钟
         
       </span>
     
@@ -317,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">数据结构 1_绪论</h1>
+            <h1 id="seo-header">算法-递归和分治策略</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月17日 上午
+                    本文最后更新于：2023年11月2日 上午
                   
                 
               </p>
@@ -330,158 +330,86 @@
             
               <div class="markdown-body">
                 
-                <p>凭借一句话获得图灵奖的Pascal语言之父——Nicklaus
-Wirth，让他获得图灵奖的这句话就是他提出的著名公式： <span
-class="math display">\[
-程序 = 数据结构 + 算法
-\]</span></p>
-<h2 id="基本概念和术语">基本概念和术语</h2>
-<p>知识结构图： 数据 ——&gt; 数据元素 ——&gt; 数据项 ——&gt; 数据对象</p>
-<p>数据：是对客观事物的符号表示</p>
-<p>数据元素(data
-element)：是数据的基本单位，在计算机程序中通常作为一个整体进行考虑和处理。一个数据元素往往由若干数据项组成。</p>
-<p>数据项(Data
-Item)：是组成数据元素的、有独立含义的、不可分割的最小单位</p>
-<p>数据对象(data object)：是性质相同的数据元素的集合</p>
-<p>数据结构(Data
-Structure)：是相互之间存在一种或多种特定关系的数据元素的集合。换句话说，数据结构是带”结构＂的数据元素的集合，“结构”就是指数据元素之间存在的关系。</p>
-<p><strong>逻辑结构和物理结构</strong></p>
-<p>逻辑结构：数据的逻辑结构是从逻辑关系上描述数据，它与数据的存储无关，是独立于计算机的。因此，数据的逻辑结构可以看作是从具体问题抽象出来的数学模型。数据的逻辑结构有两个要素：一是数据元素；二是关系。</p>
-<p>四类基本逻辑结构</p>
-<ul>
-<li>集合</li>
-<li>松散结构线性结构：一对一的关系</li>
-<li>树形结构：一对多关系</li>
-<li>图状结构：多对多关系</li>
-</ul>
-<p>物理结构/存储结构</p>
-<p>物理结构：数据的逻辑结构在计算机中(内存)的存储形式。</p>
-<p>分为顺序存储结构、链式存储结构、索引存储结构、散列存储结构。</p>
-<p><strong>数据类型</strong></p>
-<p>数据类型是一个值的集合和定义在值集上的一组操作的总称。</p>
-<p>在使用高级程序设计语言编写程序时，必须对程序中出现的每个变量、常量或表达式、C语言中函数的参数、返回值，明确说明它们所属的数据类型。</p>
-<p>C语言中：提供int,char,float,double等基本数据类型；数组、结构、共用体、枚举等构造数据类型；还有指针、空（void)类型，用户也可用typedef自己定义数据类型。而另一些常用的数据结构，如栈、队列、树、图等，不能直接用数据类型来表示。</p>
-<p>在C语言中，数据类型可以分为两类：</p>
-<ul>
-<li>原子类型：是不可以再分解的基本类型，包括整型、实型、字符型等</li>
-<li>结构类型：由若干个类型组合而成，是可以再分解的。例如，整型姿型数据组成的数组。</li>
-</ul>
-<h2 id="抽象数据类型adt">抽象数据类型(ADT)</h2>
-<p>是指一个数据模型以及定义在该模型上的一组操作。和数据类型实质上是一个概念</p>
-<p>形式化定义: (D, S, P)</p>
-<ul>
-<li>D是数据对象</li>
-<li>S是D上的关系集</li>
-<li>P是对D的基本操作</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs xml">定义格式<br>      ADT 抽象数据类型名 &#123;<br>             数据对象: <span class="hljs-tag">&lt;<span class="hljs-name">数据对象的定义</span>&gt;</span><br>             数据关系: <span class="hljs-tag">&lt;<span class="hljs-name">数据关系的定义</span>&gt;</span><br>             基本操作: <span class="hljs-tag">&lt;<span class="hljs-name">基本操作的定义</span>&gt;</span><br>      &#125; ADT 抽象数据类型  <br><br></code></pre></td></tr></table></figure>
-<p>对图形进行一个缩放n倍<code>scale(G(被操作的图形),n)</code>对图形进行缩放，它当然也会返回一个图形
-<code>G'=scale(G,n)</code>返回值要赋值给G
-写成<code>scale（&amp;G,n）</code>引用参数以"&amp;"打头，除可提供输入值外，还将返回操作结果。</p>
-<h2 id="算法和算法分析">算法和算法分析</h2>
-<h3 id="算法">算法</h3>
-<p>算法定义：解决问题的方法和步骤。在计算机中表现为指令的有限序列。其中每条指令表示一个或多个操作。</p>
-<p>算法的描述</p>
-<p>自然语言；流程图【NS图、框图】；伪代码(<strong>类C语言</strong>)；程序设计(C、Java...)</p>
-<p><strong>程序与算法</strong></p>
-<ul>
-<li>程序=数据结构+算法</li>
-<li>数据结构通过算法来实现操作</li>
-<li>算法根据数据结构设计程序</li>
-</ul>
-<p><strong>算法的特性(确定、有穷、可行、输入、输出)</strong></p>
-<ol type="1">
-<li>有穷性：算法在执行有限步骤之后，自动结束而不会出现无限循环，并且每一个步骤都在可接受的时间范围内完成。当然这里的有穷并不是纯数学意义的，而是在实际应用中合理的、可以接受的“边界”。</li>
-<li>确定性：算法的每一个步骤都有确定的含义，不会出现二义性(不会有歧义)。</li>
-<li>可行性：算法中的所有操作都可以通过已经实现的基本操作运算执行有限次来实现。</li>
-<li>输入：一个算法有零个或多个输入。当用函数描述算法时，输入往往是通过形参表示的，在它们被调用时，从主调函数获得输入值。</li>
-<li>输出：一个算法有一个或多个输出，它们是算法进行信息加工后得到的结果，无输出的算法没有任何意义。当用函数描述算法时，输出多用返回值或引用类型的形参表示。</li>
-</ol>
-<p><strong>算法的设计要求</strong></p>
-<p>好的算法应该具有正确性、可读性、健壮性、时间效率高和存储量低的特征。</p>
-<ol type="1">
-<li><p>正确性(Correctness)：能正确的反映问题的需求，能得到正确的答案。</p>
-<p>分以下四个层次：</p>
-<ul>
-<li><p>算法程序没有语法错误；</p></li>
-<li><p>算法程序对n组输入产生正确的结果；</p></li>
-<li><p>算法程序对典型、苛刻、有刁难性的几组输入可以产生正确的结果；</p></li>
-<li><p>算法程序对所有输入产生正确的结果；</p></li>
-</ul>
-<p>但我们不可能逐一的验证所有的输入，因此算法的正确性在大多数情况下都不可能用程序证明，而是用数学方法证明。所以一般情况下我们把层次3作为算法是否正确的标准。</p></li>
-<li><p>可读性(Readability)：算法，首先应便于人们理解和相互交流，其次才是机器可执行性。可读性强的算法有助于人们对算法的理解，而难懂的算法易于隐藏错误，且难于调试和修改。</p></li>
-<li><p>健壮性(Robustness)：当输入的数据非法时，好的算法能适当地做出正确反应或进行相应处理，而不会产生一些莫名其妙的输出结果。【健壮性又名鲁棒性即使用棒子粗鲁地对待他也能做出正确反应或进行相应处理】</p></li>
-<li><p>(高效性)时间效率高和存储量低</p></li>
-</ol>
-<h3 id="算法分析">算法分析</h3>
-<p>算法分析的目的是看算法实际是否可行，并在同一问题存在多个算法时可进行性能上的比较，以便从中挑选出比较优的算法。</p>
-<p>(时间效率)运行时间的长短、(空间效率)占用内存空间的大小是衡量算法好坏的重要因素。</p>
-<p>衡量算法时间效率的方法主要有两类：事后统计法和事前分析估算法。</p>
+                <h2 id="分治法的常用例子">分治法的常用例子</h2>
+<h3 id="二分查找">二分查找</h3>
+<h4 id="概述">1. 概述</h4>
+<p>二分查找（Binary Search）算法，也叫折半查找算法</p>
+<p>算法前件：待查找序列有序</p>
+<p>基本思想：先将待查元素与中间元素比，若比中间元素大，则在序列的后一半继续查找；若比中间元素小，则在序列的前一半继续查找。</p>
+<p>二分查找与顺序查找对比图：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311021339520.gif" srcset="/img/loading.gif" lazyload
+alt="1" />
+<figcaption aria-hidden="true">1</figcaption>
+</figure>
+<h4 id="复杂度分析">2.复杂度分析</h4>
+<p><strong>时间复杂度</strong></p>
+<p>我们假设数据大小是
+n，每次查找后数据都会缩小为原来的一半，也就是会除以
+2。最坏情况下，直到查找区间被缩小为空，才停止。</p>
 <blockquote>
-<p>事后统计法需要先将算法实现，然后测算其时间和空间开销。这种方法的缺陷很显然，</p>
-<p>一是必须把算法转换成可执行的程序，</p>
-<p>二是时空开销的测算结果依赖于计算机的软硬件等环境因素，这容易掩盖算法本身的优劣。</p>
-<p>三是算法的测试数据设计困难，并且程序的运行时间往往还与测试数据的规模有很大关系，效率高的算法在小的测试数据面前往往得不到体现。比如10个数字的排序，不管用什么算法，差异几乎是零。而如果有一百万个随机数字排序，那不同算法的差异就非常大了。那么我们为了比较算法，到底用多少数据来测试，这是很难判断的问题。</p>
-<p>所以我们通常采用事前分析估算法。</p>
+<p>被查找区间的大小变化：n、n/2、n/4、n/8 ... n/2^k</p>
 </blockquote>
-<p>一个算法的执行时间大致上等于其所有语句执行时间的总和，而语句的执行时间则为该条语句的重复执行次数和执行一次所需时间的乘积。</p>
-<p>一条语句的重复执行次数称作语句频度(FrequencyCount)。</p>
-<p>语句的执行要由源程序经编译程序翻译成目标代码，目标代码经装配再执行，因此语句执行一次实际所需的具体时间是与机器的软、硬件环境（如机器速度、编译程序质量等）密切相关的。</p>
-<p>设每条语句执行一次所需的时间均是单位时间，则一个算法的执行时间可用该算法中所有语句频度之和来度量。所谓的算法分析并非精确统计算法实际执行所需时间，而是针对算法中<strong>语句的执行次数</strong>做出估计，从中得到算法执行时间的信息。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; n ; i++)     <span class="hljs-comment">//&lt;- 从 0 到 n，执行 n+1 次</span><br>&#123;<br>    a++;                         <span class="hljs-comment">//&lt;- 从 0 到 n-1，执行 n 次</span><br>&#125;<br><span class="hljs-comment">/*可以看到，这段程序中仅有 2 行代码，其中：</span><br><span class="hljs-comment">for 循环从 i 的值为 0 一直逐增至 n（注意，循环退出的时候 i 值为 n），因此 for 循环语句执行了 n+1 次；</span><br><span class="hljs-comment">而循环内部仅有一条语句，a++ 从 i 的值为 0 就开始执行，i 的值每增 1 该语句就执行一次，一直到 i 的值为 n-1，因此，a++ 语句一共执行了 n 次。</span><br><span class="hljs-comment">因此，整段代码中所有语句共执行了 (n+1)+n 次，即 2n+1 次。数据结构中，每条语句的执行次数，又被称为该语句的频度。整段代码的总执行次数，即整段代码的频度。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
-<h3 id="渐进时间复杂度">渐进时间复杂度</h3>
-<p>对于稍微复杂一些的算法，计算出算法中所有语句的频度通常是比较困难的。通常，算法的执行时间是随问题规模增长而增长的，因此对算法的评价通常只需考虑其随问题规模增长的趋势。</p>
-<p>这种情况下，我们只需要考虑当问题规模充分大时，算法中基本语句的执行次数在渐近意义下的阶。</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311171703344.png" srcset="/img/loading.gif" lazyload
-alt="image-20231117170354264" />
-<figcaption aria-hidden="true">image-20231117170354264</figcaption>
-</figure>
-<p>分析算法时间复杂度的基本方法</p>
-<ol type="1">
-<li><p>找出语句频度最大的那条语句作为基本语句；</p></li>
-<li><p>计算基本语句的频度，得到问题规模n的某一个函数；</p></li>
-<li><p>取其数量级用O表示</p></li>
-</ol>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//例子</span><br>i = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">while</span>(i&lt;=n)<br>    i = i*<span class="hljs-number">2</span>;<br><br></code></pre></td></tr></table></figure>
-<p>时间复杂度：<span class="math inline">\(O(log_2n)\)</span></p>
-<h3 id="最好最坏和平均时间复杂度">最好、最坏和平均时间复杂度</h3>
-<p>最坏时间复杂度是指在最坏情况下算法的的复杂度；</p>
-<p>最好时间复杂度是指在最好情况下算法的的复杂度；</p>
-<p>平均时间复杂度是指算法在所有可能情况下，按照输入实例以等概率出现时，算法计算量的加权平均值。</p>
-<p>通常考虑最坏和平均，但有时平均比较难计算，所以只考虑<strong>最坏时间复杂度</strong>，最坏情况运行时间是一种保证，那就是运行时间不会再坏了。</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311171718909.png" srcset="/img/loading.gif" lazyload
-alt="image-20231117171824861" />
-<figcaption aria-hidden="true">image-20231117171824861</figcaption>
-</figure>
-<h3 id="算法的空间复杂度">算法的空间复杂度</h3>
-<p>和时间复杂度类似，一个算法的空间复杂度，也常用大 O 记法表示。</p>
-<p>要知道每一个算法所编写的程序，运行过程中都需要占用大小不等的存储空间，例如：</p>
+<p>假设总共查找了 k 次，则剩余 <span
+class="math inline">\(n/2^k\)</span>
+个元素。最坏的情况是查找到最后一个元素，则有等式：<span
+class="math inline">\(n/2^k = 1\)</span>，即 <span
+class="math inline">\(2^k=n\)</span>，得：<span class="math inline">\(k
+= log_2n\)</span></p>
+<p>忽略常数，则二分查找的时间复杂度为<code>O(log n)</code></p>
+<p><strong>空间复杂度</strong></p>
+<p>空间复杂度是很简单的，根据上面的流程可以得知，在整个二分搜索的过程中，只需要额外存储三个变量：最大值
+，最小值 和 中点，因此，空间复杂度是常量 <code>O(1)</code></p>
+<h4 id="python实现">3. Python实现</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 二分查找的递归与分治策略实现（python）</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">binary_search</span>(<span class="hljs-params">arr, target, left, right</span>):<br>    <span class="hljs-keyword">if</span> left &lt;= right:<br>        mid = left + (right - left) // <span class="hljs-number">2</span>  <span class="hljs-comment"># 计算中间位置</span><br><br>        <span class="hljs-keyword">if</span> arr[mid] == target:<br>            <span class="hljs-keyword">return</span> mid  <span class="hljs-comment"># 找到目标元素，返回索引</span><br>        <span class="hljs-keyword">elif</span> arr[mid] &lt; target:<br>            <span class="hljs-keyword">return</span> binary_search(arr, target, mid + <span class="hljs-number">1</span>, right)  <span class="hljs-comment"># 在右半部分递归查找</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">return</span> binary_search(arr, target, left, mid - <span class="hljs-number">1</span>)  <span class="hljs-comment"># 在左半部分递归查找</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>  <span class="hljs-comment"># 目标元素不在数组中，返回-1</span><br><br><span class="hljs-comment"># 输入数组</span><br>input_string = <span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入一个升序数组（以逗号分隔）: &quot;</span>)<br>arr = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, input_string.split(<span class="hljs-string">&#x27;,&#x27;</span>)))<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;已创建好一个升序数组：&quot;</span>,arr)<br><br><span class="hljs-comment"># 输入要查找的数字</span><br>target = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入要查找的数字: &quot;</span>))<br><br>result = binary_search(arr, target, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(arr) - <span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">if</span> result != -<span class="hljs-number">1</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;目标 <span class="hljs-subst">&#123;target&#125;</span> 在索引 <span class="hljs-subst">&#123;result&#125;</span>&quot;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;目标 <span class="hljs-subst">&#123;target&#125;</span> 不在数组中&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+<h4 id="应用场景及局限性">4. 应用场景及局限性</h4>
 <ul>
-<li>程序代码本身所占用的存储空间；</li>
-<li>程序中如果需要输入输出数据，也会占用一定的存储空间；</li>
-<li>程序在运行过程中，可能还需要临时申请更多的存储空间。</li>
-</ul>
-<p>首先，程序自身所占用的存储空间取决于其包含的代码量，如果要压缩这部分存储空间，就要求我们在实现功能的同时，尽可能编写足够短的代码。</p>
-<p>程序运行过程中输入输出的数据，往往由要解决的问题而定，即便所用算法不同，程序输入输出所占用的存储空间也是相近的。</p>
-<p>事实上，对算法的空间复杂度影响最大的，往往是程序运行过程中所申请的临时存储空间。不同的算法所编写出的程序，其运行时申请的临时存储空间通常会有较大不同。</p>
-<p>如果程序所占用的存储空间和输入值无关，则该程序的空间复杂度就为
-O(1)；反之，如果有关，则需要进一步判断它们之间的关系：</p>
-<ul>
-<li>如果随着输入值 n
-的增大，程序申请的临时空间成线性增长，则程序的空间复杂度用 O(n)
-表示;</li>
-<li>如果随着输入值 n 的增大，程序申请的临时空间成 n2
-关系增长，则程序的空间复杂度用 O(n2) 表示；</li>
-<li>如果随着输入值 n 的增大，程序申请的临时空间成 n3
-关系增长，则程序的空间复杂度用 O(n3) 表示；</li>
-<li>等等。</li>
-</ul>
+<li><p>二分查找依赖顺序表结构，如数组；</p>
 <blockquote>
-<p>在多数场景中，一个好的算法往往更注重的是时间复杂度的比较，而空间复杂度只要在一个合理的范围内就可以。</p>
+<p>那二分查找能否依赖其他数据结构呢？比如链表。答案是不可以的，主要原因是二分查找算法需要按照下标随机访问元素。数组按照下标随机访问数据的时间复杂度是
+O(1)，而链表随机访问的时间复杂度是
+O(n)。所以，如果数据使用链表存储，二分查找的时间复杂就会变得很高。</p>
+</blockquote></li>
+<li><p>二分查找针对的是有序数据，如果无序，则要先排序；</p></li>
+<li><p>数据量太小不适合二分查找；</p>
+<blockquote>
+<p>如果要处理的数据量很小，完全没有必要用二分查找，顺序遍历就足够了。比如我们在一个大小为
+10
+的数组中查找一个元素，不管用二分查找还是顺序遍历，查找速度都差不多。</p>
+<p>只有数据量比较大的时候，二分查找的优势才会比较明显。不过，这里有一个例外。如果数据之间的比较操作非常耗时，不管数据量大小，我都推荐使用二分查找。比如，数组中存储的都是长度超过
+300
+的字符串，如此长的两个字符串之间比对大小，就会非常耗时。我们需要尽可能地减少比较次数，而比较次数的减少会大大提高性能，这个时候二分查找就比顺序遍历更有优势。</p>
+</blockquote></li>
+<li><p>数据量太大也不适合二分查找。</p>
+<blockquote>
+<p>最后，数据量太大也不适合二分查找。</p>
+<p>二分查找的底层需要依赖数组这种数据结构，而数组为了支持随机访问的特性，要求内存空间连续，对内存的要求比较苛刻。比如，我们有
+1GB 大小的数据，如果希望用数组来存储，那就需要 1GB 的连续内存空间。</p>
+<p>注意这里的“连续”二字，也就是说，即便有 2GB
+的内存空间剩余，但是如果这剩余的 2GB 内存空间都是零散的，没有连续的 1GB
+大小的内存空间，那照样无法申请一个 1GB
+大小的数组。而我们的二分查找是作用在数组这种数据结构之上的，所以太大的数据用数组存储就比较吃力了，也就不能用二分查找了。</p>
+</blockquote></li>
+</ul>
+<h4 id="二分查找算法的改进">5. 二分查找算法的改进</h4>
+<p><a
+target="_blank" rel="noopener" href="https://c.biancheng.net/algorithm/interpolation-search.html">插值查找算法
+(biancheng.net)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/MinPage/p/14192152.html">二分查找及其优化
+- 箐茗 - 博客园 (cnblogs.com)</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42145502/article/details/99676008">斐波那契查找原理深入_斐波那契法原理-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40660998/article/details/134033754">查找算法-斐波那契查找法（Fibonacci
+Search）-CSDN博客</a></p>
+<blockquote>
+<p>参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Abysscarry/article/details/87388195?ops_request_misc=%7B%22request%5Fid%22%3A%22169900884916800211543547%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=169900884916800211543547&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-87388195-null-null.142%5Ev96%5Epc_search_result_base1&amp;utm_term=二分查找复杂度分析&amp;spm=1018.2226.3001.4187">二分查找算法及其变种详解-CSDN博客</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42001592/article/details/128963283?ops_request_misc=%7B%22request%5Fid%22%3A%22169900884916800211543547%22%2C%22scm%22%3A%2220140713.130102334..%22%7D&amp;request_id=169900884916800211543547&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-128963283-null-null.142%5Ev96%5Epc_search_result_base1&amp;utm_term=二分查找复杂度分析&amp;spm=1018.2226.3001.4187">算法笔记：二分查找_二分查找的时间复杂度-CSDN博客</a></p>
 </blockquote>
 
                 
@@ -501,7 +429,7 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
     
       <span class="category-chain">
         
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-chain-item">数据结构</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="category-chain-item">算法分析与设计</a>
   
   
 
@@ -516,7 +444,7 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/" class="print-no-link">#算法分析与设计</a>
       
     </div>
   
@@ -528,8 +456,8 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>数据结构 1_绪论</div>
-      <div>http://example.com/2023/11/03/数据结构 1_绪论/</div>
+      <div>算法-递归和分治策略</div>
+      <div>http://example.com/2023/11/02/算法 3-递归和分治策略/</div>
     </div>
     <div class="license-meta">
       
@@ -541,7 +469,7 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月3日</div>
+          <div>2023年11月2日</div>
         </div>
       
       
@@ -573,9 +501,9 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/06/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA/" title="密码学导论">
+                      <a href="/2023/11/03/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%201_%E7%BB%AA%E8%AE%BA/" title="数据结构 1_绪论">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">密码学导论</span>
+                        <span class="hidden-mobile">数据结构 1_绪论</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -583,8 +511,8 @@ O(1)；反之，如果有关，则需要进一步判断它们之间的关系：<
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/02/%E7%AE%97%E6%B3%95%203-%E9%80%92%E5%BD%92%E5%92%8C%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/" title="算法-递归和分治策略">
-                        <span class="hidden-mobile">算法-递归和分治策略</span>
+                      <a href="/2023/11/01/Java%202%20%E5%8F%98%E9%87%8F/" title="&lt;Java&gt; 2_变量">
+                        <span class="hidden-mobile">&lt;Java&gt; 2_变量</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
