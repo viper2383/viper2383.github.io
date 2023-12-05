@@ -24,7 +24,7 @@
 <meta property="og:description" content="记录hexo搭建网站过程中遇到的各种问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-16T04:40:49.000Z">
-<meta property="article:modified_time" content="2023-11-16T14:20:49.000Z">
+<meta property="article:modified_time" content="2023-12-02T14:20:49.000Z">
 <meta property="article:author" content="wiper3">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="博客">
@@ -262,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.5k 字
         
       </span>
     
@@ -273,7 +273,7 @@
         
         
         
-          10 分钟
+          11 分钟
         
       </span>
     
@@ -323,7 +323,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年11月16日 晚上
+                    本文最后更新于：2023年12月2日 晚上
                   
                 
               </p>
@@ -333,7 +333,7 @@
                 
                 <blockquote>
 <p>记录hexo搭建网站过程中遇到的各种问题</p>
-<p>跟随这篇记录保证99%能简单搭建一个你自己的博客</p>
+<p>想搭建一个类似博客的师傅也能跟着下面的记录，99%能搭建一个你自己的博客</p>
 </blockquote>
 <p>b站yyds！！！</p>
 <p><a
@@ -371,7 +371,7 @@ $ X =
 x\\ y
 \end{bmatrix}\]</span>
 <p>$，就直接显示失败</p>
-<h2 id="hexo-d-总是报错"><code>hexo d</code> 总是报错</h2>
+<h2 id="错误1hexo-d-总是报错">错误1：<code>hexo d</code> 总是报错</h2>
 <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">Error: </span>Spawn failed<br>这错误烦死人，一直报<br></code></pre></td></tr></table></figure>
 <h3 id="解决方案">解决方案</h3>
 <ul>
@@ -380,16 +380,22 @@ x\\ y
 only，然后就会一直报那个错误😡😡</li>
 </ul>
 <h2
-id="bash-hexo-command-not-found"><code>bash: hexo: command not found</code></h2>
+id="错误2bash-hexo-command-not-found">错误2：<code>bash: hexo: command not found</code></h2>
 <h3 id="解决方案-1">解决方案</h3>
 <p>将<code>D:\blog\myblog\node_modules\.bin</code>,添加到Path中</p>
-<h2 id="错误如下">错误如下</h2>
+<h2 id="错误3">错误3</h2>
 <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs subunit">ssh: Could not resolve hostname github.com: Name or service not known<br>fatal: Could not read from remote repository.<br><br>Please make sure you have the correct access rights<br>and the repository exists.<br>FATAL Something&#x27;s wrong. Maybe you can find the solution here: https://hexo.io/d<br>ocs/troubleshooting.html<br><span class="hljs-keyword">Error: </span>Spawn failed<br>    at ChildProcess.&lt;anonymous&gt; (D:\blog\myblog\node_modules\hexo-util\lib\spawn<br>.js:51:21)<br>    at ChildProcess.emit (node:events:514:28)<br>    at cp.emit (D:\blog\myblog\node_modules\cross-spawn\lib\enoent.js:34:29)<br>    at ChildProcess._handle.onexit (node:internal/child_process:291:12)<br>    <br></code></pre></td></tr></table></figure>
 <p>不知道为什么会报这个错误，可能是我总是翻墙的问题吧，不太懂，草，一会一个错误md😡</p>
 <h3 id="解决方案-2">解决方案</h3>
 <p><a
 target="_blank" rel="noopener" href="https://blog.csdn.net/li_001/article/details/70245006?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169400980416800225586698%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=169400980416800225586698&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-70245006-null-null.142%5Ev93%5EchatgptT3_1&amp;utm_term=ssh%3A%20Could%20not%20resolve%20hostname%20github.com%3A%20Name%20or%20service%20not%20known%20fatal%3A%20Could%20not%20read%20from%20remote%20repository.&amp;spm=1018.2226.3001.4187">CSDN解决方案</a></p>
 <p>方案一亲测有效，CSDNyyds！😭</p>
+<h2 id="typora-卡顿">Typora 卡顿</h2>
+<p>Typora
+在写超过大概八九千字的时候就有明显的卡顿，只有在写代码的模式下才不卡，导致非常难受，在网上搜到的一篇文章能稍微缓解一点这个问题</p>
+<h3 id="解决方案-3">解决方案</h3>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/Mao_Jonah/article/details/120533879">win10上Typora卡顿的问题及其解决方案_typora卡顿解决方法-CSDN博客</a></p>
 
                 
               </div>
