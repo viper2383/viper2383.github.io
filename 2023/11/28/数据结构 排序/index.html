@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          4.1k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          17 分钟
+          28 分钟
         
       </span>
     
@@ -330,7 +330,13 @@
             
               <div class="markdown-body">
                 
-                <h2 id="十个经典排序算法">十个经典排序算法</h2>
+                <blockquote>
+<p>下面这个网站动态的演示了各种排序算法，可以更加直观的了解一下</p>
+<p><a
+target="_blank" rel="noopener" href="https://visualgo.net/zh/sorting?slide=1">排序（冒泡排序，选择排序，插入排序，归并排序，快速排序，计数排序，基数排序）
+- VisuAlgo</a></p>
+</blockquote>
+<h2 id="十个经典排序算法">十个经典排序算法</h2>
 <p>排序算法可以分为内部排序和外部排序，内部排序是数据记录在内存中进行排序，而外部排序是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。</p>
 <figure>
 <img
@@ -376,11 +382,15 @@ alt="简单选择排序动图演示" />
 个元素的序列中，如果序列中的元素满足下面其中一种关系时，此序列可以称之为堆。</p>
 <ul>
 <li><span class="math inline">\(k_i ≤ k_{2i}\)</span>且 <span
-class="math inline">\(k_i ≤ k_{2i+1}\)</span>（在 n 个记录的范围内，第 i
-个关键字的值小于第 2i 个关键字，同时也小于第 2i+1 个关键字）</li>
+class="math inline">\(k_i ≤ k_{2i+1}\)</span>（在 n 个记录的范围内，第
+<span class="math inline">\(i\)</span> 个关键字的值小于第 <span
+class="math inline">\(2i\)</span> 个关键字，同时也小于第 <span
+class="math inline">\(2i+1\)</span> 个关键字）</li>
 <li><span class="math inline">\(k_i ≥ k_{2i}\)</span>且 <span
-class="math inline">\(k_i ≥ k_{2i+1}\)</span>（在 n 个记录的范围内，第 i
-个关键字的值大于第 2i 个关键字，同时也大于第 2i+1 个关键字）</li>
+class="math inline">\(k_i ≥ k_{2i+1}\)</span>（在 n 个记录的范围内，第
+<span class="math inline">\(i\)</span> 个关键字的值大于第 <span
+class="math inline">\(2i\)</span> 个关键字，同时也大于第 <span
+class="math inline">\(2i+1\)</span> 个关键字）</li>
 </ul>
 <p>对于堆的定义也可以使用完全二叉树来解释，因为在完全二叉树中第 i
 个结点的左孩子恰好是第 2i 个结点，右孩子恰好是 2i+1 个结点</p>
@@ -449,6 +459,7 @@ class="math inline">\(O(n*log_2n)\)</span>。</p>
 class="math inline">\(O(n*log_2n)\)</span>，对于快速排序最坏情况下的<span
 class="math inline">\(O(n^2)\)</span>言是一个优点，当记录较多时较为高效</p>
 <h3 id="算法代码-1">算法代码</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXSIZE 100 <span class="hljs-comment">// 定义堆的最大长度</span></span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> &#123;<br>    <span class="hljs-type">int</span> key; <span class="hljs-comment">// 关键字</span><br>&#125; ElemType;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">struct</span> &#123;<br>    ElemType r[MAXSIZE]; <span class="hljs-comment">// 用于存储堆元素的数组</span><br>    <span class="hljs-type">int</span> length; <span class="hljs-comment">// 当前堆的长度</span><br>&#125; SqList;<br><br><span class="hljs-comment">// 函数声明</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeapAdjust</span><span class="hljs-params">(SqList &amp;H, <span class="hljs-type">int</span> s, <span class="hljs-type">int</span> m)</span></span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeapSort</span><span class="hljs-params">(SqList &amp;H)</span></span>;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printArray</span><span class="hljs-params">(SqList &amp;H)</span></span>;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>    SqList H;<br>    H.length = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-comment">// 初始化堆元素</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入堆的长度：&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;H.length);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入堆元素的关键字：&quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= H.length; ++i) &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;H.r[i].key);<br>    &#125;<br><br>    <span class="hljs-comment">// 执行堆排序</span><br>    <span class="hljs-built_in">HeapSort</span>(H);<br><br>    <span class="hljs-comment">// 打印排序后的堆元素</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;堆排序后的结果：\n&quot;</span>);<br>    <span class="hljs-built_in">printArray</span>(H);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">// 函数：对以s为根的子树进行堆调整，m为子树的长度</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeapAdjust</span><span class="hljs-params">(SqList &amp;H, <span class="hljs-type">int</span> s, <span class="hljs-type">int</span> m)</span> </span>&#123;<br>    ElemType rc = H.r[s]; <span class="hljs-comment">// 当前堆顶记录</span><br>    <span class="hljs-type">int</span> j;<br><br>    <span class="hljs-keyword">for</span> (j = <span class="hljs-number">2</span> * s; j &lt;= m; j *= <span class="hljs-number">2</span>) &#123;<br>        <span class="hljs-keyword">if</span> (j &lt; m &amp;&amp; H.r[j].key &lt; H.r[j + <span class="hljs-number">1</span>].key) &#123;<br>            ++j; <span class="hljs-comment">// j为key较大的儿子记录下标</span><br>        &#125;<br>        <span class="hljs-keyword">if</span> (!(rc.key &lt; H.r[j].key)) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        H.r[s] = H.r[j];<br>        s = j;<br>    &#125;<br>    H.r[s] = rc; <span class="hljs-comment">// 原堆顶记录交换到s位置</span><br>&#125;<br><br><span class="hljs-comment">// 函数：堆排序</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">HeapSort</span><span class="hljs-params">(SqList &amp;H)</span> </span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    ElemType temp;<br><br>    <span class="hljs-comment">// 将H.r[1..H.length]建成大顶堆</span><br>    <span class="hljs-keyword">for</span> (i = H.length / <span class="hljs-number">2</span>; i &gt; <span class="hljs-number">0</span>; --i) &#123;<br>        <span class="hljs-built_in">HeapAdjust</span>(H, i, H.length);<br>    &#125;<br><br>    <span class="hljs-comment">// 将堆顶记录和当前子序列最后一个记录交换，然后重新调整为大顶堆</span><br>    <span class="hljs-keyword">for</span> (i = H.length; i &gt; <span class="hljs-number">1</span>; --i) &#123;<br>        temp = H.r[<span class="hljs-number">1</span>];<br>        H.r[<span class="hljs-number">1</span>] = H.r[i];<br>        H.r[i] = temp;<br>        <span class="hljs-built_in">HeapAdjust</span>(H, <span class="hljs-number">1</span>, i - <span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">// 函数：打印数组</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">printArray</span><span class="hljs-params">(SqList &amp;H)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= H.length; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, H.r[i].key);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <h2 id="基数排序">基数排序</h2>
 <h3 id="算法思想-2">算法思想</h3>
 <p>基数排序是一种很特别的排序，它<strong>不基于比较和移动</strong>，而是<strong>基于各个位上关键字的大小进行排序</strong>。</p>

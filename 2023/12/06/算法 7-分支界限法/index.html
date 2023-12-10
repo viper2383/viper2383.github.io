@@ -16,24 +16,22 @@
   <meta name="author" content="wiper3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法分析与设计中-回溯法部分">
+    <meta name="description" content="算法分析与设计-分支界限法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法 6 回溯法">
-<meta property="og:url" content="http://viper2383.github.io/2023/12/03/%E7%AE%97%E6%B3%95%206-%E5%9B%9E%E6%BA%AF%E6%B3%95/index.html">
+<meta property="og:title" content="算法 7 分支界限法">
+<meta property="og:url" content="http://viper2383.github.io/2023/12/06/%E7%AE%97%E6%B3%95%207-%E5%88%86%E6%94%AF%E7%95%8C%E9%99%90%E6%B3%95/index.html">
 <meta property="og:site_name" content="Wiper3">
-<meta property="og:description" content="算法分析与设计中-回溯法部分">
+<meta property="og:description" content="算法分析与设计-分支界限法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312031926719.png">
-<meta property="article:published_time" content="2023-12-03T03:20:49.000Z">
-<meta property="article:modified_time" content="2023-12-03T13:24:49.000Z">
+<meta property="article:published_time" content="2023-12-06T06:20:49.000Z">
+<meta property="article:modified_time" content="2023-12-06T13:24:49.000Z">
 <meta property="article:author" content="wiper3">
-<meta property="article:tag" content="回溯法">
+<meta property="article:tag" content="分支界限法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312031926719.png">
   
   
   
-  <title>算法 6 回溯法 - Wiper3</title>
+  <title>算法 7 分支界限法 - Wiper3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -240,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法 6 回溯法"></span>
+            <span id="subtitle" data-typed-text="算法 7 分支界限法"></span>
           
         </div>
 
@@ -251,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-03 11:20" pubdate>
-          2023年12月3日 上午
+        <time datetime="2023-12-06 14:20" pubdate>
+          2023年12月6日 下午
         </time>
       </span>
     
@@ -263,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          2k 字
         
       </span>
     
@@ -274,7 +272,7 @@
         
         
         
-          21 分钟
+          14 分钟
         
       </span>
     
@@ -319,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">算法 6 回溯法</h1>
+            <h1 id="seo-header">算法 7 分支界限法</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年12月3日 晚上
+                    本文最后更新于：2023年12月6日 晚上
                   
                 
               </p>
@@ -332,141 +330,137 @@
             
               <div class="markdown-body">
                 
-                <h2 id="方法概述">方法概述</h2>
-<h3 id="搜索算法介绍">搜索算法介绍</h3>
+                <blockquote>
+<p>方法概述部分基本为老师PPT的内容，我™也有点看不懂，不知道是我太菜了，还是PPT不清楚🤧🤧🤧</p>
+</blockquote>
+<h2 id="方法概述">方法概述</h2>
+<p>与回溯法区别</p>
+<ul>
+<li><p>求解目标不同</p>
+<p>一般而言，回溯法的求解目标是找出解空间树中满足约束条件的所有解，而分支限界法的求解目标则是尽快地找出满足约束条件的一个解</p></li>
+<li><p>搜索方法不同</p>
+<p>回溯法使用深度优先方法搜索，而分支限界一般用宽度优先或最佳优先方法来搜索</p></li>
+<li><p>对扩展结点的扩展方式不同</p>
+<p>分支限界法中，每一个活结点只有一次机会成为扩展结点。活结点一旦成为扩展结点，就一次性产生其所有儿子结点;</p></li>
+<li><p>存储空间的要求不同</p>
+<p>分支限界法的存储空间比回溯法大得多，因此当内存容量有限时，回溯法解决问题成功的可能性更大。</p></li>
+</ul>
+<h3 id="分支界限法基本思想">分支界限法基本思想</h3>
+<p>以广度优先或最小耗费（最大效益）优先的方式搜索问题的解空间树</p>
+<p>每个活结点只有一次机会成为扩展结点并一次性产生其所有儿子结点</p>
+<p>儿子结点中导致不可行解或非最优解的儿子结点被舍弃，其余儿子结点被加入活结点表中。如是最小耗费优先，活结点表需要重新排序</p>
+<p>此后从活结点表中取下一结点成为当前扩展结点，并重复上述结点扩展过程。这个过程一直持续到找到所需的解或活结点表为空时为止</p>
+<blockquote>
+<p>分支限界法常以广度优先或以最小耗费（最大效益）优先的方式搜索问题的解空间树。
+1. 对已处理的各结点根据限界函数估算目标函数的可能取值 2.
+从中选出目标函数取得极大(极小) 值的结点优先进行广度优先搜索 3.
+不断地调整搜索方向，尽快找到解，裁剪那些不能得到最优解的子树以提高搜索效率</p>
+</blockquote>
+<p>搜索策略：</p>
+<p>在扩展结点处，首先生成其所有的儿子结点（分支），然后从当前的活结点表中选择下一个扩展结点。
+思考：如何代码实现？</p>
+<p>为了有效地选择下一个扩展结点，以加速搜索的进程，<strong>在每一个活结点处，计算一个函数值(优先值)，并根据这些已计算出的函数值，从当前活结点表中选择一个最有利的结点作为扩展结点，使搜索朝着解空间树上有最优解的分支推进，以便尽快地找出一个最优解</strong>。</p>
+<h3 id="branch-and-bound求解步骤">Branch and Bound求解步骤：</h3>
 <ol type="1">
-<li><p>穷举搜索</p></li>
-<li><p>盲目搜索</p></li>
-</ol>
-<ul>
-<li>深度优先( DFS ) 或 回溯搜索 (Backtracking)；</li>
-<li>广度优先搜索(BFS)；</li>
-<li>分支限界法(Branch &amp; Bound)</li>
-<li>博奔树搜索 (α-β Search)</li>
-</ul>
-<ol start="3" type="1">
-<li>启发式搜索</li>
-</ol>
-<ul>
-<li><p>A* 算法和最佳优先(Best-First Search)</p></li>
-<li><p>迭代加深的A* 算法</p></li>
-<li><p>B* ，AO* ，SSS*等算法</p></li>
-<li><p>Local Search，GA等算法</p></li>
-</ul>
-<h3 id="搜索空间的三种表示">搜索空间的三种表示</h3>
-<p>表序表示：搜索对象用线性表数据结构表示</p>
-<p>显示图表示：搜索对象在搜索前就用图(树)的数据结构表示</p>
-<p>隐式图表示：除了初始结点，其他结点在搜索过程中动态生成。缘于搜索空间大，难以全部存储。</p>
-<h3 id="回溯法backtracking">回溯法(Backtracking)</h3>
-<p>回溯法(Backtracking)又称为试探法：</p>
-<ul>
-<li>回溯法是一个既带有系统性又带有跳跃性的搜索算法；</li>
-<li>它在包含问题的所有解的解空间树中，按照深度优先的策略，从根结点出发搜索解空间树。——
-系统性</li>
-<li>算法搜索至解空间树的任一结点时，判断该结点为根的子树是否包含问题的解，如果肯定不包含，则跳过以该结点为根的子树的搜索逐层向其祖先结点回溯。否则，进入该子树，继续深度优先的策略进行搜索。——跳跃性</li>
-<li><strong>这种以深度优先的方式系统地搜索问题的解的算法称为回溯法</strong>。它适用于解一些组合数较大的问题。许多复杂的、规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</li>
-<li>递归(Recursion)、迭代(lteration)、回溯??区别与联系</li>
-</ul>
-<h4 id="基本思想">基本思想</h4>
-<p>（上面的概念也是属于基本思想的）</p>
-<ul>
-<li>搜索从开始结点(根结点) 出发，以深度优先搜索整个解空间。</li>
-<li>这个开始结点成为活结点，同时也成为当前的扩展结点。在当前的扩展结点处，搜索向纵深方向移至一个新结点。这个新结点就成为新的活结点，并成为当前扩展结点。</li>
-<li>如果在当前的扩展结点处不能再向纵深方向扩展，则当前扩展结点就成为死结点。</li>
-<li>此时，应往回移动(回溯)至最近的一个活结点处(回溯点)，并使这个活结点成为当前的扩展结点;直到找到一个解或全部解。</li>
-</ul>
-<h4 id="基本步骤">基本步骤：</h4>
+<li>定义解空间（对解编码）</li>
+<li>确定解空间的树结构</li>
+<li>按BFS等方式搜索
 <ol type="1">
-<li>针对所给问题，定义问题的解空间；</li>
-<li>确定易于搜索的解空间结构；</li>
-<li>以深度优先方式搜索解空间，并在搜索过程中用前枝函数避免无效搜索。</li>
+<li>每个活结点仅有一次机会变成扩展结点</li>
+<li>由扩展结点生成一步可达（即宽度搜索）的新结点C</li>
+<li>在新结点中，删除不可能导出最优解的结点； // 限界策略</li>
+<li>将剩余的新结点加入活动表（队列）中</li>
+<li>从活动表中选择结点再扩展； //分支策略</li>
+<li>直至活动表为空</li>
+</ol></li>
 </ol>
-<p><strong>常用剪枝函数：</strong></p>
-<p>① 用约束函数在扩展结点处剪去不满足约束的子树；</p>
-<p>② 用限界函数剪去得不到最优解的子树。</p>
-<h3 id="二类常见的解空间树">二类常见的解空间树：</h3>
-<h4 id="子集树">子集树</h4>
-<p>当所给的问题是从n个元素的集合S中找出满足某种性质的子集时，相应的解空间树称为子集树。子集树通常有<span
-class="math inline">\(2^n\)</span>个叶子结点，其总结点个数为<span
-class="math inline">\(2^{n+1}-1\)</span>，遍历子集树时间为<span
-class="math inline">\(Ω(2^n)\)</span>。如0-1背包问题，叶结点数为<span
-class="math inline">\(2^n\)</span>，总结点数<span
-class="math inline">\(2^{n+1}\)</span>。</p>
-<p>假设现在有一列数 <span class="math inline">\(a[0],a[1],
-...a[n-1]\)</span>，如果一个问题的解的长度不是固定的，并且解和元素顺序无关，即可以从中选择0个或多个，那么解空间的个数将是指数级别的，为<span
-class="math inline">\(2^n\)</span>,可以用下面的子集树来表示所有的解(假设这里n=4)</p>
+<h3 id="常见的两种分支限界法">常见的两种分支限界法</h3>
 <figure>
 <img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312032047861.png" srcset="/img/loading.gif" lazyload
-alt="子集树" />
-<figcaption aria-hidden="true">子集树</figcaption>
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312061720116.png" srcset="/img/loading.gif" lazyload
+alt="image-20231206172054010" />
+<figcaption aria-hidden="true">image-20231206172054010</figcaption>
 </figure>
-<p>这里一共有<span class="math inline">\(2^4=16\)</span>种情况</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312032051625.png" srcset="/img/loading.gif" lazyload
-alt="0-1背包问题（1）" />
-<figcaption aria-hidden="true">0-1背包问题（1）</figcaption>
-</figure>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312032051520.png" srcset="/img/loading.gif" lazyload
-alt="0-1背包问题（2）" />
-<figcaption aria-hidden="true">0-1背包问题（2）</figcaption>
-</figure>
-<h4 id="排列树">排列树</h4>
-<p>当所给问题是确定n个元素满足某种性质的排列时，相应的解空间树称为排列树。排列树通常有<span
-class="math inline">\(n!\)</span>个叶子结点，因此，遍历排列树需要<span
-class="math inline">\(Ω(n!)\)</span>的计算时间。如TSP问题(Traveling
-Salesman Problem，推销员问题)，叶结点数为<span
-class="math inline">\(n!\)</span>，遍历时间为<span
-class="math inline">\(Ω(n!)\)</span>。</p>
-<p>如果解空间是由n个元素的排列形成，即n个元素的每一个排列都是解空间中的一个元素，那么，最后解空间的组织形式是排列树。</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312032048478.png" srcset="/img/loading.gif" lazyload
-alt="排列树" />
-<figcaption aria-hidden="true">排列树</figcaption>
-</figure>
-<p>这里每一个元素有<span
-class="math inline">\(3*2*1=6\)</span>种情况，一共就有<span
-class="math inline">\(4*6=24\)</span>种情况，也就是<span
-class="math inline">\(4*3*2*1=24\)</span></p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312032053917.png" srcset="/img/loading.gif" lazyload
-alt="TSP问题" />
-<figcaption aria-hidden="true">TSP问题</figcaption>
-</figure>
-<p>因为这里规定了从A出发，所以一共就有<span
-class="math inline">\(3*2*1=6\)</span>种情况</p>
+<p>队列式（FIFO）分支限界法</p>
+<ul>
+<li>按照队列先进先出（FIFO）原则选取下一个结点为扩展结点</li>
+<li>从活结点表中取出结点的顺序与加入结点的顺序相同，因此活结点表的性质与队列相同</li>
+</ul>
+<p>优先队列分支限界法（代价最小或效益最大）</p>
+<ul>
+<li>每个结点都有一个对应的耗费或收益，以此决定结点的优先级</li>
+<li>从优先队列中选取优先级最高的结点成为当前扩展结点</li>
+<li>如果查找一个具有最小耗费的解：则活结点表可用小顶堆来建立，下一个扩展结点就是具有最小耗费的活结点</li>
+<li>如果希望搜索一个具有最大收益的解：则可用大顶堆来构造活结点表，下一个扩展结点是具有最大收益的活结点</li>
+</ul>
 <h2 id="背包问题">0-1背包问题</h2>
-<h3 id="问题描述">问题描述</h3>
-<p>给定n种物品和一背包。物品i的重量是<span
-class="math inline">\(w_i&gt;0\)</span>，其价值为<span
-class="math inline">\(v_i&gt;0\)</span>，背包的容量为c。问应如何选择装入背包中的物品，使得装入背包中物品的总价值最大？</p>
-<p>如：</p>
-<p><img src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312031926719.png" srcset="/img/loading.gif" lazyload alt="0-1背包问题例题" style="zoom:80%;" /></p>
-<p>肉眼可算出答案是[1,3,4]，结果是20</p>
-<h3 id="复杂度分析">复杂度分析</h3>
-<p><strong>时间复杂度分析：</strong></p>
-<p>回溯法的时间复杂度通常随着问题规模的增加而指数级增长。在每一步，算法需要考虑选择或不选择当前物品，因此复杂度为
-<span class="math inline">\(O(2^n)\)</span>，其中 n
-是物品的数量。这是因为对于每个物品，都有两种选择：选择或不选择。因此，总共有
-<span class="math inline">\(2^n\)</span> 种组合需要考虑。</p>
-<p><strong>空间复杂度分析：</strong></p>
-<p>空间复杂度主要取决于递归调用的深度。在回溯法中，递归调用堆栈的深度是问题的规模。因为在每一步中都有两个分支（选择或不选择），递归树的深度是
-n，其中 n 是物品的数量。因此，空间复杂度为 <span
-class="math inline">\(O(n)\)</span>。</p>
-<p>需要注意的是，这里的空间复杂度并不考虑输入数据的空间占用，仅仅是算法本身的空间占用。</p>
-<p>需要注意的是，虽然回溯法的时间复杂度很高，但在实际应用中，可以通过一些优化策略（例如剪枝）来减少搜索空间，提高算法效率。对于0-1背包问题，通常更推荐使用动态规划来获得更高效的解决方案。</p>
-<h3 id="代码">代码</h3>
-<p><strong>python：</strong></p>
-<p>要我说，这玩意真要好好调试一下吧，不然🐭🐭是真理解不了啊</p>
-<p>这真有人第一次能自己写出来吗，我怎么不信呢😭😭😭</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># python</span><br>max_V, now_W, now_V, best_X, goods = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, [], []  <span class="hljs-comment"># 最大价值、当前重量、当前价值、最优解、商品列表</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;请输入物品数量、背包容量，空格隔开：&#x27;</span>)<br>n, c = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;请输入第<span class="hljs-subst">&#123;i + <span class="hljs-number">1</span>&#125;</span>个物品的重量和价值，空格隔开：&#x27;</span>)<br>    goods.append(<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())))<br>x = [<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]  <span class="hljs-comment"># 初始化当前解</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">backtrack</span>(<span class="hljs-params">i</span>):  <span class="hljs-comment"># i是层数，n个物品，共有n+1层</span><br>    <span class="hljs-keyword">global</span> max_V, now_V, now_W, best_X, x  <span class="hljs-comment"># 引入全局变量</span><br>    <span class="hljs-keyword">if</span> i &gt;= n:  <span class="hljs-comment"># 当层数超过物品总数量的时候</span><br>        <span class="hljs-keyword">if</span> max_V &lt; now_V:  <span class="hljs-comment"># 当最大值小于当前价值时，更新最大值</span><br>            max_V = now_V<br>            best_X = x[:]  <span class="hljs-comment"># 同步更新最优解</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">if</span> now_W + goods[i][<span class="hljs-number">0</span>] &lt;= c:  <span class="hljs-comment"># 如果当前重量加上该层对应物品的重量，可以装在背包里</span><br>            x[i] = <span class="hljs-number">1</span>  <span class="hljs-comment"># 那么就装入这个物品（当前物品的状态为1）</span><br>            now_W += goods[i][<span class="hljs-number">0</span>]  <span class="hljs-comment"># 更新当前重量和价值</span><br>            now_V += goods[i][<span class="hljs-number">1</span>]<br>            backtrack(i + <span class="hljs-number">1</span>)  <span class="hljs-comment"># 进入下一个节点（如果符合条件就到底了）</span><br>            now_W -= goods[i][<span class="hljs-number">0</span>]  <span class="hljs-comment"># 另一侧节点</span><br>            now_V -= goods[i][<span class="hljs-number">1</span>]<br>        x[i] = <span class="hljs-number">0</span>  <span class="hljs-comment"># 初始化物品状态</span><br>        backtrack(i + <span class="hljs-number">1</span>)  <span class="hljs-comment"># 进入下一层</span><br><br><br>backtrack(<span class="hljs-number">0</span>)  <span class="hljs-comment"># 从第0层开始搜索</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;最大价值为：<span class="hljs-subst">&#123;max_V&#125;</span>&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;应装物品编号为：<span class="hljs-subst">&#123;[i + <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n) <span class="hljs-keyword">if</span> best_X[i]]&#125;</span>&#x27;</span>)<br><br></code></pre></td></tr></table></figure>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xym4869/p/8513801.html">0-1背包问题
-—— 四种解法解题 - Shaw_喆宇 - 博客园 (cnblogs.com)</a></p>
+<h3 id="队列式fifo分支限界法">队列式（FIFO）分支限界法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312061532327.png" srcset="/img/loading.gif" lazyload
+alt="队列式（FIFO）分支限界法解决0-1背包问题" />
+<figcaption
+aria-hidden="true">队列式（FIFO）分支限界法解决0-1背包问题</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312061533668.png" srcset="/img/loading.gif" lazyload
+alt="image-20231206153332482" />
+<figcaption aria-hidden="true">image-20231206153332482</figcaption>
+</figure>
+<p>通过判断重量加起来是否超过背包容量来判断是不是死节点</p>
+<p>步骤：</p>
+<p><strong>①</strong> 用一个队列存储活结点表，初始为空</p>
+<p><strong>②</strong>
+A为当前扩展结点，其儿子结点B和C均为可行结点，将其按从左到右顺序加入活结点队列，并舍弃A。</p>
+<p><strong>③</strong>
+按FIFO原则，下一扩展结点为B，其儿子结点D不可行，舍弃；E可行，加入。舍弃B</p>
+<p><strong>④</strong>
+C为当前扩展结点，儿子结点F、G均为可行结点，加入活结点表，舍弃C</p>
+<p><strong>⑤</strong>
+扩展结点E的儿子结点J不可行而舍弃；K为可行的叶结点，是问题的一个可行解，价值为45</p>
+<p><strong>⑥</strong> 当前活结点队列的队首为F,
+儿子结点L、M为可行叶结点，价值为50、25</p>
+<p><strong>⑦</strong>
+G为最后一个扩展结点，儿子结点N、O均为可行叶结点，其价值为25和0</p>
+<p><strong>⑧</strong> 活结点队列为空，算法结束，其最优值为50</p>
+<p>注：活结点就是不可再进行扩展的节点，也就是两个儿子还没有全部生成的节点</p>
+<h3 id="优先队列分支限界法">优先队列分支限界法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312061550206.png" srcset="/img/loading.gif" lazyload
+alt="优先队列分支限界法求解0-1背包问题" />
+<figcaption
+aria-hidden="true">优先队列分支限界法求解0-1背包问题</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312061551301.png" srcset="/img/loading.gif" lazyload
+alt="image-20231206155119099" />
+<figcaption aria-hidden="true">image-20231206155119099</figcaption>
+</figure>
+<p>步骤：</p>
+<p><strong>①</strong>
+用一个极大堆表示活结点表的优先队列，其优先级定义为活结点所获得的价值。初始为空。</p>
+<p><strong>②</strong>
+由A开始搜索解空间树，其儿子结点B、C为可行结点，加入堆中，舍弃A。</p>
+<p><strong>③</strong>
+B获得价值45，C为0。B为堆中价值最大元素，并成为下一扩展结点。</p>
+<p><strong>④</strong>
+B的儿子结点D是不可行结点，舍弃。E是可行结点，加入到堆中。舍弃B。</p>
+<p><strong>⑤</strong> E的价值为45，是堆中最大元素，为当前扩展结点。</p>
+<p><strong>⑥</strong>
+E的儿子J是不可行叶结点，舍弃。K是可行叶结点，为问题的一个可行解价值为45。</p>
+<p><strong>⑦</strong>
+继续扩展堆中唯一活结点C，直至存储活结点的堆为空，算法结束。</p>
+<p><strong>⑧</strong>
+算法搜索得到最优值为50，最优解为从根结点A到叶结点L的路径（0，1，1）。</p>
+<blockquote>
+<p>参考：</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/RB26DETT/p/10982687.html">分支限界法解决01背包问题
+- boobo - 博客园 (cnblogs.com)</a></p>
+</blockquote>
 
                 
               </div>
@@ -500,7 +494,7 @@ class="math inline">\(O(n)\)</span>。</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9B%9E%E6%BA%AF%E6%B3%95/" class="print-no-link">#回溯法</a>
+        <a href="/tags/%E5%88%86%E6%94%AF%E7%95%8C%E9%99%90%E6%B3%95/" class="print-no-link">#分支界限法</a>
       
     </div>
   
@@ -512,8 +506,8 @@ class="math inline">\(O(n)\)</span>。</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法 6 回溯法</div>
-      <div>http://viper2383.github.io/2023/12/03/算法 6-回溯法/</div>
+      <div>算法 7 分支界限法</div>
+      <div>http://viper2383.github.io/2023/12/06/算法 7-分支界限法/</div>
     </div>
     <div class="license-meta">
       
@@ -525,7 +519,7 @@ class="math inline">\(O(n)\)</span>。</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月3日</div>
+          <div>2023年12月6日</div>
         </div>
       
       
@@ -557,18 +551,12 @@ class="math inline">\(O(n)\)</span>。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/04/Crypto%E5%88%B7%E9%A2%98/" title="Crypto刷题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Crypto刷题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/02/Crypto%E7%B3%BB%E5%88%97%E2%80%94%E2%80%94RSA%EF%BC%88%E5%9B%9B%EF%BC%89/" title="Crypto系列——RSA（四）">
-                        <span class="hidden-mobile">Crypto系列——RSA（四）</span>
+                      <a href="/2023/12/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%205%20%E6%A0%91/" title="数据结构 5 树">
+                        <span class="hidden-mobile">数据结构 5 树</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
