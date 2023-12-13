@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.8k 字
+          11k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          53 分钟
+          74 分钟
         
       </span>
     
@@ -330,8 +330,64 @@
             
               <div class="markdown-body">
                 
-                <h1 id="分组密码">分组密码</h1>
+                <h1 id="密码学导论">密码学导论</h1>
+<h2 id="密码学的发展概况">密码学的发展概况</h2>
+<p>密码学是一门古老、年轻且深奥的学科。</p>
+<p>密码学经历了从古典密码学到现代密码学的演变。</p>
+<p>密码学是研究信息系统安全保密的科学。它包括密码编码学和密码分析学。</p>
+<p>1949年前密码技术是一门技术性很强的艺术，而不是一门科学。</p>
+<p>1949年shannon “保密系统的通信理论”，密码学成为科学。</p>
+<p><strong>1976年Diffie和Hellman“密码学的新方向”，密码学的一场革命，标志着公钥密码学的出现</strong></p>
+<p>1977年美国国家标准局公布DES，并公开算法，揭开神秘面纱。</p>
+<p>密码分析者通常可以在下述情况下进行攻击：</p>
+<p>（1）唯密文攻击：密码分析者仅知道一些密文。</p>
+<p>（2）已知明文攻击：密码分析者知道一些明文和相应的密文。（随便给的一些明文和密文）</p>
+<p>（3）选择明文攻击：密码分析者可以选择一些明文，并得到相应的密文。（有加密机）</p>
+<p>（4）选择密文攻击：密码分析者可以选择一些密文，并得到相应的明文。（有解密机）</p>
+<p>唯密文攻击的强度最弱，攻击强度依此增加。</p>
+<blockquote>
+<p>公钥加密中选择明文攻击是自动发生的，因为是公钥加密，🐕</p>
+</blockquote>
+<p>无条件安全的（不可破译的）：一次一密方案（一次一密乱码本），不可破译的</p>
+<p>计算上安全的：流密码、分组密码、公钥密码，给你无限的资源你是可以破译的，这样我们也是可以接受的</p>
+<p>密码算法只要满足以下两条准则之一就行：</p>
+<p><strong>（1） 破译密文的代价超过被加密信息的价值。</strong></p>
+<p><strong>（2 ) 破译密文所花的时间超过信息的有用期。</strong></p>
+<p>满足以上两个准则的密码算法在实际中是可用的。</p>
+<p>多表代换密码</p>
+<h1 id="分组密码">分组密码</h1>
 <h2 id="分组密码-1">分组密码</h2>
+<h3 id="概念">概念</h3>
+<p>若明文流被分割成等长串，各串用相同的加密算法和相同的密钥进行加密，就是分组密码。</p>
+<p>即当：</p>
+<ol type="1">
+<li><p>明文和密文是固定长度为 <span
+class="math inline">\(\mathrm{n}\)</span> 的比特串 <span
+class="math inline">\(m=m_1 m_2 m_3 \cdots m_n\)</span>, <span
+class="math inline">\(c=c_1 c_2 c_3 \cdots c_n\)</span></p></li>
+<li><p>加密密钥和解密密钥相等，是固定长度为 <span
+class="math inline">\(r\)</span> 的比特串 <span
+class="math inline">\(k=k_1 k_2 k_3 \cdots k_r\)</span></p></li>
+<li><p>加密算法为 <span
+class="math inline">\(c=\operatorname{Enc}_K(m)\)</span></p></li>
+<li><p>解密算法为 <span
+class="math inline">\(m=\operatorname{Dec}_k(c)=\operatorname{Dec}_K\left(\operatorname{Enc}_k(m)\right)\)</span>.</p></li>
+</ol>
+<p>则称这样的加解密算法为分组密码</p>
+<h3 id="构造原则">构造原则</h3>
+<p>分组密码的构造都应遵循下列几个原则：</p>
+<ul>
+<li><p>要有足够大分组长度（保证足够大的明文空间，避免给攻击者提供太多的明文统计特征信息）</p></li>
+<li><p>密钥空间要尽可能大（防止穷举密钥）</p></li>
+<li><p>保证足够强的密码算法复杂度以加强分组密码算法自身的安全性，</p>
+<p>方法如下：</p>
+<ul>
+<li><p>先将一个明文分组划分为若干子组分别进行处理，然后合并起来再做一些适当的变换，以增大密码算法强度。采取这样的措施也便于密码算法的实际分析和评测</p></li>
+<li><p>采用乘积密码的思想。通过两种或两种以上简单密码的逐次应用，构成强度比其中任何一个更强的加密结果。有效克服单一密码变换的弱点</p></li>
+</ul></li>
+<li><p>软件实现尽量采用子块和简单运算，采用加法、乘法、异或和移位等指令，易于标准处理器完成运算</p></li>
+<li><p>加解密硬件结构最好一致，这样便于应用超大规模集成芯片实现。以简化系统整体结构的复杂性。</p></li>
+</ul>
 <h2 id="对称密码">对称密码</h2>
 <p>对称密钥算法(Symmetric-key
 algorithm)，又称为对称加密、私钥加密、共享密钥加密，是密码学中的一类加密算法。</p>
@@ -415,6 +471,8 @@ src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312041837387.png"
 alt="群的概念" />
 <figcaption aria-hidden="true">群的概念</figcaption>
 </figure>
+<p>对乘法，单位元是1，但是不是所有的整数都有逆元（或者说除了1和-1都没有=</p>
+<p>逆元：对任意a，存在b，使得a * b=b * a=e，这里的b是逆元，e是单位元</p>
 <p>群的阶：<span
 class="math inline">\(ord(G)=群中元素的个数\)</span></p>
 <p>群元素的阶：<span class="math inline">\(ord(g)\)</span></p>
@@ -658,7 +716,7 @@ class="math inline">\(p-1=rq\)</span>，所以<span
 class="math inline">\(Z_p^*\)</span>中存在一个q阶的子群，随便在<span
 class="math inline">\(Z_p^*\)</span>中选一个h，作<span
 class="math inline">\(h^r\)</span>，则<span
-class="math inline">\(g=h^r\)</span>一定是生成元 （对吗？</p>
+class="math inline">\(g=h^r\)</span>一定是生成元 （对吗？😥😥</p>
 <p><span class="math inline">\(gcd(k,p-1)\)</span>，才能保证<span
 class="math inline">\(k \mod p-1\)</span>有逆元，才能算出来s</p>
 <p>定义：生成元的阶就是群的阶，这里就是<span
@@ -691,22 +749,29 @@ class="math inline">\(g^s=g^{r-ex}=g^r*(g^x)^{-e}=g^r*y^{-e}=R*y^{-e}\)</span></
 <p><span
 class="math inline">\(g^s=g^{r-ex}=g^r*(g^x)^{-e}=g^r*y^{-e}=R*y^{-e}\)</span></p>
 <h2 id="数字签名标准">数字签名标准</h2>
-<p>DSS，DSA</p>
+<blockquote>
+<p>更习惯于叫它DSA</p>
+</blockquote>
 <figure>
 <img
 src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312041913546.png" srcset="/img/loading.gif" lazyload
 alt="image-20231204191305426" />
 <figcaption aria-hidden="true">image-20231204191305426</figcaption>
 </figure>
-<p>这里g的阶是q，因为q是素数，所以k的逆元一定存在，所以这里的k&lt;p就行了，跟上面比少了一个<span
+<p>DSA这里<span class="math inline">\(g\)</span>的阶是<span
+class="math inline">\(q\)</span>，因为<span
+class="math inline">\(q\)</span>是素数，所以k的逆元一定存在，所以这里的k&lt;p就行了，跟上面比少了一个<span
 class="math inline">\(gcd(k,p-1)\)</span>的条件</p>
 <p>ElGamal签名方案g的阶是p-1</p>
 <p>跟ElGamal签名方案的构造本质上是一样的，不过不再作用在<span
 class="math inline">\(Z_p^*\)</span>，而是它的一个子群中</p>
 <p><span class="math display">\[
-ElGamal签名方案：r=g^k\ mod\ p，s=k^{-1}(H(m)-xr)\ mod\ p-1\\
-数字签名标准(DSS):r=g^k\ mod\ p，s=k^{-1}(H(m)-xr)\ mod\ q
-\]</span> <strong>DSS算法的详细解释（简单易懂版）</strong></p>
+ElGamal签名方案：r=g^k\ mod\ p，s=k^{-1}(H(m)+xr)\ mod\
+p-1，0&lt;k&lt;p-1\\
+数字签名标准(DSA):r=g^k\ mod\ p，s=k^{-1}(H(m)+xr)\ mod\ q，0&lt;k&lt;q
+\]</span> <span class="math inline">\(Z_p^* ，*\mod
+p，ElGamal签名方案种，g是这个群的生成元\)</span></p>
+<p><strong>DSS算法的详细解释（简单易懂版）</strong></p>
 <p><strong>（1）DSS算法的主要参数：</strong></p>
 <ol type="1">
 <li><p>全局公开密钥分量：</p>
@@ -729,7 +794,8 @@ class="math inline">\(（p，q，g，y）\)</span>为公钥；</p></li>
 class="math inline">\(0&lt;k&lt;q\)</span></p></li>
 </ol>
 <p><strong>（2）DSS的签名过程：</strong></p>
-<p><span class="math inline">\(r=(g ^ k \mod p) \mod q\)</span></p>
+<p><span class="math inline">\(r=(g ^ k \mod p) \mod
+q\)</span>，这里又mod q，再做了一次压缩，这是跟ElGamal最大的差别</p>
 <p><span class="math inline">\(s=[k ^ {-1} (H(M)-xr)] \mod
 q\)</span></p>
 <p>形成了对信息M的数字签名(r,s)，数字签名和信息M一同发送给接收方。接收方接收到信息M’和数字签名(r’,s’)后，对数字签名的验证过程如下：</p>
@@ -748,24 +814,118 @@ class="math inline">\(g^k=g^{s^{-1}(H(m)+xr)}=g^{s^{-1}H(m)+s^{-1}xr}=g^{s^{-1}H
 \mod p \mod q\)</span></p>
 <p>看<span class="math inline">\(g^{s^{-1}H(m)}*y^{s^{-1}r} \mod p \mod
 q\)</span>是否等于r</p>
+<blockquote>
+<p>从群的角度来看，其实ElGamal和DSA是一样的，但是在计算r的时候又mod
+q，如果不mod q的话，其实两个方案就是一样的</p>
+</blockquote>
 <h2 id="签名的安全模型">签名的安全模型</h2>
 <h3 id="euf-cma">EUF-CMA</h3>
-<p>或EU-CMA</p>
-<p>选择消息攻击下的存在性不可伪造：Existential Unforgeability under
-Chosen Messagge Attack，</p>
+<blockquote>
+<p>或EU-CMA，选择消息攻击下的存在性不可伪造：Existential Unforgeability
+under Chosen Messagge Attack</p>
+</blockquote>
+<p>这一模型中的CMA指Chosen Message
+Attack，即选择消息攻击，本质上与CPA其实是一样的，只不过在数字签名等算法中，用消息一词要比明文更加贴切。CMA和CPA都是形容敌手能自由地向算法提交输入并获得的相应输出这一能力。</p>
+<p><strong>意思就是：你可以要任何消息的签名，但是你不能造出一个一样的签名</strong></p>
+<p>EUF则是指存在性不可伪造，即 Existential
+UnForgeability，指的是对于消息认证、数字签名等算法而言，当敌手通过查询获得了
+q 个签名后， 他无法再获得第 q+1个签名。这一Game的示意图如下所示：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312111857649.png" srcset="/img/loading.gif" lazyload
+alt="EUF-CMA示意图" />
+<figcaption aria-hidden="true">EUF-CMA示意图</figcaption>
+</figure>
+<p>可以看到，其基本形式依然和前文的模型保持相似，在查询阶段，敌手 <span
+class="math inline">\(\mathcal{A}\)</span> 可不断与一实现了签名Oracle的
+<span class="math inline">\(\mathcal{C}\)</span> 交互，来获得所提交消息
+<span class="math inline">\(m\)</span> 的签名 <span
+class="math inline">\(\sigma\)</span> 。在进行 <span
+class="math inline">\(q\)</span> 次交互后，敌手将输出一对 <span
+class="math inline">\(\left(m^*, \sigma^*\right)\)</span>
+。这一Game的主要步骤为: 1. Game中拥有一具有多项式资源的敌手 <span
+class="math inline">\(\mathcal{A}\)</span>
+和一个能自由调用签名算法oracle <span class="math inline">\(E\)</span>
+的挑战者 <span class="math inline">\(\mathcal{C}\)</span> 。 2. <span
+class="math inline">\(\mathcal{C}\)</span> 随机选取 <span
+class="math inline">\(sk\stackrel{\$}{\leftarrow}\{0,1\}^n\)</span>
+，作为签名算法的私钥 3. <span class="math inline">\(\mathcal{A}\)</span>
+向 <span class="math inline">\(\mathcal{C}\)</span> 提交消息 <span
+class="math inline">\(m, \mathcal{C}\)</span> 得到 <span
+class="math inline">\(m\)</span> 对应的签名 <span
+class="math inline">\(\sigma\)</span> 4. 重复步骤 <span
+class="math inline">\(3 q\)</span> 次 (即敌手查询 <span
+class="math inline">\(q\)</span> 次不同消息的签名) 5. <span
+class="math inline">\(\mathcal{A}\)</span> 输出一对 <span
+class="math inline">\(\left(m^*, \sigma^*\right)\)</span>; 6. <span
+class="math inline">\(\mathcal{C}\)</span> 对 <span
+class="math inline">\(\sigma^*\)</span> 进行验证，并返回验证结果；</p>
+<p>若最后敌手输出的 <span class="math inline">\(m^*\)</span>
+未曾被查询过，且 <span class="math inline">\(\sigma^*\)</span>
+能通过验证，就可认为敌手挑战成功。这一结果即为
+“签名的伪造”，此处敌手的优势可写为: <span class="math display">\[
+\operatorname{Adv}_S^{\text {EUF-CMA
+}}(\mathcal{A})=\operatorname{Pr}\left[\mathcal{A} \text { forges
+}\left(m^*, \sigma^*\right)\right]
+\]</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312111906302.png" srcset="/img/loading.gif" lazyload
+alt="EUF-CMA游戏描述" />
+<figcaption aria-hidden="true">EUF-CMA游戏描述</figcaption>
+</figure>
 <p><a
 target="_blank" rel="noopener" href="https://crypto.stackexchange.com/questions/44188/what-do-the-signature-security-abbreviations-like-euf-cma-mean">terminology
 - What do the signature security abbreviations like EUF-CMA mean? -
 Cryptography Stack Exchange</a></p>
 <h3 id="suf-cma">SUF-CMA</h3>
-<p>或SU-CMA</p>
-<p>选择消息攻击下的强不可伪造性：Strong Unforgeability under Chosen
-Messagge Attack，</p>
-<p>对数字签名本身的功能来讲，功能不大，相当于伪造了一个章发出去，可是我已经用我的章发出去了，
+<blockquote>
+<p>或SU-CMA，选择消息攻击下的强不可伪造性：Strong Unforgeability under
+Chosen Messagge Attack</p>
+</blockquote>
+<p>在EUF-CMA中，E表示的是Existential，而此处的SUF的S则表示Strong，即强不可伪造性，这一Game的基本模型如下图所示。</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312111858862.png" srcset="/img/loading.gif" lazyload
+alt="SUF-CMA示意图" />
+<figcaption aria-hidden="true">SUF-CMA示意图</figcaption>
+</figure>
+<p>与EUF-CMA相比，SUF-CMA唯一的不同之处在于敌手最终输出伪造的签名对
+<span class="math inline">\((m^∗,σ^∗)\)</span>时，不仅要求 <span
+class="math inline">\(m^∗\)</span>是未曾查询过的，也要求签名<span
+class="math inline">\(σ^∗\)</span>是未曾出现过的。</p>
+<p>因此，EUF-CMA这一Game中的敌手只需要寻找到 m 关于 σ
+的一个<strong>碰撞</strong>即可，而在SUF-CMA中，敌手的任务并不是要找碰撞，而是要从根本上伪造出一个签名消息对。</p>
+<blockquote>
+<p>总结一下：</p>
+<p>这里的签名的安全模型规定的这些东西，对数字签名本身的功能来讲，功能不大，因为相当于你伪造了一个我的章发出去，可是我已经用我的章发出去了，
 你伪造一个跟我一样的章发出去，对我没影响，我消息发出去了（只是当成一个签名）</p>
-<p>但是用数字签名方案构造其他东西的时候，会有用</p>
+<p>但是用数字签名方案构造其他东西的时候，会有用，也就是说可以把数字签名方案当成一个部件，去搭建更🐂🖊的功能</p>
+</blockquote>
+<ul>
+<li>一个证明题</li>
+</ul>
+<p>以下两种证明的表述是一样的：</p>
 <p>证明：如果一个数字签名方案，它的签名算法是一个确定性的算法，那么这个方案对EUF-CMA和SUF-CMA的安全性是一样的</p>
 <p>证明：如果一个数字签名方案，它的签名算法是一个确定性的算法，它是EUF-CMA安全的，那么这个方案也是SUF-CMA的</p>
+<p>我们讲的签名方案中，只有RSA是确定性的算法</p>
+<p>因为<span
+class="math inline">\(SUF-CMA⟹EUF-CMA\)</span>是肯定成立的</p>
+<p>上面的证明就是要证明：</p>
+<p>如果一个签名方案其签名算法是确定性的算法，那么<span
+class="math inline">\(EUF-CMA⟹SUF-CMA\)</span></p>
+<p>设存在<span class="math inline">\(SUF-CMA\)</span>敌手，构造一个<span
+class="math inline">\(EUF-CMA\)</span></p>
+<p><span class="math display">\[
+\begin{align}
+&amp;有(m_1,σ_1),(m_2,σ_2),(m_3,σ_3),……,(m_q,σ_q)\\
+&amp;敌手已经找到了(m^*,σ^*),已经通过了验证，\\
+&amp;那么(m^*,σ^*)≠\{(m_1,σ_1),(m_2,σ_2),(m_3,σ_3),……,(m_q,σ_q)\}\\
+&amp;由签名方案其签名算法是确定性的算法，得m^*≠\{m_1,m_2,m_3,……,m_q\}\\
+&amp;其实这就结束了，这就相当于构造出了一个EUF-CMA\\
+&amp;\\
+\end{align}
+\]</span></p>
 <blockquote>
 <p>参考：</p>
 <p><a
@@ -1081,6 +1241,8 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
 
   
   
+
+  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=BHu02doWTfACgsoaKUKdCvghL0B4M-WZR956AK7Bn-I&cl=ffffff&w=a"></script>
 </div>
 
   </footer>

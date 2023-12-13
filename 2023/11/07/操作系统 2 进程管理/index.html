@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8.5k 字
+          17k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          57 分钟
+          114 分钟
         
       </span>
     
@@ -1155,9 +1155,8 @@ alt="多队列调度算法" />
 <h3 id="进程同步">1. 进程同步</h3>
 <p>知识点回顾：进程具有异步性的特征。异步性是指，各并发执行的进程以各自独立的、不可预知的速度向前推进。</p>
 <ul>
-<li><p>同步也称为直接制约关系。</p></li>
-<li><p>它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。</p></li>
-<li><p>进程同步是为了解决进程的异步问题。</p></li>
+<li><strong>同步也称为直接制约关系，它是指为完成某种任务而建立的两个或多个进程，这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系</strong>。进程间的直接制约关系就是源于它们之间的相互合作。</li>
+<li>进程同步是为了解决进程的异步问题。</li>
 </ul>
 <blockquote>
 <p>一个简单的例子来理解这个概念。 例如，让系统计算1 + 2 *
@@ -1166,7 +1165,7 @@ alt="多队列调度算法" />
 <h3 id="进程互斥">2. 进程互斥</h3>
 <ul>
 <li>互斥，亦称间接制约关系。</li>
-<li>对临界资源的访问，必须互斥地进行。</li>
+<li><strong>进程互斥指当一个进程访问某临界资源时，另一个想要访问该临界资源的进程必须等待。当前访问临界资源的进程访问结束，释放该资源之后，另一个进程才能去访问临界资源。</strong></li>
 </ul>
 <figure>
 <img
@@ -1211,7 +1210,423 @@ alt="进程互斥的软件实现方法" />
 <figcaption aria-hidden="true">进程互斥的软件实现方法</figcaption>
 </figure>
 <h3 id="单标志法">1. 单标志法</h3>
-<h2 id="死锁">2.4 死锁</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312102107598.png" srcset="/img/loading.gif" lazyload
+alt="单标志法" />
+<figcaption aria-hidden="true">单标志法</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312102108192.png" srcset="/img/loading.gif" lazyload
+alt="单标志法" />
+<figcaption aria-hidden="true">单标志法</figcaption>
+</figure>
+<h3 id="双标志先检查法">2. 双标志先检查法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312102112579.png" srcset="/img/loading.gif" lazyload
+alt="双标志先检查法" />
+<figcaption aria-hidden="true">双标志先检查法</figcaption>
+</figure>
+<p>如果能让 “检查” 和
+“上锁”一气呵成，那其实这个算法就没啥问题了，下一小节的硬件实现方法就实现了</p>
+<h3 id="双标志后检查法">3. 双标志后检查法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312102114531.png" srcset="/img/loading.gif" lazyload
+alt="双标志后检查法" />
+<figcaption aria-hidden="true">双标志后检查法</figcaption>
+</figure>
+<h3 id="peterson算法">4. Peterson算法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312102120741.png" srcset="/img/loading.gif" lazyload
+alt="Peterson算法" />
+<figcaption aria-hidden="true">Peterson算法</figcaption>
+</figure>
+<p>Peterson算法用软件方法解决了进程互斥问题，遵循了空闲让进、忙则等待、有限等待
+三个原则，但是依然未遵循<strong>让权等待</strong>的原则。</p>
+<p>Peterson算法相较于之前三种软件解决方案来说，是最好的，但依然不够好。</p>
+<h2 id="进程互斥的硬件实现方法">2.3.3 进程互斥的硬件实现方法</h2>
+<h3 id="中断屏蔽方法">1. 中断屏蔽方法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312102125013.png" srcset="/img/loading.gif" lazyload
+alt="中断屏蔽方法" />
+<figcaption aria-hidden="true">中断屏蔽方法</figcaption>
+</figure>
+<p>关中断方法的缺点：</p>
+<p>① 滥用关中断权力可能导致严重后果；</p>
+<p>②
+关中断时间过长，会影响系统效率，限制了处理器交叉执行程序的能力；</p>
+<p>③
+不适用于多CPU系统，因为在一个处理器上关中断并不能防止进程在其它处理器上执行相同的临界段代码。</p>
+<h3 id="test-and-set指令">2. Test-and-Set指令</h3>
+<p><code>TestAndSet</code> 简称 <code>TS</code> 指令，也有地方称为
+<code>TestAndSetLock</code> 指令，或 <code>TSL</code> 指令</p>
+<p><code>TSL</code>
+指令是用硬件实现的，执行的过程不允许被中断，只能一气呵成。</p>
+<p>以下是用C语言描述的逻辑：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 布尔型共享变量 lock 表示当前临界区是否被加锁</span><br><span class="hljs-comment">// true 表示已经加锁， false 表示未加锁</span><br><span class="hljs-type">bool</span> <span class="hljs-title function_">TestAndSet</span><span class="hljs-params">(<span class="hljs-type">bool</span> *lock)</span><br>&#123;<br>    <span class="hljs-type">bool</span> old;            <br>    old = *lock;          <span class="hljs-comment">// 用于存放lock 原来的值</span><br>    *lock = <span class="hljs-literal">true</span>;         <span class="hljs-comment">// 无论之前是否已经加锁，都将lock值设为true</span><br>    <span class="hljs-keyword">return</span> old;           <span class="hljs-comment">// 返回lock原来的值</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>以下是使用TSL指令，实现互斥的算法逻辑：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">while</span> (TestAndSet(&amp;lock));        <span class="hljs-comment">// “上锁”并“检查”</span><br>临界区代码段...<br>lock = <span class="hljs-literal">false</span>;                     <span class="hljs-comment">// “解锁”</span><br>剩余区代码段...<br></code></pre></td></tr></table></figure>
+<p>代码说明： 若刚开始 <code>lock</code> 是 <code>false</code>，则
+<code>TSL</code> 返回的 <code>old</code> 值为
+<code>false</code>，<code>while</code>
+循环条件不满足，直接跳过循环，进入临界区。 若刚开始 <code>lock</code> 是
+<code>true</code>，则执行 <code>TSL</code> 后 <code>old</code>
+返回的值为 <code>true</code>，<code>while</code>
+循环条件满足，会一直循环，直到当前访问临界区的进程在退出区进行“解锁”。</p>
+<blockquote>
+<p>简而言之：</p>
+<p>假设lock现在为false，代表临界资源A空闲，那么我就可以访问这个资源，同时将lock=true，提醒别的进程，这个临界资源A我正在使用，你先别急，等等，然后用完之后再<code>lock = false;</code>
+，解锁，让别人能用</p>
+<p>假设lock为true，代表临界资源正在有人使用，所以我必须等待，并且将lock=true，这无所谓，反正已经是true了</p>
+<p><code>lock=true</code>这个语句只是为了让lock为false时可以上锁</p>
+</blockquote>
+<p>相比软件实现方法，<code>TSL</code>
+指令把“上锁”和“检查”操作用硬件的方式变成了一气呵成的原子操作。</p>
+<ul>
+<li>优点：实现简单，无需像软件实现方法那样严格检查是否会有逻辑漏洞；适用于多处理机环境</li>
+<li>缺点：不满足“<strong>让权等待</strong>”原则，暂时无法进入临界区的进程会占用CPU并循环执行
+<code>TSL</code> 指令，从而导致“忙等”。</li>
+</ul>
+<h3 id="swap指令">3. Swap指令</h3>
+<p>有的地方也叫 <code>Exchange</code> 指令，或简称 <code>XCHG</code>
+指令。 <code>Swap</code>
+指令是用硬件实现的，执行的过程不允许被中断，只能一气呵成。</p>
+<p>以下是用C语言描述的逻辑：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// swap原语</span><br><span class="hljs-comment">// swap指令的作用是交换两个变量的值</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Swap</span> <span class="hljs-params">(<span class="hljs-type">bool</span> *a, <span class="hljs-type">bool</span> *b)</span><br>&#123;<br>    <span class="hljs-type">bool</span> temp;<br>    temp = *a;<br>    *a = *b;<br>    *b = temp;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>以下是使用Swap指令 实现互斥的算法逻辑，
+<code>lock</code>表示当前临界区是否被加锁</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// true 表示已经加锁， false 表示未加锁</span><br><span class="hljs-type">bool</span> old = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">while</span> (old == <span class="hljs-literal">true</span>)&#123;<br>    Swap (&amp;lock, &amp;old);<br>&#125;<br>临界区代码段...<br>lock = <span class="hljs-literal">false</span>;<br>剩余区代码段...<br></code></pre></td></tr></table></figure>
+<p>逻辑上来看 <code>Swap</code> 和 <code>TSL</code>
+并无太大区别，都是先记录下此时临界区是否已经被上锁（记录在
+<code>old</code> 变量上），再将上锁标记 <code>lock</code> 设置为
+<code>true</code>，最后检查 <code>old</code>. 如果 <code>old</code> 为
+<code>false</code>
+则说明之前没有别的进程对临界区上锁，则可跳出循环，进入临界区。</p>
+<blockquote>
+<p>清晰地说：</p>
+<p>①
+<code>old</code>是每个进程都要进行的一步，都必须将<code>old=true</code></p>
+<p>②
+因为<code>lock</code>是某一特定临界资源的共享变量，当每一个进程准备访问这个特定的临界资源时，初始化<code>old=true</code>，然后进入<code>while</code>循环进行交换</p>
+<p>③
+如果当前<code>lock</code>是<code>false</code>，则交换后old=false，则当前进程可以跳出循环进入临界区代码段，同时因为交换，<code>lock=old=true</code>上锁，不让别的进程来打扰，别的进程会因为<code>lock</code>变为<code>true</code>，一直在<code>while</code>循环等待</p>
+<p>④
+当使用完临界资源，则将<code>lock=false</code>，此时别的进程再交换<code>old</code>和<code>lock</code>就能再判断<code>old=false</code>，就又进入了③步骤，可以跳出循环，使用临界资源。</p>
+</blockquote>
+<p>优缺点跟Test-and-Set指令一样，因为他俩逻辑上是基本一样的东西</p>
+<ul>
+<li>优点：实现简单，无需像软件实现方法那样严格检查是否会有逻辑漏洞；适用于多处理机环境</li>
+<li>缺点：不满足“<strong>让权等待</strong>”原则，暂时无法进入临界区的进程会占用CPU并循环执行<code>Swap</code>指令，从而导致“忙等”。</li>
+</ul>
+<h3 id="互斥总结">*互斥🔒总结</h3>
+<p>前面的七种方式其实都是🔒，下面对他们统一总结：</p>
+<p>解决临界区最简单的工具就是互斥锁 (mutex lock)。</p>
+<p>一个进程在进入临界区时应获得锁，在退出临界区时释放锁。函数
+<code>acquire()</code>获得锁，而函数 <code>release()</code>释放锁。</p>
+<p>每个互斥锁有一个布尔变量
+available，表示锁是否可用。如果锁是可用的，调用
+<code>acquire()</code>会成功，且锁不再可用。当一个进程试图获取不可用的锁时，会被阻塞，直到锁被释放。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">acquire()&#123;<br>	<span class="hljs-keyword">while</span>(!available)<br>           ;          <span class="hljs-comment">//忙等待              </span><br>	available = <span class="hljs-literal">false</span>;  <span class="hljs-comment">//获得锁</span><br>&#125;<br>release()&#123;<br>    available = <span class="hljs-literal">true</span>;  <span class="hljs-comment">//释放锁</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p><code>acquire()</code>或
+<code>release()</code>的执行必须是原子操作，因此互斥锁通常采用硬件机制来实现。</p>
+<p>互斥锁的主要缺点是<strong>忙等待</strong>，当有一个进程在临界区中，任何其他进程在进入临界区时必须连续循环调用
+<code>acquire()</code>。当多个进程共享同一 CPU 时，就浪费了CPU
+周期。因此，互斥锁通常用于多处理器系统，一个线程可以在一个处理器上等待，不影响其他线程的执行。</p>
+<p>需要连续循环忙等的互斥锁，都可称为<strong>自旋锁 (spin lock)</strong>
+，如TSL指令、swap指令、单标志法</p>
+<p>特性:</p>
+<ul>
+<li>需忙等，进程时间片用完才下处理机，违反“让权等待“</li>
+<li>优点：等待期间不用切换进程上下文，多处理器系统中，若上锁的时间短，则等待代价很低，</li>
+<li>常用于多处理器系统，一个核忙等，其他核照常工作，并快速释放临界区</li>
+<li>不太适用于单处理机系统，忙等的过程中不可能解锁</li>
+</ul>
+<blockquote>
+<p>怎么感觉上面这部分总结有点不太懂啊，标记一处地点🐕💧</p>
+</blockquote>
+<h2 id="信号量机制">2.3.4 信号量机制</h2>
+<h3 id="前期总结">0. 前期总结</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312111525892.png" srcset="/img/loading.gif" lazyload
+alt="知识总览" />
+<figcaption aria-hidden="true">知识总览</figcaption>
+</figure>
+<p>为什么引入信号量机制？</p>
+<ul>
+<li>为了更好的解决进程互斥与同步的问题</li>
+</ul>
+<h3 id="信号量机制-1">1. 信号量机制</h3>
+<p>用户进程可以通过使用操作系统提供的<strong>一对原语</strong>来对<strong>信号量</strong>（Semaphore）进行操作，从而很方便的实现了进程互斥、进程同步。</p>
+<ul>
+<li>信号量其实就是一个变量，可以用一个信号量（可以是一个整数，也可以是更复杂的记录型变量）<strong>来表示系统中某种资源的数量</strong>，比如：系统中只有一台打印机，就可以设置一个初值为
+1 的信号量。</li>
+<li>原语是一种特殊的程序段，其执行只能一气呵成，不可被中断。原语是由关中断/开中断指令实现的。软件解决方案的主要问题是“进入区的各种操作无法一气呵成”，因此如果能把进入区、退出区的操作都用“原语”实现，使这些操作能“一气呵成”就能避免问题。</li>
+</ul>
+<p>一对原语：<code>wait(S)</code> 原语和 signal(S)
+原语，可以把原语理解为我们自己写的函数，函数名分别为 <code>wait</code>
+和 <code>signal</code>，括号里的信号量 S
+其实就是函数调用时传入的一个参数。</p>
+<blockquote>
+<p><code>wait</code>、<code>signal</code> 原语常简称为
+P、V操作（来自荷兰语 proberen 和 verhogen）。</p>
+</blockquote>
+<p>常把<code>wait(S)</code>、<code>signal(S)</code> 两个操作分别写为
+<code>P(S)</code>、<code>V(S)</code>。</p>
+<h3 id="整型信号量">2. 整型信号量</h3>
+<p>用一个整数型的变量作为信号量，用来表示系统中某种资源的数量。</p>
+<blockquote>
+<p>与普通整数变量的区别：对信号量的操作只有三种，即
+<code>初始化</code>、<code>P操作</code>、<code>V操作</code>。</p>
+</blockquote>
+<p>eg：某计算机系统中有一台打印机</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> S = <span class="hljs-number">1</span>;                <span class="hljs-comment">// 初始型整型信号量s，表示当前系统中可用的打印机资源数</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">wait</span> <span class="hljs-params">(<span class="hljs-type">int</span> S)</span>&#123;         <span class="hljs-comment">// wait 原语，相当于“进入区”</span><br>    <span class="hljs-keyword">while</span> (S &lt;= <span class="hljs-number">0</span>);       <span class="hljs-comment">// 如果资源数不够，就一直循环等待</span><br>    S--;                  <span class="hljs-comment">// 如果资源数够，则占用一个资源</span><br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">signal</span> <span class="hljs-params">(<span class="hljs-type">int</span> S)</span>&#123;      <span class="hljs-comment">// signal 原语，相当于“退出区”</span><br>    S++;                <span class="hljs-comment">// 使用完资源后，在退出区释放资源</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>进程 P0 ：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// ...</span><br>wait (S);                 <span class="hljs-comment">// 进入区，申请资源</span><br><span class="hljs-comment">// 使用打印机资源...       // 临界区，访问资源</span><br>signal(S);                <span class="hljs-comment">// 退出区，释放资源</span><br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+<p>当P0在访问打印机资源的时候，假如说发生了进程切换，有另外的进程，比如进程
+P1，它也想使用打印机这种资源，所以使用之前先执行<code>wait (S);</code>
+，但是打印机已经被P0占用了，S是0，就一直循环等待，直到P0进程把打印机资源释放</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// ...</span><br>wait (S);                <span class="hljs-comment">// 进入区，申请资源</span><br><span class="hljs-comment">// 使用打印机资源...      // 临界区，访问资源</span><br>signal(S);               <span class="hljs-comment">// 退出区，释放资源</span><br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+<p>...</p>
+<p>进程 Pn （执行过程跟P1一样）：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// ...</span><br>wait (S);                <span class="hljs-comment">// 进入区，申请资源</span><br><span class="hljs-comment">// 使用打印机资源...      // 临界区，访问资源</span><br>signal(S);               <span class="hljs-comment">// 退出区，释放资源</span><br><span class="hljs-comment">// ...</span><br></code></pre></td></tr></table></figure>
+<p>在任何一个进程开始执行的时候，进入程序内部执行检查操作，检查信号量资源是否被完全占据，如果被占据，就一直忙等待，等有空闲信号量资源的时候，再占据这个信号量。<strong>“检查”和“上锁”一气呵成</strong>，避免了并发、异步导致的问题。（双标志先检查法的改进，用一个原语来实现的）</p>
+<p>存在的问题：不满足“让权等待”原则，会发生“忙等”（<strong>忙等</strong>，busy
+wait，当一个进程正处在某临界区内，任何试图进入其临界区的进程都必须进入代码连续循环，陷入忙等状态，连续测试一个变量直到某个值出现为止）。</p>
+<h3 id="记录型信号量">3. 记录型信号量⭐</h3>
+<p>整型信号量的缺陷是存在“忙等”问题，因此人们又提出了“<strong>记录型信号量</strong>”，即用记录型数据结构表示的信号量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/* 记录型信号量的定义 */</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">int</span> value;                 <span class="hljs-comment">// 剩余资源数，S.value 的初值表示系统中某种资源的数目。</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">process</span> *<span class="hljs-title">L</span>;</span>         <span class="hljs-comment">// 等待队列</span><br>&#125; Semaphore;<br><br><span class="hljs-comment">/* 某进程需要使用资源时，通过wait原语申请 */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">wait</span><span class="hljs-params">(Semaphore S)</span> &#123;<br>    S.value--;<br>    <span class="hljs-keyword">if</span> (S.value &lt; <span class="hljs-number">0</span>) &#123;<br>        block (S.L);  <br>        <span class="hljs-comment">//如果剩余资源数不够，使用block原语使进程从运行态进入阻塞态，并挂到信号量S的等待队列（即阻塞队列）中。</span><br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/*进程使用完资源后，通过signal 原语释放*/</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">signal</span> <span class="hljs-params">(Semaphore S)</span> &#123;<br>    s.value++;<br>    <span class="hljs-keyword">if</span> (S.value &lt;= <span class="hljs-number">0</span>) &#123;<br>        wakeup(S.L);<br>        <span class="hljs-comment">//释放资源后，若还有别的进程在等待这种资源，则使用wakeup原语唤醒等待队列中的一个进程，该进程从阻塞态变为就绪态。</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>一个例子</li>
+</ul>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312111625591.png" srcset="/img/loading.gif" lazyload
+alt="记录型信号量例子" />
+<figcaption aria-hidden="true">记录型信号量例子</figcaption>
+</figure>
+<blockquote>
+<p>可以去看原视频，更好理解</p>
+</blockquote>
+<p>最初：</p>
+<ol type="1">
+<li>剩余资源数：2</li>
+<li>等待队列：<code>-&gt;null</code></li>
+</ol>
+<p>P0进程申请：</p>
+<ol type="1">
+<li>执行<code>wait(S)</code>原语，<code>value--</code>，剩余资源数：1，等待队列：<code>-&gt;null</code></li>
+<li>把红色打印机分配给P0</li>
+</ol>
+<p>P1进程申请：</p>
+<ol type="1">
+<li>执行<code>wait(S)</code>原语，<code>value--</code>，剩余资源数：0，<code>S.value=0</code>，资源恰好分配完，等待队列：<code>-&gt;null</code></li>
+<li>把绿色打印机分配给P1</li>
+</ol>
+<p>P2进程申请：</p>
+<ol type="1">
+<li>执行<code>wait(S)</code>原语，<code>value--</code>，剩余资源数：-1，<code>S.value = -1</code>，</li>
+<li>因为<code>S.value &lt; 0</code>，执行<code>block (S.L);</code>
+，等待队列：<code>-&gt;P2</code></li>
+</ol>
+<p>P3进程申请：</p>
+<ol type="1">
+<li>执行<code>wait(S)</code>原语，<code>value--</code>，剩余资源数：-2，<code>S.value = -2</code>，</li>
+<li>因为<code>S.value &lt; 0</code>，执行<code>block (S.L);</code>
+，等待队列：<code>-&gt;P2-&gt;P3</code></li>
+</ol>
+<p>假设P0进程使用完打印机了，</p>
+<ol type="1">
+<li>执行<code>signal(S)</code>原语，<code>value++</code>，剩余资源数：-1，<code>S.value = -1</code>，还是小于等于0，说明等待队列当中还是有进程等待</li>
+<li>执行<code>signal(S)</code>原语中的
+<code>wakeup(S.L);</code>，用于唤醒信号量对应的等待队列当中队头的进程<code>P2</code>，<code>P2</code>由阻塞态变为就绪态，等待队列：<code>-&gt;P3</code></li>
+<li>把红色打印机分配给P2</li>
+</ol>
+<p>假设P2进程使用完打印机了，</p>
+<ol type="1">
+<li>执行<code>signal(S)</code>原语，<code>value++</code>，剩余资源数：0，<code>S.value = 0</code>，还是小于等于0，说明等待队列当中还是有进程等待</li>
+<li>执行<code>signal(S)</code>原语中的
+<code>wakeup(S.L);</code>，用于唤醒信号量对应的等待队列当中队头的进程<code>P3</code>，等待队列：<code>-&gt;null</code></li>
+<li>把红色打印机分配给P3</li>
+</ol>
+<p>如果之后CPU又回到为P1服务，P1也用完了打印机</p>
+<ol type="1">
+<li>执行<code>signal(S)</code>原语，<code>value++</code>，剩余资源数：1，<code>S.value = 1</code>，这时大于0了，说明等待队列当中已经没有进程等待</li>
+<li>所以在执行<code>signal(S)</code>原语时，不需要执行
+<code>wakeup(S.L);</code></li>
+<li>P1继续往下执行，结束</li>
+</ol>
+<p>之后CPU为P3服务，P3也用完了打印机</p>
+<ol type="1">
+<li>执行<code>signal(S)</code>原语，<code>value++</code>，剩余资源数：2，<code>S.value = 2</code>，这时大于0了，说明等待队列当中已经没有进程等待</li>
+<li>所以在执行<code>signal(S)</code>原语时，不需要执行
+<code>wakeup(S.L);</code></li>
+<li>P3继续往下执行，结束</li>
+</ol>
+<p>对信号量 <code>S</code> 的一次 <code>P</code>
+操作意味着进程请求一个单位的该类资源，因此需要执行
+<code>S.value--</code>，表示资源数减1，当<code>S.value &lt; 0</code>
+时表示该类资源已分配完毕，因此进程应调用 <code>block</code>
+原语进行自我阻塞（当前运行的进程从运行态 -&gt;
+阻塞态），主动放弃处理机，并插入到该类资源的等待队列 S.L 中。</p>
+<p>可见，该机制<strong>遵循了“让权等待”原则，不会出现“忙等”现象</strong>。</p>
+<p>对信号量 S 的一次
+<code>V</code>操作意味着进程释放一个单位的该类资源，因此需要执行<code>S.value++</code>，表示资源数加1，若加1后仍是
+<code>S.value &lt;= 0</code>，表示依然有进程在等待该类资源，因此应调用<code>wakeup</code>
+原语唤醒等待队列中的第一个进程（被唤醒进程从阻塞态 -&gt; 就绪态）。</p>
+<blockquote>
+<p>注：若考试中出现 P(S)、V(S)的操作，除非特别说明，否则默认S
+为记录型信号量</p>
+</blockquote>
+<h2 id="信号量的应用">2.3.5 信号量的应用</h2>
+<h3 id="信号量机制实现进程互斥">1. 信号量机制实现进程互斥</h3>
+<p><strong>实现方法</strong></p>
+<ul>
+<li>分析并发进程的关键活动，<strong>划定临界区</strong>（如：对临界资源打印机的访问就应放在临界区）</li>
+<li>设置互斥信号量 <code>mutex</code>，<strong>初值</strong>为 1</li>
+<li>在进入区 <code>P(mutex)</code> —— 申请资源</li>
+<li>在退出区 <code>V(mutex)</code> —— 释放资源</li>
+</ul>
+<blockquote>
+<p>信号量 <code>mutex</code> 表示“进入临界区的名额”。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/*记录型信号量的定义*/</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">int</span> value;                <span class="hljs-comment">// 剩余资源数</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">process</span> *<span class="hljs-title">L</span>;</span>        <span class="hljs-comment">// 等待队列</span><br>&#125; Semaphore;<br><br><br><span class="hljs-comment">/* 信号量机制实现互斥 */</span><br>Semaphore mutex = <span class="hljs-number">1</span>;   <span class="hljs-comment">// 初始化信号量</span><br><span class="hljs-comment">//要会自己定义记录型信号量，但如果题目中没特别说明,可以把信号量的声明简写成这种形式</span><br><br>P1()&#123;<br>    ...<br>    P(mutex);                <span class="hljs-comment">// 使用临界资源前需要加锁</span><br>    临界区代码段<br>    V(mutex);                <span class="hljs-comment">// 使用临界资源后需要解锁</span><br>    ...<br>&#125;<br><br>P2()&#123;<br>    ...<br>    P(mutex);<br>    临界区代码段<br>    V(mutex);<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注意： 对不同的临界资源需要设置不同的互斥信号量。</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121507626.png" srcset="/img/loading.gif" lazyload
+alt="对不同的临界资源需要设置不同的互斥信号量" />
+<figcaption
+aria-hidden="true">对不同的临界资源需要设置不同的互斥信号量</figcaption>
+</figure>
+<p><strong>P、V操作必须成对出现</strong>。缺少<code>P(mutex)</code>
+就不能保证临界资源的互斥访问。缺少 <code>V(mutex)</code>
+会导致资源永不被释放，等待进程永不被唤醒。</p>
+<h3 id="信号量机制实现进程同步">2. 信号量机制实现进程同步</h3>
+<p>进程同步：要让<strong>各并发进程按要求有序地推进</strong>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c">P1()&#123;<br>    代码 <span class="hljs-number">1</span>;<br>    代码 <span class="hljs-number">2</span>; <br>    代码 <span class="hljs-number">3</span>;<br>&#125;<br>P2()&#123;<br>    代码 <span class="hljs-number">4</span>;<br>    代码 <span class="hljs-number">5</span>; <br>    代码 <span class="hljs-number">6</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>比如：P1、P2
+并发执行，由于存在异步性，因此二者交替推进的次序是不确定的。</p>
+<p>若 P2 的“代码4”要基于 P1
+的“代码1”和“代码2”的运行结果才能执行，那么我们就必须保证“代码4”一定是在“代码2”之后才会执行。这就是<strong>进程同步问题</strong>，让本来异步并发的进程互相配合，有序推进。</p>
+<p>用信号量实现进程同步：</p>
+<ul>
+<li><p>分析什么地方需要实现“同步关系”，即必须保证“一前一后”执行的两个操作（或两句代码）；</p></li>
+<li><p>设置同步信号量 S，初始为 0；</p></li>
+<li><p>在“前操作”之后执行 V(S)；</p></li>
+<li><p>在“后操作”之前执行 P(S)；</p>
+<blockquote>
+<p>前V后P</p>
+</blockquote></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/* 信号量机制实现同步 */</span><br>Semaphore S = <span class="hljs-number">0</span>;<br><br>P1()&#123;<br>    代码 <span class="hljs-number">1</span>;<br>    代码 <span class="hljs-number">2</span>; <br>    V(S);   <br>    代码 <span class="hljs-number">3</span>;<br>&#125;<br><br>P2()&#123;    <span class="hljs-comment">// P2 的执行需要依赖一种信号量资源S，而这种资源只能由P1 释放，因此保证必须 P1 后再 P2</span><br>    P(S);<br>    代码 <span class="hljs-number">4</span>;<br>    代码 <span class="hljs-number">5</span>; <br>    代码 <span class="hljs-number">6</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>若先执行到 <code>V(S)</code> 操作，则 <code>S++</code> 后
+<code>S = 1</code>。之后当执行到 <code>P(S)</code> 操作时，由于
+<code>S = 1</code>，表示有可用资源，会执行 <code>S--</code>，S 的值变回
+0，P2 进程不会执行 <code>block</code> 原语，而是继续往下执行代码4。</li>
+</ul>
+<blockquote>
+<p>执行顺序 1、2、4、5、6。保证代码4在代码2之后执行</p>
+</blockquote>
+<ul>
+<li>若先执行到 <code>P(S)</code> 操作，由于
+<code>S = 0</code>，<code>S--</code> 后
+<code>S = -1</code>，表示此时没有可用资源，因此P操作中会执行 block
+原语，主动请求阻塞。</li>
+<li>之后当处理机交还处理进程P1，执行完代码2，继而执行 <code>V(S)</code>
+操作，<code>S++</code>，使 S 变回
+0，由于此时有进程在该信号量对应的阻塞队列中，因此会在 V 操作中执行
+<code>wakeup</code> 原语，唤醒 P2 进程。这样 P2 就可以继续执行 代码4
+了。</li>
+</ul>
+<blockquote>
+<p>理解：信号量S代表“某种资源”，刚开始是没有这种资源的。P2需要使用这种资源，而又只能由P1产生这种资源。</p>
+</blockquote>
+<h3 id="信号量机制实现前驱关系">3. 信号量机制实现前驱关系</h3>
+<blockquote>
+<p>其实是用信号量机制实现进程同步的升级版，多级同步问题，记住前V后P</p>
+</blockquote>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121521211.png" srcset="/img/loading.gif" lazyload
+alt="信号量机制实现前驱关系" />
+<figcaption aria-hidden="true">信号量机制实现前驱关系</figcaption>
+</figure>
+<h2 id="进程同步与互斥经典问题">2.3.6 进程同步与互斥经典问题</h2>
+<h3 id="生产者-消费者问题">1. 生产者-消费者问题</h3>
+<h4 id="问题描述">(1) 问题描述</h4>
+<p>系统中有一组生产者进程和一组消费者进程，生产者进程每次生产一个产品放入缓冲区，消费者进程每次从缓冲区中取出一个产品并使用。(注：这里的“产品”理解为某种数据)</p>
+<ul>
+<li>生产者、消费者<code>共享</code>一个初始为空、大小为n的缓冲区。</li>
+<li>只有缓冲区没满时，生产者才能把产品放入缓冲区，否则必须等待。</li>
+<li>只有缓冲区不空时，消费者才能从中取出产品，否则必须等待。</li>
+<li>缓冲区是临界资源，各进程必须<code>互斥</code>地访问。</li>
+</ul>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121535185.png" srcset="/img/loading.gif" lazyload
+alt="生产者-消费者问题" />
+<figcaption aria-hidden="true">生产者-消费者问题</figcaption>
+</figure>
+<h4 id="问题分析">(2) 问题分析</h4>
+<blockquote>
+<p>常把<code>wait(S)</code>、<code>signal(S)</code> 两个操作分别写为
+<code>P(S)</code>、<code>V(S)</code>。</p>
+</blockquote>
+<p>PV操作题目分析步骤：</p>
+<ol type="1">
+<li><p>关系分析。找出题目中描述的各个进程，分析它们之间的同步、互斥关系。</p>
+<p>生产者和消费者对缓冲区互斥访问是<code>互斥关系</code>，同时生产者和消费者又是一个相互协作的关系，只有生产者生产之后，消费者才能消费，它们也是<code>同步关系</code>。</p></li>
+<li><p>整理思路。根据各进程的操作流程确定P、V操作的大致顺序。</p>
+<p>生产者每次要消耗 (P)一个空闲缓冲区，并生产(V)一个产品。</p>
+<p>消费者每次要消耗 (P) 一个产品，并增加一个空闲缓冲区(V)。</p>
+<p>往缓冲区放入/取走产品需要互斥。</p></li>
+<li><p>设置信号量。并根据题目条件确定信号量初值。（<strong>互斥信号量初值一般为</strong>1，同步信号量的初始值要看对应资源的初始值是多少）</p></li>
+</ol>
+<p>在这样的环境下，设置信号量如下：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">semaphore mutex = <span class="hljs-number">1</span>;   <span class="hljs-regexp">//</span> 互斥信号量，实现对缓冲区的互斥访问<br><br>semaphore empty = n;   <span class="hljs-regexp">//</span> 同步信号量，表示空闲缓冲区的数量 <br>semaphore full = <span class="hljs-number">0</span>;    <span class="hljs-regexp">//</span> 同步信号量，表示产品的数量，也即非空缓冲区的数量<br><span class="hljs-regexp">//</span>full表示缓冲区有多少产品，empty表示缓冲区有多少空位<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121621055.png" srcset="/img/loading.gif" lazyload
+alt="前驱图" />
+<figcaption aria-hidden="true">前驱图</figcaption>
+</figure>
+<h4 id="代码实现">(3) 代码实现</h4>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121621165.png" srcset="/img/loading.gif" lazyload
+alt="代码实现" />
+<figcaption aria-hidden="true">代码实现</figcaption>
+</figure>
+<h4 id="一些分析">(4) 一些分析</h4>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121625077.png" srcset="/img/loading.gif" lazyload
+alt="实现互斥的P操作一定要在实现同步的P操作之后" />
+<figcaption
+aria-hidden="true">实现互斥的P操作一定要在实现同步的P操作之后</figcaption>
+</figure>
+<blockquote>
+<p>如果是按照（3）中的代码</p>
+<p>当缓冲区内已经放满产品时，则<code>empty=0，full=n</code>，</p>
+<p>生产者执行<code>P(empty)</code>，由于已经没有空闲缓冲区，因此生产者被阻塞</p>
+<p>由于生产者被阻塞，因此切换回消费者进程，消费者进程执行<code>P(full)</code>，消耗一个产品，<code>full = n-1</code>，</p>
+<p>然后接着执行<code>P(mutex);从缓冲区取出一个产品;V(mutex);</code>，然后继续<code>V(empty)</code>，增加一个空闲缓冲区，然后就能回到消费者那里执行了……，完美</p>
+</blockquote>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312121626796.png" srcset="/img/loading.gif" lazyload
+alt="知识点回顾" />
+<figcaption aria-hidden="true">知识点回顾</figcaption>
+</figure>
+<h3 id="多生产者-多消费者问题">2. 多生产者-多消费者问题</h3>
+<h1 id="死锁">2.4 死锁</h1>
 <h2 id="死锁的避免">死锁的避免</h2>
 <h3 id="银行家算法">银行家算法</h3>
 <blockquote>
@@ -1277,6 +1692,8 @@ target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/3846785
 (zhihu.com)</a></p>
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH?p=13&amp;vd_source=39f0a6c7a4d98748bb31fcf1e1a3ab7f">2.1_2_进程的状态与转换、进程的组织_哔哩哔哩_bilibili</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/585216267">【OS 操作系统】047 |
+进程同步与互斥 - 知乎 (zhihu.com)</a></p>
 </blockquote>
 
                 
@@ -1583,6 +2000,8 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH
 
   
   
+
+  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=BHu02doWTfACgsoaKUKdCvghL0B4M-WZR956AK7Bn-I&cl=ffffff&w=a"></script>
 </div>
 
   </footer>
