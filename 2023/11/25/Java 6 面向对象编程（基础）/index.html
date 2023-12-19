@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k 字
+          17k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          92 分钟
+          116 分钟
         
       </span>
     
@@ -599,86 +599,110 @@ alt="程序执行结果" />
 <blockquote>
 <p>方法重载（Overload）：Java 中允许同一类中，多个同名方法的存在，但要求
 形参列表 不一致。</p>
-<p>这样，减轻了起名和记名的麻烦。</p>
+<p>比如：System.out.println()，out 是 PrintStream 类型</p>
+<p>重载的好处：减轻了起名和记名的麻烦。</p>
 </blockquote>
-<p><strong>使用细节：</strong></p>
+<p>一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">MyCalculator</span> <span class="hljs-variable">mc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyCalculator</span>();<br>        System.out.println(mc.calculate(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>));<br>        System.out.println(mc.calculate(<span class="hljs-number">1.1</span>, <span class="hljs-number">2</span>));<br>        System.out.println(mc.calculate(<span class="hljs-number">1</span>, <span class="hljs-number">2.1</span>));<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCalculator</span> &#123;<br>    <span class="hljs-comment">//下面的四个 calculate 方法构成了重载</span><br>    <span class="hljs-comment">//两个整数的和</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(<span class="hljs-type">int</span> n1, <span class="hljs-type">int</span> n2)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;calculate(int n1, int n2) 被调用&quot;</span>);<br><br>        <span class="hljs-keyword">return</span> n1 + n2;<br>    &#125;<br>    <span class="hljs-comment">//没有构成方法重载, 仍然是错误的，因为是方法的重复定义</span><br>    <span class="hljs-comment">// public double calculate(int n1, int n2) &#123;</span><br>    <span class="hljs-comment">// 		System.out.println(&quot;calculate(int n1, int n2) 被调用&quot;);</span><br>    <span class="hljs-comment">// 		return n1 + n2;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <br>    <span class="hljs-comment">//看看下面是否构成重载, 没有构成，而是方法的重复定义</span><br>    <span class="hljs-comment">// public int calculate(int a1, int a2) &#123;</span><br>    <span class="hljs-comment">// System.out.println(&quot;calculate(int n1, int n2) 被调用&quot;);</span><br>    <span class="hljs-comment">// return a1 + a2;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <br>    <span class="hljs-comment">//一个整数，一个 double 的和</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(<span class="hljs-type">int</span> n1, <span class="hljs-type">double</span> n2)</span> &#123;<br>        <span class="hljs-keyword">return</span> n1 + n2;<br>    &#125;<br>    <span class="hljs-comment">//一个 double ,一个 Int 和</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">double</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(<span class="hljs-type">double</span> n1, <span class="hljs-type">int</span> n2)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;calculate(double n1, int n2) 被调用..&quot;</span>);<br>        <span class="hljs-keyword">return</span> n1 + n2;<br>    &#125;<br>    <span class="hljs-comment">//三个 int 的和</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">calculate</span><span class="hljs-params">(<span class="hljs-type">int</span> n1, <span class="hljs-type">int</span> n2,<span class="hljs-type">int</span> n3)</span> &#123;<br><br>        <span class="hljs-keyword">return</span> n1 + n2 + n2;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="使用细节-1">6.4.1 使用细节</h3>
 <ol type="1">
 <li>方法名：必须相同</li>
-<li>形参列表：必须不同（参数的类型、个数、顺序，这其中至少一个不同）</li>
+<li>形参列表：必须不同（形参的类型、个数、顺序，这其中至少一个不同，参数名无要求）</li>
 <li>返回值：无要求</li>
 </ol>
-<p><strong>签名：</strong></p>
-<p>由于重载的存在，要完整的描述一个方法，要指定方法名及参数类型。这叫做方法的签名。</p>
-<p>如：</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">act</span>()</span> &#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">act</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> n</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> n;<br>&#125;JAVA<br></code></pre></td></tr></table></figure>
-<p>两个方法的签名分别是：<code>act()</code> 和
-<code>act(int n)</code></p>
 <h2 id="可变参数">6.5 可变参数</h2>
 <blockquote>
 <p>Java
 允许将同一个类中多个同名同功能但参数个数不同的方法，封装成一个方法。</p>
 </blockquote>
 <p>语法：<code>访问修饰符 返回类型 方法名（数据类型... 形参名）&#123;代码块;&#125;</code></p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title">m</span><span class="hljs-params">(<span class="hljs-type">int</span>... n)</span></span>&#123;<br>	<span class="hljs-comment">//此时，n 相当于一个 数组。</span><br>	<span class="hljs-type">int</span> length = n.length;<br>	<span class="hljs-type">int</span> num1 = n[<span class="hljs-number">0</span>];<br>&#125;JAVA<br></code></pre></td></tr></table></figure>
-<h3 id="使用细节-1">6.5.1 使用细节</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-comment">//编写一个 main 方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">HspMethod</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HspMethod</span>();<br>        System.out.println(m.sum(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">100</span>)); <span class="hljs-comment">//106</span><br>        System.out.println(m.sum(<span class="hljs-number">1</span>,<span class="hljs-number">19</span>)); <span class="hljs-comment">//20</span><br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HspMethod</span> &#123;<br>    <span class="hljs-comment">//可以计算 2 个数的和，3 个数的和 ， 4. 5， 。。</span><br>    <span class="hljs-comment">//可以使用方法重载</span><br>    <span class="hljs-comment">// public int sum(int n1, int n2) &#123;//2 个数的和</span><br>    <span class="hljs-comment">// return n1 + n2;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-comment">// public int sum(int n1, int n2, int n3) &#123;//3 个数的和</span><br>    <span class="hljs-comment">// return n1 + n2 + n3;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-comment">// public int sum(int n1, int n2, int n3, int n4) &#123;//4 个数的和</span><br>    <span class="hljs-comment">// return n1 + n2 + n3 + n4;</span><br>    <span class="hljs-comment">// &#125;</span><br>    <span class="hljs-comment">//.....</span><br>    <span class="hljs-comment">//上面的三个方法名称相同，功能相同, 参数个数不同-&gt; 使用可变参数优化</span><br><br>    <span class="hljs-comment">//1. int... 表示接受的是可变参数，类型是 int ,即可以接收多个 int(0-多)</span><br>    <span class="hljs-comment">//2. 使用可变参数时，可以当做数组来使用 即 nums 可以当做数组</span><br>    <span class="hljs-comment">//3. 遍历 nums 求和即可</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sum</span><span class="hljs-params">(<span class="hljs-type">int</span>... nums)</span> &#123;<br>    System.out.println(<span class="hljs-string">&quot;接收的参数个数=&quot;</span> + nums.length);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;<br>            res += nums[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312141658183.png" srcset="/img/loading.gif" lazyload
+alt="程序执行结果" />
+<figcaption aria-hidden="true">程序执行结果</figcaption>
+</figure>
+<h3 id="使用细节-2">6.5.1 使用细节</h3>
 <ol type="1">
 <li><p>可变参数 的实参可以是 0 个，也可以是 任意多 个。</p></li>
-<li><p>可变参数 的实参可以是数组</p></li>
-<li><p>可变参数 本质就是数组</p>
+<li><p>可变参数 的实参可以是数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-comment">//细节: 可变参数的实参可以为数组</span><br>       	<span class="hljs-type">int</span>[] arr = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;<br>        <span class="hljs-type">T</span> <span class="hljs-variable">t1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">T</span>();<br>        t1.f1(arr);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">f1</span><span class="hljs-params">(<span class="hljs-type">int</span>... nums)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;长度=&quot;</span> + nums.length);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>可变参数本质就是数组</p>
 <p>因此，出现：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title">met</span><span class="hljs-params">(<span class="hljs-type">int</span>... n)</span></span>&#123;				<span class="hljs-comment">//这个方法与下面的方法不能构成重载</span><br>&#125;JAVA<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">m</span><span class="hljs-params">(<span class="hljs-type">int</span>... n)</span>&#123;				<span class="hljs-comment">//这个方法与下面的方法不能构成重载</span><br>&#125;<br></code></pre></td></tr></table></figure>
 <p>的场合，不能有方法：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title">met</span><span class="hljs-params">(<span class="hljs-type">int</span>[] n)</span></span>&#123;				<span class="hljs-comment">//这个方法与上面的方法不能构成重载</span><br>&#125;JAVA<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">m</span><span class="hljs-params">(<span class="hljs-type">int</span>[] n)</span>&#123;				<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li><p>可变参数 和 普通参数 可以一起放在形参列表，但必须保证 可变参数
 在最后</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-type">void</span> <span class="hljs-title">m</span><span class="hljs-params">(<span class="hljs-type">double</span> dou, <span class="hljs-type">int</span>... n)</span> </span>&#123;&#125;<br>JAVA<br></code></pre></td></tr></table></figure></li>
-<li><p>一个形参列表最多出现 一个 可变参数。</p></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">m</span><span class="hljs-params">(<span class="hljs-type">double</span> dou, <span class="hljs-type">int</span>... n)</span> &#123;&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>一个形参列表最多出现 一个 可变参数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//下面的写法是错的</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">f3</span><span class="hljs-params">(<span class="hljs-type">int</span>... nums1, <span class="hljs-type">double</span>... nums2)</span> &#123;<br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
+<h3 id="一个练习">6.5.2 一个练习</h3>
+<p>有三个方法，分别实现返回姓名和两门课成绩(总分)，返回姓名和三门课成绩(总分)，返回姓名和五门课成绩
+(总分)。封装成一个可变参数的方法，类名 HspMethod，方法名 showScore</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-comment">//编写一个 main 方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">HspMethod</span> <span class="hljs-variable">hm</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HspMethod</span>();<br>        System.out.println(hm.showScore(<span class="hljs-string">&quot;milan&quot;</span> , <span class="hljs-number">90.1</span>, <span class="hljs-number">80.0</span> ));<br>        System.out.println(hm.showScore(<span class="hljs-string">&quot;terry&quot;</span> , <span class="hljs-number">90.1</span>, <span class="hljs-number">80.0</span>,<span class="hljs-number">10</span>,<span class="hljs-number">30.5</span>,<span class="hljs-number">70</span> ));<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">HspMethod</span> &#123;<br>    <span class="hljs-comment">//分析 1. 方法名 showScore 2. 形参(String ,double... ) 3. 返回 String</span><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">showScore</span><span class="hljs-params">(String name ,<span class="hljs-type">double</span>... scores )</span> &#123;<br>        <span class="hljs-type">double</span> <span class="hljs-variable">totalScore</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; scores.length; i++) &#123;<br>            totalScore += scores[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> name + <span class="hljs-string">&quot; 有 &quot;</span> +scores.length + <span class="hljs-string">&quot; 门课的成绩总分为 = &quot;</span> + totalScore;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <h2 id="作用域">6.6 作用域</h2>
 <ol type="1">
-<li>在 Java 编程中，主要的变量就是 属性（成员变量）和 局部变量。</li>
+<li>在 Java 编程中，主要的变量就是属性（成员变量）和 局部变量。</li>
 <li>我们说的 局部变量 一般是指在成员方法中定义的变量。</li>
 <li>作用域的分类
 <ul>
-<li>全局变量：也就是 属性，作用域为整个类体</li>
+<li>全局变量：也就是属性，作用域为整个类体</li>
 <li>局部变量：除了属性外的其他变量。作用域为定义它的代码块中</li>
 </ul></li>
-<li>全局变量（属性）可以不赋值直接使用，那个场合有默认值。局部变量必须赋值使用</li>
+<li>全局变量（属性）可以不赋值直接使用，因为有默认值。局部变量必须赋值使用</li>
 </ol>
-<h3 id="使用细节-2">6.6.1 使用细节</h3>
+<h3 id="使用细节-3">6.6.1 使用细节</h3>
 <ol type="1">
 <li><p>属性 和 局部变量 可以重名，访问时遵循就近原则</p></li>
 <li><p>在同一作用域中，两个局部变量不能重名</p></li>
-<li><p>属性
-的生命周期较长。其伴随对象的创建而创建，伴随对象的销毁而销毁。</p>
-<p>局部变量
-生命周期较短。其伴随代码块的执行而创建，伴随代码块的结束而销毁。</p></li>
-<li><p>全局变量/属性
-可以被本类使用，也可以被其他类（通过对象）使用。</p>
-<p>局部变量 只能被本类的对应方法中调用</p></li>
-<li><p>全局变量/属性 <strong>可以加</strong> 修饰符</p>
+<li><p>属性的生命周期较长。其伴随对象的创建而创建，伴随对象的销毁而销毁。</p>
+<p>局部变量生命周期较短。其伴随代码块的执行而创建，伴随代码块的结束而销毁。</p></li>
+<li><p>作用域不同：</p>
+<ul>
+<li>全局变量/属性 可以被本类使用，也可以被其他类（通过对象）使用。</li>
+<li>局部变量 只能被本类的对应方法中调用</li>
+</ul></li>
+<li><p>全局变量/属性 <strong>可以加</strong> 修饰符（public
+private....）</p>
 <p>局部变量 <strong>不能加</strong> 修饰符</p></li>
 </ol>
 <h2 id="构造方法构造器">6.7 构造方法、构造器</h2>
 <blockquote>
-<p>构造方法又叫构造器（constructor），是类的一种特殊的方法。它的主要作用是完成对新对象的初始化。</p>
-</blockquote>
-<p>语法：<code>[修饰符] 方法名(形参列表)&#123;方法体&#125;</code></p>
+<p>构造方法又叫构造器（constructor），是类的一种特殊的方法。它的主要作用是完成对新对象的初始化。它有几个特点：</p>
 <ol type="1">
-<li>构造器的修饰符可以是默认。也可以是别的</li>
-<li>参数列表 规则同 成员方法</li>
+<li>方法名和类名相同</li>
+<li>没有返回值</li>
+<li>在创建对象时，系统会自动的调用该类的构造器完成对象的初始化。</li>
 </ol>
-<p>以下示范一个构造器：</p>
-<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs processing"><span class="hljs-keyword">class</span> <span class="hljs-title class_">T</span>&#123;<br>	<span class="hljs-built_in">String</span> name;<br>	<span class="hljs-type">int</span> mun;<br>    <span class="hljs-comment">//下面这块就是构造器</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-title function_">T</span>(<span class="hljs-built_in">String</span> <span class="hljs-built_in">str</span>, <span class="hljs-type">int</span> i)&#123;<br>		name = <span class="hljs-built_in">str</span>;<br>		num = i;<br>	&#125;<br>&#125;JAVA<br></code></pre></td></tr></table></figure>
-<h3 id="使用细节-3">6.7.1 使用细节</h3>
+</blockquote>
+<p>语法：<code>[修饰符] 方法名(形参列表)&#123; 方法体; &#125;</code></p>
 <ol type="1">
-<li>构造器本质也是方法。所以，可以 构造器重载。</li>
-<li>构造器名 和 类名 相同</li>
-<li>构造器无返回值</li>
-<li>构造器是完成对象的初始化，而不是创建</li>
-<li>创建对象时，系统自动调用构造器</li>
-<li>如果程序员没有定义构造器，系统会自动给类生成一个无参构造器（默认构造器）</li>
-<li>一旦定义了自己的构造器，就不能用无参构造器了。除非显式的定义一个无参构造器</li>
+<li>构造器的修饰符可以默认， 也可以是 public protected private</li>
+<li>构造器没有返回值</li>
+<li>方法名和类名字必须一样</li>
+<li>参数列表 和 成员方法一样的规则</li>
+<li>构造器的调用，由系统完成</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">test</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-comment">//当我们 new 一个对象时，直接通过构造器指定名字和年龄</span><br>        <span class="hljs-type">Person</span> <span class="hljs-variable">p1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Person</span>(<span class="hljs-string">&quot;smith&quot;</span>, <span class="hljs-number">80</span>);<br>        System.out.println(<span class="hljs-string">&quot;p1 的信息如下&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;p1 对象 name = &quot;</span> + p1.name);<span class="hljs-comment">//smith</span><br>        System.out.println(<span class="hljs-string">&quot;p1 对象 age = &quot;</span> + p1.age);<span class="hljs-comment">//80</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">//在创建人类的对象时，就直接指定这个对象的年龄和姓名</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    String name;<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-comment">//构造器</span><br><br>    <span class="hljs-comment">//1. 构造器没有返回值, 也不能写 void</span><br>    <span class="hljs-comment">//2. 构造器的名称和类 Person 一样</span><br>    <span class="hljs-comment">//3. (String pName, int pAge) 是构造器形参列表，规则和成员方法一样</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String pName, <span class="hljs-type">int</span> pAge)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;构造器被调用~~ 完成对象的属性初始化&quot;</span>);<br>        name = pName;<br>        age = pAge;<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312141726586.png" srcset="/img/loading.gif" lazyload
+alt="运行结果" />
+<figcaption aria-hidden="true">运行结果</figcaption>
+</figure>
+<h3 id="使用细节-4">6.7.1 使用细节</h3>
+<ol type="1">
+<li><p>构造器本质也是方法。所以，可以构造器重载。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java">...<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    String name;<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String pName, <span class="hljs-type">int</span> pAge)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;构造器被调用~~ 完成对象的属性初始化&quot;</span>);<br>        name = pName;<br>        age = pAge;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String pName)</span> &#123;<br>        name = pName;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>构造器名 和 类名 相同</p></li>
+<li><p>构造器无返回值</p></li>
+<li><p>构造器是完成对象的初始化，而不是创建</p></li>
+<li><p>创建对象时，系统自动调用该类的构造方法，像上面的，不能<code>p1.Person()</code></p></li>
+<li><p>如果程序员没有定义构造器，系统会自动给类生成一个默认无参构造器（也叫默认构造器）</p></li>
+<li><p>一旦定义了自己的构造器，就不能用无参构造器了。除非显式的定义一个无参构造器</p></li>
 </ol>
 <h3 id="流程分析">6.7.2 流程分析</h3>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs arduino">Person p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Person</span>(<span class="hljs-string">&quot;Amy&quot;</span>, <span class="hljs-number">10</span>);<br><br>...<br>    <br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span>&#123;<br>	<span class="hljs-type">String</span> name;<br>	<span class="hljs-type">int</span> age = <span class="hljs-number">20</span>;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(<span class="hljs-type">String</span> pName, <span class="hljs-type">int</span> pAge)</span></span>&#123;<br>		name = pName;<br>		age = pAge;<br>	&#125;<br>&#125;JAVA<br></code></pre></td></tr></table></figure>

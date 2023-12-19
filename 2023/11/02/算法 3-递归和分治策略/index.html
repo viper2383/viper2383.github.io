@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          3.2k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          14 分钟
+          22 分钟
         
       </span>
     
@@ -330,7 +330,45 @@
             
               <div class="markdown-body">
                 
-                <h2 id="分治法的常用例子">分治法的常用例子</h2>
+                <h1 id="递归">递归</h1>
+<h2 id="递归的概述">递归的概述</h2>
+<h3 id="递归的定义">递归的定义</h3>
+<p>递归(Recursion)，又译为递回，在数学与计算机科学中，是指在函数的定义中使用函数自身的方法。</p>
+<blockquote>
+<p>Recursion从词源上分析只是"re- (again)" + "curs- (come, happen)"
+也就是重复发生，再次重现的意思, 中文翻译
+“递归”表达了两个意思：递＋归。</p>
+</blockquote>
+<p>递归(Recursion)基本思想：把规模大的问题转化为规模小的相似的子问题来解决。在函数实现时，因为解决大问题的方法和解决小问题的方法往往是同一个方法，所以就产生了函数直接或间接调用它自身的情况。这个解决问题的函数必须有明显的结束条件，这样就不会产生无限递归的情况。</p>
+<p>应用场景：树、阶乘、Fibonacci数列、Hanoi塔问题</p>
+<p>递归的性能问题：栈的分配和函数调用代价需要在具体工程实践中考虑。</p>
+<blockquote>
+<p>递归的总体思想：</p>
+<ul>
+<li>将求解的较大规模的问题分割成k个更小规模的子问题。</li>
+<li>对这k个子问题分别求解。如果子问题的规模仍然不够小，则再划分为k个子问题，如此递归的进行下去，直到问题规模足够小，很容易求出其解为止。</li>
+<li>将求出的小规模的问题的解合并为一个更大规模的问题的解自底向上逐步求出原来问题的解。</li>
+</ul>
+</blockquote>
+<p>分治法的设计思想：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，再各个击破，分而治之</p>
+<p>直接或间接地调用自身的算法称为递归算法（直接递归间接递归）。用函数自身给出定义的函数称为递归函数。</p>
+<ul>
+<li>边界条件与递归方程是递归函数的二个要素</li>
+<li>递归函数只有具备这两个要素，才能在有限次计算后得出结果。</li>
+</ul>
+<p>由分治法产生的子问题往往是原问题的较小模式，这就为使用递归技术提供了方便。在这种情况下，反复应用分治手段，可以使子问题与原问题类型一致而其规模却不断缩小，最终使子问题缩小到很容易直接求出其解。这自然导致递归过程的产生。</p>
+<p>分治与递归像一对挛生兄弟，经常同时应用在算法设计之中，并由此产生许多高效算法。</p>
+<h3 id="递归递推迭代">递归、递推、迭代</h3>
+<p><strong>递归形式</strong>的斐波那契数列：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//伪代码</span><br><span class="hljs-type">int</span> f[maxn] = <span class="hljs-number">0</span>;<br>f[<span class="hljs-number">0</span>] = f[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">fib</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span>&#123;<br>	<span class="hljs-keyword">if</span>(f[n]) <span class="hljs-keyword">return</span> f[n];<br>	<span class="hljs-keyword">return</span> f[n] = fib(n<span class="hljs-number">-1</span>) + fib(n<span class="hljs-number">-2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>递推形式</strong>的斐波那契数列：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//伪代码</span><br><span class="hljs-type">int</span> f[maxn] = <span class="hljs-number">0</span>;<br>f[<span class="hljs-number">0</span>] = f[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>; i&lt;=n; ++i)&#123;<br>	f[i] = f[i<span class="hljs-number">-1</span>] + f[i<span class="hljs-number">-2</span>]<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>递推Inductive</strong>
+：一步步往后，从左往右。即有来无回。</p>
+<p><strong>递归Recursive</strong>：从最后面一步步往前嵌套，再从最前面一步步往后套。递归=递推+回归。即有来有回。</p>
+<p><strong>迭代Iteration</strong>：循环执行，每次把前面计算出的值套下一步。迭代是逐渐逼近，用新值覆盖旧值。</p>
+<p>注意：递归次数太多可能会爆栈。</p>
+<h2 id="分治法的常用例子">分治法的常用例子</h2>
 <h3 id="二分查找">二分查找</h3>
 <h4 id="概述">1. 概述</h4>
 <p>二分查找（Binary Search）算法，也叫折半查找算法</p>

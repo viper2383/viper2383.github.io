@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.4k 字
+          10k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          43 分钟
+          69 分钟
         
       </span>
     
@@ -330,7 +330,10 @@
             
               <div class="markdown-body">
                 
-                <h2 id="第一章-绪论">第一章 绪论</h2>
+                <blockquote>
+<p>大三上选的一门选修课——《通信原理与安全》的部分笔记</p>
+</blockquote>
+<h2 id="第一章-绪论">第一章 绪论</h2>
 <h3 id="通信的基本概念">1.1 通信的基本概念</h3>
 <p>通信（Communication）——沟通信息。</p>
 <p>通信系统——发送器、信道、接收器。</p>
@@ -639,6 +642,187 @@ alt="无线信道的变化" />
 </figure>
 <p>大尺度衰落一般与路径损耗以及阴影有关，变化幅度较小，实际中主要影响的是基站的位置</p>
 <p>小尺度衰落一般由多径和干扰引起，变化幅度剧烈，实际中主要影响传输的可靠性和有效性，是本课程研究的重点</p>
+<h2 id="第四章-信道编码">第四章 信道编码</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312151413647.png" srcset="/img/loading.gif" lazyload
+alt="无线通信系统的基本构成" />
+<figcaption aria-hidden="true">无线通信系统的基本构成</figcaption>
+</figure>
+<h3 id="香农定理">4.1 香农定理</h3>
+<p><strong>有噪信道编码定理（香农第二定理）</strong></p>
+<p>某一信道的信道容量为C。当信息传输速率<span
+class="math inline">\(R≤C\)</span>时，总能找到一种信道编码方法，使信道输出端的平均译码错误概率任意小。</p>
+<p>结论：信道容量是在信道中可靠传输信息的最大信息传输速率。</p>
+<p>问题：香农第二定理只告诉我们存在一种编码方式使错误概率趋于零，但却没有告诉我们这种编码具体是什么？当传输速率小于C时，采用什么方式进行编码可以实现香农第二定理呢？</p>
+<p>答：信道纠错码</p>
+<h3 id="纠错码">4.2 纠错码</h3>
+<p><strong>基本概念1：</strong></p>
+<p>有<span class="math inline">\(k\)</span>个信息，记为<span
+class="math inline">\(m=(m_{k-1},m_{k-2},…,m_0)\)</span>。称m为信息组，<span
+class="math inline">\(m_i\)</span>为信息元</p>
+<p>这k个信息元一共有<span
+class="math inline">\(2^k\)</span>种组合方式（二元通信系统）</p>
+<p>为了纠错，在<span
+class="math inline">\(k\)</span>个信息的基础上引入额外的<span
+class="math inline">\(r\)</span>个符号（称为校验元），形成 <span
+class="math inline">\(n=k+r\)</span> 长的序列，并记为<span
+class="math inline">\(C=(c_{n-1},c_{n-2},…,c_0)\)</span>，称<span
+class="math inline">\(C\)</span>为码字， <span
+class="math inline">\(c_i\)</span>为码元，<span
+class="math inline">\(n\)</span>是码长，<span
+class="math inline">\(k\)</span>是信息元的个数，<span
+class="math inline">\(n-k=r\)</span>是校验元的个数</p>
+<ul>
+<li><p>如果增加的<span
+class="math inline">\(r\)</span>个校验元只与本组的<span
+class="math inline">\(k\)</span>个信息元有关，而与其他信息组无关，则这样的码称为分组码，记为(n,k)码。</p></li>
+<li><p>如果增加的<span
+class="math inline">\(r\)</span>个校验元不仅与本组的<span
+class="math inline">\(k\)</span>个信息元有关，还与之前的信息组有关，则这样的码称为卷积码。</p></li>
+<li><p>对二进制<span class="math inline">\((n,
+k)\)</span>线性分组码<span class="math inline">\(C\)</span> ，<span
+class="math inline">\(k\)</span>个信息元对应产生 <span
+class="math inline">\(2^k\)</span>个许用码字，其他<span
+class="math inline">\(2^n- 2^k\)</span>个为禁用码字。</p></li>
+</ul>
+<p><strong>基本概念2：码字的汉明重量、汉明距离</strong></p>
+<p>码字的汉明重量是指码字中非零码元的个数，记为<span
+class="math inline">\(W(C)\)</span>。对于二元码，汉明重量就是<span
+class="math inline">\(1\)</span>的个数。</p>
+<p>因此, 两个码字 <span class="math inline">\(C_k\)</span> 和 <span
+class="math inline">\(C_j\)</span> 之间的汉明距离为 <span
+class="math display">\[
+D\left(C_k, C_j\right)=W\left(C_k \oplus C_j\right)
+\]</span> <span class="math inline">\(\oplus\)</span> 表示模二相加,
+或者异或</p>
+<p><span class="math display">\[
+\begin{array}{r}
+\text {1101与1010之间的汉明距离: } \\
+1101 \\
++1010 \\
+\hline 0111
+\end{array}
+\]</span></p>
+<p><strong>基本概念3：错误图样</strong> <span class="math display">\[
+E=\left(e_{n-1} e_{n-2} \cdots e_0\right)
+\]</span></p>
+<p>当 <span class="math inline">\(e_i=0\)</span> 时，表示第 <span
+class="math inline">\(\mathrm{i}\)</span> 位无差错发生； <span
+class="math inline">\(e_i=1\)</span> 时，表示第 <span
+class="math inline">\(\mathrm{i}\)</span> 位出错</p>
+<p>假设传输的序列为 <span class="math inline">\(C\)</span>, 接收的序列为
+<span class="math inline">\(R\)</span>, 则 <span class="math display">\[
+E=C \oplus R \quad R=C \oplus E \quad C=R \oplus E
+\]</span></p>
+<p>即，任意两个的模二和等于第三个</p>
+<p><span class="math inline">\(W(E)\)</span> 就表示出现错误的个数。</p>
+<p>发送1101，接收1010，判断哪些位出错：后三位都有错误</p>
+<h3 id="线性分组码">4.3 线性分组码</h3>
+<blockquote>
+<p>定义：线性分组码是指分组码中信息元和校验元是用线性方程联系起来的一种差错控制码</p>
+</blockquote>
+<p>线性分组码的构成步骤：</p>
+<p>1、信道编码器将信息序列分成 <span class="math inline">\(k\)</span>
+长的信息组, 记为 <span
+class="math inline">\(\mathrm{m}=\left(\mathrm{m}_{\mathrm{k}-1},
+\mathrm{~m}_{\mathrm{k}-2}, \ldots, \mathrm{m}_0\right)\)</span> 。</p>
+<p>2、用 <span class="math inline">\(\mathrm{k}\)</span>
+个信息元线性组合产生 <span class="math inline">\(\mathrm{r}\)</span>
+个校验元</p>
+<p>3、将 <span class="math inline">\(k\)</span> 个信息元与 <span
+class="math inline">\(\mathrm{r}\)</span> 个校验元组合成长度为 <span
+class="math inline">\(n\)</span> 的码字 <span
+class="math inline">\(\mathrm{C}=\left(\mathrm{c}_{\mathrm{n}-1},
+\mathrm{c}_{\mathrm{n}-2}, \ldots, \mathrm{c}_0\right)\)</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312151427463.png" srcset="/img/loading.gif" lazyload
+alt="线性分组码" />
+<figcaption aria-hidden="true">线性分组码</figcaption>
+</figure>
+<h3 id="汉明码">4.4 汉明码</h3>
+<blockquote>
+<p>最简单的线性分组码：汉明码</p>
+</blockquote>
+<p>汉明码可以用来纠正 1 比特错误</p>
+<p>汉明码的核心在于两个矩阵：生成矩阵G和校验矩阵H</p>
+<ul>
+<li>生成矩阵G用来生成码字</li>
+<li>校验矩阵H用来验证某个码字是否传输正确</li>
+</ul>
+<h4 id="一生成矩阵">一、生成矩阵</h4>
+<p>（用来生成码字）</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312151430772.png" srcset="/img/loading.gif" lazyload
+alt="生成矩阵" />
+<figcaption aria-hidden="true">生成矩阵</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312151431837.png" srcset="/img/loading.gif" lazyload
+alt="生成矩阵" />
+<figcaption aria-hidden="true">生成矩阵</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312151432782.png" srcset="/img/loading.gif" lazyload
+alt="生成矩阵" />
+<figcaption aria-hidden="true">生成矩阵</figcaption>
+</figure>
+<p>下面是信息论与编码中的一点东西</p>
+<p>（7，4）汉明码的标准校验矩阵</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\begin{array}{|l|l|l|l|l|l|l|l|l|}
+\hline s 0=000 &amp; \mathrm{c} 0=0000000 &amp; \mathrm{c} 1=0001011
+&amp; \mathrm{c} 2=0010110 &amp; \mathrm{c} 3=0011101 &amp; \mathrm{c}
+4=0100111 &amp; \mathrm{c5}=0101100 &amp; \mathrm{c} 6=0110001 &amp;
+\mathrm{c} 7=0111010 \\
+\hline \mathrm{s} 1=101 &amp; \mathrm{e} 1=1000000 &amp; 1001011 &amp;
+1010110 &amp; 1011101 &amp; 1100111 &amp; 1101100 &amp; 1110001 &amp;
+1111010 \\
+\mathrm{~s} 2=111 &amp; \mathrm{e} 2=0100000 &amp; 0101011 &amp; 0110110
+&amp; 0111101 &amp; 0000111 &amp; 0001100 &amp; 0010001 &amp; 0011010 \\
+\mathrm{~s} 3=110 &amp; \mathrm{e} 3=0010000 &amp; 0011011 &amp; 0000110
+&amp; 0001101 &amp; 0110111 &amp; 0111100 &amp; 0100001 &amp; 0101010 \\
+\mathrm{~s} 4=011 &amp; \mathrm{e} 4=0001000 &amp; 0000011 &amp; 0011110
+&amp; 0010101 &amp; 0101111 &amp; 0100100 &amp; 0111001 &amp; 0110010 \\
+\mathrm{~s} 5=100 &amp; \mathrm{e} 5=0000100 &amp; 0001111 &amp; 0010010
+&amp; 0011001 &amp; 0100011 &amp; 0101000 &amp; 0110101 &amp; 011110 \\
+\mathrm{~s} 6=010 &amp; \mathrm{e} 6=0000010 &amp; 0001001 &amp; 0010100
+&amp; 0011111 &amp; 0100101 &amp; 0101110 &amp; 0110011 &amp; 0111000 \\
+\mathrm{~s} 7=001 &amp; \mathrm{e} 7=0000001 &amp; 0001010 &amp; 0010110
+&amp; 0011100 &amp; 0100110 &amp; 0101101 &amp; 0110000 &amp; 0111011 \\
+\hline
+\end{array}\\
+&amp;\begin{array}{|l|l|l|l|l|l|l|l|l|}
+\hline s 0=000 &amp; c 8=1000101 &amp; c 9=1001110 &amp; c 10=1010011
+&amp; c 11=1011000 &amp; c 12=1100010 &amp; c 13=1101001 &amp; c
+14=1110100 &amp; c 15=1111111 \\
+\hline s 1=101 &amp; 0000101 &amp; 0001110 &amp; 0010011 &amp; 0011000
+&amp; 0100010 &amp; 0101001 &amp; 0110100 &amp; 0111111 \\
+s 2=111 &amp; 1100101 &amp; 1101110 &amp; 1110011 &amp; 1111000 &amp;
+1000010 &amp; 1001001 &amp; 1010100 &amp; 1011111 \\
+s 3=110 &amp; 1010101 &amp; 1011110 &amp; 1000011 &amp; 1001000 &amp;
+1110010 &amp; 1111001 &amp; 1100100 &amp; 1101111 \\
+s 4=011 &amp; 1001101 &amp; 1000110 &amp; 1011011 &amp; 1010000 &amp;
+1101010 &amp; 1100001 &amp; 1111100 &amp; 1110111 \\
+s 5=100 &amp; 1000001 &amp; 1001010 &amp; 1010111 &amp; 1011100 &amp;
+1100110 &amp; 1101101 &amp; 1110000 &amp; 1111011 \\
+s 6=010 &amp; 1000111 &amp; 1001100 &amp; 1010001 &amp; 1011010 &amp;
+1100000 &amp; 1101011 &amp; 1110110 &amp; 1111101 \\
+s 7=001 &amp; 1000100 &amp; 1001111 &amp; 1010010 &amp; 1011001 &amp;
+1100011 &amp; 1101000 &amp; 1110101 &amp; 1111110 \\
+\hline
+\end{array}
+\end{aligned}
+\]</span></p>
+<p>……</p>
+<p>……</p>
+<p>……</p>
+<p>……</p>
 <h2 id="第十章-无线通信安全">第十章 无线通信安全</h2>
 <p>通信：</p>
 <p>有线：光纤</p>
@@ -724,8 +908,10 @@ y_i\right)
 <p>在收到Y后，X的不确定性为多少？H(X|Y) 。<em>这个对 X
 尚存在的不确定性是由干扰（噪声）引起的。</em></p>
 <p>在这个过程中，接收机获得了多少信息量？H(X)-H(X|Y)</p>
-<p><strong>互信息</strong>： I(X;Y)=H(X)-H(X|Y)</p>
-<p>互信息I(X;Y)的本质：接收机获取来自发射机的信息量的多少。或者理解为：接收信号Y与发送信号X共有的信息量</p>
+<p><strong>互信息</strong>： <span class="math display">\[
+I(X;Y)=H(X)-H(X|Y)
+\]</span>
+互信息I(X;Y)的本质：接收机获取来自发射机的信息量的多少。或者理解为：接收信号Y与发送信号X共有的信息量</p>
 <figure>
 <img
 src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202311171444008.png" srcset="/img/loading.gif" lazyload
