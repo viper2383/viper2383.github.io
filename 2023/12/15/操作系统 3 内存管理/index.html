@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k 字
+          8k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          38 分钟
+          54 分钟
         
       </span>
     
@@ -331,6 +331,9 @@
               <div class="markdown-body">
                 
                 <blockquote>
+<p>王道操作系统3.1_6，3.1_7，3.1_8，3.1_9，3.1_10，3.1_11待补充</p>
+</blockquote>
+<blockquote>
 <p>学的时候发现王道考研这样说的是内存管理，而📕上的是存储器管理</p>
 <p>导致笨🐭有点疑惑，所以就去搜了一下，搜到了一点资料，解答了这个疑惑，或者看一下补充的3.1.0</p>
 <p>其实就一句话：内存又叫内部存储器（不知道这样理解对不对</p>
@@ -938,12 +941,321 @@ buddy_k(x)=\left\{\begin{matrix}x+2^k（若x\mod2^{k+1}=0）\\x-2^k（若x\mod2^
 <p>在为进程分配空间时，需要在一张管理索引表中查找到所需空间大小所对应的表项，从中得到对应的空闲分区链表表头指针</p>
 <p>建立哈希函数，以内存分区大小为查找关键字，加快查找合适大小分区的速度</p>
 <hr />
-<h2 id="基本分页存储管理">3.1.6 基本分页存储管理</h2>
+<h2 id="基本分页存储管理">*3.1.6 基本分页存储管理</h2>
+<p>思路：连续分配方式局限性大；可以将进程分散式的装入内存；根据分散分配时不同的地址空间基本单位分为：</p>
+<ol type="1">
+<li><p>分页存储管理方式：将进程地址空间划分成“页”，例如，每页1KB</p></li>
+<li><p>分段存储管理方式：将进程地址空间划分成逻辑上完整的“段”</p></li>
+<li><p>段页式存储管理方式</p></li>
+</ol>
 <figure>
 <img
 src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312192259942.png" srcset="/img/loading.gif" lazyload
 alt="内存管理" />
 <figcaption aria-hidden="true">内存管理</figcaption>
+</figure>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43914604/article/details/105907291">3.1.6
+OS之分页存储（页号、页偏移量等）_计组的页内偏移量-CSDN博客</a></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261020437.png" srcset="/img/loading.gif" lazyload
+alt="什么是分页存储" />
+<figcaption aria-hidden="true">什么是分页存储</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261020412.png" srcset="/img/loading.gif" lazyload
+alt="页表" />
+<figcaption aria-hidden="true">页表</figcaption>
+</figure>
+<p>思考：</p>
+<ol type="1">
+<li>每个页表项多大?占几个字节?</li>
+<li>如何通过页表实现逻辑地址到物理地址的转换?</li>
+</ol>
+<blockquote>
+<p>这节课有点没听懂，看了期末考试好像对这部分要求的比较少，就先不查资料进行学习了😥😥</p>
+<p>等期末考完再来补充，<del>没办法，一切以期末考试为导向进行学习</del></p>
+</blockquote>
+<h1 id="虚拟内存管理">3.2 虚拟内存管理</h1>
+<h2 id="虚拟内存的基本概念">3.2.1 虚拟内存的基本概念</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261212892.png" srcset="/img/loading.gif" lazyload
+alt="内存管理的概念" />
+<figcaption aria-hidden="true">内存管理的概念</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261213046.png" srcset="/img/loading.gif" lazyload
+alt="虚拟内存的基本概念" />
+<figcaption aria-hidden="true">虚拟内存的基本概念</figcaption>
+</figure>
+<h3 id="传统存储管理的特征缺点">1 传统存储管理的特征、缺点</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261216399.png" srcset="/img/loading.gif" lazyload
+alt="传统存储管理方式" />
+<figcaption aria-hidden="true">传统存储管理方式</figcaption>
+</figure>
+<h3 id="局部性原理">2. 局部性原理</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261219841.png" srcset="/img/loading.gif" lazyload
+alt="局部性原理" />
+<figcaption aria-hidden="true">局部性原理</figcaption>
+</figure>
+<h3 id="虚拟内存的定义和特征">3. 虚拟内存的定义和特征</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261221174.png" srcset="/img/loading.gif" lazyload
+alt="虚拟内存的定义和特征" />
+<figcaption aria-hidden="true">虚拟内存的定义和特征</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261222012.png" srcset="/img/loading.gif" lazyload
+alt="虚拟内存的定义和特征" />
+<figcaption aria-hidden="true">虚拟内存的定义和特征</figcaption>
+</figure>
+<h3 id="如何实现虚拟内存技术">4. 如何实现虚拟内存技术</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261224437.png" srcset="/img/loading.gif" lazyload
+alt="如何实现虚拟内存技术" />
+<figcaption aria-hidden="true">如何实现虚拟内存技术</figcaption>
+</figure>
+<h2 id="请求分页存储管理方式">3.2.2 请求分页存储管理方式</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261244941.png" srcset="/img/loading.gif" lazyload
+alt="请求分页存储管理方式" />
+<figcaption aria-hidden="true">请求分页存储管理方式</figcaption>
+</figure>
+<h3 id="页表机制">1. 页表机制</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261247895.png" srcset="/img/loading.gif" lazyload
+alt="页表机制" />
+<figcaption aria-hidden="true">页表机制</figcaption>
+</figure>
+<h3 id="缺页中断机构">2. 缺页中断机构</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261252647.png" srcset="/img/loading.gif" lazyload
+alt="缺页中断机构" />
+<figcaption aria-hidden="true">缺页中断机构</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261253589.png" srcset="/img/loading.gif" lazyload
+alt="缺页中断机构" />
+<figcaption aria-hidden="true">缺页中断机构</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261254874.png" srcset="/img/loading.gif" lazyload
+alt="如果内存中没有空闲块" />
+<figcaption aria-hidden="true">如果内存中没有空闲块</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261255259.png" srcset="/img/loading.gif" lazyload
+alt="如果内存中没有空闲块" />
+<figcaption aria-hidden="true">如果内存中没有空闲块</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261256813.png" srcset="/img/loading.gif" lazyload
+alt="缺页中断" />
+<figcaption aria-hidden="true">缺页中断</figcaption>
+</figure>
+<h3 id="地址变换机构">3. 地址变换机构</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261258187.png" srcset="/img/loading.gif" lazyload
+alt="地址变换机构" />
+<figcaption aria-hidden="true">地址变换机构</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261259156.png" srcset="/img/loading.gif" lazyload
+alt="地址变换机构" />
+<figcaption aria-hidden="true">地址变换机构</figcaption>
+</figure>
+<p>快表中有的页面一定是在内存中的。若某个页面被换出外存，则快表中的相应表项也要删除，否则可能访问错误的页面</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261302424.png" srcset="/img/loading.gif" lazyload
+alt="请求分页中的地址变换过程" />
+<figcaption aria-hidden="true">请求分页中的地址变换过程</figcaption>
+</figure>
+<p>在具有快表机构的请求分页系统中，访问一个逻辑地址时，若发生缺页，则地址变换步骤是：</p>
+<p>查快表(未命中)——查慢表(发现未调入内存)——调页(调入的页面对应的表项会直接加入快表)——查快表(命中)——访问目标内存单元</p>
+<h2 id="页面置换算法">3.2.3 页面置换算法</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261305716.png" srcset="/img/loading.gif" lazyload
+alt="页面置换算法" />
+<figcaption aria-hidden="true">页面置换算法</figcaption>
+</figure>
+<h3 id="最佳置换算法opt">1. 最佳置换算法—OPT</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261309611.png" srcset="/img/loading.gif" lazyload
+alt="最佳置换算法—OPT" />
+<figcaption aria-hidden="true">最佳置换算法—OPT</figcaption>
+</figure>
+<p>最佳置换算法可以保证最低的缺页率，但实际上，只有在进程执行的过程中才能知道接下来会访问到的是哪个页面。操作系统无法提前预判页面访问序列。因此，最佳置换算法是无法实现的。</p>
+<h3 id="先进先出置换算法fifo">2. 先进先出置换算法—FIFO</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261312217.png" srcset="/img/loading.gif" lazyload
+alt="先进先出置换算法—FIFO" />
+<figcaption aria-hidden="true">先进先出置换算法—FIFO</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261313826.png" srcset="/img/loading.gif" lazyload
+alt="先进先出置换算法—FIFO" />
+<figcaption aria-hidden="true">先进先出置换算法—FIFO</figcaption>
+</figure>
+<h3 id="最近最久未使用置换算法lru">3. 最近最久未使用置换算法—LRU</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261314449.png" srcset="/img/loading.gif" lazyload
+alt="最近最久未使用置换算法—LRU" />
+<figcaption aria-hidden="true">最近最久未使用置换算法—LRU</figcaption>
+</figure>
+<p>该算法的实现需要专门的硬件支持，虽然算法性能好，但是实现困难，开销大</p>
+<h3 id="时钟置换算法clock">4. 时钟置换算法—CLOCK</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261319805.png" srcset="/img/loading.gif" lazyload
+alt="时钟置换算法—CLOCK" />
+<figcaption aria-hidden="true">时钟置换算法—CLOCK</figcaption>
+</figure>
+<p>访问6号页面时，需要淘汰某个页面，先从1检查，都会改成0，然后第二轮扫描时，发现1是0，所以6号页会置换1号页</p>
+<p>7会置换2号页面（可以自己分析一下）</p>
+<h3 id="改造型时钟置换算法">5. 改造型时钟置换算法</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261433749.png" srcset="/img/loading.gif" lazyload
+alt="改造型时钟置换算法" />
+<figcaption aria-hidden="true">改造型时钟置换算法</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261434567.png" srcset="/img/loading.gif" lazyload
+alt="只需一轮" />
+<figcaption aria-hidden="true">只需一轮</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261434429.png" srcset="/img/loading.gif" lazyload
+alt="需要两轮" />
+<figcaption aria-hidden="true">需要两轮</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261436182.png" srcset="/img/loading.gif" lazyload
+alt="需要三轮" />
+<figcaption aria-hidden="true">需要三轮</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261437134.png" srcset="/img/loading.gif" lazyload
+alt="需要四轮的" />
+<figcaption aria-hidden="true">需要四轮的</figcaption>
+</figure>
+<h2 id="页面分配策略">3.2.4 页面分配策略</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261438059.png" srcset="/img/loading.gif" lazyload
+alt="页面分配策略" />
+<figcaption aria-hidden="true">页面分配策略</figcaption>
+</figure>
+<h3 id="驻留集">1. 驻留集</h3>
+<p>驻留集：指请求分页存储管理中给进程分配的物理块的集合</p>
+<p>在采用了虚拟存储技术的系统中，驻留集大小一般小于进程的总大小</p>
+<p>-----考虑一个极端情况，若某进程共有100个页面，则该进程的驻留集大小为100时进程可以全部放入内存，运行期间不可能再发生缺页。若驻留集大小为1，则进程运行期间必定会极频繁地缺页</p>
+<ul>
+<li>若驻留集太小，会导致缺页频繁，系统要花大量的时间来处理缺页，实际用于进程推进的时间很少</li>
+<li>驻留集太大，又会导致多道程序并发度下降，资源利用率降低。所以应该选择一个合适的驻留集大小。</li>
+</ul>
+<h3 id="页面分配置换策略">2. 页面分配、置换策略</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261443427.png" srcset="/img/loading.gif" lazyload
+alt="页面分配、置换策略" />
+<figcaption aria-hidden="true">页面分配、置换策略</figcaption>
+</figure>
+<ul>
+<li>固定分配局部置换：系统为每个进程分配一定数量的物理块，在整个运行期间都不改变。若进程在运行中发生缺页，则只能从该进程在内存中的页面中选出一页换出，然后再调入需要的页面。
+<ul>
+<li>这种策略的缺点是：很难在刚开始就确定应为每个进程分配多少个物理块才算合理。
+(采用这种策略的系统可以根据进程大小、优先级、或是根据程序员给出的参数来确定为一个进程分配的内存块数)</li>
+</ul></li>
+<li>可变分配全局置换：刚开始会为每个进程分配一定数量的物理块。操作系统会保持一个空闲物理块队列。当某进程发生缺页时，从空闲物理块中取出一块分配给该进程；若已无空闲物理块，则可选择一个<strong>未锁定</strong>的页面换出外存，再将该物理块分配给缺页的进程。采用这种策略时，只要某进程发生缺页都将获得新的物理块，仅当空闲物理块用完时，系统才选择一个未锁定的页面调出。被选择调出的页可能是系统中任何一个进程中的页，因此这个被选中的进程拥有的物理块会减少，缺页率会增加。
+<ul>
+<li>系统会锁定一些页面，这些页面中的内容不能置换出外存(如：重要的内核数据可以设为“锁定”)</li>
+</ul></li>
+<li>可变分配局部置换：刚开始会为每个进程分配一定数量的物理块。当某进程发生缺页时，只允许从该进程自己的物理块中选出一个进行换出外存。如果进程在运行中频繁地缺页，系统会为该进程多分配几个物理块，直至该进程缺页率趋势适当程度；反之，如果进程在运行中缺页率特别低，则可适当减少分配给该进程的物理块。</li>
+</ul>
+<p>可变分配全局置换：只要缺页就给分配新物理块</p>
+<p>可变分配局部置换：要根据发生缺页的频率来动态地增加或减少进程的物理块</p>
+<h3 id="何时调入页面">3. 何时调入页面？</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261448361.png" srcset="/img/loading.gif" lazyload
+alt="何时调入页面？" />
+<figcaption aria-hidden="true">何时调入页面？</figcaption>
+</figure>
+<h3 id="从何处调页">4. 从何处调页？</h3>
+<ol type="1">
+<li><p>系统拥有足够的对换区空间</p>
+<p>页面的调入、调出都是在内存与对换区之间进行，这样可以保证页面的调入、调出速度很快。在进程运行前需将进程相关的数据从文件区复制到对换区。</p></li>
+</ol>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261450403.png" srcset="/img/loading.gif" lazyload
+alt="系统拥有足够的对换区空间" />
+<figcaption aria-hidden="true">系统拥有足够的对换区空间</figcaption>
+</figure>
+<ol start="2" type="1">
+<li><p>系统缺少足够的对换区空间</p>
+<p>凡是不会被修改的数据都直接从文件区调入，由于这些页面不会被修改，因此换出时不必写回磁盘，下次需要时再从文件区调入即可。对于可能被修改的部分，换出时需写回磁盘对换区，下次需要时再从对换区调入。</p></li>
+</ol>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261452522.png" srcset="/img/loading.gif" lazyload
+alt="系统缺少足够的对换区空间" />
+<figcaption aria-hidden="true">系统缺少足够的对换区空间</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><p>UNIX 方式：</p>
+<p>运行之前进程有关的数据全部放在文件区，故未使用过的页面，都可从文件区调入。若被使用过的页面需要换出，则写回对换区，下次需要时从对换区调入。</p></li>
+</ol>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261453380.png" srcset="/img/loading.gif" lazyload
+alt="UNIX 方式" />
+<figcaption aria-hidden="true">UNIX 方式</figcaption>
+</figure>
+<h3 id="抖动颠簸现象">5. 抖动（颠簸）现象</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261453005.png" srcset="/img/loading.gif" lazyload
+alt="抖动（颠簸）现象" />
+<figcaption aria-hidden="true">抖动（颠簸）现象</figcaption>
+</figure>
+<h3 id="工作集">6. 工作集</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202312261454788.png" srcset="/img/loading.gif" lazyload
+alt="工作集" />
+<figcaption aria-hidden="true">工作集</figcaption>
 </figure>
 
                 
@@ -1034,6 +1346,12 @@ alt="内存管理" />
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/12/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%203%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="数据结构 3 栈和队列">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据结构 3 栈和队列</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
