@@ -1,0 +1,1026 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/1.jpg">
+  <link rel="icon" href="/img/1.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="wiper3">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="报名了今年4.13的蓝桥杯，Java组，不知道怎么准备，慢慢看B站的视频学吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蓝桥杯之循环问题">
+<meta property="og:url" content="http://viper2383.github.io/2024/03/06/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E5%BE%AA%E7%8E%AF%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Wiper3">
+<meta property="og:description" content="报名了今年4.13的蓝桥杯，Java组，不知道怎么准备，慢慢看B站的视频学吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-06T06:20:49.000Z">
+<meta property="article:modified_time" content="2024-03-07T10:20:49.000Z">
+<meta property="article:author" content="wiper3">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="蓝桥杯">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>蓝桥杯之循环问题 - Wiper3</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"viper2383.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Ck2kyOHOxuuBAfQUohEOKi96-gzGzoHsz","app_key":"wdfGUQEKR40axI1tqBj4ZMs6","server_url":"https://ck2kyoho.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wiper3</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="蓝桥杯之循环问题"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-06 14:20" pubdate>
+          2024年3月6日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          44 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">蓝桥杯之循环问题</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年3月7日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>⭐⭐⭐⭐⭐⭐</p>
+<blockquote>
+<p>&amp;&amp;：与，同真则真</p>
+<p>||：或，一真则真</p>
+</blockquote>
+<ul>
+<li>char的输入</li>
+</ul>
+<p>可以用String输入后再转换为char数组。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> cin.readLine();<br><span class="hljs-type">char</span>[] ch = <span class="hljs-keyword">new</span> <span class="hljs-title class_">char</span>[<span class="hljs-number">100</span>];<br>ch = s.toCharArray();<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Set集合</li>
+</ul>
+<p>以下是Set集合的一些常用操作：</p>
+<ul>
+<li>添加元素：使用add()方法向集合中添加元素。</li>
+<li>删除元素：使用remove()方法从集合中删除指定元素。</li>
+<li>判断元素是否存在：使用contains()方法判断集合中是否包含指定元素。</li>
+<li><strong>获取集合大小</strong>：使用<strong>size()</strong>方法获取集合中元素的个数。</li>
+<li>清空集合：使用clear()方法清空集合中的所有元素。</li>
+</ul>
+<p>在Java中，<code>Set</code>接口并没有<code>length</code>属性或方法。这是因为<code>Set</code>是一种集合类型，而不是数组或类似的有长度概念的数据结构。</p>
+<p>如果你想获取<code>Set</code>中元素的数量，你可以使用<code>size()</code>方法。这个方法返回<code>Set</code>中包含的元素数量。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">javaSet&lt;String&gt; mySet = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br><span class="hljs-comment">// 添加元素到集合</span><br>mySet.add(<span class="hljs-string">&quot;apple&quot;</span>);<br>mySet.add(<span class="hljs-string">&quot;banana&quot;</span>);<br>mySet.add(<span class="hljs-string">&quot;orange&quot;</span>);<br><br><span class="hljs-type">int</span> <span class="hljs-variable">size</span> <span class="hljs-operator">=</span> mySet.size();<br>System.out.println(<span class="hljs-string">&quot;Set中的元素数量为：&quot;</span> + size);<br></code></pre></td></tr></table></figure>
+<p>这将打印出集合中的元素数量。<code>size()</code>方法提供了<code>Set</code>集合中元素的数量，这是通常用于获取集合大小的方法。</p>
+<ul>
+<li>程序中 <code>+</code> 的使用</li>
+</ul>
+<ol type="1">
+<li><p>当左右两边都是数值型，做加法运算</p></li>
+<li><p>当左右两边任意一方为字符串，做拼接运算</p></li>
+<li><p>运算顺序是从左到右的</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">System</span>.out.println(<span class="hljs-number">1</span> + <span class="hljs-number">1</span> + <span class="hljs-string">&quot;hello&quot;</span> + <span class="hljs-number">8</span> + <span class="hljs-number">9</span>);		// 输出 <span class="hljs-number">2</span>hello89<br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>⭐⭐⭐⭐⭐⭐</p>
+<h2 id="蓝桥杯之循环问题">蓝桥杯之循环问题</h2>
+<p>蓝桥杯通常在前3道题目中涉及到循环知识点。</p>
+<ul>
+<li>for循环：一般能在题目里面找到循环次数。</li>
+<li>while循环：只知道循环条件，不知道循环次数。</li>
+</ul>
+<p>在考察循环时，还会涉及到集合、字符串等知识点的应用。例如;</p>
+<ul>
+<li>对字符串一般考察常用函数。字符串转字符数组，判断结尾等。
+考试不让带纸质资料，但是可以用API文档。</li>
+<li>集合一般考察特性：list：有序可重复。 set：无序不可重复
+map：key-value键值对。</li>
+</ul>
+<h3
+id="一for循环和字符串的应用已知循环次数">一：for循环和字符串的应用（已知循环次数）</h3>
+<blockquote>
+<p>2019 Java C组第一题：</p>
+<p>小明对数位中含有2、0、1、9的数字很感兴趣，在1到40中这样的数包括1、2、9、10至32、39和40，共28个，他们的和是574。请问，在1到2019中，所有这样的数的和是多少？</p>
+<ul>
+<li>思路分析：
+<ul>
+<li>1.获取1-2019每个数字的千位（不为0）、百位、十位、个位。</li>
+<li>2.将数字转成字符串。获取每一位得数字。将每一个数字和2、0、1、9这四个数字进行比较。如果存在，可以累加到变量count上。</li>
+</ul></li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i&lt;=<span class="hljs-number">2019</span>; i++) &#123;<br>			<span class="hljs-comment">// 将数字转成字符串</span><br>			<span class="hljs-type">String</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i + <span class="hljs-string">&quot;&quot;</span>;<br>			<br>			<span class="hljs-comment">// 将字符串转成字符数组 </span><br>			<span class="hljs-type">char</span>[] c = j.toCharArray();<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k&lt;c.length; k++) &#123;<br>				<span class="hljs-keyword">if</span>(c[k] == <span class="hljs-string">&#x27;0&#x27;</span> || c[k] == <span class="hljs-string">&#x27;1&#x27;</span> || c[k] == <span class="hljs-string">&#x27;2&#x27;</span> || c[k] == <span class="hljs-string">&#x27;9&#x27;</span>) &#123;<br>					count  += i;<br>					<span class="hljs-keyword">break</span>;<br>				&#125;<br>			&#125;<br>		&#125;<br>		System.out.println(count);	<br>	&#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>2015年java C组第二题：</p>
+<p>一些数字的立方的末尾正好是该数字本身。
+比如：1,4,5,6,9,24,25,....；请你计算一下，在
+10^4以内的数字中（指该数字，并非它立方后的数值），符合这个特征的正整数一共有多少个。</p>
+<ul>
+<li>分析：已知循环次数，用for循环。可以将数字和数字得立方转成字符串。str.endsWith(str2)：判断字符串str是否以字符串str2结尾。</li>
+</ul>
+</blockquote>
+<p>我最初的思路是：</p>
+<blockquote>
+<p>把立方都算出来然后用％取余，跟原来的数取余后比较，这里属于是我理解错误题意了，我以为是个位数相等，而题目中说的是<strong>一些数字的立方的末尾正好是该数字本身</strong>，牛魔的，这样这个思路就完全行不通了，所以还是老师教的方法牛，见上面的分析🤗</p>
+</blockquote>
+<p>这里还要注意一个问题，这里的i和j是long类型的</p>
+<p>因为：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403061542502.png" srcset="/img/loading.gif" lazyload
+alt="整数类型" />
+<figcaption aria-hidden="true">整数类型</figcaption>
+</figure>
+<p><strong>2的31次方：2147483648</strong></p>
+<p><strong>2的63次方：9223372036854775808</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main2</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-type">int</span> count=<span class="hljs-number">0</span>; <span class="hljs-comment">//计数器</span><br>        <br>		<span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span><span class="hljs-number">1</span> ; i &lt;=<span class="hljs-number">10000</span> ; i++)&#123;<br>			<span class="hljs-type">String</span> <span class="hljs-variable">i1</span> <span class="hljs-operator">=</span> i+<span class="hljs-string">&quot;&quot;</span>;<br>			<span class="hljs-type">String</span> <span class="hljs-variable">i2</span> <span class="hljs-operator">=</span> (i*i*i)+<span class="hljs-string">&quot;&quot;</span>;<br>			<span class="hljs-keyword">if</span>(i2.endsWith(i1))&#123;   <span class="hljs-comment">//看到没有，这个函数，</span><br>				count++;<br>			&#125;<br>		&#125;<br>		System.out.println(<span class="hljs-string">&quot;满足条件得数字有：&quot;</span> + count);<br>			<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3
+id="二while循环已知循环条件满足条件就一直执行">二：while循环：已知循环条件。满足条件就一直执行</h3>
+<blockquote>
+<p>2019年Java C组第二题</p>
+<p>小明有一些矩形的材料，他要从这些矩形材料中切割出一些正方形。当他面对一块矩形材料时，他总是从中间切割一刀，切出一块最大的正方形，剩下一块矩形，然后再切割剩下的矩形材料，直到全部切为正方形为止。例如，对于一块两边分别为
+5 和 3 的材料（记为5×3），小明会依次切出3×3、2×2、1×1、1×1
+共4个正方形。</p>
+<p>现在小明有一块矩形的材料，两边长分别是 2019 和
+324。请问小明最终会切出多少个正方形？</p>
+</blockquote>
+<ul>
+<li>分析：只知道循环终止条件，不确定循环次数。用while循环。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main3</span> &#123;<br>	<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">2019</span>;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">w</span> <span class="hljs-operator">=</span> <span class="hljs-number">324</span>;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">count</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>			<span class="hljs-keyword">if</span>(l &gt; w) &#123;<br>				count ++;<br>				l = l-w;<br>			&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(w &gt; l) &#123;<br>				count ++;<br>				w = w - l;<br>			&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( w == l &amp;&amp; w != <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">//注意这里要加上w != 0，因为不加的话都变成0了就死循环了</span><br>				count ++;<br>				w -= w;<br>				l -= l;<br>			&#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(w == <span class="hljs-number">0</span>) &#123;<br>				<span class="hljs-keyword">break</span>;<br>			&#125;<br>		&#125;<br>		System.out.println(count);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>18年Java C组第一题</p>
+<p>小明被不明势力劫持。后莫名其妙被扔到 X
+星站再无问津。小明得知每天都有飞船飞往地球，但需要108元的船票，而他却身无分文。他决定在
+X
+星战打工。好心的老板答应包食宿，第1天给他1元钱。并且，以后的每一天都比前一天多2元钱，直到他有足够的钱买票。请计算一下，小明在第几天就能凑够
+108元，返回地球。</p>
+<ul>
+<li>分析：循环次数布置，循环终止条件已知。使用while循环，终止条件：总工资&gt;=108元。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main4</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-type">int</span> <span class="hljs-variable">day</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// 总天数</span><br>		<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; <span class="hljs-comment">//每天挣的钱</span><br>		<span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">// 总钱数</span><br>		<span class="hljs-keyword">while</span>(sum&lt;<span class="hljs-number">108</span>) &#123;<br>			day++;<br>			sum = sum + i;<br>			i = i + <span class="hljs-number">2</span>;<br>		&#125;<br>		System.out.println(day);<br>	&#125;<br>&#125;<br><br><br></code></pre></td></tr></table></figure>
+<p>或者while循环写成这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)&#123;<br>    sum += i; <span class="hljs-comment">//总天数加上每天挣得钱</span><br>    day += <span class="hljs-number">1</span>; <span class="hljs-comment">//天数+1</span><br>    <span class="hljs-keyword">if</span>(sum &gt;= <span class="hljs-number">108</span>)&#123;<br>        <span class="hljs-keyword">break</span>;<br>	&#125;<br> 	i += <span class="hljs-number">2</span>;<span class="hljs-comment">//后一天比前一天多挣2元</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>18年Java C组第二题</p>
+<p>5只猴子是好朋友，在海边的椰子树上睡着了。这期间，有商船把一大堆香蕉忘记在沙滩上离去。第1只猴子醒来，把香蕉均分成5堆，还剩下1个，就吃掉并把自己的一份藏起来继续睡觉。第2只猴子醒来，把香蕉均分成5堆，还剩下2个，就吃掉并把自己的一份藏起来继续睡觉。第3只猴子醒来，把香蕉均分成5堆，还剩下3个，就吃掉并把自己的一份藏起来继续睡觉。第4只猴子醒来，把香蕉均分成5堆，还剩下4，就吃掉并把自己的一份藏起来继续睡觉。</p>
+<p>第5猴子醒来，重新把香蕉均分成5堆，哈哈，正好不剩！</p>
+<p>请计算一开始最少有多少个香蕉。</p>
+</blockquote>
+<p>分析：不知道香蕉的数量，设为n个。用while循环。满足下面的条件：</p>
+<ol type="1">
+<li>n%5 =1 a= (n-1)/5*4</li>
+<li>a%5 =2 b= (a-2)/5*4</li>
+<li>b%5 =3 c= (b-3)/5*4</li>
+<li>c%5 =4 d=(c-4)/5*4</li>
+<li>d%5 =0
+d&gt;0，这里一定要注意d大于0这个隐藏条件，不然它到16就停了，因为刚好这时候算d=0，然后直接break了</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main5</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-comment">// 暴力破解</span><br>		<span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; <span class="hljs-comment">//代表香蕉得数量</span><br>		<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>			<span class="hljs-keyword">if</span>(n % <span class="hljs-number">5</span> == <span class="hljs-number">1</span>) &#123;<br>				<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> (n-<span class="hljs-number">1</span>)/<span class="hljs-number">5</span>*<span class="hljs-number">4</span>;<br>				<span class="hljs-keyword">if</span>(a % <span class="hljs-number">5</span> == <span class="hljs-number">2</span>) &#123;<br>					<span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> (a-<span class="hljs-number">2</span>)/<span class="hljs-number">5</span>*<span class="hljs-number">4</span>;<br>					<span class="hljs-keyword">if</span>(b % <span class="hljs-number">5</span> == <span class="hljs-number">3</span>) &#123;<br>						<span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> (b-<span class="hljs-number">3</span>)/<span class="hljs-number">5</span>*<span class="hljs-number">4</span>;<br>						<span class="hljs-keyword">if</span>(c % <span class="hljs-number">5</span> == <span class="hljs-number">4</span>) &#123;<br>							<span class="hljs-type">int</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> (c-<span class="hljs-number">4</span>)/<span class="hljs-number">5</span>*<span class="hljs-number">4</span>;<br>							<span class="hljs-keyword">if</span>(d % <span class="hljs-number">5</span> == <span class="hljs-number">0</span> &amp;&amp; d&gt;<span class="hljs-number">0</span>) &#123; <span class="hljs-comment">//注意d&gt;0</span><br>								<span class="hljs-keyword">break</span>;<br>							&#125;<br>						&#125;<br>					&#125;<br>				&#125;<br>			&#125;<br>			n++;<br>		&#125;<br>		System.out.println(n);<br>	&#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="三字符串循环和集合的使用">三：字符串循环和集合的使用</h3>
+<ul>
+<li>对集合的考察集中在集合的特性和功能。set唯一性。list有序性。以及集合元素的个数。</li>
+</ul>
+<blockquote>
+<p>2019 java C组第三题</p>
+<p>一个字符串的非空子串是指字符串中长度至少为1的连续的一段字符组成的串。例如，字符串
+aaab有非空子串 a, b, aa, ab, aaa, aab, aaab一共
+7个。注意在计算时，只算本质不同的串的个数。</p>
+<p>请问，字符串 0100110001010001有多少个不同的非空子串？</p>
+</blockquote>
+<p><strong>分析：set的唯一性，去除重复的子串</strong></p>
+<ul>
+<li>aaab从第一个下标开始截取: a aa aaa aaab</li>
+<li>从第二个下标开始：a aa aab</li>
+<li>......</li>
+<li>下标0截取的范围：[0,最大下标]</li>
+<li>下标1的截取范围：[1,最大下标]</li>
+<li>.....</li>
+<li>截取的方法：<code>subString(i,j)</code>：截取子串</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">import</span> java.util.HashSet;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main6</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		<span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;0100110001010001&quot;</span>;<br>		HashSet&lt;Object&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;(); <span class="hljs-comment">//去重</span><br>		<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i&lt;string.length(); i++) &#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> i; j&lt;string.length(); j++) &#123;<br>				<span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> string.substring(i,j+<span class="hljs-number">1</span>); <span class="hljs-comment">//substring左闭右开</span><br>				set.add(s);<br>			&#125;<br>		&#125;<br>		System.out.print(set.size());<br>		<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>2015java C组第6题</p>
+<p>小明发现了一个奇妙的数字。它的平方和立方正好把 0 ~ 9 的 10
+个数字每个用且只用了一次。你能猜出这个数字是多少吗？</p>
+</blockquote>
+<p>分析：</p>
+<ol type="1">
+<li>平方和立方通过取模求出每一位（不推荐）</li>
+<li>通过字符串操作，去求每一位，放入set，看长度是否为10（<strong>set的唯一性</strong>）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">import</span> java.util.*;<br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main7</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>&#123;<br>    	<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>    	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>) &#123;<br>    		HashSet&lt;Object&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>    		<span class="hljs-type">int</span> <span class="hljs-variable">a2</span> <span class="hljs-operator">=</span> a*a;<br>    		<span class="hljs-type">int</span> <span class="hljs-variable">a3</span> <span class="hljs-operator">=</span> a*a*a;<br>    		<span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;</span> + a2 + a3;<br>    		<span class="hljs-keyword">if</span>(string.length() == <span class="hljs-number">10</span>) &#123;<br>    			<span class="hljs-type">char</span>[] c = string.toCharArray();<br>    			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j&lt;c.length; j++) &#123;  <span class="hljs-comment">//从0开始，所以是到9，&lt;c.length，不是&lt;=</span><br>    				set.add(c[j]);<br>    			&#125;<br>    			<span class="hljs-keyword">if</span>(set.size() == <span class="hljs-number">10</span>) &#123;<br>    				System.out.println(a);<br>    				<span class="hljs-keyword">break</span>;<br>    			&#125;<br>    		&#125;<br>    		a++;<br>    	&#125;<br><br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h3 id="四循环求质数">四：循环求质数</h3>
+<ul>
+<li>质数就是只能被1和它本身整除的数字。最小的质数是2</li>
+<li>如何判断一个数字n是不是质数：找一下[2,n-1]有没有能被n整除的数字，有就不是质数。</li>
+<li>整除：n对数字取余为0</li>
+</ul>
+<blockquote>
+<p>2019 java C组第四题</p>
+<p>我们知道第一个质数是2，第二个质数是3 ， 第三个质数是5....</p>
+<p>请你计算第2023个质数？</p>
+</blockquote>
+<p>分析：我们可以先去求质数，然后把求到的质数放入一个list里面。取出下标为2022的，就是第2023个质数。</p>
+<p>list的有序性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">package</span> lanqiao1;<br><br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main8</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		ArrayList&lt;Object&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; i &lt; <span class="hljs-number">200000</span>; i++) &#123;  <span class="hljs-comment">//这里的上限可以选大一点，保证第2023个质数在这里面</span><br>			<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">// a来记录该数字是不是质数，是质数的话a就一直等于0</span><br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; j &lt;i; j++) &#123;<br>				<span class="hljs-keyword">if</span>(i % j ==<span class="hljs-number">0</span> ) &#123;<br>					a++;<br>					<span class="hljs-keyword">break</span>; <span class="hljs-comment">// 找到一个能被整除的就退出内层循环</span><br>				&#125;<br>			&#125;<br>			<span class="hljs-keyword">if</span>(a == <span class="hljs-number">0</span>) &#123;<br>				list.add(i);<br>			&#125;<br>		&#125;<br>		<br>		System.out.print(list.get(<span class="hljs-number">2022</span>));  <span class="hljs-comment">//list（列表）的下标是从0开始，set是没这一说法的，set主要是用它的唯一性</span><br>	&#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%93%9D%E6%A1%A5%E6%9D%AF/" class="category-chain-item">蓝桥杯</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+        <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF/" class="print-no-link">#蓝桥杯</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>蓝桥杯之循环问题</div>
+      <div>http://viper2383.github.io/2024/03/06/蓝桥杯之循环问题/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>wiper3</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/03/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%8E%92%E5%BA%8F%E4%B8%8E%E7%AE%97%E6%B3%95%E9%97%AE%E9%A2%98/" title="蓝桥杯之排序与算法问题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">蓝桥杯之排序与算法问题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/03/%E6%95%B0%E5%AD%97%E5%8F%96%E8%AF%81/" title="数字取证学习">
+                        <span class="hidden-mobile">数字取证学习</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Ck2kyOHOxuuBAfQUohEOKi96-gzGzoHsz","appKey":"wdfGUQEKR40axI1tqBj4ZMs6","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+      <div>
+        <span id="timeDate">载入天数...</span>
+        <span id="times">载入时分秒...</span>
+        <script>
+        var now = new Date();
+        function createtime(){
+            var grt= new Date("05/27/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+            now.setTime(now.getTime()+250);
+            days = (now - grt ) / 1000 / 60 / 60 / 24;
+            dnum = Math.floor(days);
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+            hnum = Math.floor(hours);
+            if(String(hnum).length ==1 ){
+                hnum = "0" + hnum;
+            }
+            minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+            mnum = Math.floor(minutes);
+            if(String(mnum).length ==1 ){
+                      mnum = "0" + mnum;
+            }
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            snum = Math.round(seconds);
+            if(String(snum).length ==1 ){
+                      snum = "0" + snum;
+            }
+            document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+            document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+        }  //此次自定义显示内容
+        setInterval("createtime()",250);
+        </script>
+
+      </div>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+
+
+  
+  
+
+  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=BHu02doWTfACgsoaKUKdCvghL0B4M-WZR956AK7Bn-I&cl=ffffff&w=600"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
