@@ -125,7 +125,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Wiper3</strong>
+      <strong>w1per3</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -262,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.3k 字
+          6.4k 字
         
       </span>
     
@@ -331,7 +331,8 @@
             
               <div class="markdown-body">
                 
-                <p>ASCII 编码部分</p>
+                <p>[TOC]</p>
+<p>ASCII 编码部分</p>
 <table>
 <thead>
 <tr class="header">
@@ -370,7 +371,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="sql注入简述">SQL注入简述</h2>
+<h2 id="一sql注入简述">一、SQL注入简述</h2>
 <p><a
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/681819441">【万字解析】SQL注入精粹：从0到1的注入之路
 - 知乎 (zhihu.com)</a></p>
@@ -379,7 +380,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/681819441">【
 注入是因为前端输入控制不严格造成的漏洞，使得攻击者可以输入对后端数据库有危害的字符串或符号，使得后端数据库产生回显或执行命令，从而实现对于数据库或系统的入侵；</p>
 <p>从攻击者角度来看，需要拼接出可以使后端识别并响应的 SQL
 命令，从而实现攻击</p>
-<h2 id="联合查询注入">联合查询注入</h2>
+<h2 id="二联合查询注入">二、联合查询注入</h2>
 <h3 id="dvwa-sql-injection">DVWA-SQL Injection</h3>
 <p>这里用DVWA靶机环境的SQL Injection部分做演示。</p>
 <p>① 判断是否存在注入，注入是字符型还是数字型</p>
@@ -492,7 +493,7 @@ alt="查询数据" />
 <p>例如：得知有3列可以union select
 233,666,777找到页面中回显的地方，比如233回显在了页面中，则可以union
 select database(),666,777即可得到数据库名</p>
-<h2 id="mysql文件操作">MySQL文件操作</h2>
+<h2 id="三mysql文件操作">三、MySQL文件操作</h2>
 <p>可以通过SHOW VARIABLES语句查看采统变量及其值。</p>
 <p>mysql&gt; show variables;</p>
 <p>可以使用like语句来匹配和筛选。</p>
@@ -516,7 +517,7 @@ LOAD_FILE()传到哪个指定目录的。</p>
 <blockquote>
 <p>其实区别不大</p>
 </blockquote>
-<h2 id="堆叠注入">堆叠注入</h2>
+<h2 id="四堆叠注入">四、堆叠注入</h2>
 <p>当secure_file_priv为NULL</p>
 <p>堆叠注入</p>
 <figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="language-xml">set global general_log=on;</span><br><span class="language-xml">set global general_log_file=&#x27;c:/phpstudy/Www/789.php&#x27;;</span><br><span class="language-xml">select &#x27;</span><span class="language-php"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_PoST</span>[<span class="hljs-string">&#x27;a&#x27;</span>])<span class="hljs-meta">?&gt;</span></span><span class="language-xml">&#x27;;</span><br></code></pre></td></tr></table></figure>
@@ -580,7 +581,7 @@ src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202404222202902.png"
 alt="6" />
 <figcaption aria-hidden="true">6</figcaption>
 </figure>
-<h2 id="宽字节注入">宽字节注入</h2>
+<h2 id="五宽字节注入">五、宽字节注入</h2>
 <blockquote>
 <p>慢慢淡出舞台了已经，了解即可</p>
 </blockquote>
@@ -595,7 +596,7 @@ strlen("和");来测试</p>
 character_set_client
 =gbk，这样配置会引发编码转换从而导致的注入漏洞。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-variable">$conn</span>-&gt;query(<span class="hljs-string">&quot;set names &#x27;gbk&#x27;;&quot;</span>); <span class="hljs-comment">#一般有这行语句的时候考虑一下</span><br></code></pre></td></tr></table></figure>
-<h2 id="mysql布尔盲注">⭐MySQL布尔盲注</h2>
+<h2 id="六mysql布尔盲注">六、⭐MySQL布尔盲注</h2>
 <h3 id="初识盲注">初识盲注</h3>
 <p>布尔盲注-回显不同</p>
 <p>时间盲注-响应时间不同</p>
@@ -614,6 +615,7 @@ character_set_client
 <blockquote>
 <p>substr((select database()),1,1) = ‘d’</p>
 </blockquote>
+<h2 id="七">七、</h2>
 
                 
               </div>
@@ -706,12 +708,18 @@ character_set_client
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/05/01/Web-CTF-%E4%B8%80%E4%BA%9B%E9%A2%98/" title="Web-CTF-一些题目">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Web-CTF-一些题目</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/19/Web-CTF-%E5%85%A5%E9%97%A8/" title="Web-CTF-入门">
-                        <span class="hidden-mobile">Web-CTF-入门</span>
+                      <a href="/2024/04/21/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA-3-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/" title="密码学-3-分组密码">
+                        <span class="hidden-mobile">密码学-3-分组密码</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

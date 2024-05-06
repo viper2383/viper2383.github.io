@@ -1,0 +1,1282 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/1.jpg">
+  <link rel="icon" href="/img/1.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="wiper3">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="密码学导论和应用密码学，这两门课程的一些学习内容记录，第一部分：密码学绪论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学-1-绪论">
+<meta property="og:url" content="http://viper2383.github.io/2024/03/30/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA-1-%E7%BB%AA%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Wiper3">
+<meta property="og:description" content="密码学导论和应用密码学，这两门课程的一些学习内容记录，第一部分：密码学绪论">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-30T04:40:49.000Z">
+<meta property="article:modified_time" content="2024-04-03T12:20:49.000Z">
+<meta property="article:author" content="wiper3">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>密码学-1-绪论 - Wiper3</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"viper2383.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Ck2kyOHOxuuBAfQUohEOKi96-gzGzoHsz","app_key":"wdfGUQEKR40axI1tqBj4ZMs6","server_url":"https://ck2kyoho.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>w1per3</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="密码学-1-绪论"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-03-30 12:40" pubdate>
+          2024年3月30日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          58 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">密码学-1-绪论</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2024年4月3日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="密码学的发展概况">密码学的发展概况</h2>
+<p>密码学是一门古老、年轻且深奥的学科。</p>
+<p>密码学经历了从古典密码学到现代密码学的演变。</p>
+<p>密码学是研究信息系统安全保密的科学。它包括密码编码学和密码分析学。</p>
+<p>1949年前密码技术是一门技术性很强的艺术，而不是一门科学。</p>
+<p>1949年shannon “保密系统的通信理论”，密码学成为科学。</p>
+<p><strong>1976年Diffie和Hellman“密码学的新方向”，密码学的一场革命，标志着公钥密码学的出现</strong></p>
+<p>1977年美国国家标准局公布DES，并公开算法，揭开神秘面纱。</p>
+<h2 id="密码学的相关概念">密码学的相关概念</h2>
+<p>密码学 (cryptology)：是密码编码学和密码分析学的统称</p>
+<p>密码编码学(cryptography)：</p>
+<ul>
+<li>通过变换消息使其保密的科学和艺术</li>
+<li>是密码理论的基础，也是保密系统设计的基础</li>
+</ul>
+<p>密码分析学(cryptanalysis)：在未知密钥的情况下从密文推演出明文或密钥的艺术</p>
+<p>密码编码学和密码分析学既相互对立，又相互促进和发展</p>
+<ul>
+<li><p>明文</p>
+<p>作为加密输入的原始信息，即消息的原始形式，通常用<span
+class="math inline">\(m\)</span> (message) 或<span
+class="math inline">\(p\)</span>
+(plaintext)表示。所有可能明文的有限集称为明文空间，通常用<span
+class="math inline">\(M\)</span>或<span
+class="math inline">\(P\)</span>表示。</p></li>
+<li><p>密文</p>
+<p>明文经加密变换后的结果，即消息被加密处理后的形式，通常用<span
+class="math inline">\(c\)</span>
+(ciphertext)表示。所有可能密文的有限集称为密文空间，通常用<span
+class="math inline">\(C\)</span>表示。</p></li>
+<li><p>密钥</p>
+<p>参与密码变换的参数，通常用<span
+class="math inline">\(k\)</span>(key)表示，包括加密密钥<span
+class="math inline">\(k_{e}\)</span>和解密秘钥<span
+class="math inline">\(k_d\)</span>。一切可能密钥构成的有限集称为密钥空间，通常用<span
+class="math inline">\(K\)</span>表示。</p></li>
+<li><p>加密算法</p>
+<p>将明文变换为密文的变换函数，相应的变换过程称为加密，即编码的过程。通常用<span
+class="math inline">\(E\)</span> (Encryption)表示，即<span
+class="math inline">\(c=\)</span> <span
+class="math inline">\(E_{k_e}(p)\)</span>。</p></li>
+<li><p>解密算法</p>
+<p>将密文恢复为明文的变换函数，相应的变换过程称为解密，即解码的过程。通常用<span
+class="math inline">\(D\left(\mathrm{Decryption}\right)\)</span>表示，即<span
+class="math inline">\(p=\)</span> <span
+class="math inline">\(D_{k_d}(c)\)</span></p></li>
+</ul>
+<p>密码学中的五元组<span
+class="math inline">\(\{P,C,K,E,D\}\)</span></p>
+<p>对于明文空间<span class="math inline">\(P\)</span>中的每一个明文<span
+class="math inline">\(p\)</span>，加密算法<span
+class="math inline">\(E\)</span>在加密密钥<span
+class="math inline">\(k_{e}\)</span>的控制下将明文<span
+class="math inline">\(p\)</span>加密成密文<span
+class="math inline">\(c\)</span>；而解密算法<span
+class="math inline">\(D\)</span>则在解密密钥<span
+class="math inline">\(k_d\)</span>的控制下将密文<span
+class="math inline">\(c\)</span>解密成同一明文<span
+class="math inline">\(p\)</span> , 即：</p>
+<p>对<span class="math inline">\(\forall p\in P,(k_e,k_d)\in
+K\)</span>，有<span
+class="math inline">\(p=D_{k_d}(E_{k_e}(p))\)</span></p>
+<p>密码体制的组成：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210842503.png" srcset="/img/loading.gif" lazyload
+alt="密码体制的组成" />
+<figcaption aria-hidden="true">密码体制的组成</figcaption>
+</figure>
+<h3 id="密码分析分类">密码分析分类：</h3>
+<p>根据密码分析者对明文、密文等信息掌握的多少</p>
+<p>（1）唯密文攻击<span class="math inline">\((Ciphertext-only
+Attack)\)</span>：</p>
+<ul>
+<li>密码分析者仅知道一些密文。</li>
+</ul>
+<p>✓ 破译者已知：密码算法、待破译的密文</p>
+<p>✓ 密码算法必须要能抵抗这类攻击，这是密码算法设计的最低要求</p>
+<p>✓ 蛮力攻击 <span class="math inline">\((Brute-force
+Attack)\)</span>：密码分析者测试所有可能的密钥来解密截获的密文，直到得到的明文看起来有意义。要对付这类攻击，可能的密钥数必须足够多。</p>
+<p>✓ 统计攻击 <span class="math inline">\((Statistical
+Attack)\)</span>：密码分析者分析明文语言的某些固有的内在属性（即统计特征），从而获得某种好处或利益。要对付这类攻击，密码算法必须要能隐藏明文语言的统计特征。</p>
+<p>✓ 模式攻击 <span class="math inline">\((Pattern
+Attack)\)</span>：密码分析者利用密文中形成的某些模式来实施攻击。要对付这类攻击，要求加密所得到的密文尽可能看起来像是随机的</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403070939836.png" srcset="/img/loading.gif" lazyload
+alt="唯密文攻击" />
+<figcaption aria-hidden="true">唯密文攻击</figcaption>
+</figure>
+<p>（2）已知明文攻击<span class="math inline">\((Known-plaintext
+Attack)\)</span>：</p>
+<ul>
+<li>密码分析者知道一些明文和相应的密文。（随便给的一些明文和密文）</li>
+</ul>
+<p>✓ 破译者已知：密码算法、一定数量的明文-密文对、截获的待解密的密文</p>
+<p>✓ 可通过更改密钥来抵御该种攻击</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403070944166.png" srcset="/img/loading.gif" lazyload
+alt="已知明文攻击" />
+<figcaption aria-hidden="true">已知明文攻击</figcaption>
+</figure>
+<p>（3）选择明文攻击 <span class="math inline">\((Chosen-plaintext
+Attack)\)</span>：</p>
+<ul>
+<li>密码分析者可以选择一些明文，并得到相应的密文。（有加密机）</li>
+</ul>
+<p>✓ 破译者已知：密码算法、选定的明文和对应的密文</p>
+<p>✓ 在密码分析者能够访问到发送方的计算机时可能发生</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210844089.png" srcset="/img/loading.gif" lazyload
+alt="选择明文攻击" />
+<figcaption aria-hidden="true">选择明文攻击</figcaption>
+</figure>
+<p>（4）选择密文攻击<span class="math inline">\((Chosen-ciphertext
+Attack)\)</span>：</p>
+<ul>
+<li>密码分析者可以选择一些密文，并得到相应的明文。（有解密机）</li>
+</ul>
+<p>✓ 破译者已知：密码算法、选定的密文和对应的明文</p>
+<p>✓ 在密码分析者能够访问到接收方计算机时可能发生</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210845512.png" srcset="/img/loading.gif" lazyload
+alt="选择密文攻击" />
+<figcaption aria-hidden="true">选择密文攻击</figcaption>
+</figure>
+<p>（5）选择文本攻击<span class="math inline">\((Chosen-text
+Attack)\)</span>：</p>
+<p>✓
+破译者已知：密码算法、选定的明文和对应的密文、选定的密文和对应的明文</p>
+<p>✓ 选择明文攻击和选择密文攻击的结合</p>
+<p>总结：</p>
+<ul>
+<li><p>唯密文攻击是最困难的</p></li>
+<li><p>上述攻击的强度是递增的</p></li>
+<li><p>一个密码体制是安全的，通常是指在前三种攻击下的安全性</p></li>
+<li><p>唯密文攻击的强度最弱，攻击强度依此增加。</p></li>
+</ul>
+<blockquote>
+<p>公钥加密中选择明文攻击是自动发生的，因为是公钥加密，密钥是公开的🐕</p>
+</blockquote>
+<p>无条件安全的（不可破译的）：一次一密方案（一次一密乱码本），不可破译的</p>
+<p>计算上安全的：流密码、分组密码、公钥密码，给你无限的资源你是可以破译的，这样我们也是可以接受的</p>
+<p>密码算法只要满足以下两条准则之一就行：</p>
+<p><strong>（1） 破译密文的代价超过被加密信息的价值。</strong></p>
+<p><strong>（2 ) 破译密文所花的时间超过信息的有用期。</strong></p>
+<p>满足以上两个准则的密码算法在实际中是可用的。</p>
+<h2 id="古典密码">古典密码</h2>
+<h3 id="代替密码">代替密码</h3>
+<p>代替密码是指先建立一个替换表，加密时将需要加密的明文依次通过查表，替换为相应的字符。明文字符被逐个替换后，生成无任何意义的字符串，即密文。代替密码的密钥就是其替换表。</p>
+<p>
+根据密码算法加解密时使用替换表多少的不同，代替密码又可分为单表代替密码和多表代替密码。</p>
+<p>✓单表代替密码：密码算法加解密时使用一个固定的替换表</p>
+<p>✓多表代替密码：密码算法加解密时使用多个替换表</p>
+<h4 id="单表代替密码">单表代替密码</h4>
+<ul>
+<li>移位密码</li>
+</ul>
+<p>明文空间<span class="math inline">\(P\)</span>、密文空间<span
+class="math inline">\(C\)</span>和密钥空间<span
+class="math inline">\(K\)</span>满足<span
+class="math inline">\(P=C=K=\{0,1,2,...,25\}=\mathbb{Z}_{26}\)</span></p>
+<p>即把26个英文字母与整数0，1， 2， ...，25一一对应</p>
+<blockquote>
+<p>注意这里A对应的是0，不是1哦😋</p>
+</blockquote>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403070906215.png" srcset="/img/loading.gif" lazyload
+alt="移位密码" />
+<figcaption aria-hidden="true">移位密码</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403070907827.png" srcset="/img/loading.gif" lazyload
+alt="移位密码" />
+<figcaption aria-hidden="true">移位密码</figcaption>
+</figure>
+<ul>
+<li>使用密钥的单表代替加密</li>
+</ul>
+<p>选用一个英文短语或者单词串作为密钥，去掉其中重复的字母得到一个无重复字母的字母串，然后将字母表中的其他字母依次写于此字母串之后，就可构造出一个字母代替表</p>
+<p>✓ 对于明文为英文单词或短语的情况时，密钥短语密码最多可能有<span
+class="math inline">\(26!=4×1026\)</span>个不同的替换表。</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403070908131.png" srcset="/img/loading.gif" lazyload
+alt="使用密钥的单表代替加密" />
+<figcaption aria-hidden="true">使用密钥的单表代替加密</figcaption>
+</figure>
+<ul>
+<li>仿射密码 (Affine cipher)</li>
+</ul>
+<p>✓
+仿射密码是一种线性变换。仿射密码的明文空间和密文空间与移位密码相同，但密钥空间为
+<span
+class="math inline">\(K{=}\{(k_1,k_2)|k_1,k_2\in\mathbb{Z}_{26}\)</span>,
+<span class="math inline">\(\gcd(k_1,26){=1}\)</span></p>
+<p>✓ 对任意<span class="math inline">\(p{\in}P,\quad c{\in}C,\quad
+k{=}(k_1,k_2){\in}K\)</span>，</p>
+<p>定义加密变换为： <span
+class="math inline">\(c=E_k\left(p\right)=k_1p+k_2\left({\mathrm{mod}}26\right)\)</span></p>
+<p>相应解密变换为：<span class="math inline">\(p=D_k\)</span> <span
+class="math inline">\((c)=k_1^{-1}\left(c-k_2\right)({\mathrm{mod}}26)\)</span>。其中，<span
+class="math inline">\(k_1k_1^{-1}=1\pmod{26}\)</span>。</p>
+<p>✓ 要求<span class="math inline">\((k_1,26)=1\)</span> ,
+否则就会有多个明文字母对应一个密文字母的情况</p>
+<p>✓ 密钥空间大小为<span
+class="math inline">\((k_1,k_2)\)</span>=12×26=312, 因为与26互素的<span
+class="math inline">\(k_{1}\)</span>有12个取值，<span
+class="math inline">\(k_{2}\)</span>有26个取值</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;\text{设明文消息为China,密钥}k=(k_1,k_2)=(7,3)\text{,用仿射密码对其进行加密,然后再进行解密。}
+\\
+&amp;\text{解答：利用扩展的欧几里德算法可计算出}k_1^{-1}=7^{-1}=15
+\mathrm({mod~}26) \\
+&amp;\text{加密函数为}E_k(p)=7*p+3\mathrm{~(mod~}26)\text{，对应}\text{的解密函数为}D_k\left(c\right)=15*(c-3)(mod
+26)=15c-19 ({\mathrm{mod}26)。}
+\end{aligned}
+\]</span></p>
+<p>明文消息China对应的数字序列为（2，7，8，13，0），用仿射密码对明文进行<strong>加密</strong>：</p>
+<p><span
+class="math display">\[c=E_k(p)=7\times\begin{bmatrix}2\\7\\8\\13\\0\end{bmatrix}+\begin{bmatrix}3\\3\\3\\3\\3\end{bmatrix}=\begin{bmatrix}17\\52\\59\\94\\3\end{bmatrix}\mathrm{mod}26=\begin{bmatrix}17\\0\\7\\16\\3\end{bmatrix}=\begin{bmatrix}R\\A\\H\\Q\\D\end{bmatrix}\]</span></p>
+<p>密文消息为RAHQD</p>
+<p><strong>解密</strong>：</p>
+<p><span
+class="math display">\[D_k(c)=15\times\begin{bmatrix}17\\0\\7\\16\\3\end{bmatrix}-\begin{bmatrix}19\\19\\19\\19\\19\end{bmatrix}=\begin{bmatrix}236\\-19\\86\\221\\226\end{bmatrix}\mathrm{mod}26=\begin{bmatrix}2\\7\\8\\13\\0\end{bmatrix}=\begin{bmatrix}C\\H\\I\\N\\A\end{bmatrix}\]</span></p>
+<p>单表代替密码特点：</p>
+<p>✓ 密钥量很小，不能抵抗穷尽搜索攻击</p>
+<p>✓ 没有将明文字母出现的概率掩藏起来，很容易受到统计分析的攻击</p>
+<h4 id="多表代换密码">多表代换密码</h4>
+<ul>
+<li>使用从明文字母到密文字母的多个映射来隐藏单字母出现的频率分布</li>
+<li>每个映射是单表代替密码中的一对一映射</li>
+<li>将明文字母划分为长度相同的消息单元，称为明文分组，对明文字母成组地进行代替</li>
+<li>特点：使用两个或两个以上的替换表</li>
+</ul>
+<p> 普莱费尔密码（Playfair Cipher）</p>
+<p> 维吉尼亚密码（Vigenere Cipher）</p>
+<p> 希尔密码（Hill Cipher）</p>
+<p><strong><span
+class="math inline">\(Playfair\)</span>密码</strong></p>
+<p>✓
+将明文中的双字母作为一个单元对待，并将这些单元转换为密文字母组合</p>
+<p>✓ 基于一个5×5字母矩阵，使用一个关键词（密钥）来构造</p>
+<p>✓
+构造方法：从左至右，从上至下依次填入关键词的字母（去除重复的字母），然后再以字母表顺序依次填入其他的字母。加密时字母I和J被算作一个字母</p>
+<figure>
+<img
+src="C:\Users\A\AppData\Roaming\Typora\typora-user-images\image-20240314092030529.png" srcset="/img/loading.gif" lazyload
+alt="Playfair Cipher" />
+<figcaption aria-hidden="true">Playfair Cipher</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403140923841.png" srcset="/img/loading.gif" lazyload
+alt="Playfair加密方法" />
+<figcaption aria-hidden="true">Playfair加密方法</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403140923912.png" srcset="/img/loading.gif" lazyload
+alt="Playfair加密举例" />
+<figcaption aria-hidden="true">Playfair加密举例</figcaption>
+</figure>
+<p>Playfair密码的特点</p>
+<p>✓
+虽然仅有26个字母，但有26×26＝676种双字母组合。因此识别各种双字母组合要困难得多</p>
+<p>✓
+各个字母组的频率要比单字母呈现出大得多的范围，使得频率分析困难得多</p>
+<p>✓ 仍然使许多明文语言的结构保存完好，使得密码分析者能够利用</p>
+<p><strong><span
+class="math inline">\(Vigenere\)</span>密码</strong></p>
+<p>✓ 最著名的多表代替密码的例子</p>
+<p>✓
+使用一个词组作为密钥，密钥中每一个字母用来确定一个代替表，每一个密钥字母用来加密一个明文字母，等所有密钥字母使用完后，密钥又再循环使用</p>
+<p>✓
+该密码体制有一个参数<em>n</em>。在加解密时，同样把英文字母映射为0－25的数字再进行运算，并按<em>n</em>个字母一组进行变换。</p>
+<p>设密钥<span
+class="math inline">\(k=(k_1,k_2,...,k_d)\)</span>，明文<span
+class="math inline">\(p=(p_1,p_2,...,p_n)\)</span>，密文<span
+class="math inline">\(c=(c_1,c_2,\cdotp\cdotp\cdotp,c_n)\)</span></p>
+<p>加密变换：<span
+class="math inline">\(E_k(p)=(c_1,c_2,\cdotp\cdotp\cdotp,c_n)\)</span>，其中<span
+class="math inline">\(c_i=(p_i+k_i)({\mathrm{mod}}26),
+i=1,2,……n\)</span></p>
+<p>解密变换：<span
+class="math inline">\(D_k(c)=(p_1,p_2,...,p_n)\)</span>，其中<span
+class="math inline">\(p_i=(c_i-k_i)({\mathrm{mod}}26),\:i=1,2\cdots,n\)</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403140937579.png" srcset="/img/loading.gif" lazyload
+alt="$Vigenere密码举例" />
+<figcaption aria-hidden="true">$Vigenere密码举例</figcaption>
+</figure>
+<p><strong><span class="math inline">\(Hill\)</span>密码</strong></p>
+<h3 id="单表代替密码攻击">单表代替密码攻击</h3>
+<h3 id="多表代替密码的破解">多表代替密码的破解</h3>
+<p>多表代替密码从一定程度上隐藏了明文消息的一些统计特征，破译相对较为困难</p>
+<p>在多表代替密码的分析中，首先要确定密钥的长度，也就是要确定所使用的加密表的个数，然后再分析确定具体密钥</p>
+<p>确定密钥长度的常用方法两种，即Kasiski测试法（Kasiski
+test）和重合指数法（index of coincidence）</p>
+<p><strong>破译思路</strong>：设法找出密钥长度，将多表替换→单表替换，再破译单表替换密码。</p>
+<h4 id="kasiski测试法">Kasiski测试法</h4>
+<p>➢ 原理</p>
+<p>若用给定的<em>n</em>个密钥表周期性地对明文字母加密，则当明文中有两个相同字母组在明文序列中间隔的字母数为<em>n</em>的倍数时，这两个明文字母组对应的密文字母组必相同。但反过来，若密文中出现两个相同的字母组，它们所对应的明文字母组未必相同，但相同的可能性很大</p>
+<p>➢ Kasiski的测试过程</p>
+<p>搜索长度至少为2的相同密文段，记录这些相同密文段到起始点之间的距离；假设得到如下几个距离X1,X2，…，那么密钥长度<em>n</em>可能就是这些距离的最大公因子</p>
+<p>Kasiski测试法举例</p>
+<p>明文：requ<strong>est</strong>s additional t<strong>est</strong></p>
+<p>密钥：TELEXTEL EXTELEXTEL EXTE</p>
+<p>密文：CAVK<strong>TBL</strong>T EUQWSWJGEA L<strong>TBL</strong></p>
+<p>密文包含字母序列TBL两次，间隔距离为15。密钥的实际长度为5，因此相同字母组的距离反映了密钥长度<em>n</em>的相关信息。</p>
+<p>若公因子不唯一，则采用后续的重合指数法确定密码长度</p>
+<h4 id="重合指数法">重合指数法</h4>
+<p>如果考虑来自26个字母表的完全随机文本，则每个字母都以相同的概率1/26出现，假定另一个随机文本放在第一个的下面，在上下位置出现相同字母<span
+class="math inline">\(a\)</span>的概率为 (1/26)^2,
+在两个随机文本的上下位置找到任意两个相同字母总的概率为 <span
+class="math inline">\(26*(1/26)^{2}=1/26=0.0385\)</span> 。</p>
+<p>但实际上，由于英文字母出现的概率是不同的，设字母<span
+class="math inline">\(a,b,c,\ldots z\)</span>出现的概率分别为<span
+class="math inline">\(p_0,p_1,p_2,...,p_{25}\)</span>,
+这样找到两个相同字母的概率为<span
+class="math inline">\(\sum_{i=0}^{25}p_i^2=0.065\)</span></p>
+<p>定义：</p>
+<p>设一个语言由<span
+class="math inline">\(n\)</span>个字母构成，每个字母出现的概率<span
+class="math inline">\(p_i,1\leq i\leq
+n\)</span>，则重合指数是指其中两个随机元素相同的概率，记为</p>
+<p><span class="math display">\[
+I_c=\sum_{i=1}^np_i^2
+\]</span></p>
+<p>这样对于一个完全随机的文本<span
+class="math inline">\(I_C=0.0385\)</span>，与一个有意义的英语文本<span
+class="math inline">\(I_C=0.065\)</span>，差异是比较明显的。</p>
+<p>重合指数的特点：单表代换密码中，密文的重合指数和明文相同。</p>
+<p>重合指数法确定密钥长度</p>
+<p>分析原理</p>
+<ul>
+<li><p>假设密文串为<span
+class="math inline">\(Y=y_1y_2..y_n\)</span>，m是密钥字长度，将Y分割成m个子串</p></li>
+<li><p><span
+class="math inline">\(\mathrm{Y_1=y_1y_{1+m}y_{1+2m\cdots}}\)</span></p></li>
+<li><p><span
+class="math inline">\(\mathrm{Y_2=y_2y_{2+m}y_{2+2m\cdots}}\)</span></p></li>
+<li><p>……</p></li>
+<li><p><span
+class="math inline">\(\mathrm{Y_m=y_{m}y_{2m}y_{3m\cdots}}\)</span></p></li>
+</ul>
+<p>对于每个<span class="math inline">\(Y_i\)</span>,
+其密文采用的是单表代换方法 (相同的密文对应相同的明文)，其重合指数<span
+class="math inline">\(I_C({Y}_i)\)</span>应接近0.065</p>
+<p>通过尝试不同的m，找到重合指数最接近0.065的那个</p>
+<h4 id="vigenere密码分析举例">Vigenere密码分析举例</h4>
+<p>经Vigenere密码加密后的密文为</p>
+<p>CHREEVOAHMAERATBIAXXWTNXBEEOPHBSBQMQEQERBWRVXUOAKXAOSXXWEAHBWGJMMQMNKGRFVGXWTRZXWIAKLXFPSKAUTEMNDCMGTSXMXBTUIADNGMGPSRELXNJELXVRVPRTULHDNQWTWDTYGBPHXTFALJHASVBFXNGLLCHRZBWELEKMSJIKNBHWRJGNMGJSGLXFEYPHAGNRBIEQJTAMRVLCRREMNDGLXRRIMGNSNRWCHRQHAEYEVTAQEBBIPEEWEVKAKOEWADREMXMTBHHCHRTKDNVRZCHRCLQOHPWQAIIWXNRMGWOIIFKEE</p>
+<p>Kasiski测试法分析</p>
+<p>➢
+密文串CHR出现在1,166,236,276,286这几个位置，它们之间距离分别是165,70,40,10，这些距离只有一个公因子5，故猜测密钥字长度为5</p>
+<p>重合指数法分析</p>
+<p>➢ 尝试不同的密钥字长度，计算密文的重合指数</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403211037164.png" srcset="/img/loading.gif" lazyload
+alt="重合指数法分析" />
+<figcaption aria-hidden="true">重合指数法分析</figcaption>
+</figure>
+<p>✓ 分析密钥字</p>
+<p>➢ 确定密钥字长度后，可以使用频率分析方法分别解密Y1 , Y2 , ..., Ym</p>
+<p>➢
+Y1=CVABWEBQBUAWWQRWWXANTBDPXXRDWBFAXCWMNJJFAIACNRNCATBWKDMCDCQQXWK</p>
+<p>➢
+Y2=HOEITESEWOOEGMFTIFUDSTNSNVTNDPASNHESBGSEGEMRDRSHEAIEORTHNHOANOE</p>
+<p>➢
+Y3=RARANOBQRASAJNVRAPTCXUGRJRUQTHLVGRLJHNGYNQRRGINRYQPVEEBRVRHIRIE</p>
+<p>➢
+Y4=EHAXXPQEVKXHMKGZKSEMMIMEEVLWYXJBLZEIWMLPRJVELMRQEEEKWMHTRCPIMI</p>
+<p>➢
+Y5=EMTXBHMRXXXBMGXXLKMGXAGLLPHTGTHFLBKKRGXHBTLMXGWHVBEAAXHKZLWWGF</p>
+<p>✓ 分析密钥字方法</p>
+<p>对每一个<span class="math inline">\(\mathrm{Y_i}\)</span>,
+猜测不同的<span class="math inline">\(k_i\)</span>值，计算： <span
+class="math display">\[
+M_g=\sum_{i=0}^{25}p_i\frac{f_{i+g}}{n^{\prime}}
+\]</span></p>
+<ul>
+<li><p>其中<span class="math inline">\(p_0,p_1,.
+.p_{25}\)</span>是字母<span class="math inline">\(\mathrm{a, b, ...,
+z}\)</span>在英文中出现的概率</p></li>
+<li><p>其中<span class="math inline">\(\mathrm{f_0, f_1,
+..f_{25}}\)</span>是字母A，B,...,Z在密文中出现的次数</p></li>
+<li><p><span class="math inline">\(n^{\prime}\)</span>是<span
+class="math inline">\(\mathrm{Y_i}\)</span>的长度(即n/m)</p></li>
+</ul>
+<p>当<span class="math inline">\(\mathrm{g= k_i}\)</span>时，<span
+class="math inline">\(\mathrm{p_i} \approx \mathrm{f_{i+ g}/n^{\prime},
+M_g}\approx 0.065\)</span></p>
+<p>➢ 对每一个<span
+class="math inline">\(\mathrm{Y_i}\)</span>中字母的频率进行统计，记为<span
+class="math inline">\(\mathrm{F_i} , \mathrm{~i= 1, 2, \ldots , k,
+}\)</span>，<span
+class="math inline">\(F_i\)</span>中包含26个0~1的数值，分别对应每个字母的出现频率</p>
+<p>➢ 用<span
+class="math inline">\(V_{0}\)</span>表示26个英文字母各自的出现频率，即<span
+class="math inline">\(\mathrm{V}_0=[0.082,
+0.015,\ldots,0.020,0.001]\)</span>, 将<span
+class="math inline">\(\mathrm{V}_{0}\)</span>循环右移j位得到<span
+class="math inline">\(V_{\mathrm{j}}\)</span>， <span
+class="math inline">\(\mathrm{j= }0, 1, \ldots , 25\)</span></p>
+<p>➢ 针对每个<span
+class="math inline">\(\mathrm{F_i}\)</span>，进行点乘计算<span
+class="math inline">\(\mathrm{F_i} \cdot \mathrm{V_j}\)</span></p>
+<p>➢ 找出其中最大数值对应的j值，该值即为第i位密钥中的英文字母</p>
+<p>所获得的密文长度越长，统计分析攻击的破译正确率越高</p>
+<p>✓ 建立Mg分析表</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403211045452.png" srcset="/img/loading.gif" lazyload
+alt="Mg分析表" />
+<figcaption aria-hidden="true">Mg分析表</figcaption>
+</figure>
+<p>✓ 分析结果</p>
+<p>➢<span class="math inline">\(k_1=9,k_2=0,k_3=13,k_4=4,k_5=19,
+对应密钥串为K=JANET\)</span></p>
+<p>➢ 明文为</p>
+<p>The almond tree was in tentative blossom. The days were longer, often
+ending with magnificent evenings of corrugated pink skies. The hunting
+season was over, with hounds and guns put away for six months. The
+vineyards were busy again as the well-organized farmers treated their
+wines and the more lackadaisical neighbors hurried to do the pruning
+they should have done in November.</p>
+<h4 id="重合指数法的应用">重合指数法的应用</h4>
+<p>✓
+如果密文的重合指数较低，那么就可能是多表替代密码。维吉尼亚密码将密文分行，每行是单表替代密码。</p>
+<p>✓
+在单表替代时，明文的字母被其它字母代替，但不影响文本的统计属性，即加密后密文的重合指数仍不变，<em>CI</em>（明文）=
+<em>CI</em>（密文），由此可以判断文本是用单表还是用多表替代加密的。</p>
+<p>✓
+如果密钥长度（即密文分行的列数）正确，同一行密文有相同字母的概率接近0.065；如果密钥长度不对，则概率将大大小于0.065，显得更随机，由此得到密钥长度（可与Kasiski测试的结果对比）。</p>
+<p>✓
+重合指数的估算能用于分析两个不同密文，比如接收到两段文本C1，C2，如果它们用同样的方式加密，则<em>CI</em>(C1)≈<em>CI</em>(C2)。</p>
+<blockquote>
+<p>下面是一个公式喵： <span class="math display">\[
+\begin{align}
+&amp;1\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+&amp;\\
+\end{align}
+\]</span></p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="print-no-link">#密码学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>密码学-1-绪论</div>
+      <div>http://viper2383.github.io/2024/03/30/密码学导论-1-绪论/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>wiper3</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年3月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA-2-%E6%95%B0%E5%AD%A6/" title="密码学-2-数学引论">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">密码学-2-数学引论</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/03/07/%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%8E%92%E5%BA%8F%E4%B8%8E%E7%AE%97%E6%B3%95%E9%97%AE%E9%A2%98/" title="蓝桥杯之排序与算法问题">
+                        <span class="hidden-mobile">蓝桥杯之排序与算法问题</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"Ck2kyOHOxuuBAfQUohEOKi96-gzGzoHsz","appKey":"wdfGUQEKR40axI1tqBj4ZMs6","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+      <div>
+        <span id="timeDate">载入天数...</span>
+        <span id="times">载入时分秒...</span>
+        <script>
+        var now = new Date();
+        function createtime(){
+            var grt= new Date("05/27/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+            now.setTime(now.getTime()+250);
+            days = (now - grt ) / 1000 / 60 / 60 / 24;
+            dnum = Math.floor(days);
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+            hnum = Math.floor(hours);
+            if(String(hnum).length ==1 ){
+                hnum = "0" + hnum;
+            }
+            minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+            mnum = Math.floor(minutes);
+            if(String(mnum).length ==1 ){
+                      mnum = "0" + mnum;
+            }
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            snum = Math.round(seconds);
+            if(String(snum).length ==1 ){
+                      snum = "0" + snum;
+            }
+            document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+            document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+        }  //此次自定义显示内容
+        setInterval("createtime()",250);
+        </script>
+
+      </div>
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+
+
+  
+  
+
+  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=BHu02doWTfACgsoaKUKdCvghL0B4M-WZR956AK7Bn-I&cl=ffffff&w=600"></script>
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
