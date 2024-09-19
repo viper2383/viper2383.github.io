@@ -13,25 +13,25 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="wiper3">
+  <meta name="author" content="w1per3">
   <meta name="keywords" content="">
   
     <meta name="description" content="密码学导论和应用密码学课程记录，第二部分：数学引论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学-2-数学引论">
 <meta property="og:url" content="http://viper2383.github.io/2024/04/10/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA-2-%E6%95%B0%E5%AD%A6/index.html">
-<meta property="og:site_name" content="Wiper3">
+<meta property="og:site_name" content="w1per3">
 <meta property="og:description" content="密码学导论和应用密码学课程记录，第二部分：数学引论">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-10T00:40:49.000Z">
 <meta property="article:modified_time" content="2024-04-15T12:20:49.000Z">
-<meta property="article:author" content="wiper3">
+<meta property="article:author" content="w1per3">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>密码学-2-数学引论 - Wiper3</title>
+  <title>密码学-2-数学引论 - w1per3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4 字
+          1.1k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          1 分钟
+          8 分钟
         
       </span>
     
@@ -330,7 +330,93 @@
             
               <div class="markdown-body">
                 
-                <p>数学引论</p>
+                <h2 id="数论基础知识">数论基础知识</h2>
+<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/basic/">数论基础 - OI
+Wiki (oi-wiki.org)</a></p>
+<p>定义5-1 (整除)：设<span
+class="math inline">\(a,b\)</span>是整数，<span
+class="math inline">\(a\neq b\)</span>，如果有一个整数<span
+class="math inline">\(x\)</span>，使得<span
+class="math inline">\(b=ax\)</span>，则<span
+class="math inline">\(b\)</span>叫做<span
+class="math inline">\(a\)</span>的倍数，<span
+class="math inline">\(a\)</span>叫做<span
+class="math inline">\(b\)</span>的因数，或者说<span
+class="math inline">\(a\)</span>能整除<span
+class="math inline">\(b\)</span>， 或<span
+class="math inline">\(b\)</span>能被<span
+class="math inline">\(a\)</span>整除。<span
+class="math inline">\(a\)</span>能整除<span
+class="math inline">\(b\)</span>,记为<span
+class="math inline">\(a|b\)</span></p>
+<p>整除的性质：</p>
+<ul>
+<li>若<span class="math inline">\(a|b\)</span>，那么对任何整数<span
+class="math inline">\(c\)</span>，都有<span
+class="math inline">\(a|bc\)</span></li>
+<li>若<span class="math inline">\(a|b，b|c\)</span>，那么有<span
+class="math inline">\(a|c\)</span></li>
+<li>若<span class="math inline">\(a|b，a|c\)</span>，那么对任何整数 x 和
+y，都有<span class="math inline">\(a|(bx+cy);\)</span></li>
+<li>若<span class="math inline">\(a|b，b|a\)</span>，那么<span
+class="math inline">\(a=\pm b\)</span></li>
+<li>若<span class="math inline">\(a|b,a&gt;0,b&gt;0\)</span>，那么<span
+class="math inline">\(a\leq b.\)</span></li>
+</ul>
+<h3 id="群的相关概念">群的相关概念</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160946105.png" srcset="/img/loading.gif" lazyload
+alt="群的概念" />
+<figcaption aria-hidden="true">群的概念</figcaption>
+</figure>
+<p>对乘法，单位元是1，但是不是所有的整数都有逆元（或者说除了1和-1都没有=</p>
+<p>逆元：对任意a，存在b，使得a * b=b * a=e，这里的b是逆元，e是单位元</p>
+<p>群的阶：<span
+class="math inline">\(ord(G)=群中元素的个数\)</span></p>
+<p>群元素的阶：<span class="math inline">\(ord(g)\)</span></p>
+<ul>
+<li>群元素g做群的操作 i 次</li>
+<li>最小的正整数 i 满足，<span
+class="math inline">\(g^i=1\)</span>（单位元）</li>
+</ul>
+<p><span class="math inline">\(g^{ord(G)} =
+1(单位元)\)</span>，证明如下：</p>
+<p><span class="math display">\[
+\begin{align}
+∵ord(g) \ &amp;|\ ord(G)\\
+g^{ord(g)} &amp;= 1\\
+∴ord(G) &amp;= k*ord(g)\\
+∴g^{ord(G)} &amp;= 1
+\end{align}
+\]</span></p>
+<p>对$Z_n* $ ，{ a|gcd(a,N)=1 } *mod N，元素的个数为欧拉函数：φ(N)</p>
+<p>当N为素数，{0,1,2,,,,,p-1} *mod p</p>
+<p>例如p等于7时，$Z_n* <span
+class="math inline">\(为\)</span>{1,2,3,4,5,6}$，单位元：1</p>
+<p>元素1-6的阶为：1，3，6，6（×）3（√），6，2</p>
+<p>元素1的阶：<span class="math inline">\(1*1=1\)</span>，再mod 7 =
+1，所以元素1的阶为1</p>
+<p>元素2的阶：<span class="math inline">\(2 * 2 * 2 = 8\)</span>，再mod
+7 =1，所以元素2的阶为3，写作：<span
+class="math inline">\(ord（2）=3\)</span></p>
+<p>元素3的阶：<span class="math inline">\(3 * 3 * 3 * 3 * 3 * 3 =
+729\)</span>，再mod 7 = 1，所以元素3的阶为6</p>
+<p>元素4的阶：<span class="math inline">\(4 * 4 * 4=64\)</span>，再mod 7
+= 1，所以元素4的阶为3</p>
+<p>……</p>
+<p>逆元（1-6的）：1，4，5，2，3，6</p>
+<p>1的逆元：1 * 1 = 1，再mod 7 = 1，所以元素1的逆元为1</p>
+<p>2的逆元：2 * 4 = 8，再mod 7 = 1，所以元素2的逆元为4</p>
+<p>3的逆元：3 * 5 = 15，再mod 7 = 1，所以元素3的逆元为5</p>
+<p>4的逆元：4 * 2 = 8，再mod 7 = 1，所以元素4的逆元为2</p>
+<p>……</p>
+<p>😴</p>
+<p>对{0，1，2，3，，，，N-1} +mod N</p>
+<p>是一个群</p>
+<p>封闭性，结合律都满足</p>
+<p>单位元：0</p>
+<p>逆元：3的逆元N-3 （Zn）</p>
 
                 
               </div>
@@ -362,7 +448,7 @@
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>wiper3</div>
+          <div>w1per3</div>
         </div>
       
       
@@ -400,9 +486,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/14/%E6%AF%8F%E6%97%A5%E6%80%BB%E7%BB%93/" title="每日总结(2024.04.14-)">
+                      <a href="/2024/04/19/Web-CTF-%E5%85%A5%E9%97%A8/" title="Web-CTF-入门">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">每日总结(2024.04.14-)</span>
+                        <span class="hidden-mobile">Web-CTF-入门</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     

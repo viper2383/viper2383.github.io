@@ -13,25 +13,25 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="wiper3">
+  <meta name="author" content="w1per3">
   <meta name="keywords" content="">
   
     <meta name="description" content="密码学导论和应用密码学课程记录，第三部分：分组密码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="密码学-3-分组密码">
 <meta property="og:url" content="http://viper2383.github.io/2024/04/21/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA-3-%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81/index.html">
-<meta property="og:site_name" content="Wiper3">
+<meta property="og:site_name" content="w1per3">
 <meta property="og:description" content="密码学导论和应用密码学课程记录，第三部分：分组密码">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-21T00:40:49.000Z">
-<meta property="article:modified_time" content="2024-04-22T12:20:49.000Z">
-<meta property="article:author" content="wiper3">
+<meta property="article:published_time" content="2024-04-21T00:40:00.000Z">
+<meta property="article:modified_time" content="2024-05-16T00:20:00.000Z">
+<meta property="article:author" content="w1per3">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>密码学-3-分组密码 - Wiper3</title>
+  <title>密码学-3-分组密码 - w1per3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k 字
+          7.2k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          100 分钟
+          49 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年4月22日 晚上
+                    本文最后更新于：2024年5月16日 早上
                   
                 
               </p>
@@ -331,8 +331,7 @@
               <div class="markdown-body">
                 
                 <h1 id="分组密码">分组密码</h1>
-<h2 id="分组密码-1">分组密码</h2>
-<h3 id="概念">概念</h3>
+<h2 id="概念">概念</h2>
 <p>若明文流被分割成等长串，各串用相同的加密算法和相同的密钥进行加密，就是分组密码。即当：</p>
 <ol type="1">
 <li><p>明文和密文是固定长度为 <span
@@ -348,7 +347,7 @@ class="math inline">\(c=\operatorname{Enc}_K(m)\)</span></p></li>
 class="math inline">\(m=\operatorname{Dec}_k(c)=\operatorname{Dec}_K\left(\operatorname{Enc}_k(m)\right)\)</span>.</p></li>
 </ol>
 <p>则称这样的加解密算法为分组密码</p>
-<h3 id="构造原则">构造原则</h3>
+<h2 id="构造原则">构造原则</h2>
 <p>分组密码的构造都应遵循下列几个原则：</p>
 <ul>
 <li><p>要有足够大分组长度（保证足够大的明文空间，避免给攻击者提供太多的明文统计特征信息）</p></li>
@@ -362,7 +361,7 @@ class="math inline">\(m=\operatorname{Dec}_k(c)=\operatorname{Dec}_K\left(\opera
 <li><p>软件实现尽量采用子块和简单运算，采用加法、乘法、异或和移位等指令，易于标准处理器完成运算</p></li>
 <li><p>加解密硬件结构最好一致，这样便于应用超大规模集成芯片实现。以简化系统整体结构的复杂性。</p></li>
 </ul>
-<h3 id="增强密码算法复杂度的方法">增强密码算法复杂度的方法</h3>
+<h2 id="增强密码算法复杂度的方法">增强密码算法复杂度的方法</h2>
 <p>在分组密码算法的安全策略中，用的最多的就是采用代换一置换网络(Substitution-Permutation
 Network)，简称SP网络</p>
 <blockquote>
@@ -398,7 +397,7 @@ src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202404280917141.png"
 alt="P盒" />
 <figcaption aria-hidden="true">P盒</figcaption>
 </figure>
-<h3 id="分组密码加密原理">分组密码加密原理</h3>
+<h2 id="分组密码加密原理">分组密码加密原理</h2>
 <p>分组密码一般都采用代换置换网络的结构，这种结构的一个典型代表是Feistel密码结构</p>
 <p>基本思路是采用<strong>扩散与混乱</strong>两个主要思想：</p>
 <ul>
@@ -408,7 +407,7 @@ alt="P盒" />
 <p>乘积密码有助于实现扩散和混乱</p>
 <p>✓
 顺序地执行两个或多个基本密码系统，使得最后结果的密码强度高于每个基本密码系统产生的结果（Feistel分组密码结构）</p>
-<h3 id="lucifer算法">Lucifer算法</h3>
+<h2 id="lucifer算法">Lucifer算法</h2>
 <blockquote>
 <p>Lucifer算法是由IBM的德裔物理学家和密码学家霍斯特·费斯妥（Horst
 Feistel）在70年代中期设计的一种分组算法，它具有可变的轮数及可变的分组长度的特点，加密和解密过程互为逆运算。这个算法也被认为是DES的基础。</p>
@@ -432,11 +431,11 @@ alt="Lucifer算法" />
 <blockquote>
 <p>现代分组密码都属于乘积密码，可分为两种类型：</p>
 <p>✓
-同时使用了可逆和不可逆的基本变换部件，这一类被称为Feistel密码，DES是这一类的典型密码算法</p>
+同时使用了可逆和不可逆的基本变换部件，这一类被称为<strong>Feistel密码</strong>，DES是这一类的典型密码算法</p>
 <p>✓
-只使用了可逆的基本变换部件，这一类被称为非Feistel密码，AES是这一类的典型密码算法</p>
+只使用了可逆的基本变换部件，这一类被称为<strong>非Feistel密码</strong>，AES是这一类的典型密码算法</p>
 </blockquote>
-<h3 id="feistel密码结构">Feistel密码结构</h3>
+<h2 id="feistel密码结构">Feistel密码结构</h2>
 <ul>
 <li>20世纪60年代未由IBM公司的Horst Feistel和Walter
 Tuchman在设计LUCIFFER分组密码算法（即DES前期模型）时提出</li>
@@ -454,13 +453,52 @@ F(R_{i-1},K_i)(i=1,2,...,n)\end{aligned}
 <p>✓ <span class="math inline">\(K_i\)</span>是第<span
 class="math inline">\(i\)</span>轮用的子密钥，由加密密钥<span
 class="math inline">\(K\)</span>生成</p>
+<p><span class="math inline">\(\checkmark\)</span>每轮迭代结构相同</p>
+<p><span
+class="math inline">\(\checkmark\)</span>每轮中右半数据被作用于轮函数F后，再与左半数据进行异或运算，即代替过程</p>
+<p><span
+class="math inline">\(\checkmark\)</span>每轮迭代的轮函数相同，但每轮的子密钥<span
+class="math inline">\(K_i\)</span>不同</p>
+<p><span
+class="math inline">\(\checkmark\)</span>代替过程完成后，再交换左右两半数据实现置换</p>
 <figure>
 <img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838983.png" srcset="/img/loading.gif" lazyload
-alt="image-20240109111949215" />
-<figcaption aria-hidden="true">image-20240109111949215</figcaption>
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160847012.png" srcset="/img/loading.gif" lazyload
+alt="Feistel密码结构" />
+<figcaption aria-hidden="true">Feistel密码结构</figcaption>
 </figure>
-<h3 id="分组密码设计准则">分组密码设计准则</h3>
+<h3
+id="feistel结构实现依赖的主要参数与特征">Feistel结构实现依赖的主要参数与特征</h3>
+<p>分组长度：越长安全性越高，但运算速度越慢，一般选用64、128、256或512位的分组长度</p>
+<p>密钥长度：越长安全性越高，但运算速度越慢，通常使用的密钥长度为128、256、512位等</p>
+<p>迭代轮数：越多安全性越高，但运算开销越大，通常采用16次</p>
+<p>子密钥生成算法：算法越复杂，密码分析越困难</p>
+<p>轮函数<em>F</em>：复杂性越高，密码分析越困难</p>
+<p>Feistel结构的解密过程本质上与加密过程一致，基本处理方法是：以密文作为算法的输入，并按加密的逆序使用子密钥<span
+class="math inline">\(K_i\)</span></p>
+<h3 id="feistel密码举例">Feistel密码举例</h3>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160856054.png" srcset="/img/loading.gif" lazyload
+alt="Feistel密码举例" />
+<figcaption aria-hidden="true">Feistel密码举例</figcaption>
+</figure>
+<p>用Feistel密码加密8-bit的明文<span
+class="math inline">\(P=DF\)</span>（十六进制表示），密钥<span
+class="math inline">\(K=ABC\)</span>（十六进制表示）</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160858442.png" srcset="/img/loading.gif" lazyload
+alt="运算过程" />
+<figcaption aria-hidden="true">运算过程</figcaption>
+</figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160858371.png" srcset="/img/loading.gif" lazyload
+alt="运算过程2" />
+<figcaption aria-hidden="true">运算过程2</figcaption>
+</figure>
+<h2 id="分组密码设计准则">分组密码设计准则</h2>
 <p>需要重点考虑</p>
 <ul>
 <li>S盒的设计</li>
@@ -469,42 +507,49 @@ alt="image-20240109111949215" />
 <li>迭代轮数</li>
 <li>密钥扩展算法</li>
 </ul>
-<h4 id="s盒和p盒的设计准则">S盒和P盒的设计准则</h4>
+<h3 id="s盒和p盒的设计准则">S盒和P盒的设计准则</h3>
 <p>分组密码中的S-P网络，是一个集掩蔽、混淆、扩散于一体的综合性部件，目的就是实现高度的非线性化和良好的雪崩效应</p>
 <ul>
 <li>S盒：分组密码的非线性部分的核心部件，起着加密算法的混淆作用，直接影响整个分组密码算法的安全强度
 <ul>
-<li><p>非线性度：目前有的采用群加密运算乘法 <span
+<li>非线性度：目前有的采用群加密运算乘法 <span
 class="math inline">\(mod\ 2^n+ 1\)</span>（如IDEA）或利用非素数域<span
-class="math inline">\(GF(2^n)\)</span>上的幂函数（如AES）来构造S盒，以增强高度非线性度变换</p></li>
-<li><p>分均匀性：抵抗差分密码分析的能力要强</p></li>
-<li><p>雪崩效应：这与P盒的功能有关，是混淆-扩散特性的进一步反映，要求有良好的雪崩效果，即要求当输入有一比特发生变化时，将导致输出有一半的比特位发生变化</p></li>
-<li><p>可逆性完整、没有”陷门”</p></li>
+class="math inline">\(GF(2^n)\)</span>上的幂函数（如AES）来构造S盒，以增强高度非线性度变换</li>
+<li>分均匀性：抵抗差分密码分析的能力要强</li>
+<li>可逆性完整、没有”陷门“</li>
+<li>不宜过大，否则会增加设计困难度和算法存储量</li>
 </ul></li>
-<li>P盒：由于P盒多半是继若千个S盒部件之后，因此，P盒的设计准则就是要实现良好的雪崩效应，进一步增加扩散程度，比如DES中要求1比特输入希望能引起大约一半输出位的快速变化响应</li>
+<li>P盒：由于P盒多半是继若千个S盒部件之后，因此，P盒的设计准则就是要实现良好的<strong>雪崩效应</strong>，进一步增加扩散程度，比如DES中要求1比特输入希望能引起大约一半输出位的快速变化响应</li>
 </ul>
+<blockquote>
 <p>雪崩效应：</p>
 <p>✓
 输入（明文或密钥）即使只有很小的变化，也会导致输出发生巨大变化的现象</p>
 <p>✓
 明文的一个比特的变化应该引起密文许多比特（从安全的角度一般要求接近密文长度的一半）的改变</p>
-<h4 id="轮函数f的设计准则">轮函数F的设计准则</h4>
-<p>轮函数F通常是指迭代分组密码中单轮加密算法的非线性函数，其设计准则就是保证非线性度要强，具体通过位独立和雪崩效应来实现更加混乱</p>
+<p>雪崩效应：这与P盒的功能有关，是混淆-扩散特性的进一步反映，要求有良好的雪崩效果，即要求当输入有一比特发生变化时，将导致输出有一半的比特位发生变化</p>
+</blockquote>
+<h3 id="轮函数f的设计准则">轮函数F的设计准则</h3>
+<p>轮函数F通常是指迭代分组密码中单轮加密算法的非线性函数，其设计准则就是保证<strong>非线性度要强</strong>，具体通过<strong>位独立</strong>和<strong>雪崩效应</strong>来实现更加混乱</p>
 <p>指标：</p>
 <ul>
 <li>安全性：轮函数F必须能抵抗所有已知的密码攻击方法，尤其是抵抗差分密码分析和线性密码分析</li>
-<li>速度：</li>
+<li>速度：what can i say，nothing</li>
 <li>灵活性：支持密码算法能在多平台和多处理器上实现</li>
 </ul>
-<h4 id="迭代轮数的考虑">迭代轮数的考虑</h4>
+<blockquote>
+<p>Feistel密码结构的核心，实现依赖于<em>S</em>盒。设计准则包括非线性、雪崩效应准则和位独立准则。</p>
+<p><strong>位独立准则</strong>要求输入中某一位的变化，引起输出中其他位的变化应是彼此无关的</p>
+</blockquote>
+<h3 id="迭代轮数的考虑">迭代轮数的考虑</h3>
 <ul>
 <li>一般来说，分组密码迭代轮数越多，密码分析越困难</li>
 <li>但也不是追求迭代轮数越多越好，多会使结构复杂化，分组密码迭代轮数一般采用<span
 class="math inline">\(r = 8,10,12,16,20\)</span>的居多</li>
-<li>设计迭代轮数的准则是：使密码分析的难度大于简单穷举攻击的难度</li>
+<li><strong>设计迭代轮数的准则是：使密码分析的难度大于简单穷举攻击的难度</strong></li>
 </ul>
-<h4 id="密钥扩展算法的设计">密钥扩展算法的设计</h4>
-<p>密钥扩展是迭代分组密码算法的一个重要组成部分，是从初始（种子）密钥产生迭代各轮要使用的子密钥的算法</p>
+<h3 id="密钥扩展算法的设计">密钥扩展算法的设计</h3>
+<p>密钥扩展是迭代分组密码算法的一个重要组成部分，是从初始（种子）密钥产生迭代各轮要使用的<strong>子密钥</strong>的算法</p>
 <p>评价指标：</p>
 <ul>
 <li>结构尽量简单，便于软硬件实现</li>
@@ -514,7 +559,11 @@ class="math inline">\(r = 8,10,12,16,20\)</span>的居多</li>
 <li>保证种子密钥的各比特对每个子密钥比特影响的均衡性</li>
 <li>速度也是衡量子密钥扩展的一个重要指标</li>
 </ul>
-<h2 id="对称密码">对称密码</h2>
+<blockquote>
+<p>子密钥的生成方法：
+理论设计目标是子密钥的统计独立性和密钥更换的有效性</p>
+</blockquote>
+<h1 id="对称密码">对称密码</h1>
 <p>对称密钥算法(Symmetric-key
 algorithm)，又称为对称加密、私钥加密、共享密钥加密，是密码学中的一类加密算法。</p>
 <p>对称加密的特点是，在加密和解密时使用相同的密钥，或是使用两个可以简单地相互推算的密钥。</p>
@@ -534,7 +583,104 @@ algorithm)，又称为对称加密、私钥加密、共享密钥加密，是密�
 <p>相比分组加密，流加密具有速度快，消耗少的优点，在网络通信的某些特定场景比较有优势。然而流加密的发展落后于分组加密，其安全性、可扩展性、使用灵活性上，目前认为还是比不上分组加密的，同时某些分组加密算法可以兼具流加密的部分特点。因此对称加密的主流仍然是分组加密。</p>
 <p>常见的流加密算法如<code>RC4</code>、<code>ChaCha20</code>等等，它们的安全强度主要取决于扩展后密钥的随机性。</p>
 <p>流加密不是本章的学习重点，这里只简单了解一下，接下来开始学习分组加密，<strong>后文提到对称加密时，一般都是特指分组加密。</strong></p>
-<h2 id="des">DES</h2>
+<h1 id="分组密码的操作模式">分组密码的操作模式</h1>
+<h2 id="电子密码本模式ecb">电子密码本模式（ECB）</h2>
+<p> Electronic Codebook Mode，简称为ECB模式</p>
+<p>
+明文被每次处理64位，若最后一块不足64位，则用一些任意二进制序列填充</p>
+<p>
+每个明文分组都用同一个密钥加密，这样相同的明文块总被加密成相同的密文块</p>
+<p> 算法逻辑： <span class="math display">\[
+(\text{加密)}C_j=E_k(P_j)(j=1,2,...,N)\\(\text{解密)}P_j=D_k(C_j)(j=1,2,...,N)
+\]</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160913656.png" srcset="/img/loading.gif" lazyload
+alt="ECB" />
+<figcaption aria-hidden="true">ECB</figcaption>
+</figure>
+<p>特点：</p>
+<ul>
+<li>操作模式简单，不同的分组可以并行处理</li>
+<li>明文中的重复内容将在密文中表现出来，特别对于图像数据和明文变化较少的数据</li>
+<li>不具有错误传播特性，即如果一个分组中出现传输错误不会影响其他分组</li>
+<li>主要用于内容较短（不超过一个分组）的报文的加密传递</li>
+</ul>
+<h2 id="密码分组链接模式cbc">密码分组链接模式(CBC)</h2>
+<p>Cipher Block Chaining Mode，简称为CBC模式</p>
+<p>加密函数的输入是当前的明文分组和前一个密文分组的异或</p>
+<p>算法逻辑： <span class="math display">\[
+(\text{加密)}C_1=E_k(P_1\oplus\mathrm{IV})，C_j=E_k(P_j\oplus
+C_{j-1})(j=2,...,N)\\
+(\text{解密)}P_1=D_k(C_1)\oplus\mathrm{IV}，P_j=D_k(C_j)\oplus
+C_{j-1}(j=2,...,N)\\
+（IV称为初始向量）
+\]</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160934363.png" srcset="/img/loading.gif" lazyload
+alt="CBC" />
+<figcaption aria-hidden="true">CBC</figcaption>
+</figure>
+<p>特点</p>
+<ul>
+<li>同一个消息中的两个相同的明文被加密成不同的密文</li>
+<li>若不同消息的前若干个分组相同，且加密时使用相同的IV，这些分组的加密结果将一致。此时以时间戳作为IV较好</li>
+<li>密文分组中的一位出错具有自恢复能力，即若密文块<span
+class="math inline">\(C_j\)</span>在传送过程中出错，则解密时会造成<span
+class="math inline">\(P_j\)</span>和<span
+class="math inline">\(P_{j+1}\)</span>两个明文块都出错，但后面的密文块仍然能自动正确恢复</li>
+<li>可用于加密和认证。用于加密时不能并行处理，也不能用于加密或解密可随机访问的文件记录（因为该模式需要访问以前的记录）</li>
+</ul>
+<h2 id="计数器模式ctr">计数器模式（CTR）</h2>
+<p>Counter Mode，简称为CTR模式</p>
+<p>使用与明文分组规模相同的计数器长度，但要求加密不同的分组所用的计数器值必须不同</p>
+<p>计数器值经加密函数变换的结果再与明文分组异或，从而得到密文</p>
+<p>解密使用相同的计数器值序列，用加密函数变换后的计数器值与密文分组异或，从而恢复明文</p>
+<p>算法逻辑： <span class="math display">\[
+(\text{加密)}C_j=P_j\oplus
+E_k(\text{CTR}+j)(j=1,2,...,N)\\(\text{解密)}P_j=C_j\oplus
+E_k(\text{CTR}+j)(j=1,2,...,N)
+\]</span></p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405160942500.png" srcset="/img/loading.gif" lazyload
+alt="CTR" />
+<figcaption aria-hidden="true">CTR</figcaption>
+</figure>
+<p>特点</p>
+<ul>
+<li>处理效率高，可进行并行处理，提高数据吞吐量</li>
+<li>可提前进行预处理</li>
+<li>具有随机访问特性，可随机对任意一个密文分组进行解密处理，对该密文分组的处理与其他密文无关</li>
+<li>实现简单，加、解密阶段都只涉及加密函数。（这点与ECB和CBC模式不同）</li>
+<li>适于对实时性和速度要求较高的场合</li>
+</ul>
+<h2 id="密码反馈模式cfb">密码反馈模式(CFB)</h2>
+<p>Cipher FeedBack Mode，简称为CFB模式</p>
+<ul>
+<li>加密算法的输入是64比特移位寄存器，其初值为某个初始向量IV</li>
+<li>加密算法输出的最左（最高有效位）<span
+class="math inline">\(j\)</span> 比特与明文的第一个单元<span
+class="math inline">\(P_1\)</span>异或，产生出密文的第一个单元<span
+class="math inline">\(C_1\)</span></li>
+<li>将移位寄存器的内容左移<span
+class="math inline">\(j\)</span>位并将<span
+class="math inline">\(C_1\)</span>送入移位寄存器最右边（最低有效位）<span
+class="math inline">\(j\)</span>位</li>
+<li>解密时，将收到的密文单元与加密函数的输出进行异或<span
+class="math inline">\((仍然使用加密算法)\)</span></li>
+</ul>
+<p>算法逻辑： <span class="math display">\[
+\begin{aligned}&amp;\text{(加密)}C_1=P_1\oplus
+S_j[E_k(\mathrm{IV})]，C_i=P_i\oplus
+S_j[E_k(\mathrm{SR}_j||C_{i-1})](i=2,...,N)\\
+&amp;(\text{解密)}P_1=C_1\oplus S_j[E_k(\mathrm{IV})]，P_i=C_i\oplus
+S_j[E_k(\mathrm{SR}_j||C_{i-1})](i=2,...,N)\\
+&amp;\text{式中,}S_j[x]\text{表示}x\text{的最左边}j\text{位,SR}_j\text{表示移位寄存器SR左移}j{位,}\|\text{表示连接关系}\end{aligned}
+\]</span></p>
+<h2 id="输出反馈模式ofb">输出反馈模式(OFB)</h2>
+<h1 id="des">DES</h1>
 <blockquote>
 <p>下面主要是Xenny师傅的内容，而不是赖师父的内容了</p>
 </blockquote>
@@ -563,628 +709,8 @@ class="math inline">\(K_{16},K_{15},\cdots K_{1}\)</span></p>
 <blockquote>
 <p>待补充</p>
 </blockquote>
-<h2 id="idea">IDEA</h2>
-<h2 id="aes">AES</h2>
-<h2 id="分组密码的操作模式">分组密码的操作模式</h2>
-<h3 id="电子密码本模式ecb">电子密码本模式（ECB）</h3>
-<h3 id="密码分组链接模式cbc">密码分组链接模式(CBC)</h3>
-<h3 id="密码反馈模式cfb">密码反馈模式(CFB)</h3>
-<h3 id="输出反馈模式ofb">输出反馈模式(OFB)</h3>
-<h1 id="公钥密码学">公钥密码学</h1>
-<h2 id="公钥密码体制的模型">公钥密码体制的模型</h2>
-<ul>
-<li>公钥密码体制在加密和解密时使用不同的密钥，这样通信双方无须预先交换密钥就可以建立保密通信。克服了对称密码体制中通信双方必须使用一个安全信道预先约定密钥的缺点</li>
-<li>在公钥密码体制中，每个用户保存一对密钥，即公钥PK和私钥SK，PK是公开信息，不需要保密。虽然公钥密码体制的私钥SK和公钥PK是成对出现的，但给定公钥，要确定出私钥是计算上不可行的。持有公钥的任何人都可以加密明文产生密文，只有持有私钥的人才能够解密</li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838040.png" srcset="/img/loading.gif" lazyload
-alt="公钥密码体制" />
-<figcaption aria-hidden="true">公钥密码体制</figcaption>
-</figure>
-<h2 id="公钥密码体制的基本原理">公钥密码体制的基本原理</h2>
-<p>用抽象的观点来看，公钥密码体制就是一种陷门单向函数</p>
-<ul>
-<li><p><strong>单向函数</strong>是满足下列条件的函数：</p>
-<p>它是定义域到值域的一个映射，同时还要满足下列条件：
-计算函数值是容易的，而从函数值计算原像是不可行的.</p></li>
-<li><p><strong>陷门单向函数</strong>是这样的单向函数，存在一个附加信息，当不知道该附加信息时，从函数值求原像是困难的，但当知道该附加信息时，从函数值求原像就变得容易了。</p>
-<p>即陷门单向函数在附加信息未知时是单向函数，而当附加信息已知时，就不再是单向函数了。通常把附加信息称为陷门信息。</p></li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838052.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127222741135" />
-<figcaption aria-hidden="true">image-20231127222741135</figcaption>
-</figure>
-<p>公钥密码体制就是基于这一原理而设计的，利用一个陷门单向函数，将它作为公开密钥，而将陷门信息作为秘密密钥.。其安全强度取决于它所依据的问题的计算复杂度</p>
-<h2 id="公钥密码体制的要求">公钥密码体制的要求</h2>
-<ul>
-<li>产生一对密钥在计算上是可行的</li>
-<li>已知公钥和明文，产生密文是容易的</li>
-<li>接收方利用私钥来解密密文在计算上是可行的</li>
-<li>对于攻击者，利用公钥来推断私钥在计算上是不可行的</li>
-<li>已知公钥和密文，在不知道私钥的情况下，恢复明文在计算上是不可行的</li>
-</ul>
-<h2 id="数论基础知识">数论基础知识</h2>
-<p><a target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/basic/">数论基础 - OI
-Wiki (oi-wiki.org)</a></p>
-<p>定义5-1 (整除)：设<span
-class="math inline">\(a,b\)</span>是整数，<span
-class="math inline">\(a\neq b\)</span>，如果有一个整数<span
-class="math inline">\(x\)</span>，使得<span
-class="math inline">\(b=ax\)</span>，则<span
-class="math inline">\(b\)</span>叫做<span
-class="math inline">\(a\)</span>的倍数，<span
-class="math inline">\(a\)</span>叫做<span
-class="math inline">\(b\)</span>的因数，或者说<span
-class="math inline">\(a\)</span>能整除<span
-class="math inline">\(b\)</span>， 或<span
-class="math inline">\(b\)</span>能被<span
-class="math inline">\(a\)</span>整除。<span
-class="math inline">\(a\)</span>能整除<span
-class="math inline">\(b\)</span>,记为<span
-class="math inline">\(a|b\)</span></p>
-<p>整除的性质：</p>
-<ul>
-<li>若<span class="math inline">\(a|b\)</span>，那么对任何整数<span
-class="math inline">\(c\)</span>，都有<span
-class="math inline">\(a|bc\)</span></li>
-<li>若<span class="math inline">\(a|b，b|c\)</span>，那么有<span
-class="math inline">\(a|c\)</span></li>
-<li>若<span class="math inline">\(a|b，a|c\)</span>，那么对任何整数 x 和
-y，都有<span class="math inline">\(a|(bx+cy);\)</span></li>
-<li>若<span class="math inline">\(a|b，b|a\)</span>，那么<span
-class="math inline">\(a=\pm b\)</span></li>
-<li>若<span class="math inline">\(a|b,a&gt;0,b&gt;0\)</span>，那么<span
-class="math inline">\(a\leq b.\)</span></li>
-</ul>
-<h3 id="群的相关概念">群的相关概念</h3>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838013.png" srcset="/img/loading.gif" lazyload
-alt="群的概念" />
-<figcaption aria-hidden="true">群的概念</figcaption>
-</figure>
-<p>对乘法，单位元是1，但是不是所有的整数都有逆元（或者说除了1和-1都没有=</p>
-<p>逆元：对任意a，存在b，使得a * b=b * a=e，这里的b是逆元，e是单位元</p>
-<p>群的阶：<span
-class="math inline">\(ord(G)=群中元素的个数\)</span></p>
-<p>群元素的阶：<span class="math inline">\(ord(g)\)</span></p>
-<ul>
-<li>群元素g做群的操作 i 次</li>
-<li>最小的正整数 i 满足，<span
-class="math inline">\(g^i=1\)</span>（单位元）</li>
-</ul>
-<p><span class="math inline">\(g^{ord(G)} =
-1(单位元)\)</span>，证明如下：</p>
-<p><span class="math display">\[
-\begin{align}
-∵ord(g) \ &amp;|\ ord(G)\\
-g^{ord(g)} &amp;= 1\\
-∴ord(G) &amp;= k*ord(g)\\
-∴g^{ord(G)} &amp;= 1
-\end{align}
-\]</span></p>
-<p>对$Z_n* $ ，{ a|gcd(a,N)=1 } *mod N，元素的个数为欧拉函数：φ(N)</p>
-<p>当N为素数，{0,1,2,,,,,p-1} *mod p</p>
-<p>例如p等于7时，$Z_n* <span
-class="math inline">\(为\)</span>{1,2,3,4,5,6}$，单位元：1</p>
-<p>元素1-6的阶为：1，3，6，6（×）3（√），6，2</p>
-<p>元素1的阶：<span class="math inline">\(1*1=1\)</span>，再mod 7 =
-1，所以元素1的阶为1</p>
-<p>元素2的阶：<span class="math inline">\(2 * 2 * 2 = 8\)</span>，再mod
-7 =1，所以元素2的阶为3，写作：<span
-class="math inline">\(ord（2）=3\)</span></p>
-<p>元素3的阶：<span class="math inline">\(3 * 3 * 3 * 3 * 3 * 3 =
-729\)</span>，再mod 7 = 1，所以元素3的阶为6</p>
-<p>元素4的阶：<span class="math inline">\(4 * 4 * 4=64\)</span>，再mod 7
-= 1，所以元素4的阶为3</p>
-<p>……</p>
-<p>逆元（1-6的）：1，4，5，2，3，6</p>
-<p>1的逆元：1 * 1 = 1，再mod 7 = 1，所以元素1的逆元为1</p>
-<p>2的逆元：2 * 4 = 8，再mod 7 = 1，所以元素2的逆元为4</p>
-<p>3的逆元：3 * 5 = 15，再mod 7 = 1，所以元素3的逆元为5</p>
-<p>4的逆元：4 * 2 = 8，再mod 7 = 1，所以元素4的逆元为2</p>
-<p>……</p>
-<p>😴</p>
-<p>对{0，1，2，3，，，，N-1} +mod N</p>
-<p>是一个群</p>
-<p>封闭性，结合律都满足</p>
-<p>单位元：0</p>
-<p>逆元：3的逆元N-3 （Zn）</p>
-<h2 id="rsa公钥密码体制">RSA公钥密码体制</h2>
-<blockquote>
-<p>RSA公钥密码体制是美国麻省理工学院的Rivest，Shamir和Adleman三位学者于1978年提出的。RSA公钥密体制的理论基础是数论中的大整数因子分解的困难性。RSA公钥密码体制即可用于加密，又可用于数字签名。它安全、易懂、易实现，是目前广泛应用的一种密码体制。</p>
-<p><del>事实上，Cliff Cocks
-在1973年发表的题为“关于非对称加密的注记”文章中，就描述了跟RSA密码体制基本一致的方案</del></p>
-</blockquote>
-<p>密钥生成算法<span class="math inline">\(KeyGen\)</span>：</p>
-<ul>
-<li>选两个大质数p和q，且 <span class="math inline">\(p!=q\)</span>，计算
-<span class="math inline">\(N=p*q\)</span>，N就算出来了</li>
-<li>然后计算N的欧拉函数 <span
-class="math inline">\(φ(N)=(p-1)(q-1)\)</span></li>
-<li>然后你自己选个e， <span
-class="math inline">\(1&lt;e&lt;φ(N)\)</span>，且与φ(N)互质，
-<ul>
-<li>为什么e与φ(N)互素：要存在d，互素才存在这样一个d</li>
-</ul></li>
-<li>由e和φ(N)互质，<span
-class="math inline">\((e,φ(N))=1\)</span>，再由辗转相除法，则一定有<span
-class="math inline">\(ed - φ(N)k = 1\)</span></li>
-<li>那么由e就可以算出d，<span class="math inline">\(ed ≡ 1\quad
-mod(φ(N))\)</span>
-<ul>
-<li>pk（公钥）：N，e</li>
-<li>sk（私钥）：d</li>
-</ul></li>
-</ul>
-<p>p，q是秘密参数，需要保密，如不需要保存，可销毁</p>
-<p>加解密：</p>
-<p><span class="math display">\[
-\begin{align}
-Enc（pk，m∈Z_N^*）:c = m^e\ mod \ N\\
-Dec（sk，c）： m = c^d\ mod\ N
-\end{align}
-\]</span></p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838974.png" srcset="/img/loading.gif" lazyload
-alt="RSA" />
-<figcaption aria-hidden="true">RSA</figcaption>
-</figure>
-<h3 id="正确性证明">正确性证明</h3>
-<p><span class="math display">\[
-\begin{align}
-&amp;即验证 c^d modN 是否等于 m\\
-&amp;∵ed ≡ 1\quad mod(φ(N))\\
-&amp;∴ed = kφ(N) + 1\\
-&amp;即验证m^{ed} mod N最后是等于m的\\
-&amp;m^{kφ(N) + 1} \quad mod \quad N \\
-&amp;m^{kφ(N)}*m \quad mod \quad N\\
-&amp;即求:m^{φ(N)}≡1modN\\
-&amp;∵m∈Z_N^*\\
-&amp;g^{ord(G)} = 1(单位元)\\
-&amp;∴m^{φ(N)}≡1modN
-&amp;\end{align}
-\]</span></p>
-<p>对于</p>
-<p><span class="math display">\[
-\begin{align}
-&amp;m∈Z_N（放大m的范围了）\\
-&amp;m \notin Z_N^*\\
-&amp;∵ N =p*q\\
-&amp;∴gcd(m,N)=p或q\\
-&amp;这里的情况N直接分解出来了\\
-&amp;若gcd(m,N)=p,m&lt;N,N=p*q\\
-&amp;得m=kp,1≤k&lt;q\\
-&amp;gcd(m,q)= 1\\
-&amp;相当于m∈Z_q^*，则m^{φ(q)}=1modq\\
-&amp;m^{q-1}=1modq\\
-&amp;ed = k^{&#39;}φ(N)+1=k^{&#39;}(p-1)(q-1)+1\\
-&amp;m^{k^{&#39;}(p-1)(q-1)} =1modq\\
-&amp;m^{k^{&#39;}φ(N)} =1modq\\
-&amp;即m^{k^{&#39;}φ(N)} =rq+1\\
-&amp;我们这里还是要求m^{ed}modN最后等于m\\
-&amp;m^{k^{&#39;}φ(N)}*m \quad mod N\\
-&amp;=(rq+1)m \quad modN\\
-&amp;=(rqm+m)\quad mod N\\
-&amp;=(rq*kp+m)\quad mod N\\
-&amp;=(rkN+m)\quad mod N\\
-&amp;=m
-\end{align}
-\]</span></p>
-<p>RSA问题，给定N，e，<span
-class="math inline">\(y∈Z_N^*\)</span>，求x，满足<span
-class="math inline">\(x^e=y\ mod\ N\)</span></p>
-<blockquote>
-<p>一个密文对应一个明文，所以jzlaoshi不把RSA叫做一个加密方案，而是一个单向陷门置换</p>
-</blockquote>
-<h3 id="rsa公钥密码体制的安全性">RSA公钥密码体制的安全性</h3>
-<p>RSA是建立在大整数分解的困难性之上的</p>
-<p>大整数分解攻击：一旦分解出p和q，就可以得到n的欧拉数φ(N)，再利用欧几里德扩展算法求出RSA
-的私钥d.</p>
-<p>因此，应当采用足够大的大整数n(至少应取1024位，最好为2048位)。此外，对素数p和q的选取应满足以下要求：</p>
-<ul>
-<li>p和q的长度应该相差不大</li>
-<li>(p - 1)和(q - 1)都应该包含大的素因子</li>
-<li>gcd(p - 1,q -1)应该尽可能小</li>
-<li>d &lt; n，且<span
-class="math inline">\(d&lt;n^{0.294}\)</span>，特别是当<span
-class="math inline">\(d&lt;n^{1/4}\)</span>时，已经有办法攻破RSA</li>
-</ul>
-<h2 id="elgamal公钥密码体制">ElGamal公钥密码体制</h2>
-<blockquote>
-<p><strong>ElGamal</strong>加密算法是一个基于Diffie-Hellman密钥交换的非对称加密算法，</p>
-</blockquote>
-<p>离散对数问题： <span class="math display">\[
-G，p，g，，，h∈G，求x∈Z_p，使得h = g^x
-\]</span></p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838537.png" srcset="/img/loading.gif" lazyload
-alt="ElGamal公钥密码体制" />
-<figcaption aria-hidden="true">ElGamal公钥密码体制</figcaption>
-</figure>
-<blockquote>
-<p>加密算法的第一行写错了，应该为m ∈ G</p>
-</blockquote>
-<p>​</p>
-<h2 id="公钥密码体制的安全模型">公钥密码体制的安全模型</h2>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838590.png" srcset="/img/loading.gif" lazyload
-alt="image-20231120211350752" />
-<figcaption aria-hidden="true">image-20231120211350752</figcaption>
-</figure>
-<blockquote>
-<p>OW-CCA 比 OW-CPA安全性高</p>
-<p>IND-CCA 比 IND-CPA安全性高</p>
-<p>IND-CCA 比 OW-CCA高</p>
-<p>也就是说 CCA安全一定是CPA安全，但CPA安全不一定是CCA安全，</p>
-</blockquote>
-<h3 id="ind-cpa">IND-CPA</h3>
-<p>示意图：</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838570.png" srcset="/img/loading.gif" lazyload
-alt="IND-CPA" />
-<figcaption aria-hidden="true">IND-CPA</figcaption>
-</figure>
-<p>IND-CPA所表示的含义为，在敌手能<strong>自行选择明文，并查询对应密文</strong>这一模型中，我们的加密算法是否还能实现密文不可区分。在这一Game中，敌手可以查询任意一条明文消息对应的密文，
-这需要我们开放自己算法的加密功能给敌手</p>
-<p>IND-CPA这一Game的步骤如下：</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838600.png" srcset="/img/loading.gif" lazyload
-alt="IND-CPA安全模型的形式化定义" />
-<figcaption aria-hidden="true">IND-CPA安全模型的形式化定义</figcaption>
-</figure>
-<p>这里的Pr是计算某一事件的概率</p>
-<p>可以看出，IND-CPA实际上是想表达“<strong>如果密文足够随机的话，密文是不会泄露任何关于明文信息</strong>”这一深层含义</p>
-<p>任意一个公钥加密方案，如果加密算法是一个确定的算法，它永远不可能达到IND-CPA安全。如：RSA就达不到，一个明文对应一个密文</p>
-<h3 id="ind-cca">IND-CCA</h3>
-<p>ElGamal不是IND-CCA安全</p>
-<h3 id="ind-cca2">IND-CCA2</h3>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838546.png" srcset="/img/loading.gif" lazyload
-alt="IND-CCA2" />
-<figcaption aria-hidden="true">IND-CCA2</figcaption>
-</figure>
-<h1 id="数字签名">数字签名</h1>
-<h2 id="概述">概述</h2>
-<ul>
-<li><p>在传统商务活动中，为了保证交易的安全与真实，一份书面合同或公文要由当事人或其负责人签字、盖章，以便让交易双方识别是谁签的合同，保证签字或盖章的人认可合同的内容，在法律上才能承认这份合同是有效的。</p></li>
-<li><p>而在电子商务的虚拟世界中，合同或文件是以电子文件的形式表现和传递的。在电子文件上，传统的手写签名和盖章是无法进行的，这就必须依靠技术手段来替代。</p></li>
-<li><p>数字签名就是能起到手写签名或者盖章同等作用的电子技术手段。</p></li>
-<li><p>数字签名已成为计算机网络不可缺少的一项安全技术措施是实现认证的重要工具。数字签名在商业、金融、军事等领域，特别是在电子贸易、电子支票、电子购物、电子政务及知识产权保护等方面的应用，有力地显示了数字签名的重要性。</p></li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838564.png" srcset="/img/loading.gif" lazyload
-alt="image-20231127185410719" />
-<figcaption aria-hidden="true">image-20231127185410719</figcaption>
-</figure>
-<h3 id="数字签名的特征">数字签名的特征</h3>
-<ul>
-<li>收方能够确认或证实发方的签名，但不能伪造</li>
-<li>发方发出签名的消息给收方后，就不能再否认他所签发的消息。</li>
-<li>收方对已收到的签名消息不能否认。</li>
-<li>第三者可以确认收发双方之间的消息传送，但不能伪造这一过程。</li>
-</ul>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838069.png" srcset="/img/loading.gif" lazyload
-alt="数字签名的组成" />
-<figcaption aria-hidden="true">数字签名的组成</figcaption>
-</figure>
-<h2 id="hash函数">Hash函数</h2>
-<blockquote>
-<p>先简单了解一下</p>
-</blockquote>
-<p>Hash函数的基本需求：</p>
-<p>在深入Hash函数的安全性之前，我们首先需要了解它们必须满足的基本需求：</p>
-<ul>
-<li>确定性：对于任何给定的输入，Hash函数总是返回相同的输出。这意味着无论你何时何地运行Hash函数，对同一数据的Hash值总是不变的。</li>
-<li>快速计算：无论数据大小如何，Hash函数都能迅速计算出Hash值。这对于处理大量数据或需要实时处理的系统尤为重要。</li>
-<li>抗碰撞性：即使是微小的输入变化，也会导致输出（Hash值）的巨大变化。这使得预测或生成具有相同Hash值的两个不同输入非常困难。</li>
-</ul>
-<p>Hash函数的安全性挑战：</p>
-<p>尽管Hash函数的设计旨在满足上述需求，但在现实世界的应用中，它们面临着许多安全挑战：</p>
-<ul>
-<li><p>抗碰撞攻击：理想的Hash函数应该抵抗碰撞攻击，即很难找到两个不同的输入但产生相同的Hash值。然而，随着计算能力的增强和算法的发展，某些Hash函数已经被证明容易受到碰撞攻击。</p></li>
-<li><p>预映像和二次预映像攻击：这些攻击尝试找到一个输入，使其Hash值等于特定的Hash值（预映像）或找到一个不同的输入，使其Hash值与另一给定输入的Hash值相同（二次预映像）。强大的Hash函数应该能有效抵抗这类攻击。</p></li>
-<li><p>速度与安全性的折中：在某些应用中，如密码学货币，Hash函数需要足够的“慢”以抵抗暴力攻击，而在其他应用中，如网络数据处理，需要足够快的Hash算法以维持效率。找到这种平衡是设计Hash函数时的一个挑战。、</p></li>
-</ul>
-<p>实践中的Hash函数：</p>
-<p>在实践中，已经开发了多种Hash函数来满足不同的需求和抵抗各种攻击。例如：</p>
-<ul>
-<li>MD5：一度广泛使用，但现在已被证实容易受到碰撞攻击，因此不再推荐用于安全敏感的应用。</li>
-<li>SHA系列：包括SHA-1、SHA-256等，是目前广泛认可和使用的Hash算法。尽管某些较早的版本如SHA-1也显示出安全弱点，但更新版本如SHA-256仍被认为是安全的。</li>
-<li>bcrypt和Argon2：这些是专为密码存储设计的Hash函数，通过增加计算成本来抵抗暴力攻击。</li>
-</ul>
-<h2 id="rsa签名方案">RSA签名方案</h2>
-<p><span class="math display">\[
-\begin{align}
-&amp;m_1*σ_1 = m_1^d \mod N\\
-&amp;m_2*σ_2 = m_2^d \mod N\\
-&amp;m =m_1*m_2，σ =σ_1*σ_2\\
-&amp;两个相乘 m*σ = (m_1m_2)^d \mod N\\
-&amp;也就是说我知道两个就能构造第三个，（其实知道一个就可以了\\
-&amp;所以是不安全的\\
-&amp;可以利用一个安全的Hash函数 H 来产生消息摘要H(m);\\
-&amp;H(m_1,m_2)≠H(m_1)*H(m_2)\\
-\end{align}
-\]</span></p>
-<p>所以直接拿来做签名是不安全</p>
-<p>要改一改：利用一个安全的Hash函数 H
-来产生消息摘要H(m)，哈希函数是一个单向函数</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838113.png" srcset="/img/loading.gif" lazyload
-alt="RSA签名方案" />
-<figcaption aria-hidden="true">RSA签名方案</figcaption>
-</figure>
-<p>安全性：</p>
-<ol type="1">
-<li>签名时使用了Hash函数可以防止利用同态的伪造攻击，有很好的抗攻击性。</li>
-<li>RSA签名方案存在签名可重用的问题，同一消息在不同时刻签名不应是相同的。</li>
-</ol>
-<h2 id="elgamal签名方案">ElGamal签名方案</h2>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838177.png" srcset="/img/loading.gif" lazyload
-alt="ElGamal签名方案" />
-<figcaption aria-hidden="true">ElGamal签名方案</figcaption>
-</figure>
-<p><strong>签名算法中：</strong></p>
-<p>g是<span
-class="math inline">\(Z_p^*\)</span>的生成元，但是实际上中很难取到，所以一般设置<span
-class="math inline">\(p-1=rq\)</span>，所以<span
-class="math inline">\(Z_p^*\)</span>中存在一个q阶的子群，随便在<span
-class="math inline">\(Z_p^*\)</span>中选一个h，作<span
-class="math inline">\(h^r\)</span>，则<span
-class="math inline">\(g=h^r\)</span>一定是生成元 （对吗？😥😥</p>
-<p><span class="math inline">\(gcd(k,p-1)\)</span>，才能保证<span
-class="math inline">\(k \mod p-1\)</span>有逆元，才能算出来s</p>
-<p>定义：生成元的阶就是群的阶，这里就是<span
-class="math inline">\(p-1\)</span>，所以<span
-class="math inline">\(0&lt;k&lt;p-1\)</span>，k只能在这个范围，<span
-class="math inline">\(p-1\)</span>就是最大的了</p>
-<p>这里的群的阶最大就是<span class="math inline">\(p-1\)</span></p>
-<h2 id="schnorr签名方案">Schnorr签名方案</h2>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838366.png" srcset="/img/loading.gif" lazyload
-alt="Schnorr签名方案" />
-<figcaption aria-hidden="true">Schnorr签名方案</figcaption>
-</figure>
-<p>签名验证算法中可以给<span
-class="math inline">\(σ=(e,s)\)</span>，也可以给<span
-class="math inline">\((R,s)\)</span>，大部分都选前者</p>
-<p>原因：计算开销是一样的，不管给谁R，e，s都是要算的，所以看通信的消耗size，R是群中的元素，表示群元素至少要<span
-class="math inline">\(log_2p\)</span>位，e是mod之后的，所以e的位数要小一点</p>
-<p>公布<span class="math inline">\((e,s)\)</span>作为签名：</p>
-<p>计算<span class="math inline">\(R&#39;=g^s*y^e\)</span></p>
-<p>验证 <span class="math inline">\(e\ 等于or不等于\
-H(m,R&#39;)\)</span></p>
-<p>这里假设 <span class="math inline">\(s=r-ex\)</span>
-是对滴，那么<span
-class="math inline">\(g^s=g^{r-ex}=g^r*(g^x)^{-e}=g^r*y^{-e}=R*y^{-e}\)</span></p>
-<p>公布<span class="math inline">\((R,s)\)</span>作为签名：</p>
-<p>计算<span class="math inline">\(e=H(m,R)\)</span></p>
-<p>验证 <span class="math inline">\(g^s =or≠ R*y^{-e}\)</span></p>
-<p><span
-class="math inline">\(g^s=g^{r-ex}=g^r*(g^x)^{-e}=g^r*y^{-e}=R*y^{-e}\)</span></p>
-<h2 id="数字签名标准">数字签名标准</h2>
-<blockquote>
-<p>更习惯于叫它DSA</p>
-</blockquote>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838413.png" srcset="/img/loading.gif" lazyload
-alt="数字签名标准" />
-<figcaption aria-hidden="true">数字签名标准</figcaption>
-</figure>
-<p>DSA这里<span class="math inline">\(g\)</span>的阶是<span
-class="math inline">\(q\)</span>，因为<span
-class="math inline">\(q\)</span>是素数，所以k的逆元一定存在，所以这里的k&lt;p就行了，跟上面比少了一个<span
-class="math inline">\(gcd(k,p-1)\)</span>的条件</p>
-<p>ElGamal签名方案g的阶是p-1</p>
-<p>跟ElGamal签名方案的构造本质上是一样的，不过不再作用在<span
-class="math inline">\(Z_p^*\)</span>，而是它的一个子群中</p>
-<p><span class="math display">\[
-ElGamal签名方案：r=g^k\ mod\ p，s=k^{-1}(H(m)-xr)\ mod\
-p-1，0&lt;k&lt;p-1\\
-数字签名标准(DSA):r=(g^k\ mod\ p )\ mod\ q，s=k^{-1}(H(m)+xr)\ mod\
-q，0&lt;k&lt;q
-\]</span> <span class="math inline">\(Z_p^* ，*\mod
-p，ElGamal签名方案种，g是这个群的生成元\)</span></p>
-<p><strong>DSS算法的详细解释（简单易懂版）</strong></p>
-<p><strong>（1）DSS算法的主要参数：</strong></p>
-<ol type="1">
-<li><p>全局公开密钥分量：</p>
-<ul>
-<li>素数p, <span class="math inline">\(2 ^ {511} &lt; p &lt; 2 ^
-{512}\)</span>；</li>
-<li>q是(p-1)的一个素因子, <span class="math inline">\(2^{159} &lt; q
-&lt; 2^{160}\)</span>；</li>
-<li><span class="math inline">\(g=h ^ {[(p-1)/q]} mod p\)</span>,
-其中h是一整数，<span class="math inline">\(1&lt;h&lt;(p-1)\)</span></li>
-</ul></li>
-<li><p>私钥：</p>
-<p>私钥x是随机或伪随机整数, 其中<span
-class="math inline">\(0&lt;x&lt;q\)</span>；</p></li>
-<li><p>公钥：</p>
-<p><span class="math inline">\(y=g ^ x mod p\)</span>，<span
-class="math inline">\(（p，q，g，y）\)</span>为公钥；</p></li>
-<li><p>用户的随机选择数：</p>
-<p>k为随机或伪随机整数, 其中<span
-class="math inline">\(0&lt;k&lt;q\)</span></p></li>
-</ol>
-<p><strong>（2）DSS的签名过程：</strong></p>
-<p><span class="math inline">\(r=(g ^ k \mod p) \mod
-q\)</span>，这里又mod q，再做了一次压缩，这是跟ElGamal最大的差别</p>
-<p><span class="math inline">\(s=[k ^ {-1} (H(M)-xr)] \mod
-q\)</span></p>
-<p>形成了对信息M的数字签名(r,s)，数字签名和信息M一同发送给接收方。接收方接收到信息M’和数字签名(r’,s’)后，对数字签名的验证过程如下：</p>
-<p><span class="math inline">\(w=(s’) ^ {-1} \mod q\)</span></p>
-<p><span class="math inline">\(u1=[H(M’)w] \mod q,\)</span></p>
-<p><span class="math inline">\(u2=( r’) w \mod q\)</span></p>
-<p><span class="math inline">\(v=[(g ^ {u1} y ^ {u2}) \mod p] \mod
-q\)</span></p>
-<p>如果 <span class="math inline">\(v=
-r’\)</span>，则说明信息确实来自发送方。</p>
-<p><strong>lai：</strong></p>
-<p><span class="math inline">\(k=s^{-1}(H(m)+xr)\mod q\)</span></p>
-<p>g的阶是q</p>
-<p><span
-class="math inline">\(g^k=g^{s^{-1}(H(m)+xr)}=g^{s^{-1}H(m)+s^{-1}xr}=g^{s^{-1}H(m)}*y^{s^{-1}r}
-\mod p \mod q\)</span></p>
-<p>看<span class="math inline">\(g^{s^{-1}H(m)}*y^{s^{-1}r} \mod p \mod
-q\)</span>是否等于r</p>
-<h3 id="dss签名的正确性">DSS签名的正确性</h3>
-<p>因为 <span class="math inline">\((u_{1}+ xu_{2}) \mod q= ( H( m) +
-xr) s^{- 1} \mod q= k\)</span></p>
-<p>所以：</p>
-<p><span class="math display">\[
-\begin{align}
-&amp;g^{u_1}y^{u_2} \mod\ p  \mod\ q\\
-&amp;= g^{u_1}g^{xu_2} \mod p \mod q\\
-&amp;= g^{u_1+ xu_2} \mod p \mod q\\
-&amp;= g^{k} \mod p \mod q，这一步是为什么呢？\\
-&amp;=r\\
-\end{align}
-\]</span></p>
-<p>上面的问题，我是这样想的：</p>
-<p>其实就是同余的基本性质</p>
-<p>若<span class="math inline">\((u_{1}+ xu_{2}) \mod q= k\)</span></p>
-<p>则<span class="math inline">\(g^{u_1+ xu_2} \mod p \mod q= g^{k} \mod
-p \mod q\)</span></p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838219.png" srcset="/img/loading.gif" lazyload
-alt="同余的基本性质" />
-<figcaption aria-hidden="true">同余的基本性质</figcaption>
-</figure>
-<blockquote>
-<p>从群的角度来看，其实ElGamal和DSA是一样的，但是在计算r的时候又mod
-q，如果不mod q的话，其实两个方案就是一样的</p>
-</blockquote>
-<h2 id="签名的安全模型">签名的安全模型</h2>
-<h3 id="euf-cma">EUF-CMA</h3>
-<blockquote>
-<p>或EU-CMA，选择消息攻击下的存在性不可伪造：Existential Unforgeability
-under Chosen Messagge Attack</p>
-</blockquote>
-<p>这一模型中的CMA指Chosen Message
-Attack，即选择消息攻击，本质上与CPA其实是一样的，只不过在数字签名等算法中，用消息一词要比明文更加贴切。CMA和CPA都是形容敌手能自由地向算法提交输入并获得的相应输出这一能力。</p>
-<p><strong>意思就是：你可以要任何消息的签名，但是你不能造出一个一样的签名</strong></p>
-<p>EUF则是指存在性不可伪造，即 Existential
-UnForgeability，指的是对于消息认证、数字签名等算法而言，当敌手通过查询获得了
-q 个签名后， 他无法再获得第 q+1个签名。这一Game的示意图如下所示：</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838665.png" srcset="/img/loading.gif" lazyload
-alt="EUF-CMA示意图" />
-<figcaption aria-hidden="true">EUF-CMA示意图</figcaption>
-</figure>
-<p>可以看到，其基本形式依然和前文的模型保持相似，在查询阶段，敌手 <span
-class="math inline">\(\mathcal{A}\)</span> 可不断与一实现了签名Oracle的
-<span class="math inline">\(\mathcal{C}\)</span> 交互，来获得所提交消息
-<span class="math inline">\(m\)</span> 的签名 <span
-class="math inline">\(\sigma\)</span> 。在进行 <span
-class="math inline">\(q\)</span> 次交互后，敌手将输出一对 <span
-class="math inline">\(\left(m^*, \sigma^*\right)\)</span>
-。这一Game的主要步骤为:</p>
-<ol type="1">
-<li>Game中拥有一具有多项式资源的敌手 <span
-class="math inline">\(\mathcal{A}\)</span>
-和一个能自由调用签名算法oracle <span class="math inline">\(E\)</span>
-的挑战者 <span class="math inline">\(\mathcal{C}\)</span> 。</li>
-<li><span class="math inline">\(\mathcal{C}\)</span> 随机选取 <span
-class="math inline">\(sk\stackrel{\$}{\leftarrow}\{0,1\}^n\)</span>
-，作为签名算法的私钥</li>
-<li><span class="math inline">\(\mathcal{A}\)</span> 向 <span
-class="math inline">\(\mathcal{C}\)</span> 提交消息 <span
-class="math inline">\(m, \mathcal{C}\)</span> 得到 <span
-class="math inline">\(m\)</span> 对应的签名 <span
-class="math inline">\(\sigma\)</span></li>
-<li>重复步骤 <span class="math inline">\(3 q\)</span> 次 (即敌手查询
-<span class="math inline">\(q\)</span> 次不同消息的签名)</li>
-<li><span class="math inline">\(\mathcal{A}\)</span> 输出一对 <span
-class="math inline">\(\left(m^*, \sigma^*\right)\)</span>;</li>
-<li><span class="math inline">\(\mathcal{C}\)</span> 对 <span
-class="math inline">\(\sigma^*\)</span> 进行验证，并返回验证结果；</li>
-</ol>
-<p>若最后敌手输出的 <span class="math inline">\(m^*\)</span>
-未曾被查询过，且 <span class="math inline">\(\sigma^*\)</span>
-能通过验证，就可认为敌手挑战成功。这一结果即为
-“签名的伪造”，此处敌手的优势可写为: <span class="math display">\[
-\operatorname{Adv}_S^{\text {EUF-CMA
-}}(\mathcal{A})=\operatorname{Pr}\left[\mathcal{A} \text { forges
-}\left(m^*, \sigma^*\right)\right]
-\]</span></p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838774.png" srcset="/img/loading.gif" lazyload
-alt="EUF-CMA游戏描述" />
-<figcaption aria-hidden="true">EUF-CMA游戏描述</figcaption>
-</figure>
-<p><a
-target="_blank" rel="noopener" href="https://crypto.stackexchange.com/questions/44188/what-do-the-signature-security-abbreviations-like-euf-cma-mean">terminology
-- What do the signature security abbreviations like EUF-CMA mean? -
-Cryptography Stack Exchange</a></p>
-<h3 id="suf-cma">SUF-CMA</h3>
-<blockquote>
-<p>或SU-CMA，选择消息攻击下的强不可伪造性：Strong Unforgeability under
-Chosen Messagge Attack</p>
-</blockquote>
-<p>在EUF-CMA中，E表示的是Existential，而此处的SUF的S则表示Strong，即强不可伪造性，这一Game的基本模型如下图所示。</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202403210838745.png" srcset="/img/loading.gif" lazyload
-alt="SUF-CMA示意图" />
-<figcaption aria-hidden="true">SUF-CMA示意图</figcaption>
-</figure>
-<p>与EUF-CMA相比，SUF-CMA唯一的不同之处在于敌手最终输出伪造的签名对
-<span class="math inline">\((m^∗,σ^∗)\)</span>时，不仅要求 <span
-class="math inline">\(m^∗\)</span>是未曾查询过的，也要求签名<span
-class="math inline">\(σ^∗\)</span>是未曾出现过的。</p>
-<p>因此，EUF-CMA这一Game中的敌手只需要寻找到 m 关于 σ
-的一个<strong>碰撞</strong>即可，而在SUF-CMA中，敌手的任务并不是要找碰撞，而是要从根本上伪造出一个签名消息对。</p>
-<blockquote>
-<p>总结一下：</p>
-<p>这里的签名的安全模型规定的这些东西，对数字签名本身的功能来讲，功能不大，因为相当于你伪造了一个我的章发出去，可是我已经用我的章发出去了，
-你伪造一个跟我一样的章发出去，对我没影响，我消息发出去了（只是当成一个签名）</p>
-<p>但是用数字签名方案构造其他东西的时候，会有用，也就是说可以把数字签名方案当成一个部件，去搭建更🐂🖊的功能</p>
-</blockquote>
-<ul>
-<li>一个证明题</li>
-</ul>
-<p>以下两种证明的表述是一样的：</p>
-<p>证明：如果一个数字签名方案，它的签名算法是一个确定性的算法，那么这个方案对EUF-CMA和SUF-CMA的安全性是一样的</p>
-<p>证明：如果一个数字签名方案，它的签名算法是一个确定性的算法，它是EUF-CMA安全的，那么这个方案也是SUF-CMA的</p>
-<p>我们讲的签名方案中，只有RSA是确定性的算法</p>
-<p>因为<span
-class="math inline">\(SUF-CMA⟹EUF-CMA\)</span>是肯定成立的</p>
-<p>上面的证明就是要证明：</p>
-<p>如果一个签名方案其签名算法是确定性的算法，那么<span
-class="math inline">\(EUF-CMA⟹SUF-CMA\)</span></p>
-<p>设存在<span class="math inline">\(SUF-CMA\)</span>敌手，构造一个<span
-class="math inline">\(EUF-CMA\)</span></p>
-<p><span class="math display">\[
-\begin{align}
-&amp;有(m_1,σ_1),(m_2,σ_2),(m_3,σ_3),……,(m_q,σ_q)\\
-&amp;敌手已经找到了(m^*,σ^*),已经通过了验证，\\
-&amp;那么(m^*,σ^*)≠\{(m_1,σ_1),(m_2,σ_2),(m_3,σ_3),……,(m_q,σ_q)\}\\
-&amp;由签名方案其签名算法是确定性的算法，得m^*≠\{m_1,m_2,m_3,……,m_q\}\\
-&amp;其实这就结束了，这就相当于构造出了一个EUF-CMA\\
-&amp;\\
-\end{align}
-\]</span></p>
+<h1 id="idea">IDEA</h1>
+<h1 id="aes">AES</h1>
 <blockquote>
 <p>参考：</p>
 <p><a
@@ -1205,7 +731,6 @@ target="_blank" rel="noopener" href="https://gejiangxia.github.io/2020/04/30/ELG
 <p><a
 target="_blank" rel="noopener" href="https://www.cnblogs.com/WittPeng/p/8978737.html">《现代密码学》 -
 WittPeng - 博客园 (cnblogs.com)</a></p>
-<p>下面是一个隐藏的公式：</p>
 </blockquote>
 
                 
@@ -1238,7 +763,7 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>wiper3</div>
+          <div>w1per3</div>
         </div>
       
       
@@ -1276,9 +801,9 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/21/Web-CTF-SQL%E6%B3%A8%E5%85%A5/" title="Web-CTF-SQL注入">
+                      <a href="/2024/04/21/Web-CTF-SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Web-CTF-SQL注入基础知识">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Web-CTF-SQL注入</span>
+                        <span class="hidden-mobile">Web-CTF-SQL注入基础知识</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1286,8 +811,8 @@ WittPeng - 博客园 (cnblogs.com)</a></p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/19/Web-CTF-%E5%85%A5%E9%97%A8/" title="Web-CTF-入门">
-                        <span class="hidden-mobile">Web-CTF-入门</span>
+                      <a href="/2024/04/21/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AF%BC%E8%AE%BA-4-%E5%85%AC%E9%92%A5%E5%AF%86%E7%A0%81/" title="密码学-4">
+                        <span class="hidden-mobile">密码学-4</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
