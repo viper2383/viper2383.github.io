@@ -4,6 +4,58 @@
   
   
   <entry>
+    <title>PHPSerialize-labs</title>
+    <link href="/2024/10/17/PHPSerialize-labs/"/>
+    <url>/2024/10/17/PHPSerialize-labs/</url>
+    
+    <content type="html"><![CDATA[<blockquote><h2 id="about">About</h2><p>【Hello-CTFlabs】PHPSerialize-labs是一个使用php语言编写的，用于学习CTF中PHP反序列化的入门靶场。旨在帮助大家对PHP的序列化和反序列化有一个全面的了解。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF-Web</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>CTFHub-技能树-SSRF</title>
+    <link href="/2024/10/12/CTFHub-%E6%8A%80%E8%83%BD%E6%A0%91-SSRF/"/>
+    <url>/2024/10/12/CTFHub-%E6%8A%80%E8%83%BD%E6%A0%91-SSRF/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>愿望：快乐每一天~</p></blockquote><p>SSRF，即服务器端请求伪造（Server-Side RequestForgery），是一种网络攻击技术，攻击者利用服务器上的应用程序向任意服务器发起请求或者操作，这些请求可能包括但不限于文件读取、命令执行、端口扫描等。由于这些请求是从服务器内部发起的，因此他们可以绕过服务器的外部访问控制，访问内部网络资源或者执行恶意操作。</p><p>一般情况下，SSRF攻击的目标是外网无法访问的内部系统（正因为请求是由服务端发起的，所以服务端能请求到与自身相连而与外网隔离的内部系统）。</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202410121746747.png"alt="SSRF" /><figcaption aria-hidden="true">SSRF</figcaption></figure><blockquote><p>SSRF形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能，且没有对目标地址做过滤与限制。</p></blockquote><h2 id="内网访问">内网访问</h2><blockquote><p>尝试访问位于127.0.0.1的flag.php吧</p></blockquote><p>打开页面，什么也没有，看到网址后面是<code>/?url=_</code></p><p>直接<code>/?url=127.0.0.1/flag.php</code>，得到flag</p><h2 id="伪协议读取文件">伪协议读取文件</h2><blockquote><p>尝试去读取一下Web目录下的flag.php吧</p></blockquote><p>常见的伪协议类型有</p><ul><li>file:///本地文件传输协议，主要用于访问本地计算机中的文件，如，file:///etc/passwd</li><li>dict://字典服务器协议，访问字典资源，如，dict:///ip:6739/info：</li><li>sftp:// SSH文件传输协议或安全文件传输协议</li><li>ldap:// 轻量级目录访问协议</li><li>tftp:// 简单文件传输协议</li><li>gopher:// 分布式文档传递服务，可使用gopherus生成payload</li></ul><p><strong>当我们发现SSRF漏洞后，首先要做的事情就是测试所有可用的URL伪协议</strong></p><p>本题我们直接访问</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/?url=file:/</span><span class="hljs-regexp">//</span>var<span class="hljs-regexp">/www/</span>html/flag.php   为什么这样呢var，www<br></code></pre></td></tr></table></figure><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202410121813449.png"alt="var" /><figcaption aria-hidden="true">var</figcaption></figure><blockquote><p>反正反正就先这样吧，弟弟</p></blockquote><h2 id="端口扫描">端口扫描</h2><blockquote><p>来来来性感CTFHub在线扫端口,据说端口范围是8000-9000哦,</p></blockquote><p>根据题目提示，需要进行端口扫描。在SSRF中，dict协议与http协议可用来探测内网的主机存活与端口开放情况。</p><p>抓包后，发送到Intruder模块，将positions定位到内网地址端口，设置payload，然后开始攻击</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202410131201741.png"alt="payload设置" /><figcaption aria-hidden="true">payload设置</figcaption></figure><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202410131200491.png"alt="flag" /><figcaption aria-hidden="true">flag</figcaption></figure><p>攻击后的结果，按长度排序，看到了端口8140的我们的目标端口，这里直接就把flag显示出来力</p><h2 id="post请求">POST请求</h2><blockquote><p>参考：</p><p><ahref="https://blog.csdn.net/qq_43378996/article/details/124050308">SSRF漏洞原理攻击与防御(超详细总结)-CSDN博客</a></p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>CTF-Web</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+      <tag>web</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CTFHub-技能树-文件上传</title>
     <link href="/2024/05/22/CTFHub-%E6%8A%80%E8%83%BD%E6%A0%91-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     <url>/2024/05/22/CTFHub-%E6%8A%80%E8%83%BD%E6%A0%91-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
@@ -170,40 +222,13 @@
     <link href="/2024/05/05/Wireshark%E6%8A%93%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
     <url>/2024/05/05/Wireshark%E6%8A%93%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/</url>
     
-    <content type="html"><![CDATA[<blockquote><p>21网安吴帅超</p></blockquote><h2 id="一简介">一、简介</h2><p>Wireshark是一款非常流行的网络封包分析软件，可以截取各种网络数据包，并显示数据包详细信息。</p><p>为了安全考虑，Wireshark只能查看封包，而<strong>不能修改封包的内容</strong>，或者发送封包。</p><p>Wireshark能获取HTTP，也能获取HTTPS，但是不能解密HTTPS，所以<strong>wireshark看不懂HTTPS中的内容</strong></p><h2 id="二实验任务">二、实验任务</h2><p>完成对百度的抓包，获取三次TCP握手的包，同时写清楚过滤条件</p><blockquote><p>本次实验只是简单的进行一次抓包，主要是了解Wireshark这个软件的简单使用</p></blockquote><h2 id="三实验过程及结果">三、实验过程及结果</h2><p>① 勾选【WLAN2】网卡，点击【开始】，启动抓包。</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052254665.png"alt="开始抓包" /><figcaption aria-hidden="true">开始抓包</figcaption></figure><p>wireshark启动后，wireshark处于抓包状态中。</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052254301.png"alt="wireshark处于抓包状态" /><figcaption aria-hidden="true">wireshark处于抓包状态</figcaption></figure><p>②如果我们想获取百度相关的包，可以设置过滤条件<code>ip.addr == 39.156.66.10</code></p><p>这个IP地址是通过在window CMD命令行ping baidu.com，得到的：</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052258591.png"alt="ping baidu.com" /><figcaption aria-hidden="true">ping baidu.com</figcaption></figure><p>这时Wireshark就已经开始抓包了：</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052258115.png"alt="抓包百度" /><figcaption aria-hidden="true">抓包百度</figcaption></figure><p>③ 下面我们可以在浏览器中输入<code>39.156.66.10/s?word=java</code></p><p>这时Wireshark界面就发生了变化：</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052306339.png"alt="TCP三次握手" /><figcaption aria-hidden="true">TCP三次握手</figcaption></figure><p>解释如下：</p><ol type="1"><li>IP地址为10.45.246.179的客户端，发送序列号为Seq=0的报文给IP地址为39.156.66.10的服务器，此为第一次握手；</li><li>服务器收到该报文后，返回一个确认号为Ack=1,序列号为Seq=0的SYN+ACK的报文给客户端，此为第二次握手；</li><li>客户端收到来自服务器的响应报文，会将里面的序列号加1赋给新的Ack，同时将里面的Ack赋给新的Seq，即回复一个Seq=1,Ack=1的ACK报文给服务器，此为第三次握手。</li></ol><p>注：IP地址为10.45.246.179的客户端可以通过在CMD窗口输入<code>ipconfig/all</code>来查看</p><blockquote><p>本次实验只是对Wireshark的简单尝试使用（最后的三次握手虽然找到了在哪，但是似乎握手失败了），</p><p>如果中间存在错误请老师批评指正</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="一简介">一、简介</h2><p>Wireshark是一款非常流行的网络封包分析软件，可以截取各种网络数据包，并显示数据包详细信息。</p><p>为了安全考虑，Wireshark只能查看封包，而<strong>不能修改封包的内容</strong>，或者发送封包。</p><p>Wireshark能获取HTTP，也能获取HTTPS，但是不能解密HTTPS，所以<strong>wireshark看不懂HTTPS中的内容</strong></p><h2 id="二实验任务">二、实验任务</h2><p>完成对百度的抓包，获取三次TCP握手的包，同时写清楚过滤条件</p><blockquote><p>本次实验只是简单的进行一次抓包，主要是了解Wireshark这个软件的简单使用</p></blockquote><h2 id="三实验过程及结果">三、实验过程及结果</h2><p>① 勾选【WLAN2】网卡，点击【开始】，启动抓包。</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052254665.png"alt="开始抓包" /><figcaption aria-hidden="true">开始抓包</figcaption></figure><p>wireshark启动后，wireshark处于抓包状态中。</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052254301.png"alt="wireshark处于抓包状态" /><figcaption aria-hidden="true">wireshark处于抓包状态</figcaption></figure><p>②如果我们想获取百度相关的包，可以设置过滤条件<code>ip.addr == 39.156.66.10</code></p><p>这个IP地址是通过在window CMD命令行ping baidu.com，得到的：</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052258591.png"alt="ping baidu.com" /><figcaption aria-hidden="true">ping baidu.com</figcaption></figure><p>这时Wireshark就已经开始抓包了：</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052258115.png"alt="抓包百度" /><figcaption aria-hidden="true">抓包百度</figcaption></figure><p>③ 下面我们可以在浏览器中输入<code>39.156.66.10/s?word=java</code></p><p>这时Wireshark界面就发生了变化：</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405052306339.png"alt="TCP三次握手" /><figcaption aria-hidden="true">TCP三次握手</figcaption></figure><p>解释如下：</p><ol type="1"><li>IP地址为10.45.246.179的客户端，发送序列号为Seq=0的报文给IP地址为39.156.66.10的服务器，此为第一次握手；</li><li>服务器收到该报文后，返回一个确认号为Ack=1,序列号为Seq=0的SYN+ACK的报文给客户端，此为第二次握手；</li><li>客户端收到来自服务器的响应报文，会将里面的序列号加1赋给新的Ack，同时将里面的Ack赋给新的Seq，即回复一个Seq=1,Ack=1的ACK报文给服务器，此为第三次握手。</li></ol><p>注：IP地址为10.45.246.179的客户端可以通过在CMD窗口输入<code>ipconfig/all</code>来查看</p><blockquote><p>本次实验只是对Wireshark的简单尝试使用（最后的三次握手虽然找到了在哪，但是似乎握手失败了），</p><p>如果中间存在错误请老师批评指正</p></blockquote>]]></content>
     
     
     
     <tags>
       
       <tag>Wireshark</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Web-CTF-php一些题</title>
-    <link href="/2024/05/01/Web-CTF-php%E4%B8%80%E4%BA%9B%E9%A2%98/"/>
-    <url>/2024/05/01/Web-CTF-php%E4%B8%80%E4%BA%9B%E9%A2%98/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>标*的就是还没懂</p></blockquote><h2 id="wgpsec-ctf-baby-php">*[WgpSec CTF] baby php</h2><p><a href="https://ctf.wgpsec.org/challenges#baby%20php-19">WgpSecCTF</a></p><p>打开就是源码，分析了三天，这是可以说的吗（</p><p>反正就是也没咋看懂</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405042248378.png"alt="baby php" /><figcaption aria-hidden="true">baby php</figcaption></figure><p>大概意思就是</p><p>①至少设置一个get或post且key为flag</p><p>②其value不能等于flag</p><p>再往下看（下面的还没懂）：</p><blockquote><p>这里最关键的就是双$也就是变量覆盖了，</p><p>因为key必须为flag，对于post来说，你传的value都会赋值给$flag</p><p>但对于get来说，你传的value还必须有值。</p><p>最后输出$flag的值，如果想获取到flag，那么其值必须不能变动</p></blockquote><p>这里传get，且参数有2个，</p><p>payload：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">123</span>=flag&amp;flag=123<br></code></pre></td></tr></table></figure><p>对get遍历那儿的意思就是</p><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">$123=$flag<br>$flag=$123<br></code></pre></td></tr></table></figure><p>$123是随便写的一个变量</p><p>于是flag值依旧没有变化，成功获取flag</p><figure><imgsrc="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405042258476.png"alt="flag" /><figcaption aria-hidden="true">flag</figcaption></figure><blockquote><p>我好像懂了，</p><p>第二个foreach它会遍历 <code>$_GET</code>数组中的每个键值对，并根据键和值创建变量，并将值赋给变量名。</p><p>就是它会先执行$123= $flag，然后将123赋给</p><p>草了，还是不太懂，fuck！2024.05.04 23:09</p></blockquote>]]></content>
-    
-    
-    <categories>
-      
-      <category>CTF-Web</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>CTF</tag>
-      
-      <tag>web</tag>
       
     </tags>
     

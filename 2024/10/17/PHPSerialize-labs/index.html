@@ -16,23 +16,22 @@
   <meta name="author" content="w1per3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Web-CTF-刷的一些php题目">
+    <meta name="description" content="PHP反序列化的靶场">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Web-CTF-php一些题">
-<meta property="og:url" content="http://viper2383.github.io/2024/05/01/Web-CTF-php%E4%B8%80%E4%BA%9B%E9%A2%98/index.html">
+<meta property="og:title" content="PHPSerialize-labs">
+<meta property="og:url" content="http://viper2383.github.io/2024/10/17/PHPSerialize-labs/index.html">
 <meta property="og:site_name" content="w1per3">
-<meta property="og:description" content="Web-CTF-刷的一些php题目">
+<meta property="og:description" content="PHP反序列化的靶场">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-01T03:07:49.000Z">
-<meta property="article:modified_time" content="2024-05-04T15:07:49.000Z">
+<meta property="article:published_time" content="2024-10-17T11:00:00.000Z">
+<meta property="article:modified_time" content="2024-10-17T12:00:00.000Z">
 <meta property="article:author" content="w1per3">
 <meta property="article:tag" content="CTF">
-<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Web-CTF-php一些题 - w1per3</title>
+  <title>PHPSerialize-labs - w1per3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Web-CTF-php一些题"></span>
+            <span id="subtitle" data-typed-text="PHPSerialize-labs"></span>
           
         </div>
 
@@ -250,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-01 11:07" pubdate>
-          2024年5月1日 上午
+        <time datetime="2024-10-17 19:00" pubdate>
+          2024年10月17日 晚上
         </time>
       </span>
     
@@ -262,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          475 字
+          100 字
         
       </span>
     
@@ -273,7 +272,7 @@
         
         
         
-          4 分钟
+          1 分钟
         
       </span>
     
@@ -318,12 +317,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Web-CTF-php一些题</h1>
+            <h1 id="seo-header">PHPSerialize-labs</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年5月4日 晚上
+                    本文最后更新于：2024年10月17日 晚上
                   
                 
               </p>
@@ -332,48 +331,9 @@
               <div class="markdown-body">
                 
                 <blockquote>
-<p>标*的就是还没懂</p>
-</blockquote>
-<h2 id="wgpsec-ctf-baby-php">*[WgpSec CTF] baby php</h2>
-<p><a target="_blank" rel="noopener" href="https://ctf.wgpsec.org/challenges#baby%20php-19">WgpSec
-CTF</a></p>
-<p>打开就是源码，分析了三天，这是可以说的吗（</p>
-<p>反正就是也没咋看懂</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405042248378.png" srcset="/img/loading.gif" lazyload
-alt="baby php" />
-<figcaption aria-hidden="true">baby php</figcaption>
-</figure>
-<p>大概意思就是</p>
-<p>①至少设置一个get或post且key为flag</p>
-<p>②其value不能等于flag</p>
-<p>再往下看（下面的还没懂）：</p>
-<blockquote>
-<p>这里最关键的就是双$也就是变量覆盖了，</p>
-<p>因为key必须为flag，对于post来说，你传的value都会赋值给$flag</p>
-<p>但对于get来说，你传的value还必须有值。</p>
-<p>最后输出$flag的值，如果想获取到flag，那么其值必须不能变动</p>
-</blockquote>
-<p>这里传get，且参数有2个，</p>
-<p>payload：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">?<span class="hljs-attribute">123</span>=flag&amp;flag=123<br></code></pre></td></tr></table></figure>
-<p>对get遍历那儿的意思就是</p>
-<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs autoit">$123=$flag<br>$flag=$123<br></code></pre></td></tr></table></figure>
-<p>$123是随便写的一个变量</p>
-<p>于是flag值依旧没有变化，成功获取flag</p>
-<figure>
-<img
-src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202405042258476.png" srcset="/img/loading.gif" lazyload
-alt="flag" />
-<figcaption aria-hidden="true">flag</figcaption>
-</figure>
-<blockquote>
-<p>我好像懂了，</p>
-<p>第二个foreach它会遍历 <code>$_GET</code>
-数组中的每个键值对，并根据键和值创建变量，并将值赋给变量名。</p>
-<p>就是它会先执行$123= $flag，然后将123赋给</p>
-<p>草了，还是不太懂，fuck！2024.05.04 23:09</p>
+<h2 id="about">About</h2>
+<p>【Hello-CTF
+labs】PHPSerialize-labs是一个使用php语言编写的，用于学习CTF中PHP反序列化的入门靶场。旨在帮助大家对PHP的序列化和反序列化有一个全面的了解。</p>
 </blockquote>
 
                 
@@ -410,8 +370,6 @@ alt="flag" />
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
-        <a href="/tags/web/" class="print-no-link">#web</a>
-      
     </div>
   
 </div>
@@ -422,8 +380,8 @@ alt="flag" />
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Web-CTF-php一些题</div>
-      <div>http://viper2383.github.io/2024/05/01/Web-CTF-php一些题/</div>
+      <div>PHPSerialize-labs</div>
+      <div>http://viper2383.github.io/2024/10/17/PHPSerialize-labs/</div>
     </div>
     <div class="license-meta">
       
@@ -435,7 +393,7 @@ alt="flag" />
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月1日</div>
+          <div>2024年10月17日</div>
         </div>
       
       
@@ -467,18 +425,12 @@ alt="flag" />
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/05/Wireshark%E6%8A%93%E5%8C%85%E5%88%9D%E4%BD%93%E9%AA%8C/" title="Wireshark抓包初体验">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Wireshark抓包初体验</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/21/Web-CTF-SQL%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Web-CTF-SQL注入基础知识">
-                        <span class="hidden-mobile">Web-CTF-SQL注入基础知识</span>
+                      <a href="/2024/10/12/CTFHub-%E6%8A%80%E8%83%BD%E6%A0%91-SSRF/" title="CTFHub-技能树-SSRF">
+                        <span class="hidden-mobile">CTFHub-技能树-SSRF</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
