@@ -4,23 +4,17 @@
   
   
   <entry>
-    <title>PHPSerialize-labs</title>
-    <link href="/2024/10/17/PHPSerialize-labs/"/>
-    <url>/2024/10/17/PHPSerialize-labs/</url>
+    <title>蓝桥杯30天-chls学算法</title>
+    <link href="/2025/03/12/%E8%93%9D%E6%A1%A5%E6%9D%AF30%E5%A4%A9-chls%E5%AD%A6%E7%AE%97%E6%B3%95/"/>
+    <url>/2025/03/12/%E8%93%9D%E6%A1%A5%E6%9D%AF30%E5%A4%A9-chls%E5%AD%A6%E7%AE%97%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<blockquote><h2 id="about">About</h2><p>【Hello-CTFlabs】PHPSerialize-labs是一个使用php语言编写的，用于学习CTF中PHP反序列化的入门靶场。旨在帮助大家对PHP的序列化和反序列化有一个全面的了解。</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h2 id="一">3.12 一</h2><p>2暴力 + 2贪心</p><blockquote><p>总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试</p></blockquote>]]></content>
     
-    
-    <categories>
-      
-      <category>CTF-Web</category>
-      
-    </categories>
     
     
     <tags>
       
-      <tag>CTF</tag>
+      <tag>蓝桥杯，算法</tag>
       
     </tags>
     
