@@ -16,14 +16,14 @@
   <meta name="author" content="w1per3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="3.12 一 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时，再按">
+    <meta name="description" content="快读 1234# 快读模板import sysinput &#x3D; lambda:sys.stdin.readline().strip() 输入   例1  1234n &#x3D; int(input()) a &#x3D; [int(x) for x in input().split()]  print(*a) 1234n &#x3D; int(input()) nums &#x3D; list(map(int, inpu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="蓝桥杯30天-chls学算法">
-<meta property="og:url" content="http://viper2383.github.io/2025/03/12/%E8%93%9D%E6%A1%A5%E6%9D%AF30%E5%A4%A9-chls%E5%AD%A6%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:title" content="算法刷题总结">
+<meta property="og:url" content="http://viper2383.github.io/2025/03/05/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="w1per3">
-<meta property="og:description" content="3.12 一 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时，再按">
+<meta property="og:description" content="快读 1234# 快读模板import sysinput &#x3D; lambda:sys.stdin.readline().strip() 输入   例1  1234n &#x3D; int(input()) a &#x3D; [int(x) for x in input().split()]  print(*a) 1234n &#x3D; int(input()) nums &#x3D; list(map(int, inpu">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-12T02:00:00.000Z">
+<meta property="article:published_time" content="2025-03-05T02:00:00.000Z">
 <meta property="article:modified_time" content="2025-03-13T13:00:00.000Z">
 <meta property="article:author" content="w1per3">
 <meta property="article:tag" content="蓝桥杯，算法">
@@ -31,7 +31,7 @@
   
   
   
-  <title>蓝桥杯30天-chls学算法 - w1per3</title>
+  <title>算法刷题总结 - w1per3</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -238,7 +238,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="蓝桥杯30天-chls学算法"></span>
+            <span id="subtitle" data-typed-text="算法刷题总结"></span>
           
         </div>
 
@@ -249,8 +249,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-03-12 10:00" pubdate>
-          2025年3月12日 上午
+        <time datetime="2025-03-05 10:00" pubdate>
+          2025年3月5日 上午
         </time>
       </span>
     
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.1k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          8 分钟
+          14 分钟
         
       </span>
     
@@ -317,7 +317,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">蓝桥杯30天-chls学算法</h1>
+            <h1 id="seo-header">算法刷题总结</h1>
             
               <p class="note note-info">
                 
@@ -330,46 +330,78 @@
             
               <div class="markdown-body">
                 
-                <h2 id="一">3.12 一</h2>
-<p>2暴力 + 2贪心</p>
-<blockquote>
-<p>总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试</p>
-</blockquote>
-<h2 id="二">3.13 二</h2>
-<p>6 简单</p>
-<p><strong>贪心排序，其实就是排序</strong></p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/queue-reconstruction-by-height/description/">406.
-根据身高重建队列 - 力扣（LeetCode）</a></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">people = [[<span class="hljs-number">7</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">4</span>],[<span class="hljs-number">7</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">6</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">2</span>]]<br><br><span class="hljs-comment"># 先按子列表的第一个元素降序排序，当第一个元素相等时，再按第二个元素升序排序。</span><br><span class="hljs-comment"># 输出: [[7, 0], [7, 1], [6, 1], [5, 0], [5, 2], [4, 4]]</span><br>people.sort(key = <span class="hljs-keyword">lambda</span> x: (-x[<span class="hljs-number">0</span>], x[<span class="hljs-number">1</span>])) <br></code></pre></td></tr></table></figure>
-<p><strong>贪心</strong>，但是我感觉就是排序，可能这俩就经常结合着用吧</p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/apple-redistribution-into-boxes/description/">3074.
-重新分装苹果 - 力扣（LeetCode）</a></p>
-<p><strong>排序 + 贪心</strong></p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-bags-with-full-capacity-of-rocks/description/">2279.
-装满石头的背包的最大数量 - 力扣（LeetCode）</a></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 算两数组对应位置之差</span><br>chak = [a - b <span class="hljs-keyword">for</span> a, b <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(capacity, rocks)]<br></code></pre></td></tr></table></figure>
-<p>这玩意，力扣第一题吗，</p>
-<p>可暴力</p>
-<p>可<strong>哈希 + 前缀</strong></p>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/description/?envType=problem-list-v2&amp;envId=array">1.
-两数之和 - 力扣（LeetCode）</a></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py">d = &#123;&#125; <span class="hljs-comment"># 字典</span><br>d[<span class="hljs-number">11</span>] = <span class="hljs-number">0</span> <span class="hljs-comment"># 就是 d = &#123;11: 0&#125;</span><br>d[<span class="hljs-number">7</span>] = <span class="hljs-number">1</span> <span class="hljs-comment"># 就是 d 变为 &#123;11: 0, 7: 1&#125;。</span><br></code></pre></td></tr></table></figure>
-<p><strong>前缀和</strong></p>
+                <h2 id="快读">快读</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 快读模板</span><br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-built_in">input</span> = <span class="hljs-keyword">lambda</span>:sys.stdin.readline().strip()<br></code></pre></td></tr></table></figure>
+<h2 id="输入">输入</h2>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202502211617100.png" srcset="/img/loading.gif" lazyload
+alt="例1" />
+<figcaption aria-hidden="true">例1</figcaption>
+</figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus">n = <span class="hljs-built_in">int</span>(<span class="hljs-selector-tag">input</span>()) <br><span class="hljs-selector-tag">a</span> = <span class="hljs-selector-attr">[int(x) for x in input().split()]</span>  <br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(*a)</span></span><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py">n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>()) <br>nums = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) <br><br><span class="hljs-built_in">print</span>(*nums)<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202503081106748.png" srcset="/img/loading.gif" lazyload
+alt="例2" />
+<figcaption aria-hidden="true">例2</figcaption>
+</figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br></code></pre></td></tr></table></figure>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202503121722987.png" srcset="/img/loading.gif" lazyload
+alt="shuru" />
+<figcaption aria-hidden="true">shuru</figcaption>
+</figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-number">1204</span>)</span></span> 输出的是整数，int类型<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&#x27;1204&#x27;</span>)</span></span> 和 <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;1204&quot;</span>)输出的是字符串，str类型<br></code></pre></td></tr></table></figure>
+<h2 id="enumerate">enumerate</h2>
+<p><code>enumerate</code> 函数基本用法：</p>
+<p><code>enumerate</code> 函数的基本语法是
+<code>enumerate(iterable, start=0)</code>，其中：</p>
+<ul>
+<li><code>iterable</code>：是一个必需的参数，表示要进行枚举的可迭代对象，例如列表、元组、字符串等。</li>
+<li><code>start</code>：是一个可选参数，用于指定索引的起始值，默认值为
+0。</li>
+</ul>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">people = [[<span class="hljs-number">6</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">5</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">3</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">4</span>]]<br><span class="hljs-keyword">for</span> i, p <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(people): <span class="hljs-comment"># enumerate 函数：用于同时获取列表的索引 i 和元素 p</span><br>    h, k = p[<span class="hljs-number">0</span>], p[<span class="hljs-number">1</span>]<br>    ……<br>   <br></code></pre></td></tr></table></figure>
+<h2 id="res.appendres.insert">res.append，res.insert</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 在列表末尾加上一个元素</span><br>res.append()<br><br><span class="hljs-comment"># 在下标为 3 的前面插入一个元素 99，Python列表的下标从0开始</span><br>res.insert(<span class="hljs-number">3</span>, <span class="hljs-number">99</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="排序">排序</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-built_in">len</span>.sort()  <span class="hljs-comment"># 默认从小到大</span><br><span class="hljs-built_in">len</span>.sort(reverse = <span class="hljs-literal">True</span>)  <span class="hljs-comment"># 从大到小</span><br><br></code></pre></td></tr></table></figure>
+<h2 id="两个长度相同列表对应元素相减">两个长度相同列表对应元素相减</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs py">result = [a - b <span class="hljs-keyword">for</span> a, b <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(list1, list2)]<br></code></pre></td></tr></table></figure>
+<h2 id="列表的排序">列表的排序</h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs py">nums = [<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">6</span>]<br><span class="hljs-keyword">try</span>:<br>    <span class="hljs-comment"># nums 列表中的元素是整数，整数是不可索引的对象，不能使用 x[1] 这样的索引操作。</span><br>    <span class="hljs-comment"># x[1] 这种写法通常用于可迭代对象（如列表、元组等），它的意思是取可迭代对象中索引为 1 的元素。但整数并没有索引的概念，所以会引发 TypeError 异常。</span><br>    nums.sort(key = <span class="hljs-keyword">lambda</span> x : x[<span class="hljs-number">1</span>])<br><span class="hljs-keyword">except</span> TypeError <span class="hljs-keyword">as</span> e:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;出现错误: <span class="hljs-subst">&#123;e&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 这个想排序的话，直接：</span><br>nums.sort()  <span class="hljs-comment"># 从小到大 [1, 5, 6, 9]</span><br>nums.sort(reverse = <span class="hljs-literal">True</span>) <span class="hljs-comment"># 从大到小 [9, 6, 5, 1]</span><br><br></code></pre></td></tr></table></figure>
+<p>如果 <code>nums</code> 是一个嵌套列表，<code>key</code>
+参数就可以发挥作用。例如：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs py">nums = [[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">9</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">4</span>]]<br><span class="hljs-comment"># 在这个例子中，nums 是一个嵌套列表，每个子列表有两个元素。</span><br><span class="hljs-comment"># key = lambda x : x[1] 表示按照每个子列表中索引为 1 的元素进行排序，即第二个元素，排序后：[[9, 1], [1, 2], [5, 3], [6, 4]]</span><br>nums.sort(key = <span class="hljs-keyword">lambda</span> x : x[<span class="hljs-number">1</span>])<br><span class="hljs-built_in">print</span>(nums)<br></code></pre></td></tr></table></figure>
+<h2 id="钻牛角尖了">钻牛角尖了</h2>
 <p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P8218">P8218
 【深进1.例1】求区间和 - 洛谷</a></p>
+<p>看一下下面两段代码，在刚开始我的理解中，一直觉得要写成第二个的类型，因为对于第一个，你输入一个，它就立马输出了呀，可是我们这里的m大于1，它不符合，就是下面这样：</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202503131642196.png" srcset="/img/loading.gif" lazyload
+alt="image-20250313164125423" />
+<figcaption aria-hidden="true">image-20250313164125423</figcaption>
+</figure>
+<p>但实际情况是，如果你直接复制粘贴过来，它也是对的</p>
+<figure>
+<img
+src="https://wiper3.oss-cn-guangzhou.aliyuncs.com/blogimage/202503131642256.png" srcset="/img/loading.gif" lazyload
+alt="image-20250313164232188" />
+<figcaption aria-hidden="true">image-20250313164232188</figcaption>
+</figure>
+<p>我认为是要把它存入一个列表里面，最后一起输出，但是也不尽相同，豆包如是说：</p>
 <blockquote>
-<p>洛谷的IDE感觉有点小麻烦</p>
-<p>emmm，纯史来的</p>
+<p>当你按下回车键确认输入后，程序会将输入的内容按照换行符或空格进行分割，然后依次读取每个查询的左右边界值，并根据前缀和数组计算并输出相应的区间和。</p>
+<p>例如，你一次性输入<code>1 4</code>和<code>2 3</code>，中间以换行符分隔，程序会先读取<code>1 4</code>，计算并输出对应的区间和<code>10</code>，然后再读取<code>2 3</code>，计算并输出对应的区间和<code>5</code>。</p>
 </blockquote>
-<p><strong>二分查找 &amp; bisect库</strong></p>
-<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2249">P2249
-【深基13.例1】查找 - 洛谷</a></p>
-<p>这个题目：</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> sys<br><span class="hljs-built_in">input</span> = <span class="hljs-keyword">lambda</span>: sys.stdin.readline().strip()<br>n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>nums = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>Q = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br><br>s = <span class="hljs-built_in">set</span>(nums) <span class="hljs-comment"># nums 构成的集合，如果待查询数组 q not in s，直接返回-1</span><br><span class="hljs-keyword">for</span> q <span class="hljs-keyword">in</span> Q:<br>    <span class="hljs-keyword">if</span> q <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> s: <br>        <span class="hljs-built_in">print</span>(-<span class="hljs-number">1</span>, end = <span class="hljs-string">&quot; &quot;</span>)<br>    <span class="hljs-keyword">else</span>: <span class="hljs-comment"># q 一定出现在 nums 中, 利用技巧将“大于等于 x”转化成“大于 x-1”</span><br>        <span class="hljs-built_in">print</span>(bisect(nums, q - <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>, end = <span class="hljs-string">&quot; &quot;</span>)<br>        <br>        <br><span class="hljs-comment"># 但是你要直接写：</span><br><span class="hljs-comment"># for q in Q:</span><br><span class="hljs-comment">#    if q not in nums:  </span><br><span class="hljs-comment">#          ……</span><br><span class="hljs-comment"># 就会报错，TLE，要先s = set(nums)，转换成集合</span><br><span class="hljs-comment"># 因为使用 if q not in nums: 来判断元素是否在列表 nums 中。列表的 in 操作符需要遍历整个列表，其时间复杂度为O(n)</span><br><span class="hljs-comment"># 而集合在 Python 中是基于哈希表实现的，其查找元素的时间复杂度为 O(1)（平均情况下）。这意味着无论集合的大小如何，查找元素所需的时间基本保持不变。</span><br></code></pre></td></tr></table></figure>
+<p>所以总结来说就是——都行！别钻牛角尖了</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 一</span><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>m = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br><br>p = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>    p[i + <span class="hljs-number">1</span>] = p[i] + a[i]<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>    l, r = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>    <span class="hljs-built_in">print</span>(p[r] - p[l - <span class="hljs-number">1</span>])<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 二</span><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>a = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>m = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br><br>p = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>    p[i + <span class="hljs-number">1</span>] = p[i] + a[i]<br><br>res = [<span class="hljs-number">0</span>] * m<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m):<br>    l, r = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>    res[i] = p[r] - p[l - <span class="hljs-number">1</span>]<br><br><span class="hljs-built_in">print</span>(*res, sep = <span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -394,8 +426,8 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/descri
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>蓝桥杯30天-chls学算法</div>
-      <div>http://viper2383.github.io/2025/03/12/蓝桥杯30天-chls学算法/</div>
+      <div>算法刷题总结</div>
+      <div>http://viper2383.github.io/2025/03/05/算法刷题总结/</div>
     </div>
     <div class="license-meta">
       
@@ -407,7 +439,7 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/descri
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年3月12日</div>
+          <div>2025年3月5日</div>
         </div>
       
       
@@ -439,12 +471,18 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/descri
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/03/12/%E8%93%9D%E6%A1%A5%E6%9D%AF30%E5%A4%A9-chls%E5%AD%A6%E7%AE%97%E6%B3%95/" title="蓝桥杯30天-chls学算法">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">蓝桥杯30天-chls学算法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/03/05/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%80%BB%E7%BB%93/" title="算法刷题总结">
-                        <span class="hidden-mobile">算法刷题总结</span>
+                      <a href="/2024/10/12/CTFHub-%E6%8A%80%E8%83%BD%E6%A0%91-SSRF/" title="CTFHub-技能树-SSRF">
+                        <span class="hidden-mobile">CTFHub-技能树-SSRF</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
