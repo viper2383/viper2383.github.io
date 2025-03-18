@@ -16,15 +16,15 @@
   <meta name="author" content="w1per3">
   <meta name="keywords" content="">
   
-    <meta name="description" content="3.12 一 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时，再按">
+    <meta name="description" content="3.12 三十 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二十九 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="蓝桥杯30天-chls学算法">
 <meta property="og:url" content="http://viper2383.github.io/2025/03/12/%E8%93%9D%E6%A1%A5%E6%9D%AF30%E5%A4%A9-chls%E5%AD%A6%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="w1per3">
-<meta property="og:description" content="3.12 一 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时，再按">
+<meta property="og:description" content="3.12 三十 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二十九 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-12T02:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-13T13:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-18T13:00:00.000Z">
 <meta property="article:author" content="w1per3">
 <meta property="article:tag" content="蓝桥杯，算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          3.7k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          22 分钟
+          25 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2025年3月13日 晚上
+                    本文最后更新于：2025年3月18日 晚上
                   
                 
               </p>
@@ -330,12 +330,12 @@
             
               <div class="markdown-body">
                 
-                <h2 id="一">3.12 一</h2>
+                <h2 id="三十">3.12 三十</h2>
 <p>2暴力 + 2贪心</p>
 <blockquote>
 <p>总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试</p>
 </blockquote>
-<h2 id="二">3.13 二</h2>
+<h2 id="二十九">3.13 二十九</h2>
 <p>6 简单</p>
 <p><strong>贪心排序，其实就是排序</strong></p>
 <p><a
@@ -370,7 +370,7 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/descri
 【深基13.例1】查找 - 洛谷</a></p>
 <p>这个题目：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> sys<br><span class="hljs-built_in">input</span> = <span class="hljs-keyword">lambda</span>: sys.stdin.readline().strip()<br>n, m = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>nums = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>Q = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br><br>s = <span class="hljs-built_in">set</span>(nums) <span class="hljs-comment"># nums 构成的集合，如果待查询数组 q not in s，直接返回-1</span><br><span class="hljs-keyword">for</span> q <span class="hljs-keyword">in</span> Q:<br>    <span class="hljs-keyword">if</span> q <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> s: <br>        <span class="hljs-built_in">print</span>(-<span class="hljs-number">1</span>, end = <span class="hljs-string">&quot; &quot;</span>)<br>    <span class="hljs-keyword">else</span>: <span class="hljs-comment"># q 一定出现在 nums 中, 利用技巧将“大于等于 x”转化成“大于 x-1”</span><br>        <span class="hljs-built_in">print</span>(bisect(nums, q - <span class="hljs-number">1</span>) + <span class="hljs-number">1</span>, end = <span class="hljs-string">&quot; &quot;</span>)<br>        <br>        <br><span class="hljs-comment"># 但是你要直接写：</span><br><span class="hljs-comment"># for q in Q:</span><br><span class="hljs-comment">#    if q not in nums:  </span><br><span class="hljs-comment">#          ……</span><br><span class="hljs-comment"># 就会报错，TLE，要先s = set(nums)，转换成集合</span><br><span class="hljs-comment"># 因为使用 if q not in nums: 来判断元素是否在列表 nums 中。列表的 in 操作符需要遍历整个列表，其时间复杂度为O(n)</span><br><span class="hljs-comment"># 而集合在 Python 中是基于哈希表实现的，其查找元素的时间复杂度为 O(1)（平均情况下）。这意味着无论集合的大小如何，查找元素所需的时间基本保持不变。</span><br></code></pre></td></tr></table></figure>
-<h2 id="三">3.14 三</h2>
+<h2 id="二十八">3.14 二十八</h2>
 <blockquote>
 <p>坏，今天怎么感觉激情减退力</p>
 <p>莫斯，我直接去写题去</p>
@@ -380,22 +380,20 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum/descri
 <p><a
 target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-the-number-of-fair-pairs/description/">2563.
 统计公平数对的数目 - 力扣（LeetCode）</a></p>
-<h3 id="section"></h3>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 单调不减数组</span><br><br>i = bisect(arr, x) <span class="hljs-comment"># 返回恰好大于x的下标位置，</span><br><span class="hljs-comment"># 也可以理解为它的作用是在有序序列中找出目标元素应该插入的最右边位置，从而保证序列的有序性。若序列中存在和目标元素相等的元素，返回的索引是该相等元素最后的位置。</span><br><br><br><span class="hljs-comment"># 下面是其变形</span><br><span class="hljs-comment"># 恰好大于等于x的下标位置</span><br>i = bisect(arr, x - <span class="hljs-number">1</span>)<br><br><br><span class="hljs-comment"># 恰好小于等于x的下标位置</span><br>i = bisect(arr, x) - <span class="hljs-number">1</span><br><br><span class="hljs-comment"># 注意，bisect其实有4个参数</span><br>bisect(a, x, lo=<span class="hljs-number">0</span>, hi=<span class="hljs-built_in">len</span>(a))<br></code></pre></td></tr></table></figure>
 <p>二分-中等</p>
 <p><a
 target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/">34.
 在排序数组中查找元素的第一个和最后一个位置 - 力扣（LeetCode）</a></p>
-<h2 id="四">3.15 四</h2>
+<h2 id="二十七">3.15 二十七</h2>
 <blockquote>
 <p>草了wd，摆了一天</p>
 <p>我再也不考虑宿舍学习了😭</p>
 </blockquote>
-<h2 id="五">3.16 五</h2>
+<h2 id="二十六">3.16 二十六</h2>
 <blockquote>
 <p>library！</p>
-<p>昨天欠的债今天补上吧😇😇</p>
 </blockquote>
+<p>3 二分</p>
 <p>二分答案 模板：<a
 target="_blank" rel="noopener" href="https://wiki.dwj601.cn/ds-and-algo/templates-py/#二分答案">代码模板
 (Python) - Open Wiki Community</a></p>
@@ -420,7 +418,39 @@ target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/3510/learni
 target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/99/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tags=二分,省赛&amp;tag_relation=intersection&amp;difficulty=20">1.分巧克力
 - 蓝桥云课</a></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br> <br><span class="hljs-comment"># 请在此输入您的代码</span><br> <br>h = [<span class="hljs-number">0</span>] * <span class="hljs-number">100000</span><br>w = [<span class="hljs-number">0</span>] * <span class="hljs-number">100000</span><br> <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">a</span>):<br>    num = <span class="hljs-number">0</span>  <span class="hljs-comment"># 记录分成长度为 a 的巧克力数量</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        num += (w[i] // a) * (h[i] // a)  <span class="hljs-comment"># 每一大块可以分成的边长为 a 的巧克力数量</span><br>        <span class="hljs-keyword">if</span> num &gt;= k:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>  <span class="hljs-comment"># 大于要求数量，返回真</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br> <br>n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>    h[i], w[i] = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br> <br>l, r = <span class="hljs-number">1</span>, <span class="hljs-number">100000</span><br><span class="hljs-keyword">while</span> l &lt; r:<br>    mid = (l + r) // <span class="hljs-number">2</span><br>    <span class="hljs-keyword">if</span> check(mid):<br>        l = mid + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        r = mid<br> <br><span class="hljs-built_in">print</span>(r - <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br> <br><span class="hljs-comment"># 请在此输入您的代码</span><br> <br><span class="hljs-comment">##h = [0] * 100000</span><br><span class="hljs-comment">##w = [0] * 100000</span><br> <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">a</span>):<br>    num = <span class="hljs-number">0</span>  <span class="hljs-comment"># 记录分成长度为 a 的巧克力数量</span><br>    <span class="hljs-keyword">for</span> h, w <span class="hljs-keyword">in</span> c:<br>        num += (h // a) * (w // a)  <span class="hljs-comment"># 每一大块可以分成的边长为 a 的巧克力数量</span><br>        <span class="hljs-keyword">if</span> num &gt;= k:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>  <span class="hljs-comment"># 大于要求数量，返回真</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br> <br>n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br><span class="hljs-comment">##for i in range(n):</span><br><span class="hljs-comment">##    h[i], w[i] = map(int, input().split())</span><br><br>c = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br> <br>l, r = <span class="hljs-number">1</span>, <span class="hljs-number">100000</span><br><span class="hljs-keyword">while</span> l &lt; r:<br>    mid = (l + r) // <span class="hljs-number">2</span><br>    <span class="hljs-keyword">if</span> check(mid):<br>        l = mid + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        r = mid<br> <br><span class="hljs-built_in">print</span>(r - <span class="hljs-number">1</span>)<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-comment">##h = [0] * 100000</span><br><span class="hljs-comment">##w = [0] * 100000</span><br> <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">a</span>):<br>    num = <span class="hljs-number">0</span>  <span class="hljs-comment"># 记录分成长度为 a 的巧克力数量</span><br>    <span class="hljs-keyword">for</span> h, w <span class="hljs-keyword">in</span> c:<br>        num += (h // a) * (w // a)  <span class="hljs-comment"># 每一大块可以分成的边长为 a 的巧克力数量</span><br>        <span class="hljs-keyword">if</span> num &gt;= k:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>  <span class="hljs-comment"># 大于要求数量，返回真</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br> <br>n, k = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br><span class="hljs-comment">##for i in range(n):</span><br><span class="hljs-comment">##    h[i], w[i] = map(int, input().split())</span><br><br>c = [<span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br> <br>l, r = <span class="hljs-number">1</span>, <span class="hljs-number">100000</span><br><span class="hljs-keyword">while</span> l &lt; r:<br>    mid = (l + r) // <span class="hljs-number">2</span><br>    <span class="hljs-keyword">if</span> check(mid):<br>        l = mid + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        r = mid<br> <br><span class="hljs-built_in">print</span>(r - <span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="二十五">3.17 二十五</h2>
+<blockquote>
+<p>md改成倒计时，急迫感一下就上来了😭</p>
+</blockquote>
+<p>二分</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/732/">730.
+机器人跳跃问题 - AcWing题库</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        x = <span class="hljs-number">2</span>*x - h[i]<br>        <span class="hljs-keyword">if</span> x &lt; <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>h = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br><br>l, r = <span class="hljs-number">0</span>, <span class="hljs-number">100000</span><br><span class="hljs-keyword">while</span> l &lt; r:<br>    mid = (l + r) // <span class="hljs-number">2</span><br>    <span class="hljs-keyword">if</span> check(mid):<br>        r = mid<br>    <span class="hljs-keyword">else</span>:<br>        l = mid + <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(l)<br></code></pre></td></tr></table></figure>
+<p>二分吗？暴力吧</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1223/">1221. 四平方和
+- AcWing题库</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> sys <span class="hljs-comment"># 第一次用到它</span><br><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">int</span>(math.sqrt(n // <span class="hljs-number">4</span>)) + <span class="hljs-number">1</span>):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">int</span>(math.sqrt((n - i*i) // <span class="hljs-number">3</span>)) + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">int</span>(math.sqrt((n - i*i - j*j) // <span class="hljs-number">2</span>)) + <span class="hljs-number">1</span>):<br>            z = <span class="hljs-built_in">int</span>(math.sqrt(n - i*i - j*j - k*k))<br>            <span class="hljs-keyword">if</span> n == z*z + i*i + j*j + k*k:<br>                <span class="hljs-built_in">print</span>(i, j , k, z)<br>                sys.exit()  <span class="hljs-comment"># 直接终止整个程序</span><br></code></pre></td></tr></table></figure>
+<p>暴力</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2143/learning/?page=1&amp;first_category_id=1&amp;second_category_id=3&amp;tag_relation=intersection&amp;tags=二分,省赛&amp;sort=difficulty&amp;asc=1">4.最少刷题数
+- 蓝桥云课</a></p>
+<p>BFS</p>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-area-of-island/description/">695.
+岛屿的最大面积 - 力扣（LeetCode）</a></p>
+<h2 id="二十四">3.18 二十四</h2>
+<blockquote>
+<p>都怪牢宇，光聊天</p>
+</blockquote>
+<p>贪心</p>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/description/?envType=daily-question&amp;envId=2025-03-17">1963.
+使字符串平衡的最小交换次数 - 力扣（LeetCode）</a></p>
+<p>暴力</p>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/prime-in-diagonal/description/">2614.
+对角线上的质数 - 力扣（LeetCode）</a></p>
 
                 
               </div>
