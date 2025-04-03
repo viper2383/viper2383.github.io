@@ -24,7 +24,7 @@
 <meta property="og:description" content="3.12 三十 2暴力 + 2贪心  总算没再摆烂，不过题目还是要问问豆包，才能理解，过几天重写一遍题目再试试  3.13 二十九 6 简单 贪心排序，其实就是排序 406. 根据身高重建队列 - 力扣（LeetCode） 12345people &#x3D; [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]# 先按子列表的第一个元素降序排序，当第一个元素相等时">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-03-12T02:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-18T13:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-02T13:00:00.000Z">
 <meta property="article:author" content="w1per3">
 <meta property="article:tag" content="蓝桥杯，算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          7.9k 字
         
       </span>
     
@@ -272,7 +272,7 @@
         
         
         
-          25 分钟
+          53 分钟
         
       </span>
     
@@ -322,7 +322,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2025年3月18日 晚上
+                    本文最后更新于：2025年4月2日 晚上
                   
                 
               </p>
@@ -451,6 +451,160 @@ target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-number
 <p><a
 target="_blank" rel="noopener" href="https://leetcode.cn/problems/prime-in-diagonal/description/">2614.
 对角线上的质数 - 力扣（LeetCode）</a></p>
+<h2 id="二十三">3.19 二十三</h2>
+<p>BFS</p>
+<p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/149/learning/?page=1">0长草
+- 蓝桥云课</a></p>
+<p>DFS</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2193/learning/?page=1&amp;first_category_id=1&amp;tags=DFS,国赛&amp;tag_relation=intersection&amp;difficulty=20">5.最大数字
+- 蓝桥云课</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> sys<br><span class="hljs-built_in">input</span> = <span class="hljs-keyword">lambda</span>: sys.stdin.readline().strip()<br><br>N, A, B = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>sN = <span class="hljs-built_in">str</span>(N)<br>res = <span class="hljs-number">0</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">i, n, a, b</span>):<br>    <span class="hljs-keyword">global</span> res<br>    <span class="hljs-keyword">if</span> i == <span class="hljs-built_in">len</span>(sN):<br>        res = <span class="hljs-built_in">max</span>(res, n)<br>        <span class="hljs-keyword">return</span><br>    x = <span class="hljs-built_in">int</span>(sN[i])<br>    <span class="hljs-comment"># 对于第i位，只有两种选择，执行a操作，或执行b操作</span><br>    <span class="hljs-comment"># 对于执行a操作，计算当前数字可以进行加 1 操作的最大次数d，</span><br>    <span class="hljs-comment"># 取9 - x（将当前数字加到 9 所需的次数）和剩余的操作 1 次数a中的较小值</span><br>    d = <span class="hljs-built_in">min</span>(<span class="hljs-number">9</span> - x, a)<br>    dfs(i + <span class="hljs-number">1</span>, n * <span class="hljs-number">10</span> + (x + d), a - d, b)<br><br>    <span class="hljs-comment"># 例如，x=1,b=3,这时就能执行操作b，把x变成9</span><br>    <span class="hljs-keyword">if</span> b &gt;= x + <span class="hljs-number">1</span>:<br>        dfs(i + <span class="hljs-number">1</span>, n * <span class="hljs-number">10</span> + <span class="hljs-number">9</span>, a, b - (x + <span class="hljs-number">1</span>))<br><br>dfs(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, A, B)<br><span class="hljs-built_in">print</span>(res)<br></code></pre></td></tr></table></figure>
+<p>DFS</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/182/learning/?page=1&amp;first_category_id=1&amp;tags=省赛,DFS&amp;tag_relation=intersection&amp;difficulty=20">1.小朋友崇拜圈
+- 蓝桥云课</a></p>
+<blockquote>
+<p>这题牛魔的这么简单吗，感觉还是up<a
+target="_blank" rel="noopener" href="https://space.bilibili.com/398421867">TsingPig</a>讲得好</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> sys<br><span class="hljs-built_in">input</span> = <span class="hljs-keyword">lambda</span>: sys.stdin.readline().strip()<br>sys.setrecursionlimit(<span class="hljs-number">10000</span>) <span class="hljs-comment"># 增加递归深度至少大于 n，因为 python 默认为 1000</span><br><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>g = [<span class="hljs-number">0</span>] + <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br>res = <span class="hljs-number">0</span><br>d = &#123;&#125;<br><br><span class="hljs-comment"># u：当前正在访问的节点编号</span><br><span class="hljs-comment"># idx：当前节点 u 在 DFS 过程中的时间戳，表示这是第几次访问</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">u, idx</span>):<br>    <span class="hljs-keyword">global</span> res<br>    <span class="hljs-comment"># 如果 d.get(u) 不为 None，说明节点 u 之前已经被访问过，此时形成了一个环。</span><br>    <span class="hljs-keyword">if</span> d.get(u) <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> <span class="hljs-literal">None</span>:<br>        res = <span class="hljs-built_in">max</span>(res, idx - d[u])<br>        <span class="hljs-keyword">return</span><br>    d[u] = idx<br>    dfs(g[u], idx + <span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">for</span> u <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>    dfs(u, <span class="hljs-number">1</span>)<br><br><span class="hljs-built_in">print</span>(res)<br></code></pre></td></tr></table></figure>
+<h2 id="二十二">3.20 二十二</h2>
+<blockquote>
+<p>时光时光慢些吧，我还什么都不会呢😭😭</p>
+</blockquote>
+<p>枚举</p>
+<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/1212/">1210.
+连号区间数 - AcWing题库</a></p>
+<p>并查集</p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1551">P1551 亲戚 -
+洛谷</a></p>
+<h2 id="二十一">3.21 二十一</h2>
+<h2 id="二十">3.22 二十</h2>
+<h2 id="十九">3.23 十九</h2>
+<h2 id="十八">3.24 十八</h2>
+<h2 id="十七">3.25 十七</h2>
+<h2 id="十六">3.26 十六</h2>
+<p>并查集 <strong>8太懂</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1536">P1536 村村通 -
+洛谷</a></p>
+<p>并查集</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/110/learning/?page=1&amp;first_category_id=1&amp;tags=并查集,国赛&amp;tag_relation=intersection&amp;sort=difficulty&amp;asc=1">1.合根植物
+- 蓝桥云课</a></p>
+<p>前缀和</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2383/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=卡片&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">1.卡片
+- 蓝桥云课</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-comment"># 前缀和</span><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br><br>ans = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>    ans = ans + i<br>    <span class="hljs-keyword">if</span> ans &gt;= n:<br>        <span class="hljs-built_in">print</span>(i)<br>        <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+<p>模拟</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2060/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=裁纸刀&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">1.裁纸刀
+- 蓝桥云课</a></p>
+<h2 id="十五">3.27 十五</h2>
+<h2 id="十四">3.28 十四</h2>
+<h2 id="十三">3.29 十三</h2>
+<blockquote>
+<p>我tmd真的是，该啊，哎</p>
+<p>没紧迫感，总是想玩</p>
+</blockquote>
+<h2 id="十二">3.30 十二</h2>
+<p>动态规划</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/">70. 爬楼梯 -
+力扣（LeetCode）</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">climbStairs</span>(<span class="hljs-params">self, n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br><span class="hljs-meta">        @lru_cache(<span class="hljs-params">maxsize = <span class="hljs-literal">None</span></span>)</span><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">n</span>):<br>            <span class="hljs-keyword">if</span> n == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> n ==<span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">return</span> dfs(n - <span class="hljs-number">1</span>) + dfs(n - <span class="hljs-number">2</span>)<br>        <span class="hljs-keyword">return</span> dfs(n) <br></code></pre></td></tr></table></figure>
+<p>动态规划</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/house-robber/description/">198.
+打家劫舍 - 力扣（LeetCode）</a></p>
+<p><strong>选或者不选</strong></p>
+<p><span class="math inline">\(f[i][1]\)</span> 表示考虑完前 <span
+class="math inline">\(i\)</span> 个屋子, 且第 <span
+class="math inline">\(i\)</span> 个屋子选的最大金额</p>
+<p><span class="math inline">\(f[i][0]\)</span> 表示考虑完前 <span
+class="math inline">\(i\)</span> 个屋子，且第 <span
+class="math inline">\(i\)</span> 个屋子不选的最大金额</p>
+<p>不选，<span class="math inline">\(f[i][0] = \text{max(f[i - 1][1],
+f[i - 1][0])}\)</span></p>
+<p>选， <span class="math inline">\(f[i][1] = \text{f[i - 1][0] + nums[i
+- 1]}\)</span></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rob</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        n = <span class="hljs-built_in">len</span>(nums)<br>        f = [[<span class="hljs-number">0</span>] * <span class="hljs-number">2</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n + <span class="hljs-number">1</span>)]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>            f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">max</span>(f[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>], f[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>])<br>            f[i][<span class="hljs-number">1</span>] = f[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] + nums[i-<span class="hljs-number">1</span>]<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(f[n][<span class="hljs-number">1</span>], f[n][<span class="hljs-number">0</span>])<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">rob</span>(<span class="hljs-params">self, nums: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>        n = <span class="hljs-built_in">len</span>(nums)<br>        dp = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br>        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br>        dp[<span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>]<br>        <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>):<br>            dp[k] = <span class="hljs-built_in">max</span>(dp[k - <span class="hljs-number">1</span>], nums[k - <span class="hljs-number">1</span>] + dp[k - <span class="hljs-number">2</span>])<br>        <span class="hljs-keyword">return</span> dp[n]<br></code></pre></td></tr></table></figure>
+<h2 id="十一">3.31 十一</h2>
+<p><strong>§1.1 爬楼梯</strong></p>
+<p>动态规划</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-cost-climbing-stairs/">746.
+使用最小花费爬楼梯 - 力扣（LeetCode）</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">minCostClimbingStairs</span>(<span class="hljs-params">self, cost: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br><span class="hljs-meta">        @lru_cache(<span class="hljs-params">maxsize = <span class="hljs-literal">None</span></span>)</span><br>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">n</span>):<br>            <span class="hljs-keyword">if</span> n == <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> n == <span class="hljs-number">1</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(dfs(n - <span class="hljs-number">1</span>) + cost[n - <span class="hljs-number">1</span>], dfs(n - <span class="hljs-number">2</span>) + cost[n - <span class="hljs-number">2</span>])<br><br>        n = <span class="hljs-built_in">len</span>(cost)    <br>        <span class="hljs-keyword">return</span> dfs(n)<br>        <br></code></pre></td></tr></table></figure>
+<h2 id="十">4.1 十</h2>
+<blockquote>
+<p>递归</p>
+<p>sort</p>
+<p>一维前缀和</p>
+<p>DFS</p>
+<p>整数二分</p>
+<p>素数</p>
+<p>GCD</p>
+<p>图的存储</p>
+<p>Dijkstra</p>
+<p>dp</p>
+</blockquote>
+<h2 id="九">4.2 九</h2>
+<p>模拟</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/592/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=门牌&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">1.门牌制作
+- 蓝桥云课</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br>ans = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, <span class="hljs-number">2021</span>):<br>    s = <span class="hljs-built_in">str</span>(i)<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> s:<br>        <span class="hljs-keyword">if</span> j == <span class="hljs-string">&#x27;2&#x27;</span>:<br>            ans = ans + <span class="hljs-number">1</span><br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<p>count方法</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-comment"># 请在此输入您的代码</span><br>b = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2021</span>):<br>    a = <span class="hljs-built_in">str</span>(i).count(<span class="hljs-string">&#x27;2&#x27;</span>)<br>    b += a<br><span class="hljs-built_in">print</span>(b)<br></code></pre></td></tr></table></figure>
+<h2 id="八">4.3 八</h2>
+<blockquote>
+<p>5</p>
+</blockquote>
+<p>模拟</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/19732/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=小球&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">1.小球反弹
+- 蓝桥云课</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br><br><span class="hljs-comment"># ans=0</span><br><br><span class="hljs-comment"># l = 343720 # 长</span><br><span class="hljs-comment"># w = 233333 # 宽</span><br><span class="hljs-comment"># while True:</span><br><span class="hljs-comment">#     if l/w &gt; 15/17: # w短，w要增加</span><br><span class="hljs-comment">#         w = w + 233333</span><br><span class="hljs-comment">#     elif l/w &lt; 15/17:</span><br><span class="hljs-comment">#         l = l + 343720</span><br><span class="hljs-comment">#     else:</span><br><span class="hljs-comment">#         ans = (l**2 + w**2)**0.5</span><br><span class="hljs-comment">#         ans = ans * 2</span><br><span class="hljs-comment">#         print(ans)</span><br><span class="hljs-comment">#         break</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-number">1100325199.77</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 保留两位小数</span><br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;ans:<span class="hljs-number">.2</span>f&#125;</span>&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>模拟</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/3502/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=平方差&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">1.平方差
+- 蓝桥云课</a></p>
+<blockquote>
+<p>范围中奇数数量的计算</p>
+<p>一个数的倍数的计算</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-comment"># 自己找规律</span><br><span class="hljs-comment"># 奇数和4的倍数，两部分符合条件的结果</span><br><br>L, R = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br><br><span class="hljs-comment"># (R + 1) // 2 表示[1,R]之间奇数的数量</span><br><span class="hljs-comment"># L // 2 表示[1,L-1]之间奇数的数量</span><br>ans1 = (R + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span> - (L - <span class="hljs-number">1</span> + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span><br><br><span class="hljs-comment"># R // 4 表示[1,R]之间4的倍数的数量</span><br>ans2 = R // <span class="hljs-number">4</span> - (L-<span class="hljs-number">1</span>) // <span class="hljs-number">4</span><br><br><span class="hljs-built_in">print</span>(ans1 + ans2)<br><br></code></pre></td></tr></table></figure>
+<p>模拟</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/3491/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=幸运数&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">2.幸运数
+- 蓝桥云课</a></p>
+<blockquote>
+<p>数字转成字符串，字符串又转成列表，列表的计算</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> sys<br><br>ans = <span class="hljs-number">0</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">100000000</span>):<br>    c = <span class="hljs-built_in">len</span>(<span class="hljs-built_in">str</span>(i))<br>    <span class="hljs-keyword">if</span> c % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>:<br>        k = c // <span class="hljs-number">2</span> <span class="hljs-comment"># 中间位置</span><br>        cnt = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">list</span>(<span class="hljs-built_in">str</span>(i))))<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span>(cnt[:k]) == <span class="hljs-built_in">sum</span>(cnt[k:]):<br>            ans = ans + <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(ans)<br></code></pre></td></tr></table></figure>
+<p>模拟</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/3499/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=幸运数&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">3.幸运数字
+- 蓝桥云课</a></p>
+<blockquote>
+<p>注意check函数怎么写的</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs py"><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">n, mod</span>):<br>    x = n<br>    ans = <span class="hljs-number">0</span><br>    <span class="hljs-comment"># x % mod：计算 x 在 mod 进制下的最低位数字，然后将其累加到 ans 中。</span><br>    <span class="hljs-comment"># x //= mod：将 x 除以 mod 并取整，相当于将 x 在 mod 进制下右移一位，去掉最低位数字。</span><br>    <span class="hljs-comment"># 这个 while 循环会一直执行，直到 x 变为 0，此时 ans 中存储的就是 n 在 mod 进制下各位数字之和。</span><br>    <span class="hljs-keyword">while</span> x &gt; <span class="hljs-number">0</span>:<br>        ans += x % mod<br>        x //= mod<br>    <span class="hljs-keyword">return</span> n % ans == <span class="hljs-number">0</span><br><br>cnt = <span class="hljs-number">0</span><br>i = <span class="hljs-number">1</span><br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-keyword">if</span> check(i,<span class="hljs-number">2</span>) <span class="hljs-keyword">and</span> check(i,<span class="hljs-number">8</span>) <span class="hljs-keyword">and</span> check(i,<span class="hljs-number">10</span>) <span class="hljs-keyword">and</span> check(i,<span class="hljs-number">16</span>):<br>        cnt = cnt + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> cnt == <span class="hljs-number">2023</span>:<br>        <span class="hljs-comment"># print(i)</span><br>        <span class="hljs-keyword">break</span><br>    i = i + <span class="hljs-number">1</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-number">215040</span>)<br></code></pre></td></tr></table></figure>
+<p>暴力 or 前缀和</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/1541/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=大学里的&amp;sort=difficulty&amp;asc=1">2.大学里的树木要维护
+- 蓝桥云课</a></p>
+<blockquote>
+<p>列表的应用： sum(A[a-1:b])计算a-b之间数字的和</p>
+</blockquote>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 暴力</span><br>N, M = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>A = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):<br>    a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>(A[a-<span class="hljs-number">1</span>:b]))<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 前缀和</span><br><br>N, M = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>A = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br><br>ans = [<span class="hljs-number">0</span>] * (N + <span class="hljs-number">1</span>) <br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N):<br>    ans[i + <span class="hljs-number">1</span>] = A[i] + ans[i]<br><br><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(M):<br>    a, b = <span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split())<br>    kkk = ans[b] - ans[a-<span class="hljs-number">1</span>]<br><br>    <span class="hljs-built_in">print</span>(kkk)<br><br></code></pre></td></tr></table></figure>
+<p>暴力 or 前缀和</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/3507/learning/?page=1&amp;first_category_id=1&amp;tag_relation=intersection&amp;name=异或和&amp;sort=difficulty&amp;asc=1&amp;tags=省赛">1.异或和之和
+- 蓝桥云课</a></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-comment"># 暴力 60%</span><br>n = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>())<br>A = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-built_in">int</span>, <span class="hljs-built_in">input</span>().split()))<br><br>ans = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> L <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>    sum1 = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> R <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(L,n):<br>        sum1 = sum1 ^ A[R]<br>        ans = ans + sum1<br><br><span class="hljs-built_in">print</span>(ans)<br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
